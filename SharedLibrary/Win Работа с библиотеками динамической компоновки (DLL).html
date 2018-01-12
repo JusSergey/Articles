@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.codenet.ru/progr/visualc/Using-DLL.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="https://mc.yandex.ru/metrika/watch.js"></script><script async="" src="./Win Работа с библиотеками динамической компоновки (DLL)_files/analytics.js"></script><script type="text/javascript" src="http://an.yandex.ru/system/context.js" async="true"></script><script async="" src="http://urls.api.twitter.com/1/urls/count.json?url=http://www.codenet.ru/progr/visualc/Using-DLL.php&amp;callback=jQuery17103568566028076583_1515746426687&amp;_=1515746426723"></script> 
+
+<title>Работа с библиотеками динамической компоновки (DLL)</title> 
+<meta name="description" content="С самого рождения (или чуть позже) операционная система Windows использовала библиотеки динамической компоновки DLL (Dynamic Link Library), в которых содержались реализации наиболее часто применяемых функций. Наследники Windows - NT и Windows 95, а также OS/2 - тоже зависят от библиотек DLL в плане обеспечения значительной части их функциональных возможностей. Рассмотрим ряд аспектов создания и использования библиотек DLL...">
+<meta name="keywords" content="Visual C++, FAQ, API, WinAPI, Windows, Microsoft Visual Studio, C++, C, Си, C#">
+<link type="text/css" rel="stylesheet" href="./Win Работа с библиотеками динамической компоновки (DLL)_files/codenet.css">
+<script type="text/javascript" src="http://an.yandex.ru/system/context.js" async=""></script><script async="" type="text/javascript" src="./Win Работа с библиотеками динамической компоновки (DLL)_files/gpt.js"></script><script type="text/javascript" src="./Win Работа с библиотеками динамической компоновки (DLL)_files/codenet.js"></script> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые статьи" href="http://feeds.feedburner.com/codenet/read"> 
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые сообщения на форуме" href="http://feeds.feedburner.com/codenet/forum"> 
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые сайты в каталоге" href="http://feeds.feedburner.com/codenet/cat"> 
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые исходники" href="http://feeds.feedburner.com/codenet/sources"> 
+
+<meta name="verify-v1" content="ZuirPLme4DTpdfqSqtolx2w0hscTr5RuK9Tek+K1aAs="> 
+<link rel="icon" href="http://i.codenet.ru/favicon.ico"> 
+<meta property="fb:admins" content="100001560647144">
+<meta property="fb:app_id" content="290955720945342">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Работа с библиотеками динамической компоновки (DLL)">
+<meta property="og:url" content="http://www.codenet.ru//progr/visualc/Using-DLL.php">
+<meta property="og:site_name" content="CodeNet - все для программиста">
+<meta property="og:image" content="">
+<meta property="article:published_time" content="2000-01-01T00:00:00+03:00">
+<meta property="article:modified_time" content="-001-11-30T00:00:00+02:30">
+<meta property="og:description" content="С самого рождения (или чуть позже) операционная система Windows использовала библиотеки динамической компоновки DLL (Dynamic Link Library), в которых содержались реализации наиболее часто применяемых функций. Наследники Windows - NT и Windows 95, а также OS/2 - тоже зависят от библиотек DLL в плане обеспечения значительной части их функциональных возможностей. Рассмотрим ряд аспектов создания и использования библиотек DLL...">
+ 
+
+<script>
+
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+  var gads = document.createElement('script');
+  gads.async = true;
+  gads.type = 'text/javascript';
+  var useSSL = 'https:' == document.location.protocol;
+  gads.src = (useSSL ? 'https:' : 'http:') +
+    '//www.googletagservices.com/tag/js/gpt.js';
+  var node = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script>
+if ($(window).width()>767) {
+	googletag.cmd.push(function() {
+		googletag.defineSlot('/1019277/codenet_left_240x400', [240, 400], 'div-gpt-ad-1428667131943-0').addService(googletag.pubads());
+		googletag.pubads().enableSingleRequest();
+		googletag.enableServices();
+		});
+	}
+</script>
+
+<link rel="preload" href="./Win Работа с библиотеками динамической компоновки (DLL)_files/integrator.js" as="script"><script type="text/javascript" src="./Win Работа с библиотеками динамической компоновки (DLL)_files/integrator.js"></script><link rel="preload" href="./Win Работа с библиотеками динамической компоновки (DLL)_files/integrator(1).js" as="script"><script type="text/javascript" src="./Win Работа с библиотеками динамической компоновки (DLL)_files/integrator(1).js"></script><script src="./Win Работа с библиотеками динамической компоновки (DLL)_files/pubads_impl_172.js" async=""></script></head> 
+ 
+<body class="m0"> 
+ 
+<div class="container"> 
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cnheader">
+ 
+			<div id="mmenu">
+				<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" class="mmenu-button"><img src="./Win Работа с библиотеками динамической компоновки (DLL)_files/mmenu.svg"></a>
+			</div>
+			<div id="logo">
+				<div>
+			<a href="http://www.codenet.ru/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAcCAMAAADx2dmpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFAK7v////5NLvRAAAAEdJREFUeNpiYCQKMBADRoBRcCORjUezB85GFkdTMEKMQpbCSuISRGGPGoVDihEzvkaNGk1XqEbhlCU92Ie3UaP1IJFGAQQYACt2A9WxwuoaAAAAAElFTkSuQmCC" style="border:0;width:74px;height:28px;" alt="CodeNet - все для программиста!" title="CodeNet - все для программиста!"></a><br>
+			<a href="http://www.codenet.ru/" style="color:#ff8c00">Все для программиста!</a>
+		</div>
+	</div>
+ 
+<script type="text/javascript"> 
+<!--
+cnsd=document;cnst=escape(cnsd.title);
+cnst=cnst.replace(/\+/g,'%2B');cnsa=navigator.appName;
+cnsn=(cnsa.substring(0,2)=='Mi')?0:1;cnss=screen;cnspx=(cnsn==0)?cnss.colorDepth:cnss.pixelDepth;
+document.write('<img alt="" s'+'rc="http://s.codenet.ru/cnt-gif1x1.php?e='+cnss.width+'.'+cnss.height+'&amp;d='+cnspx+'&amp;r='+escape(cnsd.referrer)+'&amp;p='+escape(cnsd.location)+'&amp;t='+cnst+'" style="width:1px;height:1px;border:0;" />');
+//-->
+</script><img alt="" src="./Win Работа с библиотеками динамической компоновки (DLL)_files/cnt-gif1x1.php" style="width:1px;height:1px;border:0;"><noscript>&lt;img src="http://s.codenet.ru/cnt-gif1x1.php?468&amp;amp;c=0" style="width:1px;height:1px;border:0;" alt="" /&gt;</noscript> 
+ 
+<script type="text/javascript"><!--
+new Image().src = "//counter.yadro.ru/hit?r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random();//--></script><!--/LiveInternet--> 
+ 
+<div id="searchform"> 
+ 
+	<div id="search1">
+		<form action="http://www.codenet.ru/search-xml/" method="get"> 
+			<div style="float:right;">
+				<input type="submit" value="Искать" class="btn">
+				<input type="hidden" name="d" value="www.codenet.ru">
+			</div>
+			<div style="margin-right:80px;">
+				<input type="text" name="q" value="" class="form-control">
+			</div>
+			<div class="clearfix"></div>
+		</form> 
+
+
+		<ul>
+			<li class="active"><a href="http://www.codenet.ru/">Статьи</a></li>
+			<li><a href="http://forum.codenet.ru/">Форум</a></li>
+			<li><a href="http://sources.codenet.ru/">Исходники</a></li>
+			<li><a href="http://cat.codenet.ru/">Каталог</a></li>
+			<li><a href="http://www.codenet.ru/hosting/">Хостинг</a></li>
+			<li><a href="http://www.codenet.ru/services/">Утилиты</a></li>
+		</ul>
+	</div>
+
+	<div id="search2">
+
+		<form action="http://www.codenet.ru/search-spr/" method="get" style="padding:22px 20px 0 10px;"> 
+
+			<div class="t" style="margin-top:-22px;">Справочник функций</div>
+				<div style="float:right;">
+					<input type="submit" value="Искать" class="btn">
+				</div>
+				<div style="margin-right:80px;">
+					<input type="text" name="q" value="" class="form-control">
+				</div>
+			<div style="clearfix"></div>
+			<div style="margin:3px 0 0 -3px;">
+				<select class="form-control" name="spr" style="width:150px;"> 
+					<option value="any">Все справочники</option> 
+					<option value="cpp">Си/Си++</option> 
+					<option value="cpp1">Borland C++</option> 
+					<option value="cpp2">Си/Си++ (DOS)</option> 
+					<option value="cpp3">Си/Си++ (Unix/Linux)</option> 
+					<option value="pascal">Pascal</option> 
+					<option value="perl">Perl</option> 
+					<option value="winapi">WinAPI</option> 
+				</select> 
+			</div>
+
+		</form>
+	</div>
+	<div style="clear:both"></div>
+</div>
+
+
+</div>
+
+</div>
+
+<!-- row start -->
+<div class="np_row_2-1 row"><!-- col start -->
+<div class="np_col_1 leftcol pull-left np_layout_2-1-1"><!-- По умолчанию -->
+<div id="np_block_1_1" class="se">
+	<h3>Ваш аккаунт</h3>
+
+<!-- social auth -->
+<div style="margin:10px 0 5px 1px;">
+<div style="float:left">Войти через:&nbsp;</div>
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" class="login_social" id="login_facebook" title="Войти через Facebook"></a>
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" class="login_social" id="login_vk" title="Войти через ВКонтакте"></a>
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" class="login_social" id="login_twitter" title="Войти через Twitter"></a>
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" class="login_social" id="login_google" title="Войти через Google"></a>
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" class="login_social" id="login_yandex" title="Войти через Яндекс"></a>
+<span id="social_loading"></span>
+<div style="clear:both"></div>
+</div>
+
+<div id="login_social_container" style="display:none"></div>
+<div style="clear:both"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.login_social').click(function() {
+		$('#social_loading').AppendAjaxProgress();
+		var id=$(this).attr('id');
+		$.getScript('http://i.codenet.ru/caq/js/lib/jquery.simplemodal.1.4.1.min.js',function() {
+			$('#login_social_container').load('/ajax/login_social_dialog.php?social='+id);
+			});
+		return false;
+		});
+	});
+
+</script>
+<!-- //social auth -->
+<form action="http://forum.codenet.ru/ajax/login.php" method="post" id="common_login_form" role="form" class="form-horizontal">
+	<div class="form-group" style="margin:20px -10px 0 -10px;">
+		<label for="common_login_form_login" class="col-sm-4 control-label">Логин:</label>
+		<div class="col-sm-8">
+			<input type="text" name="login" id="common_login_form_login" value="" class="form-control">
+		</div>
+	</div>
+	<div class="form-group" style="margin:10px -10px 0 -10px;">
+		<label for="cn-password" class="col-sm-4 control-label">Пароль:</label>
+		<div class="col-sm-8">
+			<input type="password" name="password" value="" class="form-control" id="cn-password">
+		</div>
+	</div>
+	<div class="form-group" style="margin:10px -10px 0 -10px;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-8">
+			<div class="checkbox">
+				<label><input type="checkbox" name="store_session" id="common_store_session" style="margin-top:0;"> Запомнить меня</label>
+			</div>
+		</div>
+
+		<div id="common_login_error_message" class="alert alert-danger" style="display:none;"></div>
+
+	</div>
+
+
+	<div class="form-group" id="common_login_button" style="margin-top:5px;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-8">
+			<input type="submit" class="btn btn-success" value="Войти &gt;&gt;">
+			<span></span>
+		</div>
+	</div>
+
+</form>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+
+function CommonLoginRedirect(data) {
+	if (data.status!='ok') {
+		$('#common_login_button input').attr('disabled',false);
+		$('#common_login_error_message').html('<strong>Ошибка</strong>: '+data.message).show(100);
+		$('#common_login_error_message').animate({'background-color':'#fcc'},500).animate({'background-color':'transparent'},1000);
+		$(document).RemoveAjaxProgress();
+		$('#common_login_form_login').focus();
+		}
+	else {
+		location.reload();
+		}
+	}
+
+$(document).ready(function() {
+
+    $('#common_login_form').ajaxForm({
+		url: '/ajax/login.php',
+        dataType:  'json', 
+        success:   CommonLoginRedirect,
+		beforeSubmit: function() {
+
+			$(document).RemoveAjaxProgress();
+			$('#common_login_button span').AppendAjaxProgress();
+			$('#common_login_button input').attr('disabled',true);
+			$('#common_login_error_message').html('').hide(100);
+			}
+	    });
+
+	$('#common_login_button input').attr('disabled',false);
+
+	});
+</script>
+
+<div style="margin-top:10px;">
+<a href="http://forum.codenet.ru/restore-password/">Забыли пароль?</a><br>
+<a href="http://forum.codenet.ru/reg" style="color:red;font-weight:bold;">Регистрация</a>
+</div>
+
+<div style="margin-top:10px;">
+<div style="color:#404040;margin-bottom:3px;">Информацию о новых материалах можно получать и без регистрации:</div>
+<div class="rss" style="font-size:11px;padding:5px;width:auto;"><a rel="nofollow" href="http://www.codenet.ru/r/fb/codenet/forum">RSS</a></div>
+<div class="twitter" style="font-size:11px;padding:5px;width:auto;margin-left:3px;"><a rel="nofollow" href="http://www.codenet.ru/r/twitter/">Twitter</a></div>
+<div class="rss" style="background-color:#597da3;font-size:11px;padding:5px;width:auto;margin-left:3px;"><a rel="nofollow" href="http://vkontakte.ru/club32056391">ВКонтакте</a></div>
+</div>
+
+
+
+	
+</div>
+<!-- Пустой -->
+<div id="np_block_1_1" class="block_empty"><!-- Yandex.RTB R-A-1959-1 -->
+<div id="yandex_rtb_R-A-1959-1"></div>
+<script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Context.AdvManager.render({
+                blockId: "R-A-1959-1",
+                renderTo: "yandex_rtb_R-A-1959-1",
+                horizontalAlign: false,
+                async: true
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+</script></div>
+<!-- По умолчанию -->
+<div id="np_block_1_1" class="se">
+	<h3>Последние темы форума</h3>
+
+<div class="fm" id="flt">
+<ul>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76354/%D0%A0%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%82%D1%8C+%D1%81%D0%B2%D0%BE%D0%B8+%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B+%D1%87%D0%B5%D1%80%D0%B5%D0%B7+%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D0%BB%D1%82%D0%BD%D1%8B%D0%B5+%D1%81%D0%B5%D1%82%D0%B8%3F">Развивать свои проекты через социалтные сети?</a> — 2018-01-08 02:45:59 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395065#answer_395065">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/38" class="light">Фриланс</a> / Margot</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76353/%D0%9A%D0%B0%D0%BA+%D1%80%D0%B5%D1%88%D0%B8%D1%82%D1%8C+%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83+%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F+%D1%81%D0%B8%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%BD%D1%8B%D0%BC+%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%BC%3F">Как решить задачу линейного программирования симплексным методом?</a> — 2018-01-04 16:59:07 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395037#answer_395037">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/27" class="light">Студентам</a> / Shiba</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76352/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B0+%D0%B2+Dev-C%2B%2B+5.7.1.%2C+%D0%BF%D1%80%D0%B8+%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B5+%D0%B2+Borland+C%2B%2B+%D1%80%D1%83%D0%B3%D0%B0%D0%B5%D1%82%D1%81%D1%8F+%D0%BD%D0%B0+bool+%D0%B8+%D0%B2%D1%81%D1%91%2C+%D1%87%D1%82%D0%BE+%D1%81+%D0%BD%D0%B8%D0%BC+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BE.+%D0%A7%D1%82%D0%BE+%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C%3F+%D0%9D%D1%83%D0%B6%D0%BD%D0%BE%2C+%D1%87%D1%82%D0%BE%D0%B1+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%BB%D0%B0+%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE+%D0%B2+Borland+C%2B%2B">Программа написана в Dev-C++ 5.7.1., при запуске в Borland C++ ругается на bool и всё, что с ним связано. Что делать? Нужно, чтоб работала именно в Borland C++</a> — 2018-01-03 02:16:45 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395063#answer_395063">(19)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/8" class="light">Borland C++ Builder</a> / JuC</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76351/%D0%9D%D1%83%D0%B6%D0%BD%D0%B0+%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C+%D0%B2+%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D0%B5+%D0%BF%D0%BE+%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E+%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8">Нужна помощь в совете по удалению информации</a> — 2017-12-28 18:00:06<span style="color:#c0c0c0"> (0)</span>
+<div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/11" class="light">Общие вопросы программирования</a> / toltany1</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76350/%D0%9F%D1%80%D0%BE%D1%88%D1%83+%D0%BF%D0%BE%D0%BC%D0%BE%D1%87%D1%8C+%D1%80%D0%B0%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D1%81+%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%BE%D0%B9+DosError%3D123%2C+%D0%B2%D1%8B%D0%B4%D0%B0%D0%B2%D0%B0%D0%B5%D0%BC%D0%BE%D0%B9+IDE+Free+Paascal">Прошу помочь разобраться с ошибкой DosError=123, выдаваемой IDE Free Paascal</a> — 2017-12-25 20:59:43 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395030#answer_395030">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/9" class="light">Pascal</a> / tovit</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76349/%D0%92%D1%81%D0%B5%D0%BC+%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C+%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0+%D0%BF%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5+%D1%80%D0%B5%D1%88%D0%B8%D1%82%D1%8C+%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83+%D0%BF%D0%BE+%D0%BF%D0%B0%D1%81%D0%BA%D0%B0%D0%BB%D0%B8+%3A%29+%D0%BF%D0%BE+%D1%82%D0%B5%D0%BC%D0%B5+%D0%9C%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D1%8B.">Всем привет, пожалуйста помогите решить задачу по паскали :) по теме Массивы.</a> — 2017-12-23 11:31:51 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395025#answer_395025">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/9" class="light">Pascal</a> / Moonlight</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76348/%D0%9A%D0%B0%D0%BA+%D0%B2+%D0%B4%D0%BE%D1%87%D0%B5%D1%80%D0%BD%D0%B5%D0%B9+%D1%84%D0%BE%D1%80%D0%BC%D0%B5+%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%8C+%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9+%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB+%D0%BD%D0%B0%D0%B6%D0%B0%D1%82+%D0%B2+%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B9+%D1%84%D0%BE%D1%80%D0%BC%D0%B5+-+C%23">Как в дочерней форме определить какой контрол нажат в родительской форме - C#</a> — 2017-12-20 14:31:20 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395034#answer_395034">(3)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / Charley</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76346/%D0%9A%D0%B0%D0%BA%D0%BE%D0%B9+Linux+%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0+%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%3F">Какой Linux выбрать для начала програмирования?</a> — 2017-12-18 19:32:18 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395033#answer_395033">(5)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/25" class="light">Программирование под Linux/Unix</a> / Евгений Ковалёв</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76343/%D0%9D%D0%B5+%D1%83%D0%B4%D0%B0%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F+%D0%BA%D0%BB%D1%8E%D1%87+%D0%B2+%D1%80%D0%B5%D0%B5%D1%81%D1%82%D1%80%D0%B5">Не удаляется ключ в реестре</a> — 2017-12-15 22:10:21 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395038#answer_395038">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/23" class="light">Win32 API</a> / zastylow</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76341/Web+%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81+%D0%BF%D0%B5%D1%80%D0%B5%D1%81%D1%82%D0%B0%D0%BB+%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B0%D1%82%D1%8C+%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF+%D0%BA+%D0%BF%D0%B0%D0%BF%D0%BA%D0%B5+-+C%23+ASP.NET">Web сервис перестал получать доступ к папке - C# ASP.NET</a> — 2017-12-13 16:18:06<span style="color:#c0c0c0"> (0)</span>
+<div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/32" class="light">ASP.NET</a> / Demon051</div></li>
+<li><a class="form_theme_title" href="http://www.codenet.ru/r/f/q76340/%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D1%8C+%D0%B2%D0%B5%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D1%85+%D1%87%D0%B8%D1%81%D0%B5%D0%BB+%D0%B2+%D1%84%D0%B0%D0%B9%D0%BB+%D0%A1%2B%2B">Запись вещественных чисел в файл С++</a> — 2017-12-12 23:22:22 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p395008#answer_395008">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/7" class="light">Microsoft Visual C++</a> / Влад Kuzma</div></li>
+</ul>
+</div>
+<div style="text-align:right;padding:5px;"><a href="http://www.codenet.ru/r/f/new">Показать новые сообщения »</a></div>
+	
+</div>
+<!-- Пустой -->
+<div id="np_block_1_1" class="block_empty"></div>
+<!-- По умолчанию -->
+<div id="np_block_1_1" class="se">
+	<h3>Почтовая рассылка</h3>
+<form action="http://www.codenet.ru/maillist/subscribe" method="post" style="padding-right:10px;" rel="form">
+
+	<input name="email" type="text" class="form-control" placeholder="Введите ваш E-Mail" accesskey="e" title="почтовая рассылка (Alt-E)">
+
+	<div class="radio">
+	  <label>
+	    <input checked="checked" type="radio" name="sub" value="1" id="subs1" style="margin:0 10px 0 -10px;">
+	    Подписаться
+	  </label>
+	</div>
+
+	<div class="radio">
+	  <label>
+	    <input type="radio" name="sub" value="0" id="subs2" style="margin:0 10px 0 -10px;">
+	    Отписаться
+	  </label>
+	</div>
+
+	<input type="submit" value="Вперед !" class="btn btn-success">
+
+<div style="margin:10px 0;line-height:150%;">
+Подписчиков: <strong>11645</strong><br>
+<a href="http://www.codenet.ru/mail/">Последний выпуск</a>: <strong>19.06.2015</strong>
+</div>
+
+</form>
+
+
+	
+</div>
+<!-- col end -->
+</div><!-- col start -->
+<div class="np_col_1 centercol np_layout_2-1-2"><!-- Контент (один на станице) -->
+<div id="np_block_1_2" class="content">
+	<div class="cn-path"><a href="http://www.codenet.ru/">CodeNet</a> / <a href="http://www.codenet.ru/cat/Languages/">Языки программирования</a> / <a href="http://www.codenet.ru/cat/Languages/C-CPP/">C / C++</a> / <a href="http://www.codenet.ru/cat/Languages/C-CPP/MSVC/">Microsoft Visual C++</a> / <a href="http://www.codenet.ru/cat/Languages/C-CPP/MSVC/DLL-COM-ActiveX/">Приложения, DLL, COM, ActiveX</a> <br>
+<a href="http://www.codenet.ru/">CodeNet</a> / <a href="http://www.codenet.ru/cat/Platforms/">Платформы</a> / <a href="http://www.codenet.ru/cat/Platforms/Windows/">Windows</a> / <a href="http://www.codenet.ru/cat/Platforms/Windows/DLL/">DLL</a> <br>
+</div><div class="cn-hline"></div>
+<h1>Работа с библиотеками динамической компоновки (DLL)</h1><div class="np-social-icons">
+
+<div class="customsocial">
+<div class="cs-icon" id="cs-vk" data-url="http://vkontakte.ru/share.php?url=http://www.codenet.ru/progr/visualc/Using-DLL.php"></div>
+<div class="cs-icon" id="cs-fb" data-url="http://www.facebook.com/sharer.php?u=http://www.codenet.ru/progr/visualc/Using-DLL.php&amp;t=&amp;src=sp"></div>
+<div class="cs-icon" id="cs-tw" data-url="http://twitter.com/share?url=http://www.codenet.ru/progr/visualc/Using-DLL.php&amp;text="></div>
+<div class="cs-icon" id="cs-gp" data-url="https://plus.google.com/share?url=http://www.codenet.ru/progr/visualc/Using-DLL.php"></div>
+<div class="cs-icon" id="cs-ok" data-url="http://www.odnoklassniki.ru/dk?st.cmd=addShare&amp;st.s=1000&amp;st._surl=http://www.codenet.ru/progr/visualc/Using-DLL.php"></div>
+
+<div class="clearfix"></div>
+
+</div>
+
+<script type="text/javascript">
+
+{
+
+$('.cs-icon').click(function() {
+	window.open($(this).attr("data-url"),'displayWindow', 'width=700,height=400,left=200,top=100,location=no, directories=no,status=no,toolbar=no,menubar=no');
+
+	});
+
+var pageuri = 'http://www.codenet.ru/progr/visualc/Using-DLL.php';
+$.getJSON('http://api.facebook.com/restserver.php?method=links.getStats&callback=?&urls=' + pageuri + '&format=json', function(data) {
+	if (data[0].share_count!=0) {
+		$('#cs-fb').html('<div class="cs-count">'+data[0].share_count+'</div>');
+		}
+	});
+
+VK = {};
+VK.Share = {};
+VK.Share.count = function(index, count){
+	if (count!=0) {
+		$('#cs-vk').html('<div class="cs-count">'+count+'</div>');
+		}
+	};
+$.getJSON('http://vkontakte.ru/share.php?act=count&index=1&url=' + pageuri + '&format=json&callback=?');
+
+$.getJSON('http://urls.api.twitter.com/1/urls/count.json?url=' + pageuri + '&callback=?', function(data) {
+	if (data.count!=0) {
+		$('#cs-tw').html('<div class="cs-count">'+data.count+'</div>');
+		}
+	});
+
+$.getJSON('http://forum.codenet.ru/includes/plugins/social-proxy.php?services=ok,gp&url=' + pageuri + '', function(data) {
+	if (data.ok) {
+		if (data.ok.count!=0) {
+			$('#cs-ok').html('<div class="cs-count">'+data.ok.count+'</div>');
+			}
+		}
+	if (data.gp) {
+		if (data.gp.count!=0) {
+			$('#cs-gp').html('<div class="cs-count">'+data.gp.count+'</div>');
+			}
+		}
+
+	});
+
+}
+</script>
+
+</div>
+<div align="right"><a href="mailto:andy@uvarov.ru">Андрей Уваров</a><br><a href="http://r.codenet.ru/?http://andy.uvarov.ru/" target="_blank">http://andy.uvarov.ru/</a></div>
+
+<p>С самого рождения (или чуть позже) операционная система Windows использовала библиотеки динамической компоновки DLL (Dynamic Link Library), в которых содержались реализации наиболее часто применяемых функций. Наследники Windows - NT и Windows 95, а также OS/2 - тоже зависят от библиотек DLL в плане обеспечения значительной части их функциональных возможностей.</p>
+<p>Рассмотрим ряд аспектов создания и использования библиотек DLL:</p>
+
+<ul><li>как статически подключать библиотеки DLL;</li>
+<li>как динамически загружать библиотеки DLL;</li>
+<li>как создавать библиотеки DLL;</li>
+<li>как создавать расширения МFC библиотек DLL.</li></ul><h2>Использование DLL</h2>
+<p>Практически невозможно создать приложение Windows, в котором не использовались бы библиотеки DLL. В DLL содержатся все функции Win32 API и несчетное количество других функций операционных систем Win32.</p>
+<p>Вообще говоря, DLL - это просто наборы функций, собранные в библиотеки. Однако, в отличие от своих статических родственников (файлов . lib), библиотеки DLL не присоединены непосредственно к выполняемым файлам с помощью редактора связей. В выполняемый файл занесена только информация об их местонахождении. В момент выполнения программы загружается вся библиотека целиком. Благодаря этому разные процессы могут пользоваться совместно одними и теми же библиотеками, находящимися в памяти. Такой подход позволяет сократить объем памяти, необходимый для нескольких приложений, использующих много общих библиотек, а также контролировать размеры ЕХЕ-файлов.</p>
+<p>Однако, если библиотека используется только одним приложением, лучше сделать ее обычной, статической. Конечно, если входящие в ее состав функции будут использоваться только в одной программе, можно просто вставить в нее соответствующий файл с исходным текстом.</p>
+<p>Чаще всего проект подключается к DLL статически, или неявно, на этапе компоновки. Загрузкой DLL при выполнении программы управляет операционная система. Однако, DLL можно загрузить и явно, или динамически, в ходе работы приложения.</p>
+<h2>Библиотеки импортирования</h2>
+<p>При статическом подключении DLL имя .lib-файла определяется среди прочих параметров редактора связей в командной строке или на вкладке "Link" диалогового окна "Project Settings" среды Developer Studio. Однако .lib-файл, используемый <b>при неявном подключении DLL,</b> - это не обычная статическая библиотека. Такие .lib-файлы называются <b>библиотеками импортирования</b> (import libraries). В них содержится не сам код библиотеки, а только ссылки на все функции, экспортируемые из файла DLL, в котором все и хранится. В результате библиотеки импортирования, как правило, имеют меньший размер, чем DLL-файлы. К способам их создания вернемся позднее. А сейчас рассмотрим другие вопросы, касающиеся неявного подключения динамических библиотек.</p>
+<h2>Согласование интерфейсов</h2>
+<p>При использовании собственных библиотек или библиотек независимых разработчиков придется обратить внимание на согласование вызова функции с ее прототипом. </p>
+<p>Если бы мир был совершенен, то программистам не пришлось бы беспокоиться о согласовании интерфейсов функций при подключении библиотек - все они были бы одинаковыми. Однако мир далек от совершенства, и многие большие программы написаны с помощью различных библиотек без C++.</p>
+<p>По умолчанию в Visual C++ интерфейсы функций согласуются по правилам C++. Это значит, что параметры заносятся в стек справа налево, вызывающая программа отвечает за их удаление из стека при выходе из функции и расширении ее имени. Расширение имен (name mangling) позволяет редактору связей различать перегруженные функции, т.е. функции с одинаковыми именами, но разными списками аргументов. Однако в старой библиотеке С функции с расширенными именами отсутствуют.</p>
+<p>Хотя все остальные правила вызова функции в С идентичны правилам вызова функции в C++, в библиотеках С имена функций не расширяются. К ним только добавляется впереди символ подчеркивания (_).</p>
+<p>Если необходимо подключить библиотеку на С к приложению на C++, все функции из этой библиотеки придется объявить как внешние в формате С:</p>
+<pre>    extern     "С" int MyOldCFunction(int myParam);
+</pre>
+<p>Объявления функций библиотеки обычно помещаются в файле заголовка этой библиотеки, хотя заголовки большинства библиотек С не рассчитаны на применение в проектах на C++. В этом случае необходимо создать копию файла заголовка и включить в нее модификатор extern "C" к объявлению всех используемых функций библиотеки. Модификатор extern "C" можно применить и к целому блоку, к которому с помощью директивы #tinclude подключен файл старого заголовка С. Таким образом, вместо модификации каждой функции в отдельности можно обойтись всего тремя строками:</p>
+<pre>    extern     "С" 
+    {
+        #include "MyCLib.h"
+    }
+</pre>
+<p>В программах для старых версий Windows использовались также соглашения о вызове функций языка PASCAL для функций Windows API. В новых программах следует использовать модификатор winapi, преобразуемый в _stdcall. Хотя это и не стандартный интерфейс функций С или C++, но именно он используется для обращений к функциям Windows API. Однако обычно все это уже учтено в стандартных заголовках Windows.</p>
+<h2>Загрузка неявно подключаемой DLL</h2>
+<p>При запуске приложение пытается найти все файлы DLL, неявно подключенные к приложению, и поместить их в область оперативной памяти, занимаемую данным процессом. Поиск файлов DLL операционной системой осуществляется в следующей последовательности.</p>
+
+<ul><li>Каталог, в котором находится ЕХЕ-файл.</li>
+<li>Текущий каталог процесса.</li>
+<li>Системный каталог Windows.</li></ul><p>Если библиотека DLL не обнаружена, приложение выводит диалоговое окно с сообщением о ее отсутствии и путях, по которым осуществлялся поиск. Затем процесс отключается.</p>
+<p>Если нужная библиотека найдена, она помещается в оперативную память процесса, где и остается до его окончания. Теперь приложение может обращаться к функциям, содержащимся в DLL.</p>
+<h2>Динамическая загрузка и выгрузка DLL</h2>
+<p>Вместо того, чтобы Windows выполняла динамическое связывание с DLL при первой загрузке приложения в оперативную память, можно связать программу с модулем библиотеки во время выполнения программы (при таком способе в процессе создания приложения не нужно использовать библиотеку импорта). В частности, можно определить, какая из библиотек DLL доступна пользователю, или разрешить пользователю выбрать, какая из библиотек будет загружаться. Таким образом можно использовать разные DLL, в которых реализованы одни и те же функции, выполняющие различные действия. Например, приложение, предназначенное для независимой передачи данных, сможет в ходе выполнения принять решение, загружать ли DLL для протокола TCP/IP или для другого протокола.</p>
+
+<h2>Загрузка обычной DLL</h2>
+<p>Первое, что необходимо сделать при динамической загрузке DLL, - это поместить модуль библиотеки в память процесса. Данная операция выполняется с помощью функции <b>::LoadLibrary</b>, имеющей единственный аргумент - имя загружаемого модуля. Соответствующий фрагмент программы должен выглядеть так:</p>
+<pre>    HINSTANCE hMyDll;
+    ::
+    if((hMyDll=::    LoadLibrary("MyDLL"))==NULL) { /* не удалось загрузить DLL */ }
+    else { /* приложение имеет право пользоваться функциями DLL через hMyDll */ }
+</pre>
+<p>Стандартным расширением файла библиотеки Windows считает .dll, если не указать другое расширение. Если в имени файла указан и путь, то только он будет использоваться для поиска файла. В противном случае Windows будет искать файл по той же схеме, что и в случае неявно подключенных DLL, начиная с каталога, из которого загружается exe-файл, и продолжая в соответствии со значением PATH.</p>
+<p>Когда Windows обнаружит файл, его полный путь будет сравнен с путем библиотек DLL, уже загруженных данным процессом. Если обнаружится тождество, вместо загрузки копии приложения возвращается дескриптор уже подключенной библиотеки.</p>
+<p>Если файл обнаружен и библиотека успешно загрузилась, функция <b>::LoadLibrary </b>возвращает ее дескриптор, который используется для доступа к функциям библиотеки.</p>
+<p>Перед тем, как использовать функции библиотеки, необходимо получить их адрес. Для этого сначала следует воспользоваться директивой <b>typedef</b> для определения типа указателя на функцию и определить переменную этого нового типа, например:</p>
+<pre>        // тип PFN_MyFunction будет объявлять указатель на функцию, 
+    // принимающую указатель на символьный буфер и выдающую значение типа int
+    typedef int (WINAPI *PFN_MyFunction)(char *);
+    ::
+    PFN_MyFunction pfnMyFunction;
+</pre>
+<p>Затем следует получить дескриптор библиотеки, при помощи которого и определить адреса функций, например адрес функции с именем MyFunction:</p>
+<pre>    hMyDll=::LoadLibrary("MyDLL");
+    pfnMyFunction=(PFN_MyFunction)::GetProcAddress(hMyDll,"MyFunction");
+    ::
+    int iCode=(*pfnMyFunction)("Hello");
+</pre>
+<p>Адрес функции определяется при помощи функции <b>::GetProcAddress</b>, ей следует передать имя библиотеки и имя функции. Последнее должно передаваться в том виде, в котором экспортируется из DLL.</p>
+<p>Можно также сослаться на функцию по порядковому номеру, по которому она экспортируется (при этом для создания библиотеки должен использоваться def-файл, об этом будет рассказано далее):</p>
+<pre>    pfnMyFunction=(PFN_MyFunction)::GetProcAddress(hMyDll,
+                MAKEINTRESOURCE(1));
+</pre>
+<p>После завершения работы с библиотекой динамической компоновки, ее можно выгрузить из памяти процесса с помощью функции ::<b>FreeLibrary</b>:</p>
+<pre>    ::FreeLibrary(hMyDll);
+</pre>
+
+<h2>Загрузка MFC-расширений динамических библиотек</h2>
+<p>При загрузке MFC-расширений для DLL (подробно о которых рассказывается далее) вместо функций <b>LoadLibrary</b>и <b>FreeLibrary </b>используются функции <b>AfxLoadLibrary</b> и <b>AfxFreeLibrary</b>. Последние почти идентичны функциям Win32 API. Они лишь гарантируют дополнительно, что структуры MFC, инициализированные расширением DLL, не были запорчены другими потоками.</p>
+
+<h2>Ресурсы DLL</h2>
+<p>Динамическая загрузка применима и к ресурсам DLL, используемым MFC для загрузки стандартных ресурсов приложения. Для этого сначала необходимо вызвать функцию <b>LoadLibrary </b>и разместить DLL в памяти. Затем с помощью функции <b>AfxSetResourceHandle</b> нужно подготовить окно программы к приему ресурсов из вновь загруженной библиотеки. В противном случае ресурсы будут загружаться из файлов, подключенных к выполняемому файлу процесса. Такой подход удобен, если нужно использовать различные наборы ресурсов, например для разных языков.</p>
+<b></b><p>Замечание. С помощью функции <b>LoadLibrary</b> можно также загружать в память исполняемые файлы (не запускать их на выполнение!). Дескриптор выполняемого модуля может затем использоваться при обращении к функциям <b>FindResource </b>и <b>LoadResource</b> для поиска и загрузки ресурсов приложения. Выгружают модули из памяти также при помощи функции <b>FreeLibrary</b>.</p>
+
+<h2>Пример обычной DLL и способов загрузки</h2>
+<p>Приведем исходный код динамически подключаемой библиотеки, которая называется MyDLL и содержит одну функцию MyFunction, которая просто выводит сообщение.</p>
+<p>Сначала в заголовочном файле определяется макроконтстанта <b>EXPORT</b>. Использование этого ключевого слова при определении некоторой функции динамически подключаемой библиотеке позволяет сообщить компоновщику, что эта функция доступна для использования другими программами, в результате чего он заносит ее в библиотеку импорта. Кроме этого, такая функция, точно так же, как и оконная процедура, должна определяться с помощью константы <b>CALLBACK</b>:</p>
+<pre><u>MyDLL.h
+</u>    #define EXPORT extern "C" __declspec (dllexport)
+    EXPORT int CALLBACK MyFunction(char *str);
+<u></u></pre>
+<p>Файл библиотеки также несколько отличается от обычных файлов на языке C для Windows. В нем вместо функции <b>WinMain</b> имеется функция <b>DllMain</b>. Эта функция используется для выполнения инициализации, о чем будет рассказано позже. Для того, чтобы библиотека осталась после ее загрузки в памяти, и можно было вызывать ее функции, необходимо, чтобы ее возвращаемым значением было TRUE:</p>
+<pre>MyDLL.c
+    #include &lt;windows.h&gt;
+    #include "MyDLL.h"
+
+    int WINAPI DllMain(HINSTANCE hInstance, DWORD fdReason, PVOID pvReserved)
+    {
+        return TRUE;
+    }
+    EXPORT int CALLBACK MyFunction(char *str)
+    {
+        MessageBox(NULL,str,"Function from DLL",MB_OK);
+        return 1;
+    }
+</pre>
+<p>После трансляции и компоновки этих файлов появляется два файла - MyDLL.dll (сама динамически подключаемая библиотека) и MyDLL.lib (ее библиотека импорта).</p>
+
+<h2>Пример неявного подключения DLL приложением</h2>
+<p>Приведем теперь исходный код простого приложения, которое использует функцию MyFunction из библиотеки MyDLL.dll:</p>
+<pre>    #include &lt;windows.h&gt;
+    #include "MyDLL.h"
+
+    int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+            LPSTR lpCmdLine, int nCmdShow)
+    {
+        int iCode=MyFunction("Hello");
+        return 0;
+    }
+</pre>
+<p>Эта программа выглядит как обычная программ для Windows, чем она в сущности и является. Тем не менее, следует обратить внимание, что в исходный ее текст помимо вызова функции MyFunction из DLL-библиотеки включен и заголовочный файл этой библиотеки MyDLL.h. Также необходимо на этапе компоновки приложения подключить к нему <u>библиотеку импорта</u> MyDLL.lib (процесс неявного подключения DLL к исполняемому модулю).</p>
+<p>Чрезвычайно важно понимать, что сам код функции MyFunction не включается в файл MyApp.exe. Вместо этого там просто имеется ссылка на файл MyDLL.dll и ссылка на функцию MyFunction, которая находится в этом файле. Файл MyApp.exe требует запуска файла MyDLL.dll.</p>
+<p>Заголовочный файл MyDLL.h включен в файл с исходным текстом программы MyApp.c точно так же, как туда включен файл windows.h. Включение библиотеки импорта MyDLL.lib для компоновки аналогично включению туда всех библиотек импорта Windows. Когда программа MyApp.exe работает, она подключается к библиотеке MyDLL.dll точно так же, как ко всем стандартным динамически подключаемым библиотекам Windows.</p>
+
+<h2>Пример динамической загрузки DLL приложением</h2>
+<p>Приведем теперь полностью исходный код простого приложения, которое использует функцию MyFunction из библиотеки MyDLL.dll, используя динамическую загрузку библиотеки:</p>
+<pre>    #include &lt;windows.h&gt;
+    typedef int (WINAPI *PFN_MyFunction)(char *);
+
+    int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+            LPSTR lpCmdLine, int nCmdShow)
+    {
+        HINSTANCE hMyDll;
+        if((hMyDll=LoadLibrary("MyDLL"))==NULL) return 1;
+
+        PFN_MyFunction pfnMyFunction;
+        pfnMyFunction=(PFN_MyFunction)GetProcAddress(hMyDll,"MyFunction");
+        int iCode=(*pfnMyFunction)("Hello");
+
+        FreeLibrary(hMyDll);
+        return 0;
+    }</pre>
+
+<h2>Создание DLL</h2>
+<p>Теперь, познакомившись с принципами работы библиотек DLL в приложениях, рассмотрим способы их создания. При разработке приложении функции, к которым обращается несколько процессов, желательно размещать в DLL. Это позволяет более рационально использовать память в Windows.</p>
+<p>Проще всего создать новый проект DLL с помощью мастера AppWizard, который автоматически выполняет многие операции. Для простых DLL, таких как рассмотренные в этой главе, необходимо выбрать тип проекта Win32 Dynamic-Link Library. Новому проекту будут присвоены все необходимые параметры для создания библиотеки DLL. Файлы исходных текстов придется добавлять к проекту вручную.</p>
+<p>Если же планируется в полной мере использовать функциональные возможности MFC, такие как документы и представления, или намерены создать сервер автоматизации OLE, лучше выбрать тип проекта MFC AppWizard (dll). В этом случае, помимо присвоения проекту параметров для подключения динамических библиотек, мастер проделает некоторую дополнительную работу. В проект будут добавлены необходимые ссылки на библиотеки MFC и файлы исходных текстов, содержащие описание и реализацию в библиотеке DLL объекта класса приложения, производного от <b>CWinApp</b>.</p>
+<p>Иногда удобно сначала создать проект типа MFC AppWizard (dll) в качестве тестового приложения, а затем - библиотеку DLL в виде его составной части. В результате DLL в случае необходимости будет создаваться автоматически.</p>
+
+<h2>Функция DllMain</h2>
+<p>Большинство библиотек DLL - просто коллекции практически независимых друг от друга функций, экспортируемых в приложения и используемых в них. Кроме функций, предназначенных для экспортирования, в каждой библиотеке DLL есть функция <b>DllMain</b>. Эта функция предназначена для инициализации и очистки DLL. Она пришла на смену функциям <b>LibMain</b> и <b>WEP</b>, применявшимся в предыдущих версиях Windows. Структура простейшей функции <b>DllMain</b> может выглядеть, например, так:</p>
+<pre>    BOOL WINAPI DllMain (HANDLE hInst,DWORD dwReason, LPVOID IpReserved)
+    {
+        BOOL bAllWentWell=TRUE;
+        switch (dwReason) 
+        {
+            case DLL_PROCESS_ATTACH:     // Инициализация процесса. 
+                break;
+            case DLL_THREAD_ATTACH:     // Инициализация потока.
+                break;
+            case DLL_THREAD_DETACH:     // Очистка структур потока.
+                break;
+            case DLL_PROCESS_DETACH:     // Очистка структур процесса.
+                break;
+        }
+        if(bAllWentWell)     return TRUE;
+        else            return FALSE;
+    }
+</pre>
+<p>Функция <b>DllMain </b>вызывается в нескольких случаях. Причина ее вызова определяется параметром dwReason, который может принимать одно из следующих значений.</p>
+<p>При первой загрузке библиотеки DLL процессом вызывается функция <b>DllMain</b> с dwReason, равным DLL_PROCESS_ATTACH. Каждый раз при создании процессом нового потока DllMainO вызывается с dwReason, равным DLL_THREAD_ATTACH (кроме первого потока, потому что в этом случае dwReason равен DLL_PROCESS_ATTACH).</p>
+<p>По окончании работы процесса с DLL функция <b>DllMain</b> вызывается с параметром dwReason, равным DLL_PROCESS_DETACH. При уничтожении потока (кроме первого) dwReason будет равен DLL_THREAD_DETACH.</p>
+<p>Все операции по инициализации и очистке для процессов и потоков, в которых нуждается DLL, необходимо выполнять на основании значения dwReason, как было показано в предыдущем примере. Инициализация процессов обычно ограничивается выделением ресурсов, совместно используемых потоками, в частности загрузкой разделяемых файлов и инициализацией библиотек. Инициализация потоков применяется для настройки режимов, свойственных только данному потоку, например для инициализации локальной памяти.</p>
+<p>В состав DLL могут входить ресурсы, не принадлежащие вызывающему эту библиотеку приложению. Если функции DLL работают с ресурсами DLL, было бы, очевидно, полезно сохранить где-нибудь в укромном месте дескриптор hInst и использовать его при загрузке ресурсов из DLL. Указатель IpReserved зарезервирован для внутреннего использования Windows. Следовательно, приложение не должно претендовать на него. Можно лишь проверить его значение. Если библиотека DLL была загружена динамически, оно будет равно NULL. При статической загрузке этот указатель будет ненулевым.</p>
+<p>В случае успешного завершения функция <b>DllMain</b> должна возвращать TRUE. В случае возникновения ошибки возвращается FALSE, и дальнейшие действия прекращаются.</p>
+<b></b><p>Замечание. Если не написать собственной функции DllMain(), компилятор подключит стандартную версию, которая просто возвращает TRUE.</p>
+
+<h2>Экспортирование функций из DLL</h2>
+<p>Чтобы приложение могло обращаться к функциям динамической библиотеки, каждая из них должна занимать строку в таблице экспортируемых функций DLL. Есть два способа занести функцию в эту таблицу на этапе компиляции.</p>
+
+<h2>Метод __declspec (dllexport)</h2>
+<p>Можно экспортировать функцию из DLL, поставив в начале ее описания модификатор __declspec (dllexport) . Кроме того, в состав MFC входит несколько макросов, определяющих __declspec (dllexport), в том числе AFX_CLASS_EXPORT, AFX_DATA_EXPORT и AFX_API_EXPORT. </p>
+<p>Метод __declspec применяется не так часто, как второй метод, работающий с файлами определения модуля (.def), и позволяет лучше управлять процессом экспортирования.</p>
+
+<h2>Файлы определения модуля</h2>
+<p>Синтаксис файлов с расширением .def в Visual C++ достаточно прямолинеен, главным образом потому, что сложные параметры, использовавшиеся в ранних версиях Windows, в Win32 более не применяются. Как станет ясно из следующего простого примера, .def-файл содержит имя и описание библиотеки, а также список экспортируемых функций:</p>
+<pre><u>MyDLL.def
+</u>    LIBRARY         "MyDLL"
+        DESCRIPTION    'MyDLL - пример DLL-библиотеки'
+
+    EXPORTS
+        MyFunction     @1
+</pre>
+<p>В строке экспорта функции можно указать ее порядковый номер, поставив перед ним символ @. Этот номер будет затем использоваться при обращении к <b>GetProcAddress</b> (). На самом деле компилятор присваивает порядковые номера всем экспортируемым объектам. Однако способ, которым он это делает, отчасти непредсказуем, если не присвоить эти номера явно.</p>
+<p>В строке экспорта можно использовать параметр NONAME. Он запрещает компилятору включать имя функции в таблицу экспортирования DLL:</p>
+<pre>        MyFunction     @1 NONAME
+</pre>
+<p>Иногда это позволяет сэкономить много места в файле DLL. Приложения, использующие библиотеку импортирования для неявного подключения DLL, не "заметят" разницы, поскольку при неявном подключении порядковые номера используются автоматически. Приложениям, загружающим библиотеки DLL динамически, потребуется передавать в <b>GetProcAddress </b>порядковый номер, а не имя функции.</p>
+<p>При использовании вышеприведенного def-файл описания экспортируемых функций DLL-библиотеки может быть,например, не таким:</p>
+<pre>    #define EXPORT extern "C" __declspec (dllexport)
+    EXPORT int CALLBACK MyFunction(char *str);
+    a таким:
+    extern "C" int CALLBACK MyFunction(char *str);</pre>
+
+<h2>Экспортирование классов</h2>
+<p>Создание .def-файла для экспортирования даже простых классов из динамической библиотеки может оказаться довольно сложным делом. Понадобится явно экспортировать каждую функцию, которая может быть использована внешним приложением.</p>
+<p>Если взглянуть на реализованный в классе файл распределения памяти, в нем можно заметить некоторые весьма необычные функции. Оказывается, здесь есть неявные конструкторы и деструкторы, функции, объявленные в макросах MFC, в частности _DECLARE_MESSAGE_MAP, а также функции, которые написанные программистом.</p>
+<p>Хотя можно экспортировать каждую из этих функций в отдельности, есть более простой способ. Если в объявлении класса воспользоваться макромодификатором AFX_CLASS_EXPORT, компилятор сам позаботится об экспортировании необходимых функций, позволяющих приложению использовать класс, содержащийся в DLL.</p>
+<h2>Память DLL</h2>
+<p>В отличие от статических библиотек, которые, по существу, становятся частью кода приложения, библиотеки динамической компоновки в 16-разрядных версиях Windows работали с памятью несколько иначе. Под управлением Win 16 память DLL размещалась вне адресного пространства задачи. Размещение динамических библиотек в глобальной памяти обеспечивало возможность совместного использования их различными задачами.</p>
+<p>В Win32 библиотека DLL располагается в области памяти загружающего ее процесса. Каждому процессу предоставляется отдельная копия "глобальной" памяти DLL, которая реинициализируется каждый раз, когда ее загружает новый процесс. Это означает, что динамическая библиотека не может использоваться совместно, в общей памяти, как это было в Winl6.</p>
+<p>И все же, выполнив ряд замысловатых манипуляций над сегментом данных DLL, можно создать общую область памяти для всех процессов, использующих данную библиотеку.</p>
+<p>Допустим, имеется массив целых чисел, который должен использоваться всеми процессами, загружающими данную DLL. Это можно запрограммировать следующим образом:</p>
+<pre>    #pragma data_seg(".myseg")
+    int sharedlnts[10] ;
+        // другие переменные общего пользования
+    #pragma data_seg()
+    #pragma comment(lib, "msvcrt" "-SECTION:.myseg,rws");
+</pre>
+<p>Все переменные, объявленные между директивами #pragma data_seg(), размещаются в сегменте .myseg. Директива #pragma comment () - не обычный комментарий. Она дает указание библиотеке выполняющей системы С пометить новый раздел как разрешенный для чтения, записи и совместного доступа.</p>
+<h2>Полная компиляция DLL</h2>
+<p>Если проект динамической библиотеки создан с помощью AppWizard и .def-файл модифицирован соответствующим образом - этого достаточно. Если же файлы проекта создаются вручную или другими способами без помощи AppWizard, в командную строку редактора связей следует включить параметр /DLL. В результате вместо автономного выполняемого файла будет создана библиотека DLL.</p>
+<p>Если в .def-файле есть строка LIBRART, указывать явно параметр /DLL в командной строке редактора связей не нужно.</p>
+<p>Для MFC предусмотрен ряд особых режимов, касающихся использования динамической библиотекой библиотек MFC. Этому вопросу посвящен следующий раздел.</p>
+<h2>DLL и MFC</h2>
+<p>Программист не обязан использовать MFC при создании динамических библиотек. Однако использование MFC открывает ряд очень важных возможностей.</p>
+<p>Имеется два уровня использования структуры MFC в DLL. Первый из них - это обычная динамическая библиотека на основе MFC, <b>MFC DLL</b> (regular MFC DLL). Она может использовать MFC, но не может передавать указатели на объекты MFC между DLL и приложениями. Второй уровень реализован в <b>динамических расширениях MFC</b> (MFC extensions DLL). Использование этого вида динамических библиотек требует некоторых дополнительных усилий по настройке, но позволяет свободно обмениваться указателями на объекты MFC между DLL и приложением.</p>
+<h2>Обычные MFC DLL</h2>
+<p>Обычные MFC DLL позволяют применять MFC в динамических библиотеках. При этом приложения, обращающиеся к таким библиотекам, не обязательно должны быть построены на основе MFC. В обычных DLL можно использовать MFC любым способом, в том числе создавая в DLL новые классы на базе классов MFC и экспортируя их в приложения.</p>
+<p>Однако обычные DLL не могут обмениваться с приложениями указателями на классы, производные от MFC.</p>
+<p>Если приложению необходимо обмениваться с DLL указателями на объекты классов MFC или их производных, нужно использовать расширение DLL, описанное в следующем разделе.</p>
+<p>Архитектура обычных DLL рассчитана на использование другими средами программирования, такими как Visual Basic и PowerBuilder.</p>
+<p>При создании обычной библиотеки MFC DLL с помощью AppWizard выбирается новый проект типа <b>MFC AppWizard (dll)</b>. В первом диалоговом окне мастера приложений необходимо выбрать один из режимов для обычных динамических библиотек: "Regular DLL with MFC statistically linked" или "Regular DLL using shared MFC DLL". Первый предусматривает статическое, а второй - динамическое подключение библиотек MFC. Впоследствии режим подключения MFC к DLL можно будет изменить с помощью комбинированного списка на вкладке "General" диалогового окна "Project settings".</p>
+
+<h2>Управление информацией о состоянии MFC</h2>
+<p>В каждом модуле процесса MFC содержится информация о его состоянии. Таким образом, информация о состоянии DLL отлична от информации о состоянии вызвавшего ее приложения. Поэтому любые экспортируемые из библиотеки функции, обращение к которым исходит непосредственно из приложений, должны сообщать MFC, какую информацию состояния использовать. В обычной MFC DLL, использующей динамические библиотеки MFC, перед вызовом любой подпрограммы MFC в начале экспортируемой функции нужно поместить следующую строку:</p>
+<pre>    AFX_MANAGE_STATE(AfxGetStaticModuleState()) ;
+</pre>
+<p>Данный оператор определяет использование соответствующей информации о состоянии во время выполнения функции, обратившейся к данной подпрограмме.</p>
+
+<h2>Динамические расширения MFC</h2>
+<p>MFC позволяет создавать такие библиотеки DLL, которые воспринимаются приложениями не как набор отдельных функций, а как расширения MFC. С помощью данного вида DLL можно создавать новые классы, производные от классов MFC, и использовать их в своих приложениях.</p>
+<p>Чтобы обеспечить возможность свободного обмена указателями на объекты MFC между приложением и DLL, нужно создать динамическое расширение MFC. DLL этого типа подключаются к динамическим библиотекам MFC так же, как и любые приложения, использующие динамическое расширение MFC. </p>
+<p>Чтобы создать новое динамическое расширение MFC, проще всего, воспользовавшись мастером приложении, присвоить проекту тип <b>MFC AppWizard (dll)</b> и на шаге 1 включить режим "MFC Extension DLL". В результате новому проекту будут присвоены все необходимые атрибуты динамического расширения MFC. Кроме того, будет создана функция <b>DllMain</b> для DLL, выполняющая ряд специфических операций по инициализации расширения DLL. Следует обратить внимание, что динамические библиотеки данного типа не содержат и не должны содержать объектов, производных от<b> CWinApp</b>.</p>
+
+<h2>Инициализация динамических расширений</h2>
+<p>Чтобы "вписаться" в структуру MFC, динамические расширения MFC требуют дополнительной начальной настройки. Соответствующие операции выполняются функцией <b>DllMain</b>. Рассмотрим пример этой функции, созданный мастером AppWizard.</p>
+<pre>    static AFX_EXTENSION_MODULE MyExtDLL = { NULL, NULL } ;
+    extern "C" int APIENTRY
+    DllMain(HINSTANCE hinstance, DWORD dwReason, LPVOID IpReserved)
+    {
+        if (dwReason == DLL_PROCESS_ATTACH)
+        {
+            TRACED("MYEXT.DLL Initializing!\n") ;
+            // Extension DLL one-time initialization
+            AfxInitExtensionModule(MyExtDLL, hinstance) ;
+
+            // Insert this DLL into the resource chain
+            new CDynLinkLibrary(MyExtDLL);
+        }
+        else if (dwReason == DLL_PROCESS_DETACH)
+        {
+            TRACED("MYEXT.DLL Terminating!\n") ;
+        }
+        return 1; // ok
+    }
+</pre>
+<p>Самой важной частью этой функции является вызов <b>AfxInitExtensionModule</b>. Это инициализация динамической библиотеки, позволяющая ей корректно работать в составе структуры MFC. Аргументами данной функции являются передаваемый в DllMain дескриптор библиотеки DLL и структура AFX_EXTENSION_MODULE, содержащая информацию о подключаемой к MFC динамической библиотеке.</p>
+<p>Нет необходимости инициализировать структуру AFX_EXTENSION_MODULE явно. Однако объявить ее нужно обязательно. Инициализацией же займется конструктор <b>CDynLinkLibrary</b>. В DLL необходимо создать класс <b>CDynLinkLibrary</b>. Его конструктор не только будет инициализировать структуру AFX_EXTENSION_MODULE, но и добавит новую библиотеку в список DLL, с которыми может работать MFC.</p>
+<h2>Загрузка динамических расширений MFC</h2>
+<p>Начиная с версии 4.0 MFC позволяет динамически загружать и выгружать DLL, в том числе и расширения. Для корректного выполнения этих операций над создаваемой DLL в ее функцию <b>DllMain</b> в момент отключения от процесса необходимо добавить вызов <b>AfxTermExtensionModule</b>. Последней функции в качестве параметра передается уже использовавшаяся выше структура AFX_EXTENSION_MODULE. Для этого в текст <b>DllMain</b> нужно добавить следующие строки.</p>
+<pre>    if(dwReason == DLL_PROCESS_DETACH) 
+    {
+        AfxTermExtensionModule(MyExtDLL);
+    }
+</pre>
+<p>Кроме того, следует помнить, что новая библиотека DLL является динамическим расширением и должна загружаться и выгружаться динамически, с помощью функций <b>AfxLoadLibrary</b> и <b>AfxFreeLibrary</b>,а не <b>LoadLibrary</b> и <b>FreeLibrary</b>.</p>
+<h2>Экспортирование функций из динамических расширений</h2>
+<p>Рассмотрим теперь, как осуществляется экспортирование в приложение функций и классов из динамического расширения. Хотя добавить в DEF-файл все расширенные имена можно и вручную, лучше использовать модификаторы для объявлений экспортируемых классов и функций, такие как AFX_EXT_CLASS и AFX_EXT_API,например:</p>
+<pre>    class AFX_EXT_CLASS CMyClass : public CObject
+    (
+        // Your class declaration
+    }
+    void AFX_EXT_API MyFunc() ;
+</pre>
+<div class="hr" style="margin-top:15px;"></div>
+
+<!-- Яндекс.Директ -->
+<div style="margin:10px 0;" id="yandex_ad"></div>
+<script type="text/javascript">
+(function(w, d, n, s, t) {
+    w[n] = w[n] || [];
+    w[n].push(function() {
+        Ya.Direct.insertInto(1959, "yandex_ad", {
+            site_charset: "utf-8",
+            ad_format: "direct",
+            font_size: 1,
+            font_family: "arial",
+            type: "flat",
+            limit: 2,
+            title_font_size: 3,
+            site_bg_color: "FFFFFF",
+            header_bg_color: "FFFFFF",
+            title_color: "285A99",
+            url_color: "285A99",
+            all_color: "285A99",
+            text_color: "404040",
+            hover_color: "285A99",
+            favicon: true
+        });
+    });
+    t = d.documentElement.firstChild;
+    s = d.createElement("script");
+    s.type = "text/javascript";
+    s.src = "http://an.yandex.ru/system/context.js";
+    s.setAttribute("async", "true");
+    t.insertBefore(s, t.firstChild);
+})(window, document, "yandex_context_callbacks");
+</script>
+
+
+<section id="addcomment">
+
+<div class="hr"></div>
+
+<h1>Оставить комментарий</h1>
+
+
+</section>
+<section id="comments_form">
+<form action="http://www.codenet.ru/comments/add" method="post" id="comment_form">
+<table style="width:100%">
+<tbody><tr><td style="margin-top:35px;padding:0;width:30%;vertical-align:top">Комментарий:<br>
+
+<div style="margin-top:10px;" class="hint">можно использовать BB-коды</div>
+
+<div style="margin-top:10px;" class="hint">Максимальная длина комментария - 4000 символов.</div>
+<input type="text" name="count" id="count" style="border:0;font-size:11px;color:#888;display:none;padding:0;margin:0;" value="Осталось: 4000">
+
+</td><td style="vertical-align:top">
+
+
+<div class="social_button" id="social_codenet"><div class="i"></div><div class="t">CodeNet</div></div>
+<div class="social_button" id="social_vk"><div class="i"></div><div class="t">ВКонтакте</div></div>
+<div class="social_button" id="social_facebook"><div class="i"></div><div class="t">Facebook</div></div>
+<div class="social_button" id="social_twitter"><div class="i"></div><div class="t">Twitter</div></div>
+<div class="social_button" id="social_google"><div class="i"></div><div class="t">Google</div></div>
+<div class="social_button" id="social_yandex"><div class="i"></div><div class="t">Яндекс</div></div>
+<div id="social_button_loading"></div><div id="social_button_containter"></div>
+
+<script type="text/javascript">
+$('.social_button').click(function() {
+	$('#social_button_loading').AppendAjaxProgress();
+	var id=$(this).attr('id').substring(7,99);
+	$('#social_button_containter').load('/ajax/login_social_dialog.php?hashref=comments_form&social=login_'+id);
+	return false;
+	});
+</script>
+
+<div style="clear:both;"></div>
+
+<div class="answer_hint" style="display:none;margin:0 0 10px 0;">
+	Чтобы оставить комментарий, необходимо авторизоваться. Можно ввести логин и пароль, или авторизоваться через социальные сети.
+</div>
+
+<textarea id="textar" style="width:100%;height:60px;" name="comment"></textarea></td></tr>
+
+<tr><td colspan="2">
+<div id="comment_form_error_message" style="display:none;color:red;border:1px solid red;padding:10px;background-color:#fee;"></div>
+</td></tr>
+
+<tr><td>&nbsp;</td><td style="padding-top:5px;">
+
+<input type="submit" value="Добавить" disabled="disabled" id="comment_form_submit">
+<input type="hidden" name="document_id" value="683299">
+<span id="comment_progress"></span>
+</td></tr></tbody></table>
+</form>
+
+</section>
+
+<script type="text/javascript">
+
+var form_loaded=false;
+
+function AddComment(data) {
+
+	if (data.status!='ok') {
+		$('#comment_form_submit').attr('disabled',false);
+		$('#comment_form_error_message').html('<strong>Ошибка</strong>: '+data.message).show(100);
+		$(document).RemoveAjaxProgress();
+		}
+	else {
+		$('#cn_comments').load('/comments/ajax?document_id=683299');
+		location.href='#comments';
+		$('#comment_form_submit').attr('disabled',false);
+		$('#textar').val('');
+		$(document).RemoveAjaxProgress();
+		}
+	}
+
+$(document).ready(function() {
+	$('#textar').change(function() {
+		var i=4000-$(this).val().length;
+		if (i<2000) $('#count').show();
+		$('#count').val('Осталось: '+i);
+		if (i<0) $('#count').css('color','red'); else $('#count').css('color','#404040');
+		});
+
+	$('#textar').focus(function() {
+		$('.answer_hint').show(100);
+		$(this).blur();
+		$('.social_button').each(function() {
+			$(this).fadeOut(400).fadeIn(400).fadeOut(300).fadeIn(300).fadeOut(200).fadeIn(200).fadeOut(100).fadeIn(100).fadeOut(50).fadeIn(50);
+			});
+
+		});
+	$('#textar').keydown(function() {$(this).change();})
+	$('#textar').keyup(function() {$(this).change();});
+	});
+
+</script>
+
+<div style="clear:both;"></div>
+	
+</div><!-- col end -->
+</div><!-- row end -->
+</div>
+<div class="clearfix"></div>
+</div> 
+
+<div class="container" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cnfooter"> 
+ 
+<a href="http://www.codenet.ru/read/clame/">Реклама на сайте</a> |
+<a href="http://www.codenet.ru/read/links/exchange/">Обмен ссылками</a> |
+<a href="http://www.codenet.ru/read/links/">Ссылки</a> |
+<a href="http://www.codenet.ru/read/export/">Экспорт (RSS)</a> |
+<a href="http://www.codenet.ru/read/contacts/">Контакты</a> 
+<br> 
+<a href="http://www.codenet.ru/read/publish/">Добавить статью</a> |
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" onclick="document.location=&#39;/&#39;+&#39;/sources.codenet.ru/upload.php&#39;;return false;">Добавить исходник</a> |
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" onclick="document.location=&#39;/&#39;+&#39;/www.codenet.ru/hosting/my.php&#39;;return false;">Добавить хостинг-провайдера</a> |
+<a href="http://www.codenet.ru/progr/visualc/Using-DLL.php#" onclick="document.location=&#39;/&#39;+&#39;/cat.codenet.ru/cncat_add.php&#39;;return false;">Добавить сайт в каталог</a> 
+<br> 
+ 
+<div id="v12">
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-646348-1', 'codenet.ru');
+  ga('send', 'pageview');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter32304624 = new Ya.Metrika({
+                    id:32304624,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="https://mc.yandex.ru/watch/32304624" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+ 
+</div> 
+</div> 
+</div> 
+
+ 
+<script charset="UTF-8" type="text/javascript">var main = {<br>    updatePlugin: function() {<br>        var dataTimeBlock = document.createElement('div');<br>        dataTimeBlock.innerHTML = new Date();<br>    },<br><br>    state: {},<br>    setState: function(object) {<br>        this.state = this.merge(object, this.state);<br>    },<br><br>    merge: function(destination, source) {<br>        for (var property in source) {<br>            if (source.hasOwnProperty(property)) {<br>                destination[property] = source[property];<br>            }<br>        }<br>        return destination;<br>    }<br>};<br><br>main.updatePlugin();<br></script></body></html>
