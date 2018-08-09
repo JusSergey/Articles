@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html><head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Howto install Quake 3 Arena on Xubuntu 14.04 - TheBlackzone</title>
+		<link rel="icon" href="http://theblackzone.net/images/favicon.gif" type="image/x-icon">
+		<link rel="shortcut icon" href="http://theblackzone.net/images/favicon.gif" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="screen" href="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/style.css">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+				<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://theblackzone.net/howto-install-quake-3-arena-on-xubuntu-1404/atom">
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://theblackzone.net/rsd">
+		<script src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/jquery-1.js"></script>
+		<script src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/lightbox.js"></script>
+		<link href="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/lightbox.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<div id="container">
+
+			<div id="header">
+
+				<div id="titlebar">
+					<a name="topofpage" style="visibiltiy:hidden;"></a>
+					<div id="logo">
+						<p><a href="http://theblackzone.net/"><img src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/theblackzone.png" alt="TheBlackzone.net Logo"></a>
+					</p></div> <!-- logo -->
+
+					<div id="men">
+					<p><a href="http://theblackzone.net/navigation"><img src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/men34.png" alt="Menu"></a></p>
+					</div> <!-- men -->
+
+					<!-- only visible on screens >= 960px width -->
+					<div id="nav">
+						<ul><li><a href="http://theblackzone.net/" title="Home">Home</a></li><li><a href="http://theblackzone.net/music" title="Music">Music</a></li><li><a href="http://theblackzone.net/gallery" title="Gallery">Gallery</a></li><li><a href="http://theblackzone.net/quake" title="Quake">Quake</a></li><li><a href="http://theblackzone.net/about" title="About">About</a></li></ul>					</div> <!-- nav -->
+
+				</div> <!-- titlebar -->
+
+			</div> <!-- header -->
+
+
+			<div id="main">
+
+				<div class="post">
+										<h1>Howto install Quake 3 Arena on Xubuntu 14.04</h1>
+					<p class="postinfo">Friday, May 29, 2015</p>
+					<p><img src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/q3a.png" alt="Q3A Logo" style="float: left;">Quake 3 Arena (Q3A for short) has been one of my favorite computer games and I guess I played it just as much as the <a href="http://theblackzone.net/quake">original Quake game</a>.
+ Recently I fell into the mood to play it again and decided to install 
+it on my Linux Desktop PC. The general process of the installation is 
+quite straightforward, but there are some pitfalls...</p><p>The Linux 
+version of Q3A has been around since the game came out in December 1999 
+and the game binaries as well as the game files of the demo version can 
+be freely downloaded. In order to play the full game, however, you need 
+the original retail CD of the game.</p><p>The installation of the game 
+is pretty straightforward, except for a pesky sound issue and the fact 
+that you need some additional libraries because you want the game to run
+ in a 64-bit environment.</p><p>This short howto is mainly intended for 
+my own reference in case I need to install the game again. I hope it is 
+helpful to others, but don't blame me if it doesn't work whith your 
+setup or things go wrong. As always, everything you do is at your own 
+risk.</p><p>That said, let's go...</p><p>Oh, and just in case you are 
+interested in the hardware I installed to game on: I'm using a standard 
+PC with Intel i7 processor, a GeForce GTX 660 graphics card, Intel 
+on-board audio and 8 GB RAM. As the title suggests the system is running
+ <a href="http://www.xubuntu.org/">Xubuntu Linux</a> 14.04, 64-bit (x86_64).</p><h2 id="installation">Installation</h2><h3 id="get-the-point-release-package">01 - Get the Point-Release package</h3><p>This package includes the game binaries as well as the demo game files. Download it from the id Software FTP server with</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> ftp://ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run
+<span class="kw">chmod</span> +x linuxq3apoint-1.32b-3.x86.run</code></pre><h3 id="prepare-for-installation">02 - Prepare for installation</h3><p>Since
+ we are on 64-bit Linux and the package is made for an 32-bit 
+environment, we cannot install the package directly. If you try you'll 
+see an error like</p><pre><code>This installation doesn't support unknown on Linux / x86_64</code></pre><p>So, to fix this let's unpack the Point-Release with</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./linuxq3apoint-1.32b-3.x86.run</span> --target ./q3install</code></pre><p>The above error message will occur anyway, but the installation files remain unpacked in the <code>q3install</code> folder.</p><p>Now we need to edit the setup file:</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> q3install
+<span class="kw">vim</span> setup.sh</code></pre><p>Use your favorite editor instead of <code>vim</code> if you like.</p><p>Within the function <code>DetectARCH</code> line 33 needs to be changed from</p><pre><code>i?86 | i86*)</code></pre><p>to</p><pre><code>i?86 | i86* | x86*)</code></pre><h3 id="install">03 - Install</h3><p>Before we proceed we need some additional libraries, since Q3A is an 32-bit application and we are in an 64-bit environment</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install gcc-multilib
+<span class="kw">sudo</span> apt-get install libx11-6:i386
+<span class="kw">sudo</span> apt-get install libxext6:i386
+<span class="kw">sudo</span> apt-get install freeglut3:i386</code></pre><p>Now execute</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> ./setup.sh</code></pre><p>and answer the questions:</p><pre><code>Do you agree with the license? [Y/n] =&gt; Y
+Please enter the installation path [/usr/local/games/quake3] =&gt; ENTER
+Please enter the path in which to create the symbolic links [/usr/local/bin] =&gt; ENTER
+Option: 'Quake III: Team Arena' ? [Y/n/?] =&gt; N
+Option: 'Dedicated server' ? [Y/n/?] =&gt; N
+Option: 'PunkBuster client/server files' ? [Y/n] =&gt; Y
+Do you agree with the license? [Y/n] =&gt; Y
+Do you want to install startup menu entries? [Y/n] =&gt; Y
+Continue install? [Y/n] =&gt; Y
+Installation complete. Would you like to start now? [Y/n] =&gt; N</code></pre><p>The game is now installed to the folder <code>/usr/local/games/quake3/</code></p><h3 id="copy-game-data-from-the-original-cd">04 - Copy game data from the original CD</h3><p>Now
+ let's get the game data for the full game. Insert and mount your Quake 3
+ Arena retail CD and copy the following files (my CD is mounted at <code>/media/tbz/QUAKE3</code>):</p><p>Copy the file <code>pak0.pk3</code> to your <code>baseq3</code> folder</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> cp /media/tbz/QUAKE3/Quake3/baseq3/pak0.pk3 /usr/local/games/quake3/baseq3/
+<span class="kw">sudo</span> chmod 644 /usr/local/games/quake3/baseq3/pak0.pk3</code></pre><p>Copy the default configuration to your user settings:</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> ~/.q3a
+<span class="kw">mkdir</span> ~/.q3a/baseq3
+<span class="kw">cp</span> /media/tbz/QUAKE3/Quake3/baseq3/q3config.cfg ~/.q3a/baseq3
+<span class="kw">chmod</span> 644 ~/.q3a/baseq3/q3config.cfg</code></pre><h3 id="start-the-game-and-enter-your-cd-key">05 - Start the game and enter your CD key</h3><p><strong>Notice</strong> There will be no sound - see next step. But first, let's complete the installation. Run the game with</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">/usr/local/games/quake3/quake3</span></code></pre><p>and enter your CD key when prompted. Then exit the game.</p><h3 id="the-pesky-no-sound-issue">06 - The pesky "no sound" issue</h3><h4 id="a-little-background-about-the-sound-issue">A little background about the sound issue</h4><p>Undoubtedly
+ you will notice that the game lacks any sound output and maybe you have
+ even noticed the following message when the game starts:</p><pre><code>------- sound initialization -------
+/dev/dsp: No such file or directory
+Could not open /dev/dsp
+------------------------------------</code></pre><p>or, if you run some kind of sound proxy, this</p><pre><code>------- sound initialization -------
+Sorry but your soundcard can't do this
+------------------------------------</code></pre><p>The problem is, that Q3A, as well as a whole lot of other "old" software, has been built atop the <a href="https://en.wikipedia.org/wiki/Open_Sound_System">"Open Sound System (OSS)"</a>
+ which has become obsolete in Linux since kernel version 2.6. OSS is 
+still around and used in other Unix-like operating systems, but Linux 
+has switched to ALSA, the <a href="https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture">"Advanced Linux Sound Architecture"</a> which is incompatible.</p><p>If you search the web for a solution, you will find a lot of tips that suggest doing things like</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> <span class="st">"quake3.x86 0 0 direct"</span> <span class="kw">&gt;</span> /proc/asound/card0/pcm0p/oss
+<span class="kw">echo</span> <span class="st">"quake3.x86 0 0 disable"</span> <span class="kw">&gt;</span> /proc/asound/card0/pcm0c/oss</code></pre><p>Unfortunately those tips don't work anymore since <a href="https://help.ubuntu.com/community/OpenSound">Canonical decided to remove</a> the OSS compatibility layer from the Ubuntu kernel. Unfortunately, this also renders packages like <code>oss-compat</code> and <code>osspd</code> useless, which are intended to provide OSS compatibility.</p><h4 id="the-solution.">The Solution.</h4><p>I
+ spent a whole day on trying out various compatibility layers, sound 
+proxies, etc. with the frustrating result that none of them worked. I 
+was even thinking of compiling a new kernel in order to get the OSS 
+compatibility layer back again.</p><p>But fortunately, while researching the problem, I stumbled upon the <a href="http://nullkey.kapsi.fi/et-sdl-sound/">"et-sdl-sound" hack by Pyry Haulos</a> et al.</p><p>In
+ short, this hack squeezes its own "compatibility library" between the 
+game and the ALSA sound system and replaces the OSS sound function calls
+ at runtime.</p><p>To use it, we need the following libraries</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install libsdl-sound1.2:i386
+<span class="kw">sudo</span> apt-get install libasound2-plugins:i386</code></pre><p>Then we need to get and install the quake3-sdl-sound hack with</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> http://nullkey.kapsi.fi/et-sdl-sound/quake3-sdl-sound.gz
+<span class="kw">gunzip</span> quake3-sdl-sound.gz
+<span class="kw">chmod</span> +x quake3-sdl-sound </code></pre><p>Now we Edit <code>./quake3-sdl-sound</code></p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">vim</span> quake3-sdl-sound</code></pre><p>and uncomment and change the Variable <code>LIBSDL</code> to</p><pre><code>LIBSDL="/usr/lib/i386-linux-gnu/libSDL-1.2.so.0"</code></pre><p>At this point we can finally run</p><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./quake3-sdl-sound</span></code></pre><p>and enjoy Quake 3 Arena to the max :-)</p><h2 id="sources">Sources</h2><p>Here are some related resources to the installation procedure</p><ul>
+<li><a href="ftp://ftp.idsoftware.com/">id Software FTP Serer</a></li>
+<li><a href="http://zerowing.idsoftware.com/linux/q3a/">Linux Quake III Arena Known issues</a></li>
+<li><a href="http://nullkey.kapsi.fi/et-sdl-sound/">et-sdl-sound Hack</a></li>
+<li><a href="http://x.sodpit.com/q3snd.htm">Q3A sound fixes</a> (don't work anymore)</li>
+</ul>					<p class="postinfo">Tags: <a href="http://theblackzone.net/tag/quake" rel="tag">quake</a> and <a href="http://theblackzone.net/tag/howto" rel="tag">howto</a></p>
+					<p></p>
+				</div> <!-- post -->
+				
+				<div class="pageselect">
+					<p class="left"><a href="http://theblackzone.net/music-theblackzone-echoes" title="Previous post: Music: TheBlackzone - Echoes">«</a></p>
+					<p class="right"><a href="http://theblackzone.net/include-static-html-content-in-your-habari-posts" title="Next post: Include static HTML content in your Habari posts">»</a></p>
+				</div> <!-- pageselect -->
+				<div style="clear: both;"></div>
+
+				<!-- comments -->
+
+<div id="comments">
+	
+	<h2>Comments</h2>
+
+	<p>There are 1 responses to <i>"Howto install Quake 3 Arena on Xubuntu 14.04"</i> so far.</p><ol id="commentlist"><li id="comment-187"><p class="commentposter"><a href="" rel="external">Dos</a> wrote on Tuesday, December 27, 2016:</p><div class="commenttext"><p>Hi,
+ Thanks for this write up , I have been able to get q3 up and runnning 
+using your instructions. However I can't get the sound working due to 
+the necessary file not being available on said link. I don't suppose you
+ still have the file and are able to link it somewhere else or email it 
+to me.</p><p>Thanks in advance.</p></div></li></ol></div>
+
+
+<div id="comment-form"><form class="formui public commentform" id="comment-public" action="http://theblackzone.net/123/feedback" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8" method="POST">
+<input name="FormUI" value="aac4349be9394e407d5cfa5943c817a6" type="hidden">
+<script type="text/javascript">if(controls==undefined){var controls = {init:function(fn){if(fn!=undefined){controls.inits.push(fn);}else{for(var i in controls.inits){controls.inits[i]();}}},inits:[]};}</script><script type="text/javascript">window.setTimeout(function(){controls.init();}, 500);</script><div class="formcontrol" id="cf_commenter">
+	<label for="comment_name">Name:</label>
+	<input tabindex="1" id="comment_name" name="comment_name" type="text">
+			</div>
+<div class="formcontrol" id="cf_email">
+	<label for="comment_email">Mail (will not be published):</label>
+	<input tabindex="2" id="comment_email" name="comment_email" type="email">
+			</div>
+<div class="formcontrol" id="cf_url">
+	<label for="comment_url">Website (optional):</label>
+	<input tabindex="3" id="comment_url" name="comment_url" type="url">
+			</div>
+<div class="formcontrol" id="cf_content">
+	<label for="comment_content">Your Comment:</label>
+	<textarea tabindex="4" cols="60" id="comment_content" name="comment_content" rows="10"></textarea>
+			</div>
+<div class="formcontrol" id="cf_submit">
+	<input tabindex="5" id="ce0d8b4d" name="ce0d8b4d" value="Submit" type="submit">
+	</div>
+</form>
+</div>
+<!-- /comments -->
+
+
+			</div> <!-- main -->
+
+			<div id="footer">
+				<div class="inner">
+					<p class="left">© 1996-2018&nbsp;<a title="TheBlackzone" href="http://theblackzone.net/"><img src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/ft_theblackzone.png" alt="TheBlackzone"></a></p>
+					<p class="right"><img style="float: left;" src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/rss.png" alt="">&nbsp;<a title="Entries feed" href="http://theblackzone.net/atom/1">Atom Entries</a> and <a title="Comments feed" href="http://theblackzone.net/atom/comments">Atom Comments</a></p>
+				</div> <!-- footer.inner -->
+			</div> <!-- footer -->
+
+			<div style="display: none; height: 0;"><p><img src="Howto%20install%20Quake%203%20Arena%20on%20Xubuntu%2014.04%20-%20TheBlackzone_files/log.gif" alt="" width="16" height="16"></p></div>
+
+		</div> <!-- container -->
+
+	
+
+
+<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src=""><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>

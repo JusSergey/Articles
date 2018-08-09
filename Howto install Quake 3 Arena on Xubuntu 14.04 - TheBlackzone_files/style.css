@@ -1,0 +1,664 @@
+/*******************************************************************************
+* File............: style.css
+* Version.........: $Id$
+* Created.........: 2015-05-29 
+* Last............: 2015-06-05
+* Author..........: TheBlackzone <theblackzone@theblackzone.net>
+*-------------------------------------------------------------------------------
+* CSS for TheBlackzone's Homepage Version 4 (Screen, CSS3)
+* Feel free to use and modify, but please provide credits!
+*******************************************************************************/
+
+
+/*******************************************************************************
+* basic elements
+*******************************************************************************/
+
+body, html {
+	margin: 0;
+	padding: 0;
+	background-color: #000000;
+	height: 100%;
+} 
+
+body {
+	color: #575757;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	line-height: 1.7em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #555555;
+	line-height: 120%;
+}
+
+a {
+	text-decoration: underline;
+	color: #175ca1;
+}
+
+em {
+	color: inherit;
+}
+
+pre {
+	padding: 8px;
+	background-color: #dfdfdf;
+	text-align: left;
+	font-size: 1.0em;
+	line-height: 1.4em;
+	border: 1px dotted #3d3d3d;
+	-moz-box-shadow: 0 4px 8px #aaaaaa;
+	-webkit-box-shadow: 0 4px 8px #aaaaaa;
+	box-shadow: 0 4px 8px #aaaaaa;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+blockquote {
+	font-style: italic;
+	background-color: rgba(0,0,0,0.1);
+	background-image: url('../images/quote.png');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	padding: 20px;
+	margin: 0;
+	border: 1px dotted #3d3d3d;
+	-moz-box-shadow: 0 4px 8px #aaaaaa;
+	-webkit-box-shadow: 0 4px 8px #aaaaaa;
+	box-shadow: 0 4px 8px #aaaaaa;
+}
+
+ul {
+	list-style-type: square;
+}
+
+.figure {
+	margin-right: 20px;
+}
+
+.figure p {
+	margin-bottom: 0;
+	line-height: 1em;
+}
+
+.inline {
+	float: left;
+	margin: 0 20px 0 0;
+	padding: 8px 0 0;
+}
+
+
+.caption {
+	font-size: 0.7em;
+	margin: 0;
+	padding: 0;
+}
+
+code {
+	font-size: 1.2em;
+	line-height: 1.7em;
+	color: #555555;
+	background-color: #cccccc;
+	padding: 0 2px 0 2px;
+}
+
+pre code {
+	font-size: inherit;
+	line-height: inherit;
+	color: #555555;
+	background-color: #dfdfdf;
+}
+
+
+/*******************************************************************************
+* layout & container
+*******************************************************************************/
+
+#container {
+	width: 100%;
+	min-height: 100%;
+	position: relative;
+	background-image: url('../images/bkgrnd.png'); 
+	background-repeat: repeat;
+}
+
+#main {
+	width: 80%;
+	min-height: 100%;
+	margin: 0 auto 0 auto;
+	margin: 0 auto -160px;
+	padding: 40px 40px 160px 40px;
+	background: rgba(0,0,0,0.05);
+	text-align: left;
+}
+
+
+/*******************************************************************************
+* header
+*******************************************************************************/
+
+#header {
+	margin: 0 auto 0 auto;
+	padding: 0;
+	width: 100%;
+	height: 64px;
+	background-color: black;
+	background-image: url('../images/rainbow.png');
+	background-size: 100%;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	-moz-box-shadow: 0 8px 16px #000000;
+	-webkit-box-shadow: 0 8px 16px #000000;
+	box-shadow: 0 8px 16px #000000;
+}
+
+#titlebar {
+	margin: 0 auto 0 auto;
+	width: 80%;
+	padding: 0;
+}
+
+#logo {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#logo p {
+	margin: 0;
+	padding: 0;
+	height: 64px;
+	line-height: 64px;
+}
+
+#logo img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	display: inline;
+	vertical-align: middle;
+}
+
+#logo a {
+	display: block;
+	text-decoration: none;
+}
+
+#men {
+	margin: 0 0 0 20px;
+	padding: 0;
+	float: right;
+}
+
+#men p {
+	margin: 0;
+	padding: 0;
+	height: 64px;
+	line-height: 64px;
+}
+
+#men img {
+	margin: 0;
+	padding: 0 0 4px 0;
+	border: 0;
+	display: inline;
+	vertical-align: middle;
+}
+
+#men a {
+	display: block;
+	text-decoration: none;
+}
+
+#nav {
+	float: right;
+	margin: 0 20px 0 0;
+	vertical-align: middle;
+	line-height: 64px;
+	display: none;
+}
+
+#nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+#nav ul li {
+	font-size: 1.1em;
+	margin: 0;
+	list-style-type: none;
+	padding: 0 0 0 24px;
+	float: left;
+	color: #e5e5e5;
+}
+
+#nav ul li a {
+	display: block;
+	text-decoration: none;
+	color: #e5e5e5;
+}
+
+#nav ul li a:hover {
+	color: #4774A1;
+	text-shadow: 0 0 0.5em #4774A1;
+}
+
+#nav ul li a.current {
+	color: #0083ff;
+}
+
+
+/*******************************************************************************
+* footer
+*******************************************************************************/
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	clear: both;
+	width: 100%;
+	height: 112px;
+	margin: 0;
+	padding: 0;
+	background-color: black;
+	font-size: 0.8em;
+	color: #e5e5e5;
+}
+
+#footer .inner {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 80%;
+	margin: 0 auto 0 auto;
+}
+
+#footer .left {
+	margin: 0;
+	padding: 0 0 0 20px;
+	float: left;
+	text-align: left;
+    position: relative;
+    top: 50%; 
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+#footer .right {
+	margin: 0;
+	padding: 0 20px 0 0;
+	float: right;
+	text-align: right;
+    position: relative;
+    top: 50%; 
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+#footer img {
+	vertical-align: middle;
+}
+
+#footer a {
+	text-decoration: none;
+	color: #7189a1;
+}
+
+#footer a:hover {
+	color: #4774A1;
+	text-shadow: 0 0 0.5em #4774A1;
+}
+
+
+/*******************************************************************************
+* habari specific
+*******************************************************************************/
+
+/* page selector */
+
+.pageselect {
+	margin: 32px 0 0 0;
+	padding: 0;
+	display: block;
+}
+
+.pageselect p {
+	margin: 0;
+	padding: 0;
+}
+
+.pageselect a {
+	float: left;
+	display: inline-block;
+	line-height: 32px;
+	height: 32px;
+	min-width: 32px;
+	margin-right: 8px;
+	padding: 0;
+	border: 1px solid #575757;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: center;
+}
+
+.pageselect a.current-page {
+	background-color: #575757;
+	font-weight: bold;
+	color: #cccccc;
+}
+
+.pageselect a.prev-page {
+}
+
+.pageselect a.next-page {
+}
+
+.pageselect a.topofpage {
+	float: right;
+	border: none;
+}
+
+.pageselect p.left {
+	float: left;
+}
+.pageselect p.right {
+	float: right;
+}
+
+/* posts */
+
+.post h1,h2,h3 {
+	margin: 34px 0 0 0;
+}
+
+.post h2 a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.post .postinfo {
+	margin: 4px 0 0 0;
+	padding: 0;
+	font-size: 0.8em;
+}
+
+.post .readmore {
+	margin: 0;
+	padding: 0;
+	line-height: 1.2em;
+}
+
+.post .readmore a {
+	padding: 0 4px 0 4px;
+	display: inline-block;
+	font-size: 0.8em;
+	border: 1px solid #cccccc;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	background-color: #cccccc;
+	text-decoration: none;
+	vertical-align: center;
+	color: #575757;
+}
+
+/* search form */
+
+.searchform {
+	margin: 20px 0 0 0;
+	padding: 0;
+	width: 100%;
+}
+
+.searchform input {
+	display: inline-block;
+	height: 2em;
+	width: 75%;
+	margin: 0;
+	padding: 2px 4px 2px 4px;
+	font-size: 1.2em;
+	line-height: 1.7em;
+	color: #575757;
+	border: 1px solid #575757;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	vertical-align: middle;
+}
+
+.searchform button {
+	display: inline-block;
+	height: 48px;
+	width: 48px;
+	background: transparent url('../images/search48.png') no-repeat;
+	background-size: cover;
+	border: none;
+	vertical-align: middle;
+}
+
+/* comments and comment form */
+
+#comments {
+	margin-top: 34px;
+	clear: both;
+	border-top: 1px dotted #555555;
+}
+
+.error {
+	margin: 0;
+	padding: 0;
+	color: red;
+}
+
+.success {
+	margin: 0;
+	padding: 0;
+	color: green;
+}
+
+.error li, .success li {
+	list-style-type: none;
+}
+
+#comment-form form {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#comment-form label {
+	display: block;
+	float: left;
+	font-size: 0.9em;
+	margin: 10px 0 0 0;
+	padding: 0;
+	min-width: 90%;
+}
+
+#comment-form input {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0 8px 0 8px;
+	font-size: 1.2em;
+	line-height: 1.7em;
+	display: inline-block;
+	width: 100%;
+	border: 1px solid #575757;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#comment-form textarea {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0 8px 0 8px;
+	font-size: 1.2em;
+	line-height: 1.7em;
+	display: inline-block;
+	width: 100%;
+	resize:none;
+	border: 1px solid #575757;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#comment-form input[type=submit] {
+	text-align: center;
+	margin-top: 20px;
+	background-color: #cccccc;
+	color: #555555;
+}
+
+#commentlist
+{
+	margin: 0;
+	padding: 0;
+}
+
+#comments ol {
+	list-style: none;
+}
+
+#comments ol li
+{
+	list-style-type: none;
+	display: block;
+	border: 1px solid rgba(0,0,0,0.1);
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	background: rgba(0,0,0,0.1);
+	margin-bottom: 20px;
+}
+
+.commentposter
+{
+	font: 0.9em Arial;
+	margin: 0;
+	padding: 8px 8px 8px 8px;
+}
+
+.commenttext
+{
+	font: 0.9em Arial;
+	margin: 0;
+	padding: 8px 8px 8px 8px;
+}
+
+
+/*****************************************************************************
+* Syntax highlighting for 'pandoc' generated 'code' content
+*****************************************************************************/
+
+/* Error */
+.sourceCode .er {
+	color: #cccccc;
+	font-weight: bold;
+}
+
+/* Comments */
+.sourceCode .co {
+	color: #dc322f;
+}
+
+/* Keyword, Statement */
+.sourceCode .kw {
+	color: #719e07;
+}
+
+/* DataType, Type */
+.sourceCode .dt {
+	color: #b58900;
+}
+
+/* Numbers */
+.sourceCode .dv, .sourceCode .bn, .sourceCode .fl {
+	color: #2aa198;
+}
+
+/* Strings */
+.sourceCode .st {
+	color: #2aa198;
+}
+
+/* Character */
+.sourceCode .ch {
+	color: #2aa198;
+}
+
+/* Function */
+.sourceCode .fu {
+	color: #268bd2;
+}
+
+/* Other Tokens */
+.sourceCode .ot {
+	color: #cb4b16;
+}
+
+/* Alert, Question */
+.sourceCode .al {
+	color: #d33682;
+	font-weight: bold;
+}
+
+/* Region */
+.sourceCode .re {
+}
+
+
+/*******************************************************************************
+* style adjustments for viewports >= 1000 px
+* - make main pages navigation visible
+* - limit size of searchform
+*******************************************************************************/
+
+@media only screen and (min-width: 1000px) {
+
+	/* main pages get visible */
+	#nav {
+		display: inherit;
+	}
+
+	.searchform {
+		width: 60%;
+	}
+}
+
+
+/*******************************************************************************
+* style adjustments for viewports >= 1400 px
+* - limit main container size to 960 px width
+*******************************************************************************/
+
+@media only screen and (min-width: 1400px) {
+
+	#titlebar {
+		margin: 0 auto 0 auto;
+		width: 960px;
+		padding: 0;
+	}
+
+	#footer .inner {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		width: 960px;
+		margin: 0 auto 0 auto;
+	}
+
+	#main {
+		width: 960px;
+	}
+
+}
+/* EOF */
