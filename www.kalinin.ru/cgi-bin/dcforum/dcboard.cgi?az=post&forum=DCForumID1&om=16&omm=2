@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/dcforum//DCForumID1/16.html"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/dcforum//DCForumID1/16.html"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Compose your message</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+<p>
+         <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+         <TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         Original Message
+         </FONT></TH></tr>
+         <TR BGCOLOR="#EAE8E0"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <b>"RE: просто мысли после прочтения "</b><br>Posted by om on 24-Nov-00 at 11:44&nbsp;PM
+         </FONT></Td></tr>
+         <TR BGCOLOR="#FBF9F1"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Знаешь, Денис, ты не прав. Я знаю Андрея не только по заметкам на сайте, в смысле знакома с ним лично. И потому могу сказать "Ты очень неправ".<P>Мне во первых странно что люди вообще предъявляют претензии к нему на тему содержания сайта. (У меня самой есть домашняя страничка и потому я также считаю возможным так говорить). Тема сайта --- "Домашняя страничка". Это значит что это не страничка о С   или о чем либо еще. Это всего лишь тот материал, который человек посчитал возможным выложить на своей страничке. И по нему лишь можно сделать вывод об интересах или знаниях человека. А мне кажется что Андрей вполне может писать заметки на тему C  , он  действительно глубоко знаком с этой областью. <BR>А размещать статьи о жизни --- это тем более его право. Если ты не согласен это тоже твое право. Ты можешь тоже об этом написать.<P>Насчет его преподавания тоже могу добавить. К твоему сведению он готовит ребят из МАИ к олимпиадам по программированию. Ты считаешь ему за это сильно платят? Нет. Ему просто интересно преподавать. Ему есть чему учить. Мы просто недавно обсуждали эту тему в студенческой рассылке. Если человек преподает именно по своей инициативе --- он всегда преподает лучше, чем человек который преподает потому что он преподаватель. Он никогда не опуститься до отмечания посещения или какого-нибудь бреда в том же духе.<P>А насчет строгости преподавателей я всегда смотрела на это позитивно, если она была справедлива, а не абсурдна (как например придирки к оформлению и тп) А если учесть что Андрей принимает зачеты у самой слабой группы первого курса, при том что ведет у них семинары тетушка, которую опять таки не могут выгнать потому что она преподаватель (а давно пора), сказок не оберешься. В прошлом году мы столкнулись с таким преподавателем --- сдавали ему три задачи (из 9) курсовой с 14:00 до 22:20. Но при всем при этом я считаю если бы не он, мне пришлось бы трудно на экзамене. В итоге именно благодаря сдаче этой курсовой были основные знания предмета. Так что строгий преподаватель это даже хорошо. Обычно требует знания и дает их. Зачем иначе вообще учиться в институте?<P>Я даже не знаю говорить ли про форум вообще. Последние сообщения были написаны нашими одногруппниками. Не самыми лучшими людьми как можно понять. Такие сообщения надо сразу гасить, как мне кажется. Люди просто хотели сделать гадость. Сделали. <P>Ну а про девушку Иру;) Мне странно что ты высказал соболезнования;) Мало того что девушка (наверно все-таки не дама, судя по адресу) написала откровенную глупость, меня в общем возмутило не это. Если честно я ругалась по другому поводу. Не знаю как другие, но меня всегда раздражает когда мое имя извращают. Я считаю к человеку надо обращаться так как он представился. А я нигде не видела чтобы Андрей называл себя как-то иначе. В общем даже я себе такого не позволяю;) А делать выводы о мальчишестве тем более глупость. Как вообще об этом можно судить?<P>И еще. Быть одновременно и студентом и преподавателем я думаю не так-то просто. Надо чтобы "твои студенты тебя признавали за преподавателя", то есть уважали. А это тоже надо заслужить, и это наверно еще одно доказательство того что человек серьезный. Вряд ли бы ему иначе вообще доверили преподавание, тебе не кажется?<P>А про заметки Спектатора;) Может заглянешь к нему в "рекомендовано к посещению";)<P><P>
+         </blockquote>
+         </FONT></Td></tr><TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         &nbsp;
+         </FONT></TH></tr>
+         </table>
+   <center>
+   <form ACTION="/cgi-bin/dcforum/dcboard.cgi" method="POST">
+   <input type=hidden name="om" value="16">
+   <input type=hidden name="forum" value="DCForumID1">
+   <input type=hidden name="omm" value="2">
+   
+         <input type="hidden" name="az" value="a_mesg">
+      
+   <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+   <TR><Td ALIGN="LEFT" valign="top" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   
+         <li><font color="#FF0000">
+         Image Links Enabled - just type the URL (e.g., http://www.dcscripts.com/image.gif)
+         </font>
+         
+      <li><font color="#FF0000">
+      Emotion Icons</font>
+      <a href="javascript:makeRemote('/cgi-bin/dcforum/dcboard.cgi?az=emotion_icon_short_cuts')"><FONT 
+      SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Emotion icon short cuts</FONT></a>
+   </TD>
+   </tr>
+   <TR BGCOLOR="#E3DAA5"><TH ALIGN="LEFT" COLSPAN="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+      Your Message
+      </FONT></TH></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Name<font color="black">*</font>:
+   </FONT>
+   </TH>
+   <TD>
+         <INPUT TYPE="TEXT" NAME="name" value="" SIZE=50>
+   </TD></TR>
+         <TR BGCOLOR="#EAE8E0">
+         <TH ALIGN="RIGHT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         EMail:
+         </FONT></TH>
+         <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="TEXT" NAME="email" value="" SIZE=50>
+         </TD></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Subject<font color="black">*</font>:
+   </FONT></TH>
+   <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="text" NAME="subject" VALUE="RE: просто мысли после прочтения " SIZE=50>
+      </TD></TR><TR BGCOLOR="#EAE8E0">
+      <TH ALIGN="RIGHT" VALIGN="TOP"><FONT SIZE="-1" 
+         FACE="arial,sans-serif" COLOR="black">
+         Message<font color="black">*</font>:</FONT>
+         </TH><TD>
+      <TEXTAREA NAME="body" ROWS="12"
+        COLS="50" WRAP="virtual"></TEXTAREA>
+    
+   </TD></TR>
+   <TR><TH ALIGN="RIGHT" BGCOLOR="#EAE8E0">
+   &nbsp;</TH>
+   <TD BGCOLOR="#EAE8E0" ALIGN="LEFT">
+   <INPUT TYPE="SUBMIT" NAME="preview" VALUE="Preview">
+      <INPUT TYPE="SUBMIT" NAME="post" VALUE="Post Message">
+   <INPUT TYPE="RESET" VALUE="Reset">
+   </TD></TR></TABLE>
+   </form>
+   </center>
+  
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

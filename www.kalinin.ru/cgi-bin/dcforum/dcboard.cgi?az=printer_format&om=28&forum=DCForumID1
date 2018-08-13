@@ -1,0 +1,72 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 28<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/28.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Аномалия"</font></b><br>
+Posted by Slam  on 06-Mar-01 at 03:16&nbsp;PM<br>
+<blockquote>Народ кто хоть раз делал программу со всплывающим меню на с++?<BR>Дело в следующем:<BR>Дано:<BR>///////<BR>........<BR>CMenu menu;<BR>menu.LoadMenu(IDR_MYMENU);<BR>SetForegroundWindow();<BR>menu.TrackPopupMenu(TPM_HORIZONTAL|TPM_LEFTALIGN|<BR>TPM_RIGHTBUTTON,point.x,point.y,this);<BR>........<BR>//////<BR>Запускаю программу и...<BR>Меню выводится, НО одной маленькой полосочкой,<BR>тоесть названия пунктов меню невидно, а если какой либо пункт меню сделать "popup" то уже<BR>подменю которое выводится при нажатии на это меню будет видно.<BR>Как я только "неизвращался" чего только немудрил<BR>результата ноль. Если кто знает где тут собака зарыта поделитесь опытом буду признателен.<BR>Спасибо.<BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Аномалия</b>,<b>ьЛТР кЫЙЫШЕСДЬЫЛ.</b>, 10:21&nbsp;AM, 13-Mar-01
+<li><b>RE: Аномалия</b>,<b>Ivan Korosteliov</b>, 10:34&nbsp;AM, 13-Mar-01
+<ul>
+<li><b>RE: Аномалия</b>,<b>Andrey L. Kalinin</b>, 11:22&nbsp;AM, 13-Mar-01
+<ul>
+<li><b>RE: Аномалия</b>,<b>Ivan Korosteliov</b>, 08:00&nbsp;PM, 13-Mar-01
+<ul>
+<li><b>RE: Аномалия</b>,<b>Andrey L. Kalinin</b>, 00:42&nbsp;AM, 14-Mar-01
+</ul>
+</ul>
+</ul>
+<li><b>RE: Аномалия</b>,<b>Rolling</b>, 03:02&nbsp;AM, 17-Jun-01
+<li><b>RE: Аномалия</b>,<b>DoomGuy</b>, 09:13&nbsp;PM, 02-Jan-02
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Аномалия"</b><br>
+Posted by ьЛТР кЫЙЫШЕСДЬЫЛ.  on 13-Mar-01 at 10:21&nbsp;AM<br>
+<blockquote>
+Если ты внимательно просмотришь материал страницы, то ты заметишь что она о программировании на C++ , а не о создании окошек под Windows  с использованием MFC.<BR>Тут даже в каком то опусе приводилось различие между программированием на языке и программированием под систему.<P>За сим прощаюсь.
+</blockquote>
+<hr>
+<b>"RE: Аномалия"</b><br>
+Posted by Ivan Korosteliov  on 13-Mar-01 at 10:34&nbsp;AM<br>
+<blockquote>
+Если ты внимательно просмотришь материал страницы, то ты заметишь что она о программировании на C   , а не о создании окошек под Windows с использованием MFC.<BR>Тут даже в каком то опусе приводилось различие между программированием на языке и программированием под систему.<P>За сим прощаюсь. <BR>
+</blockquote>
+<hr>
+<b>"RE: Аномалия"</b><br>
+Posted by Andrey L. Kalinin  on 13-Mar-01 at 11:22&nbsp;AM<br>
+<blockquote>
+&gt;Если ты внимательно просмотришь материал страницы, <BR>&gt;то ты заметишь что она <BR>&gt;о программировании на C  <BR>&gt; , а не о <BR>&gt;создании окошек под Windows с <BR>&gt;использованием MFC. <P>Да нет, она, скорее, просто ни о чем.<P>&gt;Тут даже в каком то опусе <BR>&gt;приводилось различие между программированием на <BR>&gt;языке и программированием под систему. <P>Ну и что? Я, правда, действительно не могу ответить на этот вопрос (просто потому, что не программирую под Windows), но так как тут есть люди, которые используют MFC, то почему бы и не спросить. Вдруг кто ответит...<P><BR>
+</blockquote>
+<hr>
+<b>"RE: Аномалия"</b><br>
+Posted by Ivan Korosteliov  on 13-Mar-01 at 08:00&nbsp;PM<br>
+<blockquote>
+Признаю свою ошибку... <img src="/dcforum//Images/wink.gif"> А вообще, с такими вопросами в ru.visual.cpp обращаются.
+</blockquote>
+<hr>
+<b>"RE: Аномалия"</b><br>
+Posted by Andrey L. Kalinin  on 14-Mar-01 at 00:42&nbsp;AM<br>
+<blockquote>
+&gt;А вообще, <BR>&gt;с такими вопросами в ru.visual.cpp <BR>&gt;обращаются. <P>...Где человека точно так же могут послать <img src="/dcforum//Images/wink.gif"><P>Нет, конференции, понятно, популярнее. И более тематические.
+</blockquote>
+<hr>
+<b>"RE: Аномалия"</b><br>
+Posted by Rolling  on 17-Jun-01 at 03:02&nbsp;AM<br>
+<blockquote>
+Глянул в свой код двухлетней давности (работающий), ужаснулся (дикая смесь МФК и АПИ), отличий вроде так сразу не нашел... Может в другом месте беда? :)<P>    CMenu menu;<BR>    int pMenuID = 0;<BR>    DWORD Selection;<BR>    VERIFY(menu.LoadMenu(IDR_GLOBALMENU));<P>    CMenu* pPopup = menu.GetSubMenu(pMenuID);<BR>    ASSERT(pPopup != NULL);<P>    POINT pp;<BR>    GetCursorPos(&pp);<BR>    Selection = pPopup-&gt;TrackPopupMenu(<BR>        TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_NONOTIFY | TPM_RETURNCMD,<BR>        pp.x,pp.y,this);<P>    pPopup-&gt;DestroyMenu();<BR>
+</blockquote>
+<hr>
+<b>"RE: Аномалия"</b><br>
+Posted by DoomGuy  on 02-Jan-02 at 09:13&nbsp;PM<br>
+<blockquote>
+Сделать нада так:<BR>енто оставляем...<BR>----------------------------<BR>CMenu menu;<BR>menu.LoadMenu(IDR_MYMENU);<BR>----------------------------<BR>енто непонятно зачем, но пусть будет...<BR>----------------------------<BR>SetForegroundWindow();<BR>----------------------------<BR>а вот тут пишем:<BR>CMenu sub;<BR>sub=menu.SelectSubMenu(0);<BR>//здесь могу ошибитсья... может функция <BR>//звучит как: SelectSubMenuItem(INT Index);<BR>------------------------------<BR>и далее:<BR>sub.TrackPopupMenu(TPM_HORIZONTAL|TPM_LEFTALIGN|<BR>TPM_RIGHTBUTTON,point.x,point.y,this);<BR>------------------------------<BR>Все... <BR>Удачи!
+</blockquote>
+<hr>
+</font></body></html>

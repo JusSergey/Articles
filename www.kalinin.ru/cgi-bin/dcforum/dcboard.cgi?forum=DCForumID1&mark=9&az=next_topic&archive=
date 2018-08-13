@@ -1,0 +1,633 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage  - "помогите поставить FreeBSD!"
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+   <META HTTP-EQUIV="Expires" CONTENT="Tues, 04 Dec 1996 21:00:00 GMT">
+   <META HTTP-EQUIV="pragma" content="no cache">
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>"помогите поставить FreeBSD!"</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+   <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" bgcolor="#EAE8E0">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=printer_format&om=52&forum=DCForumID1"><img
+   src="/dcforum//Images/printer_friendly.gif" align="bottom" border="0"><font 
+   SIZE="1" FACE="arial,sans-serif" 
+   color="black">Printer-friendly version of this topic</font></a></TD>
+   <TD ALIGN="RIGHT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <font color="black"><b></b></font>&nbsp;
+   <br><font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=52&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=52&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>&nbsp;</FONT></TD></TR>
+      <TR><TH COLSPAN="4" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+         face="arial,sans-serif" color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> 
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&archive="><font 
+         face="arial,sans-serif" color="black" size="-1">Основной форум</FONT></a> <font 
+         face="arial,sans-serif" color="black" size="-1">(Public)</font>
+         </TH></TR>
+      <TR BGCOLOR="#E3DAA5">
+      <TD ALIGN="LEFT" COLSPAN="4">
+      <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+      Original message</font></TD></TR></TABLE>
+      <br>
+      <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="0"></a> <b>"помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>n/a</b> <a 
+            href="mailto:horny@mail.az"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      15-Jul-01,&nbsp;11:56&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Спасите!! Еще ничего ставить не начал, а уже впал в панику :)<BR>факты:<BR>1) у меня Windows2000 sp2 (на С: 8GB)<BR>2) залез на <a href="ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/4.3-RELEASE" target="_blank">ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/4.3-RELEASE</a> и скачал содержимое /bin, /tools & /floppies<BR>3) с помощью /tools/fdimage.exe записал на два флопаря /floppies/boot.glp и /floppies/mfsroot.flp, соответственно<BR>4) скопировал скачанную папку /bin в C:\freebsd\<BR>5) собссно, а чего дальше то делать? Если кто ставил freebsd на один раздел с win2000 - плиз расскажите как это у вас было. Если надо качать какие нибудь менеджеры типа partition magic - говорите..<P>спасибо огромное заранее. Кстати, не было времени оглянуться - я здесь часом не оффтопик? :)
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+      </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE>
+      <br>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         <a name="TOP">&nbsp;</a>Table of contents</font></TD></TR></TABLE>
+         <br><TABLE 
+         BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="LEFT" COLSPAN="2">
+         <font SIZE="-1" FACE="arial,sans-serif" color="black">
+         
+               <img src="/dcforum//Images/message.gif">
+               <a href="#1">RE: помогите поставить FreeBSD!</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">16-Jul-01, (1)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#4">RE: помогите поставить FreeBSD!</a>,
+               <b>n/a</b>, <font size="1">16-Jul-01, (4)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#5">RE: помогите поставить FreeBSD!</a>,
+               <b>alk</b>, <font size="1">17-Jul-01, (5)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#6">RE: помогите поставить FreeBSD!</a>,
+               <b>n/a</b>, <font size="1">18-Jul-01, (6)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#7">RE: помогите поставить FreeBSD!</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">18-Jul-01, (7)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="37" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#8">RE: помогите поставить FreeBSD!</a>,
+               <b>n/a</b>, <font size="1">18-Jul-01, (8)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="55" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#9">RE: помогите поставить FreeBSD!</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">18-Jul-01, (9)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="73" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#10">RE: помогите поставить FreeBSD!</a>,
+               <b>n/a</b>, <font size="1">18-Jul-01, (10)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="91" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#11">RE: помогите поставить FreeBSD!</a>,
+               <b>n/a</b>, <font size="1">20-Jul-01, (11)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="109" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#12">RE: помогите поставить FreeBSD!</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">22-Jul-01, (12)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="127" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#13">RE: помогите поставить FreeBSD!</a>,
+               <b>n/a</b>, <font size="1">27-Jul-01, (13)</font><br>
+               
+         </font></TD></TR></TABLE><p>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="right" COLSPAN="2">
+         <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=52&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=52&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+         </TD></TR></TABLE><TABLE BORDER="0" WIDTH="70%" 
+         cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Messages in this topic
+         </font></TD></TR></TABLE>
+         <br>
+         
+
+   <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="1"></a>1.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      16-Jul-01,&nbsp;11:47&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;5) собссно, а чего дальше то <BR>&gt;делать? Если кто ставил freebsd <BR>&gt;на один раздел с win2000 <BR>&gt;- плиз расскажите как это <BR>&gt;у вас было. Если надо <BR>&gt;качать какие нибудь менеджеры типа <BR>&gt;partition magic - говорите.. <P>Честно говоря, я никогда не ставил FreeBSD на один раздел с Windows 2000. Чисто теоретически, такое возможно. Практически, я думаю, можно найти себе значительно более приятное развлечение...<P>Лучше всего, все-таки, ставить на отдельный раздел. Как переразбить, дело вкуса, некоторые действительно пользуются partition magic'ом. Лично я в таких случаях особо не думаю, а просто переставляю все.<P>Как ставить FreeBSD подробно описано в его INSTALLATION. Для того, чтобы иметь возможность загрузки и Windows и FreeBSD, можно воспользоваться бут-менеджером Windows'а (потому что W2K без него все равно не работает, а ставить два бут-менеджера... зачем?) <P>Для этого можно воспользоваться либо dd из Unix'а (скопировать загрузочный блок и отдать на сьедение windows-бутменеджеру), либо найти программку под названием bootpart.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=1"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="4"></a>4.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>n/a</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      16-Jul-01,&nbsp;04:53&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         спасибо за ответ.<BR>я, конечно, первым делом полез читать handbook с оффсайта - но т.к. про вариант с w2k и, что более деликатно, с NTFS там ничего быстро не нашел, а терпения наследственно мало - начал скромно делать первые шаги. Да, забыл добавить, что юникс пока для меня пустой звук, равно как и "dd" :) Вот эту беду и хочу поправить.<BR> <BR>Вот что я (partition magic) сделал сегодня - resize'нул 8GB раздел до 7GB, в полученном 1GB создал раздел (кстати, какую файловую систему выбрать?). Т.к. pmagic меня уверил, что пресловутый 1024 цилиндр начинается не раньше 8GB, раздел размером 1GB (начиная с 7GB) показался вполне достаточным. Но... забутившись с дискеток fdisk splice (или как там его) не видит 1GB кусок, так что ставить, увы, некуда <img src="/dcforum//Images/angry.gif">
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=4"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="5"></a>5.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>alk</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      17-Jul-01,&nbsp;02:38&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;спасибо за ответ. <BR>&gt;я, конечно, первым делом полез читать <BR>&gt;handbook с оффсайта - но <BR>&gt;т.к. про вариант с w2k <BR>&gt;и, что более деликатно, с <BR>&gt;NTFS там ничего быстро не <BR>&gt;нашел, а терпения наследственно мало <BR>&gt;- начал скромно делать первые <BR>&gt;шаги. <P>Тогда точно, ставить FreeBSD на один раздел с W2K лучше не надо. <P>&gt; Да, забыл добавить, что <BR>&gt;юникс пока для меня пустой <BR>&gt;звук, равно как и "dd" <BR>&gt;:) Вот эту беду и <BR>&gt;хочу поправить. <P>Ну тогда bootpart надо искать ;)<P>&gt;Вот что я (partition magic) сделал <BR>&gt;сегодня - resize'нул 8GB раздел <BR>&gt;до 7GB, в полученном 1GB <BR>&gt;создал раздел (кстати, какую файловую <BR>&gt;систему выбрать?). <P>ufs<P>&gt;Т.к. pmagic меня <BR>&gt;уверил, что пресловутый 1024 цилиндр <BR>&gt;начинается не раньше 8GB, раздел <BR>&gt;размером 1GB (начиная с 7GB) <BR>&gt;показался вполне достаточным. Но... забутившись <BR>&gt;с дискеток fdisk splice (или <BR>&gt;как там его) не видит <BR>&gt;1GB кусок, так что ставить, <BR>&gt;увы, некуда <img src="/dcforum//Images/angry.gif"> <P>Странно, вообще говоря.<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=5"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="6"></a>6.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>n/a</b> <a 
+            href="mailto:horny@mail.az"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      18-Jul-01,&nbsp;09:59&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Ы. Поставил, вроде. И даже загружаюсь в него. Одно но - приходится каждый раз вручную active partition менять, чтобы загружать w2k/freebsd.<BR>По твоему совету также скачал bootpart - пока не знаю чего делать. Как прописать freebsd в C:\boot.ini? Я уже перебрал мнооого вариантов...<P>TIA
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=6"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="7"></a>7.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      18-Jul-01,&nbsp;12:34&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Ы. Поставил, вроде. И даже загружаюсь <BR>&gt;в него. Одно но - <BR>&gt;приходится каждый раз вручную active <BR>&gt;partition менять, чтобы загружать w2k/freebsd. <BR>&gt;<BR>&gt;По твоему совету также скачал bootpart <BR>&gt;- пока не знаю чего <BR>&gt;делать. Как прописать freebsd в <BR>&gt;C:\boot.ini? Я уже перебрал мнооого <BR>&gt;вариантов... <P>А там же у bootpart'а есть инструкция. Он, как я помню, даже сам умел строчку в boot.ini прописывать <img src="/dcforum//Images/wink.gif"><P>Что-то в духе<P>c:\freebsd.img="FreeBSD"<P>или наоброт <img src="/dcforum//Images/wink.gif"> у меня тут под рукой Windows'а нет <img src="/dcforum//Images/wink.gif"><P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=7"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="8"></a>8.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>n/a</b> <a 
+            href="mailto:horny@mail.az"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      18-Jul-01,&nbsp;03:03&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         bootpart действительно помог. Правда загрузки из меню я так и не добился.... только с дискетки. Придется довольствоваться этим. Уже успел хелловорлд скомпилить :) Кстати, почему . не входит по умолчанию в path? Каждый раз ./ добавлять нужно? В любом случае, я уже . добавил в path :)
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=8"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="9"></a>9.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      18-Jul-01,&nbsp;03:11&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;bootpart действительно помог. Правда загрузки из <BR>&gt;меню я так и не <BR>&gt;добился.... только с дискетки. <P>То есть? Это как?! <P>&gt; Придется <BR>&gt;довольствоваться этим. Уже успел хелловорлд <BR>&gt;скомпилить :) Кстати, почему . <BR>&gt;не входит по умолчанию в <BR>&gt;path? Каждый раз ./ добавлять <BR>&gt;нужно? В любом случае, я <BR>&gt;уже . добавил в path <BR>&gt;:) <P>Ну логика достаточно простая: в PATH не рекомендуется заносить относительные пути просто потому, что в этой ситуации пользователь может запустить не ту программу, которую хочет. А зачастую это чревато потерей привилегий.<P>Ну например. Вводишь ты ls, а вместо нее запускается программа из текущего каталога. Которую, из-за недосмотра атрибутов каталога, туда мог положить злой хакер Вася... <P>А к "./" привыкнуть можно запросто.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=9"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="10"></a>10.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>n/a</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      18-Jul-01,&nbsp;05:10&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;То есть? Это как?! <BR>ну немного извратился :) запустил <BR>bootpart 3 bootfbsd.bin "FreeBSD 4.3"<BR>прога создала bootfbsd.bin и прописала его в C:\boot.ini. Но система из меню не загружалась (комп перезагружался). Ну я и скопировал bootfbsd.bin на флоппи - тогда заработало.<P>так, теперь осталось браузер найти, чтобы developer's handbook читать. Где-то слышал про lynx, залез в packages на фтп - там нету...<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=10"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=10"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=10"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=10"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="11"></a>11.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>n/a</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      20-Jul-01,&nbsp;07:41&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         млин, что за петрушизм... скачал lynx-2.8.3.1.tgz, положил его в папку \packages\www\ диструбутива. Также скачал мегабайтный INDEX и положил в \packages\ <BR>Но теперь, когда загружаюсь в FreeBSD, набираю /stand/sysinstall и там выбираю install packages - INDEX файл находится и читается, но когда хочу установить lynx - package не находится. В чем проблема? Структуру каталогов я же не менял? <BR>грустно, что никак не могу начать творчество...<BR>кстати, клон /usr/share/games/number уже написал :) правда без квадропупоквинтиллионов - только до миллиарда :)
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=11"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=11"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=11"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=11"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="12"></a>12.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      22-Jul-01,&nbsp;11:30&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Но теперь, когда загружаюсь в FreeBSD, <BR>&gt;набираю /stand/sysinstall и там выбираю <BR>&gt;install packages - INDEX файл <BR>&gt;находится и читается, но когда <BR>&gt;хочу установить lynx - package <BR>&gt;не находится. В чем проблема? <BR>&gt;Структуру каталогов я же не <BR>&gt;менял? <P>А воспользоваться port'ами? То что в /usr/ports?<P>Там все достаточно просто. Заходишь в нужный каталог, говоришь make install, все нужное выкачивается и компилируется. Можно сначала выкачать, потом скомпилировать <img src="/dcforum//Images/wink.gif"><P>И вообще, а просто скачать lynx, сказать ему ./configure и make install? <img src="/dcforum//Images/wink.gif"><P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=12"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=12"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=12"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=12"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="13"></a>13.  <b>"RE: помогите поставить FreeBSD!"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>n/a</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Jul-01,&nbsp;07:05&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Сенксы немеряные за помощь. Кстати, здесь мне помогли больше всего (bootpart, ./configure и т.п.) - а я в нескольких форумах светился :))<P>но вот если не повезло, то это надолго <img src="/dcforum//Images/angry.gif"> <BR>вроде все скачал, установил, даже кернел перекомпильнуть успел :). Все подготавливаюсь - вот XEmacs скачал (emacs.org почему-то не работает) - и только начал читать туториал - обнаружил неприятность - META key у меня привязана к Esc. Как ее настроить на Alt?<P>TIA
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=52&selected=13"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=52&omm=13"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=52&omm=13"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=52&omm=13"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="3">
+   <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif"> 
+      <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_archive_threads&forum=DCForumID1&selected=52"><font 
+      size="-1" color="black" face="arial,sans-serif">Archive</font></a> |  
+   <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_threads&forum=DCForumID1&selected=52&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Remove</font></a> </font>
+   <br>
+   </TD><TD ALIGN="RIGHT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=52&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=52&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+   </TD></TR>
+   
+   </TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

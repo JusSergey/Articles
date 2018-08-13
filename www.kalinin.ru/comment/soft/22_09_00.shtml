@@ -1,0 +1,434 @@
+<html><head><title>ALK :: Программное обеспечение :: Командный интерпретатор bash.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/soft/">по</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/stud/21_09_00.shtml">&lt;&lt;</a>&nbsp;22.09.00&nbsp;<a href="/comment/life/23_09_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Командный интерпретатор bash
+</h1> 
+    <p align="justify">
+      Текст ниже предназначен для тех людей, которые по принципиальным
+      соображениям не пользуются командной строкой, мотивируя
+      это тем, что им там работать "неудобно". Соотвественно,
+      я не собираюсь здесь расписывать преимущества bash над csh,
+      просто хочется на его примере (или, точнее, рядом с его
+      примером ;) ) показать то, что уметь использовать
+      командную строку очень полезно.
+    </p>
+    <p align="justify">
+      Вообще говоря, приглашение любого интерпретатора команд
+      у современного пользователя чаще всего вызывает 
+      чувство неловкости. Прежде всего потому,
+      что непонятно куда надо "ткнуть" (или "кликнуть")
+      мышкой; кроме того, вообще непонятно, что надо делать.
+      Нигде не выводятся подсказки, не появляются
+      различные рожицы "скрепок" и "собачек" с сообщениями,
+      призванными помочь человеку сделать то, что он хочет...
+      Ничего этого нет. Только мигающий курсор, показывающий
+      текущее место ввода. 
+    </p>
+    <p align="justify">
+      И, тем не менее, командная строка является одним из
+      самых удобных инструментов (хотя и не каждая: стандартный
+      интерпретатор Windows NT под названием cmd.exe 
+      удобством не отличается и вообще не совсем понятно, зачем
+      нужен). Я уже развивал различные "теории" про удобство
+      пользовательского интерфейса в своем
+      комментарии к текстовому редактору <a href="06_09_00.shtml">Emacs</a>,
+      но здесь самое место повторить основные положения вновь.
+    </p>
+    <p align="justify">
+      "Удобный" пользовательский интерфейс никогда не подразумевает
+      то, что им может пользоваться человек, который вообще впервые
+      увидел программу. Вполне вероятно, что ему придется долго
+      учиться, потом долго использовать программу, прежде чем 
+      он поймет общую идеологию и будет чувствовать себя "как рыба
+      в воде". При этом, так как если он будет пользоваться только
+      клавиатурой, то его производительность будет значительно
+      выше, чем если бы он пользовался и клавиатурой, и "мышкой",
+      просто потому что не придется отвлекаться на смену используемого
+      устройства ввода. С другой стороны, есть "понятный" пользовательский
+      интерфейс, при помощи которого человек сразу же сможет
+      выполнить какие-то действия, не затрачивая времени на подробное
+      изучение поставляемой документации.
+    </p>
+    <p align="justify">
+      Обычно, "удобный" пользовательский интефейс не является "понятным" и
+      "понятный" не является "удобным". Люди, привыкшие к "интуитивно-понятному"
+      пользовательскому интерфейсу будут очень тяжело переносить
+      вынужденное использование потенциально "удобной" программы, но не привычной
+      для них. Обычно, человек не хочет изучать "удобный" интерфейс, отпускает
+      разные комментарии в сторону авторов и стремится побыстрее избавиться
+      от трудностей, возвращясь к привычному ему "понятному" интерфейсу.
+    </p>
+    <p align="justify">
+      Хотя, конечно же, "понятен" он, обычно, с оговорками. Т.е., как сделать
+      какие-то операции, на которых представители фирмы-производителя 
+      обычно демонстрируют возможности своих программ, действительно понятно,
+      но различные менее распространенные проблемы решаются далеко
+      не так просто, сопровождаясь бесцельным блужданием по меню
+      и попытками при помощи экспериментов выяснить, на что надо "щелкнуть",
+      что бы получить желаемое.
+    </p>
+    <p align="justify">
+      Вообще, WYSIWYG является концепцией порочной в принципе. Потому она
+      поощряет человека не думать перед выполнением работы. 
+    </p>
+    <p align="justify">
+      Но так я уж слишком далеко уйду от темы. Итак, bash является 
+      командным интерпретатором, т.е. он позволяет выполнять
+      некоторые команды. Самая частая задача, которая исполняется
+      при его помощи, это "запустить программу". Кстати сказать,
+      для людей, знакомых только с command.com и cmd.exe, будет несколько
+      удивительно, наверно, что 
+      в отличии от них, в bash отсутствуют внутренние
+      комманды для, например, распечатки содержимого каталога.
+      Т.е., в command.com команда dir не запускала внешней
+      программы dir.exe или dir.com (как это было бы логично
+      ожидать), а заставляла командный интерпретатор
+      распечатать содержимое текущего каталога. В то же самое
+      время, ls является аналогичной программой, используемой для этой цели (в среде
+      Unix она обычно располагается в /bin/ls).
+    </p>
+    <p align="justify">
+      Командный интерпретатор всегда интерпретирует
+      какую-то последовательность команд, по-умолчанию поступающаю
+      со стандартного файла ввода (stdin). Таким образом,
+      можно запросто автоматизировать выполнение различных
+      рутинных операций просто записав необходимую последовательность
+      команд в файл и запуская командный интерпретатор на него. Впрочем,
+      это понятно и так --- аналогом в command.com являются файлы
+      с расширением .bat. Bash в данном случае характеризуется
+      более расширенными возможностями самого интерпретируемого языка.
+      В качестве примера скажу, что два года назад один студент
+      защищал курсовой проект, в котором он реализовал
+      объектно-ориентированную модель программирования в скриптах для
+      bash. 
+    </p>
+    <p align="justify">
+      Сама командная строка (в том случае, когда команды поступают
+      со стандартного файла ввода) в bash, пожалуй, одна из
+      самых комфортных. Очень удобна реализованная технология завершения
+      имен, которая позволяет в том месте, где требуется подставить имя файла
+      или каталога, набрать несколько первых букв и "попросить" bash 
+      завершить имя до конца. Кроме того, командный интерпретатор
+      позволяет перенаправлять потоки данных из одной программы
+      в другую (программные каналы) или подставить в качестве
+      параметра результат выполнения другой программы. Это
+      позволяет комбинировать выполнение программы практически
+      любым образом.
+    </p>
+    <p align="justify">
+      В Unix есть обширный набор маленьких программ, которые 
+      позволяют выполнять большинство операций с файлами.
+      Так как все они придерживаются одной идеологии:
+      пользуются стандартным вводом и стандартным выводом,
+      позволяют задать параметры выполнения в коммандной строке,
+      то это позволяет при помощи bash комбинировать
+      их использование для достижения практически любой цели
+      при помощи одной строки (в смысле, один раз нажать enter).
+    </p>
+    <p align="justify">
+      Можно много спорить об удобстве этого подхода (расписывать
+      здесь примеры команд мне не хочется), но могу привести
+      себя в пример. Работая в операционной системе семейства
+      Windows я обычно использую FAR в качестве оболочки (bash,
+      к сожалению, до сих пор не является "целиком" родным для Windows),
+      а при работе в Unix (любом) --- bash (кстати, в последнее
+      время большую часть времени за компьютером я провожу работая
+      именно в Unix). И это несмотря на то, что для Unix есть
+      свой собственный клон Norton Commander'а --- Midnight Commander.
+      Просто действительно получается так, что все операции с файлами
+      для меня быстрее выполнить набрав что-нибудь в коммандной строке.
+    </p>
+    <p align="justify">
+      Хотя я, конечно же, не показатель. Вообще, в последнее время у меня
+      появилась дурацкая привычка читать почту только на рабочей машине --- даже
+      дома я захожу туда по ssh и читаю ее mutt'ом...
+    </p>
+    <p align="justify">
+      Но некоторые преимущества (кроме перечисленных выше) у bash есть. Освоив
+      его вы сможете одинаково эффективно работать с файлами в любой
+      операционной системе, где он есть, а таких немало. Кроме того, вы сможете
+      работать на удаленной машине по сети, потому что идеология работы с файлами
+      ввода и вывода очень просто позволяет передавать команды, набираемые пользователем,
+      по сети и возвращать реакцию компьютера (например, используя telnet). Не спорю,
+      можно использовать X-протокол и работать с графическим интерфейсом пользователя
+      по сети, но текстовый значительно более универсален и, как следствие, надежен.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Если вас не будет кидать в холодный или горячий пот при виде командной строки,
+      то пользы от этого будет достаточно много, что бы оправдать потраченное время
+      на ее изучение. Никогда доподлинно не известно, когда, что и где может пригодиться,
+      но, вполне вероятно, знание bash пригодиться обязательно. Особенно, если вы человек "тяжелой"
+      профессии программиста.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/soft/print_22_09_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.gnu.org/bash" target="_blank">http://www.gnu.org/bash</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальная страничка коммандного интерпретатора bash (Bourne Again SHell).
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/23_09_00.shtml">Олимпиада-2000 в Сиднее </a> (23.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Мне не очень нравятся летние виды спорта и поэтому я не особенно слежу за событиями, разворачивающемеся в Сиднее. Точнее сказать, вообще...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/23_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/21_09_00.shtml">Автоматизация заполнения базы данных "по студентам", немного статистики </a> (21.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я уже провел две лабораторных работы и один семинар с первым курсом в этом семестре и, так как на лабораторных мне...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/21_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/01_12_01.shtml">Игры </a> (01.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я очень давно не играл в компьютерные игры (за редким исключением --- например, дорвавшись до тетриса) и когда наконец-то собрал себе...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/01_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/22_09_00.shtml">Командный интерпретатор bash </a> (22.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Текст ниже предназначен для тех людей, которые по принципиальным соображениям не пользуются командной строкой, мотивируя это тем, что им там работать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/22_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/06_09_00.shtml">Emacs </a> (06.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Emacs является культовой программой для редактирования текстов. Я думаю, что у людей, которые впервые о нем слышат, должно вызвать удивление номер...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/06_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/23_09_00.shtml">Олимпиада-2000 в Сиднее </a> (23.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Мне не очень нравятся летние виды спорта и поэтому я не особенно слежу за событиями, разворачивающемеся в Сиднее. Точнее сказать, вообще...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/23_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/21_09_00.shtml">Автоматизация заполнения базы данных "по студентам", немного статистики </a> (21.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я уже провел две лабораторных работы и один семинар с первым курсом в этом семестре и, так как на лабораторных мне...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/21_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

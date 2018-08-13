@@ -1,0 +1,450 @@
+<html><head><title>ALK :: Просто так :: О чем же, в конце-то концов, сделать "свой сайт"?</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/etc/">просто так</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/cpp/23_07_00_c.shtml">&lt;&lt;</a>&nbsp;23.07.00&nbsp;<a href="/comment/books/24_07_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Так о чем же рассказать на собственной страничке?
+</h1> 
+    <p align="justify">
+      Недавно натолкнулся на следующую страничку (она находится <a href="http://www.chat.ru/~mher/">здесь</a>),
+      на которой расположен текст следующего содержания (скопирован без изменений):
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Меня зовут Мгер.Я живу в Ереване.Мне 15 лет.Люблю слушать музыку и играть в футбол...
+      Я хочу создать маленький сайтик.Но не знаю о чём.Да и не весело одному.Если у вас есть идеи о 
+      чём создавать сайт,то пешите мне!!! 
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Когда я это прочитал, то сначала, как вы сами понимаете, заулыбался. 
+      Мол, вот до чего дошли --- теперь уже спрашивают, "о чем создавать сайт";
+      ну, напишу я ему, что надо создать сайт о квантовой физике, что дальше-то?
+      Впрочем, не буду писать --- вдруг, действительно создаст?
+    </p>
+    <p align="justify">
+      Но улыбка у меня продержалась недолго --- я сам вспомнил, как (уже два года) пытался
+      разобраться с собственной домашней страницей, которая у меня играла роль
+      скорее декоративную --- для того, что бы сбалансировать подпись в письме, куда она помещалась.
+      Все дело в том, что когда я начинал делать свои "хоумпейджеры", я почему-то считал, что
+      надо сначала найти место (то, которое в мегабайтах), нарисовать что-то до жути красивое,
+      после чего все остальное приложится. Я думаю, что все догадались, что произошло --- не приложилось.
+      Я пытался расположить на своей страничке чужие тексты, FAQ на различные темы, 
+      фотографии и т.д. Тем не менее, всему этому, чувствовалось, чего-то не хватает...
+    </p>
+    <p align="justify">
+      Я не буду говорить о том, что меня сподвигло на то, что бы бросить окончательно
+      все старые потуги и заняться новым "хоумпейджером" --- захотелось. Надо сказать, что домен второго
+      уровня моей странички это не желание повыпендриваться, а некоторый символ того,
+      что произошли (или происходят; во всяком случае, очень на это надеюсь) некоторые
+      качественные изменения по сравнению с предыдущими начинаниями. Я вообще, слишком
+      много в этот раз распространяюсь про себя, но это имеет перед собою цель
+      плавно перейти к волнующему меня вопросу.
+    </p>	
+    <p align="justify">
+      Итак, человек первый раз в жизни увидел окно броузера и щелкнул на какую-то ссылку.
+      Первые несколько "кликов" он сделает, скорее, лениво, но уже через пару минут
+      найдет что-то интересное --- будет это сайт любимой группы "Стрелки" или
+      руководство по вышиванию крестиком, но он это себе найдет. Что произойдет потом? Гибель.
+      Гибель человека для окружающего мира на пару часов (пока не отгонят от компьютера), потому что он
+      начнет изучать страницы, рассматривать фотографии людей-единомышленников (или какие
+      другие фотографии --- что греха таить, сайты соответствующей направленности, несомненно,
+      являются самыми популярными)... что происходит дальше? Покупка модема и интернет-карты, 
+      некоторые изменения в речи ("рулез", "сакс", "прога", "аська", ...),
+      появление при разговоре с людьми фразы "кинь мне это по мылу" и навечно занятый 
+      телефонный номер. 
+    </p>
+    <p align="justify">
+      Когда говорят о том, что Интернет предоставляет неограниченные возможности,
+      всегда вспоминают о том, что человек может запросто разместить где-либо
+      все что его душа пожелает, и это смогут увидеть миллионы людей (на это
+      особенно привлекается внимание). Люди, которые слово "интернет" услышали
+      первый раз в прошлом месяце, с важностью в голосе говорят о том, как они
+      умело пользуются современными методами доступа к инофрмации, читая ленту 
+      новостей на <a href="http://www.lenta.ru">Lenta.Ru</a> или <a href="http://www.infoart.ru">InfoArt.Ru</a>.
+      И что? Действительно, количество людей, посетивших Ленту.Ру составляет
+      несколько десятков тысяч человек в день...
+    </p>
+    <p align="justify">
+      Конечно же, после таких цифр голова у нового члена "киберсообщества" несколько
+      едет (не дает покоя слава Артемия Лебедева и Алекса Экслера) и он начинает 
+      судорожно вспоминать о том, что же он может донести до
+      окружающего мира --- секреты мытья кошек, опыт написания программ на Бейсике,
+      проблемы сексуальных меньшинств... Выбрав себе что-то наспех, он бежит
+      "столбить" место на серверах с бесплатным хостингом и на весь
+      мир трубит о том, что есть такой человек, который буквально завтра
+      всем расскажет о том, как правильно складывать бумажные самолетки. 
+      Он ставит сакраментальную фразу "Under construction", изображение
+      человека с лопатой (в тяжелых случаях, анимированное)
+      и свой почтовый адрес, для того, что бы заинтересованные смогли бы общаться с ним.
+      Что происходит дальше? У 15-летнего Мгера на его страничке побывало 35 человек, из
+      которых, я уверен, десяток раз накрутил он себе сам для проверки значений счетчика.
+      Это нормально, я сам хожу на свою страничку для того, что бы посмотреть, не побились ли
+      у меня ссылки и на гордую красоту единственной темы в форуме под названием "Проверка" ;)
+      Но только меня это не смущает, потому что я знаю, что так и должно это быть, а что у нас 
+      с новым членом "киберсообщетсва"?
+    </p>
+    <p align="justify">
+      Конечно же, такое количество посещений не впечатляет, ведь обещали миллионы? Куда же
+      делись остальные? Остальные упорно игнорируют новое начинание. Адрес странички появляется
+      в каком-нибудь кататлоге ресурсов, сама страничка увешивается счетчиками разлиного калибра
+      и баннерами во всех углах страницы, после чего следующий попавший туда убегает
+      сразу же от безумного мелькания в глазах приглашений познакомиться, поиграть и посмеяться
+      на известных сайтах. После этого кровь у создателя страницы остывает и 
+      остается единственный след его творчества --- гордый сайтокопатель на главной
+      странице и фраза "последние изменения были сделаны полтора года назад, завтра будет
+      супер интересное обновление", смотря на которую случайный посетитель может только пожать плечами,
+      ковырясь у себя в носу (если бы не ковырялся, то он обязательно закрыл бы это окно, а так
+      приходится читать).
+    </p>
+    <p align="justify">
+      Почему же все так вышло? И ведь есть примеры удачных персональных страниц,
+      тот же <a href="http://www.exler.ru">Exler.Ru</a> (интересно, он еще
+      не икает от упоминаний у меня на страничке? ;) ) или <a href="http://dz.yandex.ru">DZ Online</a>,
+      что помешало новому сайту о разведении тыквы в домашних условиях стать, хотя бы, в десятую
+      часть удачным, что и вышеприведенные примеры?
+    </p>
+    <p align="justify">
+      На мой взгляд --- подход. Потому что ни Экслер, ни Завалишин, я уверен в этом,
+      не думают так о своей популярности, как абстрактный член "киберсообщества", которого
+      я уже вспоминал --- они просто делают то, что им нравится и доставляет удовольствие.
+      Вот нравится Экслеру несколько раз в неделю смотреть новые фильмы, а потом о
+      них писать свои отзывы, так что же более? Он пишет отзывы для себя, с таким
+      же успехом он мог бы складывать их в ящик стола или в мусорное ведро. То есть,
+      его личный интерес к просмотру фильмов и раздумий над ними не зависит от того,
+      сколько человек заинтересовались тем, как он с котом Бубликом разместился на диване
+      перед заставкой нового фильма. 
+    </p>
+    <p align="justify">
+      А у новоявленного Васи Пупкина --- зависит. Поэтому ему
+      так тяжело определится с темой для своего собственного сайта (собственно,
+      в пику сайтовладельцам я прошу называть мои потуги домашней страничкой,
+      это правильнее) и так сложно поддерживать обновления по этой теме. Вот,
+      если бы было несколько человек, которые бы хором вопили "просим, просим, просим",
+      а он, позевывая, соглашался бы "ну, ладно, завтра, быть может", тогда
+      интерес продержался бы несколько дольше. А потом все равно бы угас, потому
+      что заниматься неинтересным делом скучно.
+    </p>
+    <p align="justify">
+      Еще, хотелось бы сказать, что содержать свою персональную страничку
+      очень сложно. То есть, я имею в виду интересную страничку, которую
+      будет интересно посмотреть не только автору и его коту, а и еще
+      нескольким людям. На самом деле, я очень сильно уважаю энтузиазм
+      всех содержателей того, что называется авторскими проектами, потому
+      что уже понимаю, насколько это тяжело. А сколько людей не выдержало,
+      и похоронило свои, не скрою, интерснейшие проекты? Причем, все из-за
+      одной и той же проблемы --- нехватки времени.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Создать интересную страничку сложно, а вот выбрать тему --- не проблема.
+      Тему надо выбирать такую, к которой лежит душа и о которой можно что-то
+      рассказать. При этом не стоит очень заботится о том, что усилия пропадут
+      бесследно и результаты никто не увидит --- любая интересная 
+      страница рано или поздно обретет своего читателя. Во всяком случае,
+      так было раньше ;)
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/etc/print_23_07_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.exler.ru/links.htm" target="_blank">http://www.exler.ru/links.htm</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Список ссылок на сайте Exler.Ru. Среди описанных там ссылок есть очень интересные авторские проекты.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.atrus.ru/rus/themes.asp?id2" target="_blank">http://www.atrus.ru/rus/themes</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Коллекция ссылок на домашние страницы в каталоге @Rus.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.gatchina.ru/homepage/tapakah/" target="_blank">http://www.gatchina.ru/homepag</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ ТапакаХ online --- забавное руководство о том, как сделать свой сайт. С примерами выполненных работ ;)
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://zen.ru/Zen_text_DaoNet.htm" target="_blank">http://zen.ru/Zen_text_DaoNet.</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Дао Сети, инструкция для сайтостроителей.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/06_08_00.shtml">Фабрики домашних страниц </a> (06.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я уже не помню, какой из серверов в Рунете стал первым предоставлять свободное место под домашние странички или проекты, возможно, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/06_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_07_00.shtml">"Человеческое лицо" в интернете </a> (30.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, на мой взгляд, самое интересное, что есть в интернете, это "домашние странички". Многие из них, зачастую, плохо сделаны, большинство ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/24_07_00.shtml">Основы CORBA </a> (24.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Описываемая книга является первой (и, пока что единственной) книгой на русском языке по CORBA. Этот факт придал пущей важности издателям, но,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/24_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/23_07_00_c.shtml">Новый язык программирования от Microsoft: C# </a> (23.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Честно говоря, когда я первый раз об этом услышал, я подумал что это чья-то дурацкая шутка. Но нет, действительно, фирма Microsoft...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/23_07_00_c.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_11_08.shtml">Арендованный сервер от hcenter.ru и хостинг в Германии </a> (30.11.08)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Началось всё с того, что я решил попробовать арендовать сервер в Германии. Я слышал много положительных отзывов в пользу такого мнения,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_11_08.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_09_01.shtml">После отпуска </a> (23.09.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется иногда написать что-то в виде зарисовки. Так сказать, "из жизни" --- О.Генри очень много издевался над подобным жанром и авторами,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_09_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/13_07_01.shtml">Круглая дата </a> (13.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Тихо-тихо и незаметно прошла историческая дата: 11 июля 2000 года я написал первую заметку и выложил ее на свою домашнюю страничку....<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/13_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/15_06_01.shtml">Новый дизайн, часть 2 </a> (15.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как многие могли заметить, kalinin.ru наконец-то сменил дизайн. Тому было много причин, о которых я хотел бы рассказать, кроме того просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/15_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/05_03_01.shtml">Театральные билеты </a> (05.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Мне всегда смешно смотреть по телевидению на очередного актера, когда тот с придыханием начинает говорить об искусстве, о спектаклях, о театре......<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/05_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_02_01.shtml">Авторское право </a> (12.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Авторское право... до чего же, однако, скользкий термин. Самое смешное, каждый автор и каждый нарушитель авторского права трактуют его по-своему и...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/31_12_00.shtml">С новым годом! </a> (31.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Прекрасно понимаю, что поздравления с Новым Годом, наверное, уже приелись людям... но, с другой стороны, это, фактически, единственный настоящий праздник. Настоящий...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/31_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/24_07_00.shtml">Основы CORBA </a> (24.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Описываемая книга является первой (и, пока что единственной) книгой на русском языке по CORBA. Этот факт придал пущей важности издателям, но,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/24_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/23_07_00_c.shtml">Новый язык программирования от Microsoft: C# </a> (23.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Честно говоря, когда я первый раз об этом услышал, я подумал что это чья-то дурацкая шутка. Но нет, действительно, фирма Microsoft...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/23_07_00_c.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 127<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/127.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"фрагментация GRE-пакетов"</font></b><br>
+Posted by Lebedev A. V.  on 29-Oct-03 at 06:10&nbsp;PM<br>
+<blockquote>Есть такая проблема. На сервере под FreeBSD работает mpd и раздаёт всем интернет через VPN. В настройках явно указано, что MTU для виртуальных интерфейсов устанавливать в 1400, но когда Windows XP соединяется, MTU равен 1500. Из за этого получается фигня вроде бы из-зи фрагментации GRE пакетов: некоторые сайты в интернете не видны, то есть не заходит по 80 порту. Но только это с очень редкими сайтами. Например translate.lycos.ru. Вполне возможно, что проблема вообще не в этом и не связан с MTU, этого я точно не знаю. Помогите разобраться, если кт-нибудь уже сталкивался с такой проблемой.<BR>  Заранее спасибо.<BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: фрагментация GRE-пакетов</b>,<b>xOr</b>, 08:47&nbsp;PM, 28-Jun-04
+<ul>
+<li><b>RE: фрагментация GRE-пакетов</b>,<b>Vlados</b>, 02:43&nbsp;AM, 19-Aug-05
+<ul>
+<li><b>RE: фрагментация GRE-пакетов</b>,<b>sso</b>, 07:57&nbsp;PM, 14-Mar-06
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: фрагментация GRE-пакетов"</b><br>
+Posted by xOr  on 28-Jun-04 at 08:47&nbsp;PM<br>
+<blockquote>
+У меня точно такая же проблема!<BR>И это не только с WinXP, а с любими другими. И не работает БОЛЬШИНСТВО сайтов.<P>Где не спрашивал - никто ответить не может. Причём у многих MPD работает отлично.
+</blockquote>
+<hr>
+<b>"RE: фрагментация GRE-пакетов"</b><br>
+Posted by Vlados  on 19-Aug-05 at 02:43&nbsp;AM<br>
+<blockquote>
+ребят у меня такая же проблема, шас ищу в чем дело
+</blockquote>
+<hr>
+<b>"RE: фрагментация GRE-пакетов"</b><br>
+Posted by sso  on 14-Mar-06 at 07:57&nbsp;PM<br>
+<blockquote>
+Нашли, в чем была проблема?
+</blockquote>
+<hr>
+</font></body></html>

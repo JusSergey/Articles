@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 136<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/136.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Java-апплет"</font></b><br>
+Posted by ilias  on 19-Apr-04 at 06:57&nbsp;AM<br>
+<blockquote>У меня есть корректная HTML-страничка с встроенным в нее Java-апплетом. Апплет откомпилирован и лежит в той же директории. Однако ни один из браузеров (Mozilla 1.4 или Internet Explorer 6.0) в упор не видит апплет и пишет, что его надо скачать. При попытке это сделать браузер связывается с сайтом Sun и хочет скачать там апплет, разумеется, безуспешно.<P>В документации сказано, что если установлен JDK, то этих проблем быть не должно, однако... Как исправить? </blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Java-апплет</b>,<b>Рафаиль</b>, 06:56&nbsp;AM, 26-Dec-05
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Java-апплет"</b><br>
+Posted by Рафаиль  on 26-Dec-05 at 06:56&nbsp;AM<br>
+<blockquote>
+&gt;У меня есть корректная HTML-страничка с <BR>&gt;встроенным в нее Java-апплетом. Апплет <BR>&gt;откомпилирован и лежит в той <BR>&gt;же директории. Однако ни один <BR>&gt;из браузеров (Mozilla 1.4 или <BR>&gt;Internet Explorer 6.0) в упор <BR>&gt;не видит апплет и пишет, <BR>&gt;что его надо скачать. При <BR>&gt;попытке это сделать браузер связывается <BR>&gt;с сайтом Sun и хочет <BR>&gt;скачать там апплет, разумеется, безуспешно. <BR>&gt;<BR>&gt;<BR>&gt;В документации сказано, что если установлен <BR>&gt;JDK, то этих проблем быть <BR>&gt;не должно, однако... Как исправить? <BR>&gt;<P><BR>
+</blockquote>
+<hr>
+</font></body></html>

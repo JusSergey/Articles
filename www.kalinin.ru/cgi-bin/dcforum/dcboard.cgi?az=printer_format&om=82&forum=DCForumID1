@@ -1,0 +1,72 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 82<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/82.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"TeX-viewer"</font></b><br>
+Posted by Andrey Metelyov  on 24-Apr-02 at 05:21&nbsp;AM<br>
+<blockquote>Имеется ли в природе обычный просмотрщик (не редактор или издательская система) документов в формате TeX для Windows?<BR>Качать MiKTeX (~20 Мб) ради того, чтобы почитать эти документы как-то не очень хочется :)<BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: TeX-viewer</b>,<b>Andrey Metelyov</b>, 05:03&nbsp;AM, 16-May-02
+<ul>
+<li><b>RE: TeX-viewer</b>,<b>rihad</b>, 12:10&nbsp;PM, 18-May-02
+<ul>
+<li><b>RE: TeX-viewer</b>,<b>Andrey L. Kalinin</b>, 12:17&nbsp;PM, 18-May-02
+</ul>
+<li><b>RE: TeX-viewer</b>,<b>Malaxit</b>, 03:47&nbsp;AM, 02-Jan-05
+</ul>
+<li><b>RE: TeX-viewer</b>,<b>DR#m</b>, 07:44&nbsp;PM, 24-Feb-04
+<ul>
+<li><b>RE: TeX-viewer</b>,<b>Proteus</b>, 01:15&nbsp;AM, 06-May-05
+</ul>
+<li><b>RE: TeX-viewer</b>,<b>Proteus</b>, 08:02&nbsp;PM, 16-Jan-05
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: TeX-viewer"</b><br>
+Posted by Andrey Metelyov  on 16-May-02 at 05:03&nbsp;AM<br>
+<blockquote>
+Всё это ради Кнута. <img src="/dcforum//Images/angry.gif"><BR>скачал я его книжки в формате TeX, а просмотреть не могу.<P>Может в конце концов ест у кого-нибудь книга Кнута "Искусство программирования" в формате doc, rtf, pdf, ну txt на худой конец?!!
+</blockquote>
+<hr>
+<b>"RE: TeX-viewer"</b><br>
+Posted by rihad  on 18-May-02 at 12:10&nbsp;PM<br>
+<blockquote>
+Не мог бы линк на книжки кинуть?
+</blockquote>
+<hr>
+<b>"RE: TeX-viewer"</b><br>
+Posted by Andrey L. Kalinin  on 18-May-02 at 12:17&nbsp;PM<br>
+<blockquote>
+&gt;Не мог бы линк на книжки <BR>&gt;кинуть? <P>Я могу и даже несколько раз уже это делал: <a href="http://www.lib.ru/CTOTOR/KNUT" target="_blank">http://www.lib.ru/CTOTOR/KNUT</a>/<P>Сам не компилировал, поскольку нет необходимости (два тома стоят на полке, один валяется на столе <img src="/dcforum//Images/wink.gif"> ), но уверен что это не сложно. Там же есть инструкция <img src="/dcforum//Images/wink.gif"> насколько я понимаю из нее важным является только последний пункт, то есть для того, чтобы скомпилировать, надо переделать формат plain для использования шрифтов Самарского-Глонти и русских переносов. <P>Хотя почему не был использован LaTeX, я не понимаю. Всем сразу стало бы легче...
+</blockquote>
+<hr>
+<b>"RE: TeX-viewer"</b><br>
+Posted by Malaxit  on 02-Jan-05 at 03:47&nbsp;AM<br>
+<blockquote>
+<a href="http://lib.ru/CTOTOR/KNUT" target="_blank">http://lib.ru/CTOTOR/KNUT</a>/<BR>Там внизу про TeXы фак есть
+</blockquote>
+<hr>
+<b>"RE: TeX-viewer"</b><br>
+Posted by DR#m  on 24-Feb-04 at 07:44&nbsp;PM<br>
+<blockquote>
+Andrey, ты не один такой <img src="/dcforum//Images/wink.gif"> я тоже с lib.ru скачал Кнута, а посмотреть не могу (((((
+</blockquote>
+<hr>
+<b>"RE: TeX-viewer"</b><br>
+Posted by Proteus  on 06-May-05 at 01:15&nbsp;AM<br>
+<blockquote>
+&gt;Andrey, ты не один такой <img src="/dcforum//Images/wink.gif"> <BR>&gt;я тоже с lib.ru скачал <BR>&gt;Кнута, а посмотреть не могу <BR>&gt;((((( <P>На Зайцевском диске, если мне память не изменяет. Там вообще Кнут лежит ввиде файлов с кучей инклудников, написанный в AmsTex да ещё и виндовой кодировке. Такое чудище откомпилировать смогут только немногие избранные)))<P>Могли бы туда скомпилированный файл для приличия припихнуть...<BR>
+</blockquote>
+<hr>
+<b>"RE: TeX-viewer"</b><br>
+Posted by Proteus  on 16-Jan-05 at 08:02&nbsp;PM<br>
+<blockquote>
+Да ты можешь попросить у кого-нибудь кто TeTeX досовый имеет. Тока толку тебе от него не будет. Смотрит он конешно очень хорошо. Но DVI файл сам по себе не содержит ни текста ни картинок ничего. Тока ссылки на шрифты и рамочки, которые расположения символов содержат. Без самих шрифтов там делать нечего. Ещё если ты все шрифты не хочешь, то можно афйлы виртульных шрифтом скачать, некоторые спросмоторшики из них ширфты настоящие могут генерить (но им опять же для это средтва нужны). По любому тебе проще сам TeX скачать (как бы противно небыло). Другое дело что mikTeX не надо. Под виндой есть целая гора техов, mikTeX на их фоне - это большой жирный слон....
+</blockquote>
+<hr>
+</font></body></html>

@@ -1,0 +1,451 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage  - "Событийная модель в WinSock: Pozvol'te vozmutitsja."
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+   <META HTTP-EQUIV="Expires" CONTENT="Tues, 04 Dec 1996 21:00:00 GMT">
+   <META HTTP-EQUIV="pragma" content="no cache">
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>"Событийная модель в WinSock: Pozvol'te vozmutitsja."</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+   <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" bgcolor="#EAE8E0">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=printer_format&om=60&forum=DCForumID1"><img
+   src="/dcforum//Images/printer_friendly.gif" align="bottom" border="0"><font 
+   SIZE="1" FACE="arial,sans-serif" 
+   color="black">Printer-friendly version of this topic</font></a></TD>
+   <TD ALIGN="RIGHT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <font color="black"><b></b></font>&nbsp;
+   <br><font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=60&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=60&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>&nbsp;</FONT></TD></TR>
+      <TR><TH COLSPAN="4" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+         face="arial,sans-serif" color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> 
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&archive="><font 
+         face="arial,sans-serif" color="black" size="-1">Основной форум</FONT></a> <font 
+         face="arial,sans-serif" color="black" size="-1">(Public)</font>
+         </TH></TR>
+      <TR BGCOLOR="#E3DAA5">
+      <TD ALIGN="LEFT" COLSPAN="4">
+      <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+      Original message</font></TD></TR></TABLE>
+      <br>
+      <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="0"></a> <b>"Событийная модель в WinSock: Pozvol'te vozmutitsja."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Boris</b> <a 
+            href="mailto:borist@allcharge.com"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      05-Sep-01,&nbsp;04:16&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Dobryj den'.<P>Prochital ja zametku pro winsock ( <a href="http://www.kalinin.ru/programming/network/12_12_00.shtml" target="_blank">http://www.kalinin.ru/programming/network/12_12_00.shtml</a> ) i obidno mne stalo za staryj dobryj "select". Prochitaet takoe chelovek v oznakomitel'nyx zeljax i reshit ne pol'zovatsja selectom. Nachnet pod windows pisat', a esli Micro$oft ( ne daj bog )obankrotitsja, ostanetsja on bez raboty, v samom rascvete sil. <P>V obshjem, i cheloveka zhalko, i za select obidno.<BR>Izvenite Grigorij.<BR>---<P><P>Немного вводной информации<BR>...<BR>Что интересно тип WSAEVENT является просто переопределением типа HANDLE со всеми вытекающими отсюда возможностями.<P>IMXO, eti vozmozhnosti -- lishnie bugi.<BR>To chto funkcii mozhno "skormit'" luboj "void *", a ona sama reshit', padat' ej ili net, ne javljaetsja ee: ( funkcii ) dostoinstvom, skoree naoborot. Otsutstvie tipizacii -- eto ploxo.<P>Причина первая, эстетическая.<BR>Eto delo vkusa. Menja naprimer win API pugaet.<P>Причина вторая, элегантная.<BR>...<BR>Если в программе, только один поток то проблемы нет, но не надо забывать что обе эти функции поддерживают не более 64 сокетов. А если надо больше?  .... Так вот, единственный разумный выход из описанной ситуации который мне видится --- это многопоточность.Каждый поток работает со своими соединениями и все замечательно.... <P>Stroka: <BR>#define FD_SETSIZE 1024 <P>Rastjagivaet vozmozhnosti selecta do neobhodimogo razmera. A vot WaitForMultipleEvents dejstvitel'no sluchaj kretichnyj. Teper' podumaem chto bysree: prosten'kij "loop" na 1024 iteracii ili odin "context switch" pri perekluchenii threadov ? <P>Resume:<BR>Pol'zavatsja nado asynchronnym IO, tam gde ono est', i selectom, tam gde ego ( AsynchIO ) net.<P>Tem bolee chto est' takoj zamechatel'nyj call kak "asynch. file transfer". Beret socket, beret file i zvonit Vam kogda vse uze gotovo. <BR>( eto k teme "staticheskih serverov" -&gt; <a href="http://www.kalinin.ru/programming/network/16_07_01.shtml" target="_blank">http://www.kalinin.ru/programming/network/16_07_01.shtml</a> :) )<P><P><BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+      </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=60&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=60&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=60&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE>
+      <br>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         <a name="TOP">&nbsp;</a>Table of contents</font></TD></TR></TABLE>
+         <br><TABLE 
+         BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="LEFT" COLSPAN="2">
+         <font SIZE="-1" FACE="arial,sans-serif" color="black">
+         
+               <img src="/dcforum//Images/message.gif">
+               <a href="#1">RE: Событийная модель в WinSock: Po...</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">08-Sep-01, (1)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#2">RE: Событийная модель в WinSock: Po...</a>,
+               <b>Алексей В. Лебедев</b>, <font size="1">23-Jun-02, (2)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#3">RE: Событийная модель в WinSock: Po...</a>,
+               <b>alk</b>, <font size="1">23-Jun-02, (3)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="37" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#4">RE: Событийная модель в WinSock: Po...</a>,
+               <b>Алексей В. Лебедев</b>, <font size="1">06-Jul-02, (4)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="55" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#5">RE: Событийная модель в WinSock: Po...</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">07-Jul-02, (5)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="73" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#6">RE: Событийная модель в WinSock: Po...</a>,
+               <b>Алексей В. Лебедев</b>, <font size="1">07-Jul-02, (6)</font><br>
+               
+         </font></TD></TR></TABLE><p>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="right" COLSPAN="2">
+         <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=60&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=60&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+         </TD></TR></TABLE><TABLE BORDER="0" WIDTH="70%" 
+         cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Messages in this topic
+         </font></TD></TR></TABLE>
+         <br>
+         
+
+   <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="1"></a>1.  <b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      08-Sep-01,&nbsp;10:17&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Dobryj den'. <BR>&gt;<BR>&gt;Prochital ja zametku pro winsock ( <BR>&gt;<a href="http://www.kalinin.ru/programming/network/12_12_00.shtml" target="_blank">http://www.kalinin.ru/programming/network/12_12_00.shtml</a> ) i obidno mne <BR>&gt;stalo za staryj dobryj "select". <P>Хм. Ну заметка это не моя, так что было бы логично передать "возумщения" ее автору, но и я отвечу как я себе это понимаю.<P>Сразу же хочу сказать, что ничего "идеального" не существует. Нет техники в сетевом программировании, которая одинаково хорошо подошла бы под любые требования. Поэтому "старый добрый select" хорош только в тех приложениях, для которых он создавался (что-то о его недостатках есть в статье про kevent'ы).<P>&gt;Prochitaet takoe chelovek v oznakomitel'nyx <BR>&gt;zeljax i reshit ne pol'zovatsja <BR>&gt;selectom. Nachnet pod windows pisat', <BR>&gt;a esli Micro$oft ( ne <BR>&gt;daj bog )obankrotitsja, ostanetsja on <BR>&gt;bez raboty, v samom rascvete <BR>&gt;sil. <P>Я бы не стал считать абстрактного человека, читающего мой хоумпейджер, глупее себя <img src="/dcforum//Images/wink.gif"> <P><BR>&gt;A vot WaitForMultipleEvents dejstvitel'no sluchaj <BR>&gt;kretichnyj. Teper' podumaem chto bysree: <BR>&gt;prosten'kij "loop" na 1024 iteracii <BR>&gt;ili odin "context switch" pri <BR>&gt;perekluchenii threadov ? <P>Да, с этим я согласен. Но, когда мы обсуждали эту статью с ее автором, то выяснилось, что ему _легче_ разрабатывать его конкретный сервер основываясь на потоках, обрабатывающих каждый сокет в отдельности. Можно себе представить ситуацию, когда обработка сообщения в сокете настолько велика, что переключение контекста перестает быть значительным.<P>&gt;Resume: <BR>&gt;Pol'zavatsja nado asynchronnym IO, tam gde <BR>&gt;ono est', i selectom, tam <BR>&gt;gde ego ( AsynchIO ) <BR>&gt;net. <P>aio достаточно сложно в программировании, imho. Кроме того лично у меня были проблемы в использовании aio на разных платформах.<P>А пользоваться надо тем, что лучше подходит под конкретную задачу <img src="/dcforum//Images/wink.gif"><P>&gt;Tem bolee chto est' takoj zamechatel'nyj <BR>&gt;call kak "asynch. file transfer". <BR>&gt;Beret socket, beret file i <BR>&gt;zvonit Vam kogda vse uze <BR>&gt;gotovo. <BR>&gt;( eto k teme "staticheskih serverov" -&gt; <a href="http://www.kalinin.ru/programming/network/16_07_01.shtml" target="_blank">http://www.kalinin.ru/programming/network/16_07_01.shtml</a> :) )<P>А есть ли уверенность, что такая техника будет быстрее kqueue в freebsd или /dev/poll в solaris? Я думаю, нет. А kqueue значительно более общая техника...<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=60&selected=1"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=60&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=60&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=60&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="2"></a>2.  <b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Алексей В. Лебедев</b> <a 
+            href="mailto:matilda@beep.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      23-Jun-02,&nbsp;03:53&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;&gt;...Resume: <BR>&gt;&gt;Pol'zavatsja nado asynchronnym IO, tam gde <BR>&gt;&gt;ono est', i selectom, tam <BR>&gt;&gt;gde ego ( AsynchIO ) <BR>&gt;&gt;net. <P>&gt;aio достаточно сложно в программировании, imho. &gt;Кроме того лично у меня были проблемы в &gt;использовании aio на разных платформах.<P>Интересно, а ты думаешь с использованием WSAWaitForMultipleEvents() на разных платформах проблем меньше? 8-)<BR>(Это не попытка защитить aio -- я его так и не использую, видимо по причине сложности. В моём случае оказалось проще<BR>использовать select() и пул thread-ов)<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=60&selected=2"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=60&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=60&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=60&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="3"></a>3.  <b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>alk</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      23-Jun-02,&nbsp;04:01&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;&gt;&gt;...Resume: <BR>&gt;&gt;&gt;Pol'zavatsja nado asynchronnym IO, tam gde <BR>&gt;&gt;&gt;ono est', i selectom, tam <BR>&gt;&gt;&gt;gde ego ( AsynchIO ) <BR>&gt;&gt;&gt;net. <BR>&gt;&gt;aio достаточно сложно в программировании, imho. &gt;&gt;Кроме того лично у меня были проблемы в &gt;&gt;использовании aio на разных платформах.<BR>&gt;Интересно, а ты думаешь с использованием <BR>&gt;WSAWaitForMultipleEvents() на разных платформах проблем <BR>&gt;меньше? 8-) <P>Ну да, уел <img src="/dcforum//Images/wink.gif"><P>&gt;(Это не попытка защитить aio -- <BR>&gt;я его так и не <BR>&gt;использую, видимо по причине сложности. <BR>&gt;В моём случае оказалось проще <BR>&gt;использовать select() и пул thread-ов) <P>А пул тредов зачем? <img src="/dcforum//Images/wink.gif"><BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=60&selected=3"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=60&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=60&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=60&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="4"></a>4.  <b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Алексей В. Лебедев</b> <a 
+            href="mailto:matilda@beep.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      06-Jul-02,&nbsp;04:39&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;А пул тредов зачем?<P>Просто не охота запускать тредд на каждый коннект -- их слишком много.<P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=60&selected=4"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=60&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=60&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=60&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="5"></a>5.  <b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      07-Jul-02,&nbsp;08:59&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;&gt;А пул тредов зачем?<BR>&gt;Просто не охота запускать тредд на <BR>&gt;каждый коннект -- их слишком <BR>&gt;много. <P>Я спрашивал не столько про пул, сколько про треды. <img src="/dcforum//Images/wink.gif"><BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=60&selected=5"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=60&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=60&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=60&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="6"></a>6.  <b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Алексей В. Лебедев</b> <a 
+            href="mailto:matilda@beep.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      07-Jul-02,&nbsp;12:26&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Я спрашивал не столько про пул, <BR>&gt;сколько про треды. <img src="/dcforum//Images/wink.gif"> <P>8-) У меня нет точного ответа на этот вопрос, но наверное с ними проще. Хотя нет. С ними всегда было сложнее. Я имею ввиду проще, если отбросить все заботы, связанные с синхронизацией. В сумме, возможно , ты и прав, но точно сказать не могу: для этого нужно попробовать написать тоже без них.<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=60&selected=6"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=60&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=60&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=60&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="3">
+   <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif"> 
+      <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_archive_threads&forum=DCForumID1&selected=60"><font 
+      size="-1" color="black" face="arial,sans-serif">Archive</font></a> |  
+   <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_threads&forum=DCForumID1&selected=60&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Remove</font></a> </font>
+   <br>
+   </TD><TD ALIGN="RIGHT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=60&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=60&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+   </TD></TR>
+   
+   </TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

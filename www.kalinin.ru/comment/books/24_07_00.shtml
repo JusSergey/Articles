@@ -1,0 +1,468 @@
+<html><head><title>ALK :: Книги :: "Основы CORBA."</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/books/">книги</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/23_07_00.shtml">&lt;&lt;</a>&nbsp;24.07.00&nbsp;<a href="/comment/urls/25_07_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Основы CORBA
+</h1> 
+<table align="right" border="0" cellspacing="0" cellpadding="5" width="144">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Иллюстрация</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><img src="/images/24_07_00_1.jpg" width="144" height="210" border="0" alt="Обложка книги." /></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обложка книги.
+</font>
+</td></tr>
+</table>
+    <p align="justify">
+      Описываемая книга является первой (и, пока что единственной)
+      книгой на русском языке по CORBA. Этот факт
+      придал пущей важности издателям, но, на мой взгяд,
+      не смог увеличить ценность данной книги. Вот, что написано
+      на обложке "от издателей":
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Работа над этой книгой шла тяжело. Она переводилась
+      и редактировалась. Затем снова редактировалась и переводилась.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Я, конечно же, слабо разбираюсь в издателськом деле, но, как
+      мне кажется, работа над любой книгой есть тяжкий труд; кроме того,
+      я не вижу ничего странного в том, что книгу, написанную на иностранном языке, 
+      пришлось переводить. Поэтому первый абзац текста "от издателей" мне немного
+      удивителен.
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Хотелось бы выразить особую признательность Сергею Орлику,
+      как титульному редактору книги, а также Евгению Шадрину,
+      давшему толчок всему проекту, Марине Аншиной, Александру Цимбалу
+      и Сергею Кошелю, как переводчикам и редакторам.
+    </p>
+    <p align="justify">
+      Да и нам, издателям, тоже спасибо. Одним словом, спасибо нам всем, что Вы,
+      читатель, держите в руках эту книгу. Ну а результат оценивать Вам.
+      Эта книга написана живым языком. Читайте.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      По поводу живости языка я еще скажу ниже, а вот эти два абзаца еще более
+      удивительны, чем предыдущий. Почему издательство Мир не разместило
+      на трехтомнике "Искусство программирования" Кнута благодарность
+      себе за то, что перевело столь замечаительную книгу? Быть может, 
+      потому, что покупатель "Искусства программирования" и так благодарен
+      издательству за то, что эта книга появилась у него в руках и без
+      всяких напоминаний об этом? В общем, вынесение благодарностей себе
+      выглядит совсем уж глупо.
+    </p>
+    <p align="justify">
+      Кстати сказать, после изучения сайта <a href="http://www.redactor.ru">Редактор.Ру</a>
+      (я писал о нем <a href="/ccomments/urls/22_07_00.shtml">здесь</a>) я уяснил для 
+      себя то, что во всех случаях, кроме личной переписки, слово "вы" пишется с 
+      "маленькой" буквы...
+    </p>
+    <p align="justify">
+      Предметом книги является модная на сегодняшний момент технология
+      построения распределенных систем CORBA (рано или поздно
+      соответствующий раздел появится у меня в <a href="/programming/">программировании</a>);
+      в этой книге сделана попытка рассказать некоторые основные положения (концепции,
+      если хотите) этой технологии без привязки к конкретному языку программирования.
+    </p>
+    <p align="justify">
+      Что из этого получилось? Ничего хорошего. Во-первых, быть может тут
+      сказался пафос переводчиков (который уже заметен по трем абзацам "от издателей"),
+      живой язык, которым так хвастались, превратил книгу во что-то дикое... собственно,
+      я ничего не имею против "живого языка", но этот термин никогда не обозначал
+      бесконечное сюсюкание по поводу и без него. Чего стоят фразы, типа "межгалактический
+      ORB", "нирвана компонентов CORBA", "экзистенциальная CORBA" и т.д. Что может
+      испытать читатель при виде таких "терминов", кроме скуки?
+    </p>
+    <p align="justify">
+      Во-вторых, книга претендует на звание "вводной", при этом совершенно
+      непонятно, какой же требуется уровень читателя, потому что уже на первых
+      страницах безо всяких объяснений всплывает термин "интероперабельность"
+      и живет (все так же, без объяснений) до конца книги. У меня такое подозрение,
+      что понять то, что написано в этой книге, можно только в том случае, если
+      уже есть опыт практического применения CORBA. Причем это утверждение
+      не голословное, некоторые мои знакомые, которые хотели ознакомиться
+      с CORBA по книге "Основы CORBA" не смогли вытерпеть издевательства
+      переводчиков и просто не смогли дочитать книгу до конца.
+    </p>
+    <p align="justify">
+      В третьих, человек, только что пожелавший узнать о CORBA хоть что-то
+      и для этого купивший книгу, придет в тихий ужас от того, как преподносится
+      информация в книге "Основы CORBA". Могу гарантировать,
+      что в большей части случаев, у читателя сформируется мнение о том, что
+      CORBA очень сложна для понимания, предназначена для умных разговоров
+      "гуру" и в реальной жизни ничем помочь не сможет.
+    </p>	
+    <p align="justify">
+      Я не знаю, почему получился такой результат. Быть может, сказалось
+      то, что среди переводчиков, наверное, нет людей, которые бы реально
+      применяли CORBA гле-нибудь. Вполне вероятно, что сказался дикий энтузиазм,
+      который на этот раз только мешался и придал книге этот совершенно
+      ненужный и раздражающий пафос. Возможно, переводчикам просто
+      неосознанно захотелось немного "поумничать"  --- это вполне похоже на истину, потому
+      что все статьи на тему CORBA до сих пор тоже отличались всеми приведенными выше
+      характеристиками.
+    </p>
+    <p align="justify">
+      Вообще, книга больше всего напоминает рекламный буклет, в котором в очень
+      вольном изложении сжато пересказано содержание стандартов. Например, 
+      половину книги занимает описание всех стандартных сервисов CORBA 2.0, 
+      что совершенно непонятно, так как примерно тоже самое можно прочитать
+      в руководстве фирмы OMG по CORBA (опуская технические детали реализации).
+    </p>
+    <p align="justify">
+      На мой взгляд, "вводная" книга по CORBA должна содержать в себе:
+    </p>
+    <ul>
+      <li>Краткий экскурс в объектно-ориентированный анализ.</li>
+      <li>Исторический обзор существующих технологий построения распределенных систем (сокеты, RPC, PVM).</li>
+      <li>CORBA, как дальнейшие развитие RPC (здесь можно провести аналогию с чисто процедурными и 
+	объектными языками программирования).</li>
+      <li>Примеры практического (!) использования CORBA программах, написанных 
+	на языках программирования C++ и Java.</li>
+      <li>Аналогии с существующими популярными технологиями построения нераспределенных 
+	систем, такими как COM.
+      </li>
+      <li>Обзор конкурирующих технологий (DCOM. COM+, RMI).</li>
+    </ul>
+    <p align="justify">
+      Ключевым здесь является обязательное включение подробно прокомментированных 
+      примеров использования. Почему этого нет в книге "Основы CORBA", я не понимаю.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Бессмысленная книга. Покупать ее не стоит, читать --- тоже. Потому что,
+      если слово CORBA для вас ничего не значит, то вы ничего и не поймете (а если
+      и поймете, то превратно), а если вы уже знакомы с CORBA, то ничего,
+      кроме недоуменя, книга вам не даст. Взамен могу предложить
+      взять какую-нибудь реализацию CORBA и просто попробовать ее использовать ---
+      с любой релизацией поставляются примеры и документация, по которым
+      запросто можно составить некоторое собственное мнение.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/books/print_24_07_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.corba.org" target="_blank">http://www.corba.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт CORBA.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.omg.org" target="_blank">http://www.omg.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт OMG.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.mico.org" target="_blank">http://www.mico.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт MICO (Mico Is COrba), реализация CORBA 2.3 для C++, распространяемая     по лицензии GPL. Очень хорошая документация, содержащая подробно прокомментированные     примеры; рекомендую знакомиться с CORBA именно по этой документации.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.cetus-links.org/oo_corba.html" target="_blank">http://www.cetus-links.org/oo_</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Коллекция ссылок по CORBA на сайте Cetus links.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_08_00.shtml">Мифический человеко-месяц </a> (05.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В принципе, эта книга для "ветеранов программирования" в комментариях не нуждается --- в свое время ее первое издание было очень популярно....<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/11_07_00.shtml">А. Шень. Программирование: теоремы и задачи. </a> (11.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На книге есть надпись: "Не покупайте эту книгу! (предупреждение автора)" и перечислены причины, по которым "покупать эту книгу глупо --- особенно...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/11_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_07_00.shtml">lector.boom.ru, self-made engine, создай себя заново </a> (25.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Нет, эта страничка меня откровенно порадовала. Наверное, можно даже повесить табличку: "здесь была радость Андрея Калинина"; надеюсь, после прочтения моего комментария...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_07_00.shtml">Так о чем же рассказать на собственной страничке? </a> (23.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Недавно натолкнулся на следующую страничку (она находится ), на которой расположен текст следующего содержания (скопирован без изменений): Меня зовут Мгер.Я живу...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_07_01.shtml">High Perfomance Computing, second edition. </a> (05.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Название книги можно перевести как "Высокопроизводительные вычисления" и эта тематика в русскоязычной литературе не освещена совсем. Традиционно считается, что самой важной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/19_06_01.shtml">Плагиат </a> (19.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В последнее время мне стало казаться, что с моим сайтом что-то не в порядке. Вроде, текст есть, живые люди тоже иногда...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/19_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_04_01.shtml">TCP/IP Illustrated, volume I. The Protocols </a> (22.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять, книга, о которой мне хочется рассказать, насколько мне известно, отсутствует в русском переводе. Тем не менее, в разделе сетевого...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/28_02_01.shtml">Decline and Fall of the American Programmer </a> (28.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эдвард Йордон является одним из самых известных специалистов в области создания больших программных систем. Широко известна его нотация, предназначенная для структурного...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/28_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/03_12_00.shtml">Unix internals: the new frontiers </a> (03.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочу сразу же предупредить, что эта книга, насколько мне известно, в переводе на русский язык не существует, поэтому прошу прощения, если...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/03_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/29_09_00.shtml">Язык UML, рукводство пользователя </a> (29.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+UML (Unified Modeling Language, унифицированный язык моделирования) является еще одной популярной аббревиатурой, которой очень часто пользуются, не понимая того, что за...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/29_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_07_00.shtml">lector.boom.ru, self-made engine, создай себя заново </a> (25.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Нет, эта страничка меня откровенно порадовала. Наверное, можно даже повесить табличку: "здесь была радость Андрея Калинина"; надеюсь, после прочтения моего комментария...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_07_00.shtml">Так о чем же рассказать на собственной страничке? </a> (23.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Недавно натолкнулся на следующую страничку (она находится ), на которой расположен текст следующего содержания (скопирован без изменений): Меня зовут Мгер.Я живу...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,589 @@
+<html><head><title>ALK :: C&amp;C++ :: Использование "умных" указателей.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/cpp/26_07_00.shtml">&lt;&lt;</a>&nbsp;27.07.00&nbsp;<a href="/programming/cpp/28_07_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Использование "умных" указателей
+</h1> 
+    <p align="justify">
+      Принципы использования "умных" указателей известны
+      каждому программисту на C++. Идея предельно проста: 
+      вместо того, что бы пользоваться объектами некоторого
+      класса, указателями на эти объекты или ссылками,
+      определяется новый тип для которого
+      переопределен селектор <code>-&gt;</code>, что 
+      позволяет использовать объекты такого типа
+      в качестве ссылок на реальные объекты. На всякий случай, приведу
+      следующий пример:
+<pre>
+class A {
+public:
+   void method();
+};
+
+class APtr {
+protected:
+  A* a;
+public:
+  APtr();
+  ~APtr();
+  A* operator->();
+};
+
+inline APtr::APtr() : a(new A)
+{ }
+
+inline APtr::~APtr()
+{
+  delete a;
+}
+
+inline A* APtr::operator->()
+{
+  return a;
+}
+
+</pre>
+    Теперь для объекта, определенного как
+<pre>
+APtr aptr;
+</pre>
+    Можно использовать следующую форму доступа к члену <code>a</code>:
+<pre>
+aptr->method();
+</pre>
+  </p>
+    <p align="justify">
+      Тонкости того, почему <code>operator-&gt;()</code> возвращает именно
+      указатель <code>A*</code> (у которого есть свой селектор), а не, например, 
+      ссылку <code>A&</code> и все равно все компилируется таким образом,
+      что выполнение доходит до метода <code>A::method()</code>, я пропущу
+      за ненадобностью --- я не собираюсь рассказывать о том, как работает
+      этот механизм и какие приемы применяются при его использовании --- это
+      очень подробно написано в книге Джеффа Элджера "C++ for real programmers"
+      (комментарий к этой замечательной книге обязательно появится в соответствующем
+      разделе моей странички), в которой вообще буквально половина книги посвящена
+      "умным" указателям.
+    </p>
+    <p align="justify">
+      Преимущества такого подхода, в принципе, очевидны: появляется возможность
+      контроля за доступом к объектам; немного простых телодвижений и получается
+      указатель, который сам считает количество используемых ссылок и при обнулении
+      автоматически уничтожает свой объект, что позволяет не заботиться об этом
+      самостоятельно... не важно? Почему же: самые трудно отлавливаемые ошибки
+      это ошибки в использовании динамически выделенных объектов. Сплошь и рядом
+      можно встретить: попытка использования указателя на удаленный объект,
+      двойное удаление объекта по одному и тому же адресу, неудаление
+      объекта. При этом последняя ошибка, в принципе, самая безобидная: программа,
+      в которой не удаляются объекты (следовательно, теряется память, которая
+      могла бы быть использована повторно) может вполне спокойно работать в течение
+      некоторого времени (причем это время может спокойно колебаться от нескольких
+      часов до нескольких дней), чего вполне хватает для решения некоторых задач.
+      При этом заметить такую ошибку достаточно просто: достаточно наблюдать
+      динамику использования памяти программой; кроме того, существуют
+      специальные средства для отслеживания подобных казусов, например
+      BoundsChecker.
+    </p>
+    <p align="justify">
+      Первая ошибка в этом списке тоже, в принципе, достаточно простая: использование
+      после удаления скорее всего приведет к тому, что операционная система
+      скажет соответствующее системное сообщение. Хуже становится тогда, когда
+      подобного сообщения не появляется (т.е., данные достаточно правдоподобны
+      или область памяти уже занята чем-либо другим), тогда программа может
+      повести себя каким угодно образом.
+    </p>
+    <p align="justify">
+      Вторая ошибка может дать самое большое количество неприятностей. Все дело
+      в том, что, хотя на первый взгляд она ничем особенным не отличается от первой,
+      тем не менее на практике повторное удаление объекта приводит к тому,
+      что менеджер кучи удаляет что-то совсем невообразимое. Вообще, что
+      значит "удаляет"? Это значит, что помечает память как пустую (готовую
+      к использованию). Обычно, менеджер кучи, для того что бы знать, сколько памяти
+      удалить, в блок выделяемой памяти вставляет его размер. Так вот, если
+      память уже была занята чем-то другим, то по "неверному" указателю
+      находится неправильное значение размера блока, таким образом менеджер
+      кучи удалит некоторый случайный размер используемой памяти. Это даст 
+      следующее: при следующих выделениях памяти (рано или поздно) менеджер
+      кучи отдаст эту "неиспользуемую" память под другой запрос и... на одном
+      клочке пространства будут ютиться два разных объекта. Крах программы
+      произойдет почти обязательно, это лучшее что может случится. Значительно
+      хуже, если программа останется работать и будет выдавать правдоподобные результаты.
+      Одна из самых оригинальных ошибок, с которой я столкнулся и которая, скорее всего,
+      была вызвана именно повторным удалением одного и того же указателя, было
+      то, что программа, работающая несколько часов, рано или поздно "падала" в...
+      функции <code>malloc()</code>. Причем проработать она должна была именно 
+      несколько часов, иначе эта ситуация не повторялась. 
+    </p>
+    <p align="justify">
+      Таким образом, автоматическое удаление при гарантированном
+      неиспользовании указателя, это явный плюс. В принципе, можно
+      позавидовать программистам на Java, у которых подобных
+      проблем не возникает; зато, у них возникают другие проблемы ;)
+    </p>
+    <p align="justify">
+      Я еще не убедил вас в полезности использования "умных" указателей?
+      Странно. Тогда я приведу примеры реального использования 
+      в своих проектах. Вот, например, объявление того самого
+      "умного" указателя с подсчетом ссылок, о котором я говорил:
+    <pre>
+template&lt;class T&gt;
+class MPtr
+{
+public:
+  MPtr();                
+  MPtr(const MPtr&lt;T&gt;&amp; p);
+  ~MPtr();               
+  MPtr(T* p); 
+    
+  T* operator-&gt;() const; 
+  operator T*() const;   
+  MPtr&lt;T&gt;&amp; operator=(const MPtr&lt;T&gt;&amp; p);
+protected:
+  struct RealPtr
+  {
+    T* pointer;
+    unsigned int count;
+
+    RealPtr(T* p = 0);
+    ~RealPtr();       
+  };
+
+  RealPtr* pointer; 
+private:
+};
+    </pre>
+  </p>
+    <p align="justify">
+      Особенно стоит оговорить здесь конструктор <code>MPtr::MPtr(T* p)</code>,
+      который несколько выбивается из общей концепции. Все дело в том,
+      что гарантировать отсутствие указателей на реальный объект
+      может лишь создание такого объекта где-то внутри, это сделано в <code>MPtr::MPtr()</code>,
+      где вызов <code>new</code> происходит самостоятельно. В итоге некоторая
+      уверенность в том, что значение указателя никто нигде не сохранил без использования
+      умного указателя, все-таки есть. Тем не менее, очень
+      часто встречается такое, что у типа T может и не быть конструктора по умолчанию
+      и объекту такого класса обязательно при создании требуются какие-то аргументы для
+      правильной инициализации. Совсем правильным будет для подобного случая
+      породить из <code>MPtr</code> новый класс, у которого будут такие же
+      конструкторы, как и у требуемого класса, но реально я на такое
+      геройство ни разу не сподобился. Поэтому, сделав себе торжественную
+      клятву, что подобный конструктор <code>MPtr::MPtr(T* p)</code>
+      будет использоваться только как <code>MPtr&lt;T&gt; ptr(new T(a,b,c))</code>
+      и никак иначе, я ввел этот конструктор в шаблон.
+    </p>
+    <p align="justify">
+      Еще один спорный момент: наличие оператора преобразования
+      к <code>T*</code>. Честно говоря, я ни разу им не пользовался,
+      но его наличие так же дает потенциальную возможность где-нибудь
+      сохранить значение реального указателя.
+    </p>
+    <p align="justify">
+      Кроме всего прочего, в моем "умном" указателе отсутствует возможность
+      приведения указателя от потомка к предку. Мне это не понадобилось,
+      потому что "умные" указатели я использую обычно в интерфейсных классах,
+      которые передают именно предков иерархий классов (т.е.,
+      соответствующее преобразование выполняется на этапе конструирования
+      объекта); в принципе, несложно при помощи шаблонного конструктора сделать
+      преобразование, аналогичное преобразованию реальных указателей.
+    </p>
+    <p align="justify">
+      Кроме <code>MPtr</code> я активно использую еще одну разновидность
+      "умных" указателей, которая логично вытекает из описанной выше и отличается лишь одной
+      деталью:
+    </p>
+<pre>
+template&lt;class T&gt;
+class MCPtr                   
+{
+public:
+  MCPtr(const MPtr&lt;T&gt;&amp; p);
+  MCPtr(const MCPtr&lt;T&gt;&amp; p);
+  ~MCPtr();                
+    
+  const T* operator-&gt;() const;
+  operator const T*() const;
+  MCPtr&lt;T&gt;&amp; operator=(const MPtr&lt;T&gt;&amp; p)
+  MCPtr&lt;T&gt;&amp; operator=(const MCPtr&lt;T&gt;&amp; p);
+protected:
+  MPtr&lt;T&gt; ptr;
+private:
+  MCPtr();
+};
+</pre>
+    <p align="justify">
+      Во-первых, это надстройка (адаптер) над обычным указателем. А во-вторых,
+      его главное отличие, это то, что <code>operator-&gt;</code> возвращает
+      константный указатель, а не обычный. Это очень просто и, на самом деле,
+      очень полезно: все дело в том, что это дает использовать объект
+      в двух контекстах --- там, где его можно изменять (например, внтури
+      другого объекта, где он был создан) и там, где можно пользоваться лишь
+      константным интерфейсом (т.е., где изменять нельзя; например, снаружи
+      объекта-фабрики). Это логично вытекает из простых константых
+      указателей. Для того, что бы пользоваться <code>MCPtr</code>
+      требуется единственное (хотя и достаточно строгое) условие:
+      во всех классах должны быть корректно расставленна
+      константность методов. Вообще, это, на мой взгляд,
+      признак профессионального программиста: использование
+      модификатора <code>const</code> при описании методов.
+    </p>
+    <p align="justify">
+      Обычно я использую "умные" указатели в том, что называется
+      фабриками объектов (или, например, производящими функциями): т.е.,
+      для того, что бы вернуть объект, удовлетворяющий какому-то интерфейсу.
+      При использовании подобного рода указателей клиентской части
+      становится очень удобно --- опускаются все проблемы, связанные с тем,
+      когда можно удалить объект, а когда нельзя (например, при соместном
+      использовании одного и того же объекта разными клиентами --- клиенты
+      не обязаны знать о существовании друг друга).
+    </p>
+    <p align="justify">
+      Кроме всего прочего, переопределение селектора позволяет
+      простым образом вставить синхронизацию при создании
+      многопоточных приложений. Вообще, подобные "обертки" чрезвычайно полезны,
+      им можно найти массу применений. 
+    </p>
+    <p align="justify">
+      Конечно же, использовать "умные" указатели надо с осторожностью.
+      Все дело в том, что, как у всякой простой идеи, у нее есть один очень большой
+      недостаток: нетрудно придумать пример, в котором два объекта ссылаются
+      друг на друга через "умные" указатели и... никогда не будут удалены.
+      Почему? Потому что счетчики ссылок у них всегда будут как минимум 1,
+      при том, что снаружи на них никто не ссылается. Есть
+      рекомендации по поводу того, как определять такие ситуации
+      во время выполнения программы, но, на мой взгляд,
+      они очень громоздки и, поэтому не годятся к использованию.
+      Ведь что привлекает в "умных" указателях? Простота. Фактически,
+      ничего лишнего, а сколько можно при желании извлечь пользы из
+      их применения.
+    </p>
+    <p align="justify">
+      Поэтому надо тщательно следить еще на стадии проектирования
+      за тем, что бы подобных цепочек не могло бы возникнуть
+      в принципе. Потому что если такая возможность будет,
+      то рано или поздно она проявит себя.
+    </p>
+    <p align="justify">
+      "Умные" указатели активно используются в отображении
+      COM-объектов и CORBA-объектов на C++: они позволяют
+      прозрачно для программиста организовать работу
+      с объектами, которые реально написаны на другом языке
+      программирования и выполняются на другой стороне земного
+      шара.
+    </p>
+    <p align="justify">
+      Техника подсчета ссылок в явном виде (через вызов методов
+      интерфейса <code>AddRef()</code> и <code>Release()</code>)
+      используется в технологии COM.
+    </p>
+    <p align="justify">
+      Еще стоит сказать про эффективность использования "умных" указателей.
+      Возможно, это кого-то удивит, но затраты на их использование
+      при выполнении программы минимальны. Почему? Потому что
+      используются шаблоны а все методы-члены классов
+      (и, в особенности селектор) конечно же объявлены
+      как <code>inline</code>. Подсчет ссылок не сказывается
+      на обращении к объекту, только на копировании указателей,
+      а это не такая частая операция. Понятно, что использование
+      шаблонов усложняет работу компилятора, но это не так важно.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Разумное использование "умных" указателей
+      упрощает жизнь программистов. В частности,
+      возможность введения подсчета ссылок,
+      позволяет простым способом избавиться
+      от многих ошибок, связанных
+      с использованием динамической памяти.
+    </p>
+    <p align="justify">
+      Несмотря на присутствие в STL класса <code>auto_ptr</code>,
+      "умные" указатели каждый программист должен
+      закодировать для себя сам, потому что должен
+      досконально точно понимать механизм их работы.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_27_07_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Джефф Элджер</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     "C++ for real programmers". Замечательная книга о том, как превратить     C++ в некоторое подобие Smalltalk ;) а если серьезно, то ее     необходимо прочитать каждому программисту на C++ --- очень     много полезной информации по практическому применению языка в различных     ситуациях.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Бъерн Страуструп</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Язык программирования C++, 3 издание. Эта книга в моих     рекомендациях не нуждается; но поверьте, ее тоже надо     прочитать, какой бы толстой она не казалась. Использование     "умных" указателей освещается в главах по проектированию программ.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/28_07_00.shtml">Виртуальные деструкторы </a> (28.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В принципе, в практически любой мало-мальски толковой книге по C++ рассказывается, зачем нужны виртуальные деструкторы и почему их надо использовать. Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/28_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/26_07_00.shtml">За что я не люблю C++ Builder </a> (26.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сначала оговорюсь, что в данной статье я буду рассматривать C++ Builder именно как "builder", т.е. программный инструмент класса RAD (Rapid Application...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/26_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/28_07_00.shtml">Виртуальные деструкторы </a> (28.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В принципе, в практически любой мало-мальски толковой книге по C++ рассказывается, зачем нужны виртуальные деструкторы и почему их надо использовать. Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/28_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/26_07_00.shtml">За что я не люблю C++ Builder </a> (26.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сначала оговорюсь, что в данной статье я буду рассматривать C++ Builder именно как "builder", т.е. программный инструмент класса RAD (Rapid Application...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/26_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/28_07_00.shtml">Виртуальные деструкторы </a> (28.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В принципе, в практически любой мало-мальски толковой книге по C++ рассказывается, зачем нужны виртуальные деструкторы и почему их надо использовать. Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/28_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/26_07_00.shtml">За что я не люблю C++ Builder </a> (26.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сначала оговорюсь, что в данной статье я буду рассматривать C++ Builder именно как "builder", т.е. программный инструмент класса RAD (Rapid Application...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/26_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

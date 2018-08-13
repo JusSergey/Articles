@@ -1,0 +1,474 @@
+<html><head><title>ALK :: XML :: Средства для разбора XML-файлов.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/xml/">xml</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/urls/26_09_00.shtml">&lt;&lt;</a>&nbsp;27.09.00&nbsp;<a href="/programming/contest/28_09_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Средства для разбора XML-файлов
+</h1> 
+    <p align="justify">
+      С момента последнего обновления в этом разделе прошло уже больше месяца...
+      но ведь никто же никому ничего не обещал? ;) Тем не менее, как это
+      ни странно, раздел про XML почему-то пользуется популярностью
+      среди посетителей моей странички. Для меня это несколько удивительно,
+      хотя я догадываюсь, почему: слово очень модное. Но хватит лирики.
+    </p>
+    <p align="justify">
+      Для того, что бы написать приложение, которое использует
+      XML в качестве формата для хранения своих данных,
+      требуется некоторое средство, которое поможет
+      работать с этим форматом. Вообще говоря,
+      обработка XML обычно достаточна в конкретных приложениях. То есть,
+      обычно формат данных получается несложным и с задачей
+      разбора может справиться даже человек, который не знаком
+      с теорией формальных грамматик.
+    </p>
+    <p align="justify">
+      Но в общем случае, в формате XML содержится очень большое
+      количество различных нюансов, обработка которых в своей программе прибавляет
+      много несложной работы программисту (в основном,
+      связанной с тестированием).
+      Поэтому появились
+      специализированные средства (программные библиотеки) призванные
+      облегчить жизнь программистам, которые хотят использовать
+      XML в качестве формата передачи данных.
+    </p>
+    <p align="justify">
+      В различных каталогах программного обеспечения эти
+      средства называются XML parsers (понятно почему) и 
+      в последнее время их появилось достатчно много.
+    </p>
+    <p align="justify">
+      В этой заметке я просто опишу традиционные 
+      интерфейсы к XML parser'ам и кратко остановлюсь
+      на конкретных названиях.
+    </p>
+    <p align="justify">
+      Обычно, parser'ы делятся на три типа: 
+    </p>
+    <ul>
+      <li>
+	разбирающие входной поток во внутреннее 
+	представление документа (дерево), DOM-модель.
+      </li>
+      <li>
+	генерериующие события при обработке соответствующих 
+	синтаксических элементов, SAX-интерфейс.
+      </li>
+      <li>
+	генерериуемые parser'ы для разбора документов, 
+	соответствующих конкретным XML-словарям.
+      </li>
+    </ul>
+    <p align="justify">
+      Обработчики первого типа по заданному XML-файлу создают
+      дерево, представляющее  иерархическую структуру документа.
+      Такой подход к разбору позволяет проверить документ
+      на соответствие своему DTD (document type definition, набор
+      правил, по которым должен быть построен документ).
+      Это дает возможность не обрабатывать документ, если
+      он неправильно оформлен. После окончания разбора
+      необходимо реализовать обход полученного дерева для
+      получения информации из него.
+    </p>
+    <p align="justify">
+      Обработчики второго типа во время разбора синтаксических
+      конструкций генерируют события, на которые
+      приложение может реагировать как ему заблагорассудится. Такой
+      подход более быстрый, чем построение дерева документа и
+      более простой для приложения (потому что не надо реализовывать
+      обход дерева самостоятельно), но не позволяет до передачи информации
+      приложению указать на правильность документа. Это неприятно, потому
+      что тогда придется учитывать откаты в случае неверных документов,
+      но иногда  терпимо. SAX-интерфейс (от названия первого parser'а,
+      в котором была применена эта модель разбора),  в принципе, 
+      удобнее для программиста, чем DOM.
+    </p>
+    <p align="justify">
+      Третий тип обработчиков является самым быстрым потому что
+      программный код генерируется для конкретного DTD и не тратит
+      время на разбор ненужных синтаксических конструкций. Фактически,
+      очень удобно для приложений, которые используют
+      ограниченное количество форматов входных файлов, тогда можно
+      автоматически сгенерировать все обработчики, каждый из которых
+      будет работать очень быстро.
+    </p>
+    <p align="justify">
+      При выборе parser'а особое внимание надо обратить на то,
+      какие кодировки входного текста он понимает. Все дело в том, что в нашей
+      стране, по понятным причинам, очень часто встречается кириллица.
+      А все доступные parser'ы написаны "за рубежом" и, хотя 
+      интернациональность заложена в стандарт XML, не все
+      создатели программного обеспечения придерживаются этой идеологии.
+    </p>
+    <p align="justify">
+      Вполне удовлетворительно, если parser будет поддерживать, кроме Latin-1,
+      UTF-8 или UTF-16. Единственное, вероятно что вам придется написать
+      какие-то свои перекодировщики из вашей любимой кодировки в Unicode, 
+      но поддержка UTF обычно снимает все проблемы, связанные с национальными символами.
+      Хотя, опять же, многие авторы Parser'ов по своему воспринимают UTF и применяют
+      к нему какие-то свои фильтры; в общем, тут придется эксперементировать.
+    </p>
+    <p align="justify">
+      Кодировки типа koi8 или windows-1251 поддерживаются ограниченным числом
+      parser'ов. Фактически, их можно пересчитать по пальцам (что мы и сделаем чуть
+      ниже).
+    </p>
+    <p align="justify">
+      Parser'ы доступны практически для любых языков программирования, но
+      особенно их много для Java. Я на Java не пишу, так что ничего
+      не могу сказать об их качестве.
+    </p>
+    <p align="justify">
+      Таким образом, далее речь пойдет о parser'ах для C++.
+    </p>
+    <p align="justify">
+      Самым известным является expat от J. Clark'а. Поддерживает Unicode,
+      очень стабилен в работе. Используется в Netscape и libwww для
+      разбора XML-документов. Не позволяет проверить корректность документа.
+    </p>
+    <p align="justify">
+      Кстати, у того же автора есть SGML parser под названием SP, который так же
+      можно использовать для разбора XML-документов. И если expat написан
+      имеет интерфейс на C, то SP --- на C++.
+    </p>
+    <p align="justify">
+      MS XML SDK. Этот parser на сегодняшний день, пожалуй, поддерживает
+      самое большое количество кодировок; он используется в Internet Explorer.
+      Реализует DOM и SAX интерфейсы, позволяет проверить корректность 
+      входного документа. Среди недостатков можно отметить то, что
+      он предназначен для использования только на платформе Win32 и что он
+      до сих пор находится в состоянии Beta. Причем, "бета" еще можно было бы терпеть,
+      если бы компания Microsoft действительно не реализовывала свои угрозы, и не 
+      изменяла бы интерфейс от "беты" к "бете". Причем, изменения
+      достаточно маразматические, на мой взгляд: например, при переходе
+      с майской на июньскую "бету" (если я не наврал с месяцами)
+      в SAX-интерфейсе названия методов поменяли первую "большую" букву
+      на соответствующую "маленькую". Так что, будьте готовы к этому,
+      если соберетесь его использовать. Правда, DOM-модель уже достаточно
+      статична в своем интерфейсе, но ошибки... ошибки в нем есть. На то
+      и "бета".
+    </p>
+    <p align="justify">
+      Parser от фирмы Oracle. Доступен для множества языков
+      программирования, включая C и C++. Честно говоря, сам
+      я его не пробовал использовать, но по описанию он понимает
+      такие кодировки, как, например, koi8, что не может не радовать.
+      Доступн для платформ MS Windows и многих Unix'ов.
+    </p>
+    <p align="justify">
+      flexml является генератором кода на C, который распознает
+      документы, соответствующие конкретному DTD. Опять же,
+      к моему сожалению, я узнал о его существовании  уже после того,
+      как выбрал parser для моего последнего проекта, в котором
+      использовался XML в качестве средства обмена данными, так что  я не имею
+      опыта практического использования этой программы. Тем не менее,
+      вещь достаточно полезная и, наверняка, подходящая для большинства
+      программ, работающих с XML.
+    </p>
+    <p align="justify">
+      Вообще говоря, parser'ов очень много. Если вам не подходит ни один
+      из вышеперечисленных, то вы можете найти еще какие-нибудь в каталогах
+      программного обеспечения для XML, возможно найдете что-то себе по душе.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Использовать XML в своих программах очень просто.
+      Для этого достаточно придумать себе словарь DTD,
+      выбрать parser и... в общем-то, все. Это очень
+      приятно, потому что позволяет практически безо
+      всяких трудозатрат реализовать удобный формат для
+      обмена данными.
+    </p>
+    <p align="justify">
+      Именно поэтому XML и становится таким популярным --- 
+      простота использования и наличие большого
+      количества средств обработки.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/xml/print_27_09_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.jclark.com/xml/expat.html" target="_blank">http://www.jclark.com/xml/expa</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     expat --- XML parser toolkit.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.jclark.com/sp/" target="_blank">http://www.jclark.com/sp/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     SP --- SGML parser.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://msdn.microsoft.com/xml/default.asp" target="_blank">http://msdn.microsoft.com/xml/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Раздел MSDN, посвященный XML. Отсюда можно скачать MS XML SDK.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://technet.us.oracle.com/tech/xml/" target="_blank">http://technet.us.oracle.com/t</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Раздел на Oracle TechNet, посвященный XML. Здесь находится XML parser для C++,     скачать который можно после регистрации.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.ens-lyon.fr/~krisrose/FleXML.html" target="_blank">http://www.ens-lyon.fr/~krisro</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     FleXML --- XML Processor Generator.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.xmlsoftware.com" target="_blank">http://www.xmlsoftware.com</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     XMLSoftware --- набор ссылок на программное обеспечение для работы с XML.     Есть и XML parsers.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/18_11_00.shtml">HTML must die </a> (18.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Язык гипертекстовой разметки документов (HTML) используется сейчас повсеместно. Задачи, которые ставились перед создателями этого языка заключались в необходимости создания универсального формата...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/18_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/11_08_00_x.shtml">Преобразование XML при помощи XSL </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Одна из самых частых операций, которую требуется произвести с XML-документом, это показать его. Хочется предупредить сразу, что на этот раз я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/28_09_00.shtml">Критика правил олимпиад ACM </a> (28.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы знаете, самое смешное заключается в том, что я уверен в полной практической бесполезности навыков, которые были мной получены на олимпиадах....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/28_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_09_00.shtml">free.rambler.ru, свободный доступ в интернет </a> (26.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На начали наконец-то мелькать баннеры нового Рамблеровского проекта под названием Rambler-FreeNet. Суть его достаточно проста: Рамблер предоставляет относительно свободный доступ в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/18_11_00.shtml">HTML must die </a> (18.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Язык гипертекстовой разметки документов (HTML) используется сейчас повсеместно. Задачи, которые ставились перед создателями этого языка заключались в необходимости создания универсального формата...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/18_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/27_09_00.shtml">Средства для разбора XML-файлов </a> (27.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+С момента последнего обновления в этом разделе прошло уже больше месяца... но ведь никто же никому ничего не обещал? ;) Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/27_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/11_08_00_x.shtml">Преобразование XML при помощи XSL </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Одна из самых частых операций, которую требуется произвести с XML-документом, это показать его. Хочется предупредить сразу, что на этот раз я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/02_08_00.shtml">Зачем же все-таки нужен XML </a> (02.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+XML сейчас является очень модным словом --- обычно вместе с его упоминанием встречаются слова "метаязык", "перспективная технология" и прочее. Вообще, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/02_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/28_09_00.shtml">Критика правил олимпиад ACM </a> (28.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы знаете, самое смешное заключается в том, что я уверен в полной практической бесполезности навыков, которые были мной получены на олимпиадах....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/28_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_09_00.shtml">free.rambler.ru, свободный доступ в интернет </a> (26.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На начали наконец-то мелькать баннеры нового Рамблеровского проекта под названием Rambler-FreeNet. Суть его достаточно проста: Рамблер предоставляет относительно свободный доступ в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

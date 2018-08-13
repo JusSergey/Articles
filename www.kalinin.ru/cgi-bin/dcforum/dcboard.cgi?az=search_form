@@ -1,0 +1,200 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=help"><img 
+            src="/dcforum//Images/help.gif" alt="Click here to see help" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=help"><font 
+               size="-2" face="arial,sans-serif" color="black">Help</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/cgi-bin/dcforum/dcboard.cgi"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/cgi-bin/dcforum/dcboard.cgi"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Use the form below to search the forum</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+      <center>
+      <table border="0" cellpadding="2" WIDTH="70%">
+      <tr><th align="right" bgcolor="#EAE8E0"><FONT SIZE="-1" 
+      FACE="arial,sans-serif" color="black"><FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+      <INPUT TYPE="HIDDEN" NAME="az" VALUE="search">
+      Keyword(s):</th><td bgcolor="#EAE8E0">
+      <INPUT TYPE="TEXT" SIZE="30" NAME="keywords" value="">
+      </td></tr>
+      <tr><th align="right" bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+      <b>*</b>Search Which Forum(s)?
+      </font>
+      </th>
+      <td bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+      <SELECT NAME="s_forum">
+               <option VALUE="DCForumID1">Основной форум (Public)
+               
+            <OPTION VALUE="all">Search All Forums
+      </SELECT>         
+         </td>
+         </tr>
+         <tr>
+      <th align="right" bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+         Search which field(s)?
+      </font>
+         </th>
+      <td bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+         <select name="fields">
+             <option VALUE="All">All
+            
+             <option VALUE="Author">Author
+            
+             <option VALUE="Subject">Subject
+            
+             <option VALUE="Message">Message
+            
+         </select>
+         </td>
+         </tr>
+         <tr>
+      <th align="right" bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+         <b>**</b>Search how many days in the past?
+      </font>
+         </th>
+      <td bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+         <select name="days">
+             <option VALUE="1">Last 1 day
+            
+             <option VALUE="2">Last 2 days
+            
+             <option VALUE="3">Last 3 days
+            
+             <option VALUE="4">Last 4 days
+            
+             <option VALUE="7">Last 1 week
+            
+             <option VALUE="14">Last 2 week
+            
+             <option VALUE="30">Last 1 month
+            
+             <option VALUE="90">Last 3 month
+            
+             <option VALUE="365">Last 1 year
+            
+         </select>
+         </td>
+         </tr>
+         <tr>
+      <th align="right" bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+         Search the Archive?
+      </font>
+         </th>
+      <td bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+            <input type="checkbox" name="archive" value="yes">
+         </td>
+         </tr>
+         <tr>
+      <td bgcolor="#EAE8E0">
+      &nbsp;
+      </td>
+      <td bgcolor="#EAE8E0">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+      <INPUT TYPE="SUBMIT" VALUE="Search Now!">
+      <INPUT TYPE="RESET" VALUE="Reset">
+      </FORM>
+         </td>
+         </tr>
+         <tr>
+      <td bgcolor="#EAE8E0" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" color="black">
+         <b>*</b>Note: Searching every forum may take a while.
+         <br>
+         <b>**</b>Note: Searching all threads may take a while.
+         <br>
+         </font>
+         </td>
+         </TR>
+         </TABLE>
+      </center>
+      <P>
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

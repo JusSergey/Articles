@@ -1,0 +1,15 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 109<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/109.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Watcom"</font></b><br>
+Posted by John Smith  on 24-Jan-03 at 10:43&nbsp;PM<br>
+<blockquote>OpenWatcom - это замечательная новость для поклонников этого компилятора, но, к сожалению, публикуются только исходники и патч для Watcom 11.0b -&gt; 11.0c, с помощью которого можно собрать компилятор. Watcom 11.0b стоит денег, но тут есть некоторые ньансы: в патч включены почти все компоненты, необходимые для компиляции (кроме MSSDK, MFC и пр.), но при этом теряется одно из основных достоинств компилятора - мультиплатформенность (нет DOS4GW, PHARLAP, NLM...). И еще одна самая неприятная новость - разработчики не собираются переделывать компилятор под третью редакцию Страуструпа, а в нынешенем компиляторе нет namespace, STL, шаблоны работают кривовато. А для современного компилятора - это самый большой недостаток. Так что дальнейшая разработка - дело рук энтузиастов (таких как на этом сайте).<BR>Кстати исходники все на чистом С ;)</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+</font></body></html>

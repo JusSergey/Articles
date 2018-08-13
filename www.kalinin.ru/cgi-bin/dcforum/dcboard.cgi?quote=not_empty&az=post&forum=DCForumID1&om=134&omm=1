@@ -1,0 +1,322 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/dcforum//DCForumID1/134.html"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/dcforum//DCForumID1/134.html"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Compose your message</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+<p>
+         <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+         <TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         Original Message
+         </FONT></TH></tr>
+         <TR BGCOLOR="#EAE8E0"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <b>"RE: Большое зло"</b><br>Posted by Andrey L. Kalinin on 19-Mar-04 at 02:35&nbsp;PM
+         </FONT></Td></tr>
+         <TR BGCOLOR="#FBF9F1"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Андрей, а почему ты считаешь переопределение <BR>&gt;операторов большим злом?<P>Исключительно из собственных наблюдений за жизнью. <P>&gt; Ну допустим, <BR>&gt;чтобы кому-то понадобилось переопределить operator=, <BR>&gt;чтобы он форматировал винт. Но <BR>&gt;ведь с тем же успехом <BR>&gt;можно переопределить и printf, чтобы <BR>&gt;она форматировала винчестер! <P>Нет, дело не в этом. <P>printf всегда останется printf'ом, варианты когда некий человек подменяет системную библиотеку, отвергаем сразу: он либо знает что делает, либо полный идиот. <P>А оператор "присвоить", определенный для некоторого класса, очень опасен именно тем, что его легко использовать, не подумав что за ним стоит. <P>Вот например, есть некоторый класс, который реализует какое-то хранилище. И где-то посередине программы находится конструкция A=B. Что она сделает? Что это значит --- копирование данных, или использование разделяемой памяти? <P>&gt;По-моему, либо надо вообще запретить переопределение, <BR>&gt;либо его разрешить. Я не <BR>&gt;понимаю, в чем разница между <BR>&gt;операторами и функциями, особенно учитывая <BR>&gt;что можно (при некоторых условиях) <BR>&gt;написать что-то в духе <BR>&gt;<BR>&gt;int a = operator (1, 5); <BR>&gt;<BR>&gt;<BR>&gt;Вообще, переопределением операторов занимаются давно и <BR>&gt;успешно:   означает сложение <BR>&gt;чисел, матриц, функций, операторов. А <BR>&gt;||.|| - норма, которую определяют <BR>&gt;чуть ли не полусотней способов. <BR>&gt;Все к этому привыкли и <BR>&gt;не имеют вопросов. И потом, <BR>&gt;<BR>&gt;<BR>&gt;x = x_prev - f(x_prev) / <BR>&gt;df(x_prev); <BR>&gt;<BR>&gt;все-таки немного понятнее, чем <BR>&gt;<BR>&gt;assign(x, subtract(x_prev, division(f(x_prev), df(x_prev))); <BR>&gt;<BR>&gt;просто в силу привычки. С чего, <BR>&gt;собственно, Страуструп и начинает главу <BR>&gt;про переопределение. <P><BR>Да ничего тут не понятнее.<P>В программировании всегда существует обычный trade-off между удобством программирования и точностью понимания того, как работает программа. <P>Вот попросту свежий пример: некая программа работала достаточно медленно. Изучение результатов профайлера для нее в разных ситуациях показало, что достаточно большое время она проводит в... операторе присваивания std::string! При этом реальное копирование нигде не требовалось. Замена в глубине программы в параметрах функций std::string на const char * привело к увеличению производительности процентов на 30. Что в данном случае было очень важно. <P>Вопрос --- кто виноват и что делать? Виновато удобство использования оператора присваивания и конструктора копирования, когда его очень просто поставить не понимая физических процессов, происходящих внутри. Делать тоже понятно что --- избавляться от удобства и думать над каждой строчкой, если оно требуется.<P>Просто существуют разные программы, с разными требованиями к их качеству и т.п. Все новшества в C  , фактически, предназначены для того, чтобы сделать универсальную удобную среду программирования. Если нужно сделать программу, к которой не выдвигается серьезных требований по качеству (гарантированное время отклика, ограничения на объем оперативной памяти, еще что-нибудь про поведение программы при изменении размерности входных данных), то использование STL и всего новомодного вполне оправдано: тем самым мы превращаем язык C в подобие Perl'а и наслаждаемся результатами.<P>Но как только требования ужесточается, все это прекращает работать. Совсем. Все приходиться писать сызнова. <P>Вообще, в таких случаях удобство программирования отходит на второй план. Да и вообще, сам аргумент "удобнее" (или "привычнее") здесь не работает: привыкнуть можно к чему угодно и тогда именно этот подход станет удобным. В свое время программисты достаточно успешно программировали в машинных кодах (да и сейчас можно встретить таких --- с узкой специализацией). <P>Это же все уровни программирования: чем выше, тем проще и быстрее программировать, но качество становится хуже за счет использования неконтроллируемых компонент. Если же опускаемся ниже, то время (и цена) разработки стремительно растет, зато мы можем предоставлять гарантии относительно качеств продукта.<BR>
+         </blockquote>
+         </FONT></Td></tr><TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         &nbsp;
+         </FONT></TH></tr>
+         </table>
+   <center>
+   <form ACTION="/cgi-bin/dcforum/dcboard.cgi" method="POST">
+   <input type=hidden name="om" value="134">
+   <input type=hidden name="forum" value="DCForumID1">
+   <input type=hidden name="omm" value="1">
+   
+         <input type="hidden" name="az" value="a_mesg">
+      
+   <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+   <TR><Td ALIGN="LEFT" valign="top" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   
+         <li><font color="#FF0000">
+         Image Links Enabled - just type the URL (e.g., http://www.dcscripts.com/image.gif)
+         </font>
+         
+      <li><font color="#FF0000">
+      Emotion Icons</font>
+      <a href="javascript:makeRemote('/cgi-bin/dcforum/dcboard.cgi?az=emotion_icon_short_cuts')"><FONT 
+      SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Emotion icon short cuts</FONT></a>
+   </TD>
+   </tr>
+   <TR BGCOLOR="#E3DAA5"><TH ALIGN="LEFT" COLSPAN="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+      Your Message
+      </FONT></TH></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Name<font color="black">*</font>:
+   </FONT>
+   </TH>
+   <TD>
+         <INPUT TYPE="TEXT" NAME="name" value="" SIZE=50>
+   </TD></TR>
+         <TR BGCOLOR="#EAE8E0">
+         <TH ALIGN="RIGHT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         EMail:
+         </FONT></TH>
+         <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="TEXT" NAME="email" value="" SIZE=50>
+         </TD></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Subject<font color="black">*</font>:
+   </FONT></TH>
+   <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="text" NAME="subject" VALUE="RE: Большое зло" SIZE=50>
+      </TD></TR><TR BGCOLOR="#EAE8E0">
+      <TH ALIGN="RIGHT" VALIGN="TOP"><FONT SIZE="-1" 
+         FACE="arial,sans-serif" COLOR="black">
+         Message<font color="black">*</font>:</FONT>
+         </TH><TD>
+         <TEXTAREA NAME="body" ROWS="15"
+         COLS="50" WRAP="virtual">>>Андрей, а почему ты считаешь переопределение 
+>>операторов большим злом?
+>
+>Исключительно из собственных наблюдений за жизнью. 
+>
+>
+>> Ну допустим, 
+>>чтобы кому-то понадобилось переопределить operator=, 
+>>чтобы он форматировал винт. Но 
+>>ведь с тем же успехом 
+>>можно переопределить и printf, чтобы 
+>>она форматировала винчестер! 
+>
+>Нет, дело не в этом. 
+>
+>printf всегда останется printf'ом, варианты когда 
+>некий человек подменяет системную библиотеку, 
+>отвергаем сразу: он либо знает 
+>что делает, либо полный идиот. 
+>
+>
+>А оператор "присвоить", определенный для некоторого 
+>класса, очень опасен именно тем, 
+>что его легко использовать, не 
+>подумав что за ним стоит. 
+>
+>
+>Вот например, есть некоторый класс, который 
+>реализует какое-то хранилище. И где-то 
+>посередине программы находится конструкция A=B. 
+>Что она сделает? Что это 
+>значит --- копирование данных, или 
+>использование разделяемой памяти? 
+>
+>>По-моему, либо надо вообще запретить переопределение, 
+>>либо его разрешить. Я не 
+>>понимаю, в чем разница между 
+>>операторами и функциями, особенно учитывая 
+>>что можно (при некоторых условиях) 
+>>написать что-то в духе 
+>>
+>>int a = operator (1, 5); 
+>>
+>>
+>>Вообще, переопределением операторов занимаются давно и 
+>>успешно:   означает сложение 
+>>чисел, матриц, функций, операторов. А 
+>>||.|| - норма, которую определяют 
+>>чуть ли не полусотней способов. 
+>>Все к этому привыкли и 
+>>не имеют вопросов. И потом, 
+>>
+>>
+>>x = x_prev - f(x_prev) / 
+>>df(x_prev); 
+>>
+>>все-таки немного понятнее, чем 
+>>
+>>assign(x, subtract(x_prev, division(f(x_prev), df(x_prev))); 
+>>
+>>просто в силу привычки. С чего, 
+>>собственно, Страуструп и начинает главу 
+>>про переопределение. 
+>
+>
+>Да ничего тут не понятнее. 
+>
+>В программировании всегда существует обычный trade-off 
+>между удобством программирования и точностью 
+>понимания того, как работает программа. 
+>
+>
+>Вот попросту свежий пример: некая программа 
+>работала достаточно медленно. Изучение результатов 
+>профайлера для нее в разных 
+>ситуациях показало, что достаточно большое 
+>время она проводит в... операторе 
+>присваивания std::string! При этом реальное 
+>копирование нигде не требовалось. Замена 
+>в глубине программы в параметрах 
+>функций std::string на const char 
+>* привело к увеличению производительности 
+>процентов на 30. Что в 
+>данном случае было очень важно. 
+>
+>
+>Вопрос --- кто виноват и что 
+>делать? Виновато удобство использования оператора 
+>присваивания и конструктора копирования, когда 
+>его очень просто поставить не 
+>понимая физических процессов, происходящих внутри. 
+>Делать тоже понятно что --- 
+>избавляться от удобства и думать 
+>над каждой строчкой, если оно 
+>требуется. 
+>
+>Просто существуют разные программы, с разными 
+>требованиями к их качеству и 
+>т.п. Все новшества в C 
+> , фактически, предназначены для 
+>того, чтобы сделать универсальную удобную 
+>среду программирования. Если нужно сделать 
+>программу, к которой не выдвигается 
+>серьезных требований по качеству (гарантированное 
+>время отклика, ограничения на объем 
+>оперативной памяти, еще что-нибудь про 
+>поведение программы при изменении размерности 
+>входных данных), то использование STL 
+>и всего новомодного вполне оправдано: 
+>тем самым мы превращаем язык 
+>C в подобие Perl'а и 
+>наслаждаемся результатами. 
+>
+>Но как только требования ужесточается, все 
+>это прекращает работать. Совсем. Все 
+>приходиться писать сызнова. 
+>
+>Вообще, в таких случаях удобство программирования 
+>отходит на второй план. Да 
+>и вообще, сам аргумент "удобнее" 
+>(или "привычнее") здесь не работает: 
+>привыкнуть можно к чему угодно 
+>и тогда именно этот подход 
+>станет удобным. В свое время 
+>программисты достаточно успешно программировали в 
+>машинных кодах (да и сейчас 
+>можно встретить таких --- с 
+>узкой специализацией). 
+>
+>Это же все уровни программирования: чем 
+>выше, тем проще и быстрее 
+>программировать, но качество становится хуже 
+>за счет использования неконтроллируемых компонент. 
+>Если же опускаемся ниже, то 
+>время (и цена) разработки стремительно 
+>растет, зато мы можем предоставлять 
+>гарантии относительно качеств продукта. 
+
+
+</TEXTAREA>
+   </TD></TR>
+   <TR><TH ALIGN="RIGHT" BGCOLOR="#EAE8E0">
+   &nbsp;</TH>
+   <TD BGCOLOR="#EAE8E0" ALIGN="LEFT">
+   <INPUT TYPE="SUBMIT" NAME="preview" VALUE="Preview">
+      <INPUT TYPE="SUBMIT" NAME="post" VALUE="Post Message">
+   <INPUT TYPE="RESET" VALUE="Reset">
+   </TD></TR></TABLE>
+   </form>
+   </center>
+  
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

@@ -1,0 +1,252 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/dcforum//DCForumID1/3.html"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/dcforum//DCForumID1/3.html"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Compose your message</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+<p>
+         <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+         <TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         Original Message
+         </FONT></TH></tr>
+         <TR BGCOLOR="#EAE8E0"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <b>"RE: Эгоизм"</b><br>Posted by Andrey L. Kalinin on 25-Aug-00 at 11:22&nbsp;PM
+         </FONT></Td></tr>
+         <TR BGCOLOR="#FBF9F1"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;&gt; Редко, но <BR>&gt;&gt;бывает. И это тоже надо <BR>&gt;&gt;понимать... <BR>&gt;Вах, до чего дошел. Хвалю!;) --- <BR>&gt;Все что могу сказать;) <P>Это не повод для оправданий. Совсем.<P>&gt;&gt;Тем не менее, оборот "уж неужто <BR>&gt;&gt;потому, что им жалко моряков" <BR>&gt;&gt;очень оригинален. <BR>&gt;Циничен. <P>Не путай цинизм с откровенной глупостью.<P>&gt;&gt;&gt; Я бы <BR>&gt;&gt;&gt;сказала что в цель только <BR>&gt;&gt;&gt;новый "пункт меню". <BR>&gt;&gt;Чего-чего? Какой "новый пункт"? Этой фразы <BR>&gt;&gt;я не понял совсем. <BR>&gt;..."Когда я только раздумывал о том, <BR>&gt;какие разделы будут на моей <BR>&gt;страничке, этот я решил не <BR>&gt;организовывать...  разделу быть..." --- <BR>&gt;новый? <P>Понятно. Когда я писал эту заметку я прекрасно знал, что обязательно кто-то поймет ее так (или подобным образом). Что же поделать. <P>Но ты как-то странно выдираешь цитаты, если уж цитировать, так все. Дальше было написано: "Иначе это совсем нехорошо..." И нехорошо не в том смысле, что подвернулся момент подходящий, а просто оказалось нужным высказаться.<P>Или еще одна цитата:<BR>"Но есть слова, которые мне хотелось бы высказать. Потому что терпеть это уже невозможно."<P>Мне очень неприятно объяснять это. Совсем неприятно то, что приходится это объяснять тебе. <P>При этом я не оправдываюсь --- если кто-то понял это так, это его полное на то право. Для того что бы донести до человека то, что хочешь, а не то, что получается, надо обладать "писательским" талантом, которого у меня, к сожалению, нет.<P>А еще, никогда не получается хорошо писать о том, что переживаешь сам. Потому что все время что-то очень мешается... самое лучшее --- писать о том, что переживают другие.
+         </blockquote>
+         </FONT></Td></tr><TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         &nbsp;
+         </FONT></TH></tr>
+         </table>
+   <center>
+   <form ACTION="/cgi-bin/dcforum/dcboard.cgi" method="POST">
+   <input type=hidden name="om" value="3">
+   <input type=hidden name="forum" value="DCForumID1">
+   <input type=hidden name="omm" value="5">
+   
+         <input type="hidden" name="az" value="a_mesg">
+      
+   <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+   <TR><Td ALIGN="LEFT" valign="top" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   
+         <li><font color="#FF0000">
+         Image Links Enabled - just type the URL (e.g., http://www.dcscripts.com/image.gif)
+         </font>
+         
+      <li><font color="#FF0000">
+      Emotion Icons</font>
+      <a href="javascript:makeRemote('/cgi-bin/dcforum/dcboard.cgi?az=emotion_icon_short_cuts')"><FONT 
+      SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Emotion icon short cuts</FONT></a>
+   </TD>
+   </tr>
+   <TR BGCOLOR="#E3DAA5"><TH ALIGN="LEFT" COLSPAN="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+      Your Message
+      </FONT></TH></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Name<font color="black">*</font>:
+   </FONT>
+   </TH>
+   <TD>
+         <INPUT TYPE="TEXT" NAME="name" value="" SIZE=50>
+   </TD></TR>
+         <TR BGCOLOR="#EAE8E0">
+         <TH ALIGN="RIGHT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         EMail:
+         </FONT></TH>
+         <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="TEXT" NAME="email" value="" SIZE=50>
+         </TD></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Subject<font color="black">*</font>:
+   </FONT></TH>
+   <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="text" NAME="subject" VALUE="RE: Эгоизм" SIZE=50>
+      </TD></TR><TR BGCOLOR="#EAE8E0">
+      <TH ALIGN="RIGHT" VALIGN="TOP"><FONT SIZE="-1" 
+         FACE="arial,sans-serif" COLOR="black">
+         Message<font color="black">*</font>:</FONT>
+         </TH><TD>
+         <TEXTAREA NAME="body" ROWS="15"
+         COLS="50" WRAP="virtual">>>> Редко, но 
+>>>бывает. И это тоже надо 
+>>>понимать... 
+>>Вах, до чего дошел. Хвалю!;) --- 
+>>Все что могу сказать;) 
+>
+>Это не повод для оправданий. Совсем. 
+>
+>
+>>>Тем не менее, оборот "уж неужто 
+>>>потому, что им жалко моряков" 
+>>>очень оригинален. 
+>>Циничен. 
+>
+>Не путай цинизм с откровенной глупостью. 
+>
+>
+>>>> Я бы 
+>>>>сказала что в цель только 
+>>>>новый "пункт меню". 
+>>>Чего-чего? Какой "новый пункт"? Этой фразы 
+>>>я не понял совсем. 
+>>..."Когда я только раздумывал о том, 
+>>какие разделы будут на моей 
+>>страничке, этот я решил не 
+>>организовывать...  разделу быть..." --- 
+>>новый? 
+>
+>Понятно. Когда я писал эту заметку 
+>я прекрасно знал, что обязательно 
+>кто-то поймет ее так (или 
+>подобным образом). Что же поделать. 
+>
+>
+>Но ты как-то странно выдираешь цитаты, 
+>если уж цитировать, так все. 
+>Дальше было написано: "Иначе это 
+>совсем нехорошо..." И нехорошо не 
+>в том смысле, что подвернулся 
+>момент подходящий, а просто оказалось 
+>нужным высказаться. 
+>
+>Или еще одна цитата: 
+>"Но есть слова, которые мне хотелось 
+>бы высказать. Потому что терпеть 
+>это уже невозможно." 
+>
+>Мне очень неприятно объяснять это. Совсем 
+>неприятно то, что приходится это 
+>объяснять тебе. 
+>
+>При этом я не оправдываюсь --- 
+>если кто-то понял это так, 
+>это его полное на то 
+>право. Для того что бы 
+>донести до человека то, что 
+>хочешь, а не то, что 
+>получается, надо обладать "писательским" талантом, 
+>которого у меня, к сожалению, 
+>нет. 
+>
+>А еще, никогда не получается хорошо 
+>писать о том, что переживаешь 
+>сам. Потому что все время 
+>что-то очень мешается... самое лучшее 
+>--- писать о том, что 
+>переживают другие. 
+
+
+</TEXTAREA>
+   </TD></TR>
+   <TR><TH ALIGN="RIGHT" BGCOLOR="#EAE8E0">
+   &nbsp;</TH>
+   <TD BGCOLOR="#EAE8E0" ALIGN="LEFT">
+   <INPUT TYPE="SUBMIT" NAME="preview" VALUE="Preview">
+      <INPUT TYPE="SUBMIT" NAME="post" VALUE="Post Message">
+   <INPUT TYPE="RESET" VALUE="Reset">
+   </TD></TR></TABLE>
+   </form>
+   </center>
+  
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

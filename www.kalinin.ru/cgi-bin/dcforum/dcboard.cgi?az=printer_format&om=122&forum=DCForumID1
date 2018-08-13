@@ -1,0 +1,15 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 122<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/122.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Глупый вопрос про винду"</font></b><br>
+Posted by Lebedev A. V.  on 26-Aug-03 at 06:20&nbsp;PM<br>
+<blockquote>Помогите, кто-нибудь.<BR>При попытке добавить новый компьютер (работающий по XP) в домен NT, PDC которого -- samba под FreeBSD, появляется следующее "магическое" сообщение об ошибке: "Множественное подключение к серверу или разделяемым ресурсам одним пользователем с использованием более одноги имени пользователя неразрешено, отключите все предыдущие подключения к серверу или разделяемым ресурсам и повторите..."<BR>Пользователь с именем &lt;имя_компьютера&gt;$ заведён, да и вообще, раньше все компьютеры добавлялись замечательно. И параллельно вопрос, можно ли править smbpasswd руками во время работы и перечитывает ли его smbd по SIGHUP?</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+</font></body></html>

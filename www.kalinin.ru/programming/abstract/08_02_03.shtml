@@ -1,0 +1,709 @@
+<html><head><title>ALK :: Отвлеченно :: Postfix изнутри.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/abstract/">отвлеченно</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/abstract/04_03_02.shtml">&lt;&lt;</a>&nbsp;08.02.03&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Postfix изнутри
+</h1> 
+<p align="justify">
+	Эта заметка пишется после громадного перерыва и поэтому,
+	наверняка, будет отличаться от всего остального. Что же,
+	год назад я закончил нравоучениями --- значит, логично
+	начать с них же.
+</p>
+<p align="justify">
+	На самом деле все не так плохо. Я не собираюсь снова
+	рассказывать о том, что учиться --- хорошо, хотя именно эта
+	идея, почему-то, сильно изумила большинство будущих и
+	состоявшихся программистов, прочитавших
+	предыдущую статью ("Как стать программистом") и почему нельзя
+	ничему научиться не вложив в свою учебу хоть что-то. Просто я хочу
+	попытаться показать на примере, что такое хорошее (с моей
+	точки зрения) программирование. 
+</p>
+<p align="justify">
+	Лично я практически никогда и нигде не видел 
+	эталонных программ для учащихся и это очень странно. Казалось
+	бы, для того чтобы научить программированию, надо хотя бы один
+	раз показать что это такое и как это делать хорошо. Является
+	ли алгоритм сортировки пузырьком показателем "качественного"
+	программирования? Нет, не является, потому что это частное
+	решение некоторой задачи, практически никогда не возникающей
+	перед человеком обособленно. Нет, этот алгоритм используется,
+	конечно, и в его реализациях иногда делают ошибки, но он
+	никогда не будет самоцелью для программиста.
+</p>
+<p align="justify">
+	Выполняемые же задания бывают иногда хороши, но только как
+	упражнения для фиксирования некоторого материала: те же
+	сортировки, поиск, нахождение оптимального решения... любой из
+	этих алгоритмов всегда будет средством достижения результата,
+	а не конечным результатом. Даже курсовые работы и те
+	отличаются малым объемом за очень редким исключением. Что
+	остается? Диплом? Слишком поздно для того, чтобы на его основе
+	можно было бы чего-нибудь изучить.
+</p>
+<p align="justify">
+	Таким образом, должны существовать некоторые программы заранее
+	известного качества, которые нужно изучить, может быть, внести
+	измения и, что самое главное, понять что было сделано, как это
+	было сделано и почему сделано именно так. Это очень важные
+	вопросы, понимание же последнего из них является залогом
+	накопления опыта и, чего уж там, некоторой профессиональной
+	мудрости. 
+</p>
+<p align="justify">
+	Так вот, этих эталонных программ не существует. Максимум на
+	что может надеяться студент, так это на написанные мелом на
+	доске, чрезвычайно корявым почерком, надписи, изображающие
+	некоторую программу. Обычно она не работает, а половина
+	студентов не смогла правильно записать весь поток сознания
+	от преподавателя и поэтому ничего не сможет разобрать уже в
+	своих собственных каракулях. 
+</p>
+
+
+<h2>Требования к эталонным программам</h2>
+
+
+<p align="justify">Программа, претендующая на звание "эталонной", должна выполнять
+следующие условия:</p>
+<ul>
+	<li>ее исходный текст должен быть свободно доступен; </li>
+	<li>это должна быть настоящая программа, решающая какую-то
+	реальную задачу;</li>
+	<li>задача не должна требовать много специальных знаний,
+	например, сложного протокола передачи данных или специфических
+	машинных
+	кодов некоторого процессора</p>
+	<li>она должна быть не очень большой, но и не маленькой,
+	примерно 100 тысяч строк; </li>
+	<li>она должна быть популярной и массово используемой;</li>
+	<li>она должна быть поддерживаемой, то есть должен
+	существовать программист или группа программистов,
+	продолжающий работать над ее улучшением;</li>
+	<li>она должна быть хорошо оформлена, хорошо написана,
+	производительна, переносима и т.д. --- в общем, все то, что
+	преподаватель считает "хорошей" программой</li>
+	<li>в ней должны быть недостатки; впрочем, в любой программе
+	есть недостатки.</li>
+</ul>
+
+<p align="justify">
+	Кстати сказать, пример подобной "эталонной" программы можно
+	найти в книге Э. Таненбаума "Современные операционные
+	системы", где он предлагал в качестве примера свою ОС под
+	названием Minix. Но она была вытеснена Linux и перестала
+	использоваться, соответсвенно сейчас она выглядит достаточно
+	загадочно. А когда книга только появлялась, Minix, пожалуй,
+	была очень хорошим примером "эталонной" программы, которую
+	можно изучать или критиковать. Опять же, Linux возник именно
+	потому, что Торвальдс изучал книгу Таненбаума, но ему не
+	хватало Minix для своих нужд. 
+</p>
+
+<p align="justify">
+	Мне хочется взять на себя смелость и предложить подобную
+	эталонную программу для изучения ее внутренностей. Выбрать
+	исходники FreeBSD? Нет, они слишком большие и, зачастую,
+	специфические. Можно было бы взять Apache, но тут уже я
+	недостаточно хорошо знаком с его исходными текстами. 
+</p>
+<p align="justify">
+	Осмелюсь предложить postfix --- это популярный MTA (Mail
+	Transfer Agent), позволяющий эффективно передавать письма
+	адресатам. Азы протокола SMTP, которые надо знать, не особенно
+	сложны для изучения и их можно освоить за время изучения
+	самого postfix. Никто не против?
+</p>
+
+<h2>Mail Transfer Agent</h2>
+
+<p align="justify">
+	MTA это программа, которая лежит в основе передачи
+	электронной почты. Когда вы посылаете письмо своему знакомому с
+	адресом vasya@pupkin.ru, то вы делаете это посредством своего 
+	SMTP-клиента (например, Outlook, The Bat!, mutt), который
+	передает письмо MTA. Он может делать это по протоколу SMTP или
+	еще каким-нибудь способом, в любом случае он не выполняет
+	доставку письма самостоятельно. MTA получает письмо и
+	проверяет по своей конфигурации, что он должен с ним сделать:
+	послать адресату напрямую (то есть, послать письмо MTA,
+	который установлен на хосте, куда указывает MX-запись
+	соответствующего домена).
+</p>
+<p align="justify">
+	MTA должен сделать примерно следующее: 
+</p>
+<ul>
+	<li>Обрабатывать входные соединения для приема почты по
+	протоколу SMTP.</li>
+	<li>Сохранять почту на диске в очереди.</li>
+	<li>Отправлять почту адресату из очереди (это может быть
+	локальный почтовый ящик, другой MTA или еще какой-то иной
+	способ доставки почты).</li>
+	<li>Гарантировать доставку почты получателю или нотификацию
+	отправителю о невозможности доставки.</li>
+</ul>
+
+<p align="justify">
+	Этот список --- только самое необходимое. Хороший MTA должен,
+	кроме того, быть надежным, высокопроизводительным, гибко настраиваемым,
+	поддерживать встройку фильтров (например, для борьбы со
+	спамом) и т.д.  
+</p>
+<p align="justify">
+	Долгое время фактически единственным MTA для Unix'ов был
+	sendmail, отличающийся диким форматом конфигурации и, вообще,
+	неудобством использования. Сейчас ситуация иная --- есть еще
+	несколько свободных почтовых систем, таких как QMail и
+	postfix, которые обладают целым рядом преимуществ по
+	сравнению с sendmail. Впрочем, sendmail все равно есть и,
+	наверное, останется самым популярным MTA, так как традиционно
+	входит в состав огромного количества дистрибутивов Unix. Кроме
+	того, опять же, интерфейс с установленным MTA все равно
+	закрепился как вызов программ из установки sendmail и все
+	остальные MTA поддерживают его. 
+</p>
+
+<h2>Общая организация postfix: модульность, управляющий процесс master</h2>
+
+<p align="justify">
+	Первое, на что стоит я хотел бы обратить внимание: postfix не
+	является монолитной программой. Он весь состоит из модулей,
+	которые передают почтовые сообщения или иную информацию между
+	собой. 
+</p>
+<p align="justify">
+	Интересно, что модули постфикса, или сервисы, устроены в виде
+	отдельных программ, каждая из которых запускается из
+	управляющего сервиса master (порождается от master). Почему
+	выбрана такая модель (то есть, множество однопоточных
+	процессов) а не, к примеру, популярные потоки?  
+</p>
+<p align="justify">
+	Давайте я сразу оговорюсь --- многопоточные сервисы вполне
+	могут существовать и создаваться, это мы все рассмотрим чуть
+	позднее. Но все сервисы постфикса основаны либо на select, либо
+	на pre-fork моделях. Связано это, как я думаю, с отлаженностью этих
+	механизмов на различных операционных системах. Постфикс
+	компилируется и успешно работает практически на всем зоопарке
+	более-менее популярных Unix'ов, это было бы попросту
+	невозможно в том случае, если бы использовались потоки,
+	которые везде разные. А pre-fork модель или select вполне
+	отлажена в течение десятилетий использования. 
+</p>
+<p align="justify">
+	Я отмечу сразу же --- то что я даю свои ответы на поставленные
+	мною же вопросы, еще не значит что эти ответы верны. Я не
+	автор постфикса и его мотивация могла быть совершенно иной, я
+	же лишь предполагаю или, точнее, меряю на себя возникающие
+	вопросы. Поэтому все причины, которые я пытаюсь разъяснить,
+	следует понимать следующим образом: "Я бы тоже сделал бы так
+	если бы стоял перед этой проблемой по следующей
+	причине". Сделав эту ремарку, я надеюсь что читатель ее
+	запомнит и не будет так уж безоговорочно верить в мои ответы
+	--- может быть я и не прав. Если у читателя появились свои ответы
+	(а в качестве postfix'а мы, напомню, не сомневаемся, эта
+	программа является эталоном), то это значит что своей цели я
+	добился. 
+</p>
+<p align="justify">
+	Для функционирования всей системы в целом необходимо запустить
+	только процесс master. Он читает конфигурационный файл
+	следующего вида:
+</p>
+<pre>
+# ==========================================================================
+# service type  private unpriv  chroot  wakeup  maxproc command + args
+#               (yes)   (yes)   (yes)   (never) (50)
+# ==========================================================================
+smtp      inet  n       -       n       -       -       smtpd
+#628      inet  n       -       n       -       -       qmqpd
+pickup    fifo  n       -       n       60      1       pickup
+cleanup   unix  n       -       n       -       0       cleanup
+qmgr      fifo  n       -       n       300     1       qmgr
+#qmgr     fifo  n       -       n       300     1       nqmgr
+rewrite   unix  -       -       n       -       -       trivial-rewrite
+bounce    unix  -       -       n       -       0       bounce
+defer     unix  -       -       n       -       0       bounce
+flush     unix  n       -       n       1000?   0       flush
+smtp      unix  -       -       n       -       -       smtp
+showq     unix  n       -       n       -       -       showq
+error     unix  -       -       n       -       -       error
+local     unix  -       n       n       -       -       local
+virtual   unix  -       n       n       -       -       virtual
+lmtp      unix  -       -       n       -       -       lmtp
+</pre>
+<p align="justify">
+	Это список всех доступных сервисов. Вкратце, о том что значат
+	все эти надписи, по столбцам:
+</p>
+<ul>
+	<li>service --- название сервиса в случае использования
+	сокетов unix-domain и прочих средств IPC (interprocess
+	communication), порт и интерфейс в случае использования
+	интернет-сокетов (smtp, понятно, аналог *:25)</li>
+
+	<li>type --- тип сокета, который слушается сервисом. Возможные
+	значения, по-моему, ясны. </li>
+
+	<li>private --- признак того, что сервис может доступен снаружи
+	MTA. Все сервисы с типом inet не могут быть private по
+	понятным причинам --- никак нельзя ограничить доступ процессов
+	к интернет-сокету. В зависимости от этого флага отличается
+	каталог и права доступа на файл, который связан с создаваемым
+	сокетом. Доступные снаружи сервисы нужны по разным причинам,
+	например сервис showq нужен для получения содержимого очереди
+	сообщений для команды mailq.</li>
+
+	<li>unpriv --- признак того, что сервис запускается от
+	пользователя postfix, а не root. Надо сказать, что смена
+	пользователя целиком и полностью на совести сервиса, а не
+	master'а (единственное, чем отличается запуск
+	непривилегированного процесса от запуска привелигированного
+	--- так это наличием ключа -u). Это можно объяснить тем, что
+	сервисы (а это программы в каталоге /usr/libexec/postfix)
+	просто так не появляются и они должны поддерживать такой
+	интерфейс. Этот флаг нужен для того, чтобы обезопасить сервер
+	от сбоев в работе постфикса: допустим, в постфиксе найдена
+	жуткая ошибка в каком-либо из сервисов, позволяющая
+	злоумышленнику выполнить любой код на вашем сервере; если бы
+	сервисы работали от root'а то этот человек получил бы полный
+	доступ к компьютеру, а если они работают от пользователя
+	postfix, который даже не имеет возможности логина, то под
+	ударом только ваша почта. Естественно, что основной процесс,
+	master, работает от root'а, это значит что master должен быть
+	максимально простым для того, чтобы гарантировать отсутствие в
+	нем грубых ошибок.</li>
+
+	<li>chroot --- аналогично unpriv, флаг заставляет сервисы
+	выполнить вызов chroot на /var/spool/postfix. Тем самым для
+	сервисов меняется положение каталога '/' и они не
+	могут получить доступ к другим файлам, кроме очереди
+	сообщений. Необходимость этого флага обусловлена теми же
+	причинами, что и для unpriv.</li>
+
+	<li>wakeup --- нотификация сервиса каждые n секунд. Это
+	позволяет заставить сервисы, допустим, перечитать очередь. На
+	самом деле, нотификация об изменениях в очереди может быть
+	доставлена от других сервисов, но это все равно полезно: вдруг
+	где-то что-то сломалось, или постфикс перезапустился, все
+	равно очередь должна быть проверена.</li>
+
+	<li>maxproc --- максимальное количество процессов сервиса, которые
+	могут быть запущены. Это число очень полезно для настройки
+	особенно тяжеловесных сервисов, запуск которых может привести
+	к большой загрузке сервера. </li>
+
+	<li>command --- это просто название программы и аргументы,
+	которые должны быть ей переданы. Здесь никаких тонкостей нет. </li>
+</ul>
+
+<p align="justify">
+	Значения по-умолчанию (например, maxproc) настраиваются через
+	другой конфигурационный файл --- main.cf. 
+</p>
+
+<h2>master: запуск сервисов, интерфейс с уже запущенными сервисами</h2>
+
+<p align="justify">
+	Теперь рассмотрим, как появляются новые процессы, выполняющие
+	работу сервисов.
+</p>
+<p align="justify">
+	При запуске master считывает master.cf, по которому он
+	определяет какие сервисы понадобятся. Он создает все указанные
+	сокеты и готовиться их "слушать", инициализирует внутри себя
+	структуры, описывающие состояние каждого из сервисов
+	(количество запущенных процессов и т.п.), после чего master
+	загоняет все дескрипторы сокетов в select и ждет какого-нибудь
+	из событий на каждый из них. 
+</p>
+<p align="justify">
+	Теперь, допустим, на наш сервер должна прийти почта. Сейчас
+	интересно не то, как будет обрабатываться почта, а как будут
+	запускаться сервисы.
+</p>
+<p align="justify">
+	Что значит --- пришла почта? Это значит, что некий почтовый
+	релей установил соединение на 25-й порт нашего сервера. В этом
+	случае, дескриптор в master'е, который связан с этим портом,
+	будет "готов к чтению" и, тем самым, select завершится. 
+</p>
+<p align="justify">
+	Сам по себе master не умеет обрабатывать smtp-сессию, зато это
+	умеет делать сервис smtpd, который и будет запущен при помощи
+	fork. Естественно, что перед запуском производится некоторое
+	количество действий, которые пока что не особенно интересны,
+	важно то, что сразу же после запуска smtpd выполняет accept на
+	этом дескрипторе и приступает к обработке smtp-сессии и
+	пересылке письма дальше по сервисам до менеджера очереди. 
+</p>
+<p align="justify">
+	Перед запуском master увеличивает счетчик процессов сервиса
+	smtpd и запоминает его pid. Этот счетчик будет уменьшен тогда,
+	когда master получит сигнал SIGCHLD, то есть smtpd
+	завершится. Тем самым, master может контролировать количество
+	запущенных процессов.
+</p>
+<p align="justify">
+	Теперь самый интересный вопрос --- пока smtp-сессия
+	обрабатывается, master может опять реагировать на изменения
+	состояния дескриптора, связанного с 25-м портом, а что делать когда
+	эта сессия закончится? Глупо завершать smtpd сразу же после обработки
+	одного письма если через секунду, возможно, придет еще одно
+	письмо: тогда будет слишком много затрат связанных с fork. Тем
+	самым, сервисы должны уметь обрабатывать новые соединения и
+	при этом им не должен мешаться master. Кроме того, master все
+	равно должен следить за сервисами и если кто-то из них захотел
+	"умереть", то это не должно сказаться на работоспобности MTA в
+	целом. 
+</p>
+<p align="justify">
+	Опять же, технология в этом случае совершенно простая, грубо
+	говоря это и есть pre-fork модель построения сетевых серверов, единственное
+	отличие от, скажем так, классической реализации заключается в
+	том, что обычно сервер выполняет только одну операцию и, тем
+	самым, можно сделать так что "главный" сервер (который и
+	выполняет fork) сам по себе тоже способен обрабатывать
+	соединения. В случае с master, который запускает любые
+	сервисы, реализовать такой подход попросту нереально. 
+</p>
+<p align="justify">
+	Обычно, каждый свободный экземпляр сервера (то есть, отдельный
+	процесс) выполняет accept (или сначала select, а потом accept)
+	на нужный дескриптор. При этом реально accept будет выполнен
+	только у одного экземпляра сервера (заранее неизвестно какого
+	именно), остальные получат ошибку и могут опять запустить
+	accept или select. Сейчас же, master должен уметь отличать
+	ситуации когда свободных экземпляров сервиса нет (тогда он
+	должен слушать сокет сам и выполнить fork когда придет новое
+	соединение) и когда кто-то свободен (и тогда ему не надо
+	запускать select на этот сокет, поскольку этот "кто-то" сам
+	следит за своим сокетом). 
+</p>
+<p align="justify">
+	Естественно, что это делается опять же через IPC: между
+	потомком (то есть, экземпляром сервиса) и master'ом есть
+	канал, через который потомок уведомляет master о своей
+	занятости или свободности. Когда потомок изменяет свое
+	состояние, он передает master'у два значения: свой pid и флаг
+	"занят" или "свободен". 
+</p>
+<p align="justify">
+	Реализация многопроцессного однопотокового сервиса в этом
+	случае простая: сервис все время делает accept, по успеху
+	последнего он оповещает master о занятости, затем начинает
+	обрабатывать соединение, после чего сообщает master'у о своей
+	свободности и опять делает accept. Если в какой-то момент он
+	решит закончить свое выполнение, он может это сделать без
+	оповещений --- master получит сигнал от операционной системы и
+	выполнит все необходимые действия.
+</p>
+<p align="justify">
+	Реализация многопотокого сервиса еще проще --- сервис никогда
+	не оповещает master о своей занятости, а обрабатывает
+	соединения во внутреннем select или еще каким-нибудь образом. 
+</p>
+<p align="justify">
+	Теперь небольшая ремарка о необходимости завершения работы процесса. Это
+	общепринятая практика, когда сервер после выполнения
+	определенного числа операций или простоя, прекращает свое
+	выполнение. Такая логика очень полезно, потому что уменьшает
+	зависимость от ошибок с неудалением выделенной ранее памяти
+	(попросту, "разбухания" процесса), поэтому обычно любые
+	сервера имеют какое-то ограничение на количество обработанных
+	запросов и время простоя. В postfix каждый сервис имеет
+	подобные ограничения, кроме, разумеется, master, так как
+	последний некому перезапустить. 
+</p>
+<p align="justify">
+	Когда некий сервис требует для своей работы другой сервис
+	(например, для того чтобы передать почтовое сообщение от smtpd
+	в cleanup), он всего-навсего обращается по нужному сетевому
+	адресу (в сети интернет или файловой системе), все остальное
+	за него будет сделано master'ом или работающим целевым
+	сервисом.  
+</p>
+
+<h2>PS</h2>
+<p align="justify">
+	Я ничего не могу гарантировать, соответственно я не знаю,
+	когда появится следующая заметка и будет ли она на эту же
+	тему. Надеюсь, правда, что тема интересна окружающим. 
+</p>
+
+<br>
+<p align="right"><a target="_blank" href="/programming/abstract/print_08_02_03.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.postfix.org" target="_blank">http://www.postfix.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Официальный сайт почтовой системы Postfix, оттуда его  можно скачать.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">/programming/network/01_12_00.</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Моя статья про неблокирующий connect --- почти то же самое, что и accept.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/04_03_02.shtml">Как стать программистом: часть вторая, книги и интернет-ресурсы </a> (04.03.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вторую часть статьи я публикую значительно позже, чем рассчитывал: просто не получилось выкроить немного времени на последнюю проверку текста перед публикацией....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/04_03_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/15_02_02.shtml">Как стать программистом: часть первая, нравоучительная </a> (15.02.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не знаю почему, но где-то в среднем пару раз в месяц ко мне обращаются с подобным вопросом --- как стать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/15_02_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/04_03_02.shtml">Как стать программистом: часть вторая, книги и интернет-ресурсы </a> (04.03.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вторую часть статьи я публикую значительно позже, чем рассчитывал: просто не получилось выкроить немного времени на последнюю проверку текста перед публикацией....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/04_03_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/08_02_03.shtml">Postfix изнутри </a> (08.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка пишется после громадного перерыва и поэтому, наверняка, будет отличаться от всего остального. Что же, год назад я закончил нравоучениями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/08_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/04_03_02.shtml">Как стать программистом: часть вторая, книги и интернет-ресурсы </a> (04.03.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вторую часть статьи я публикую значительно позже, чем рассчитывал: просто не получилось выкроить немного времени на последнюю проверку текста перед публикацией....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/04_03_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/15_02_02.shtml">Как стать программистом: часть первая, нравоучительная </a> (15.02.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не знаю почему, но где-то в среднем пару раз в месяц ко мне обращаются с подобным вопросом --- как стать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/15_02_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/27_03_01.shtml">Ответственность, доверие и качество </a> (27.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существует такая черта человеческого характера под названием "ответственность". Вообще говоря, очень полезная черта: если она есть у человека, то он может...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/27_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/06_02_01.shtml">Традиционное управление </a> (06.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Йордон пишет о том, что основная проблема создания программных систем заключается не в программировании или проектировании, а в управлении и он...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/06_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/04_03_02.shtml">Как стать программистом: часть вторая, книги и интернет-ресурсы </a> (04.03.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вторую часть статьи я публикую значительно позже, чем рассчитывал: просто не получилось выкроить немного времени на последнюю проверку текста перед публикацией....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/04_03_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage  - "просто мысли после прочтения "форума""
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+   <META HTTP-EQUIV="Expires" CONTENT="Tues, 04 Dec 1996 21:00:00 GMT">
+   <META HTTP-EQUIV="pragma" content="no cache">
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>"просто мысли после прочтения "форума""</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+   <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" bgcolor="#EAE8E0">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=printer_format&om=16&forum=DCForumID1"><img
+   src="/dcforum//Images/printer_friendly.gif" align="bottom" border="0"><font 
+   SIZE="1" FACE="arial,sans-serif" 
+   color="black">Printer-friendly version of this topic</font></a></TD>
+   <TD ALIGN="RIGHT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <font color="black"><b></b></font>&nbsp;
+   <br><font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=16&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=16&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>&nbsp;</FONT></TD></TR>
+      <TR><TH COLSPAN="4" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+         face="arial,sans-serif" color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> 
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&archive="><font 
+         face="arial,sans-serif" color="black" size="-1">Основной форум</FONT></a> <font 
+         face="arial,sans-serif" color="black" size="-1">(Public)</font>
+         </TH></TR>
+      <TR BGCOLOR="#E3DAA5">
+      <TD ALIGN="LEFT" COLSPAN="4">
+      <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+      Original message</font></TD></TR></TABLE>
+      <br>
+      <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="0"></a> <b>"просто мысли после прочтения "форума""</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Denis</b> <a 
+            href="mailto:denews@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      24-Nov-00,&nbsp;06:32&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Очень не приятно было читать "форум", я когда попал на твою страничку(это было 3 месяца назад)- очень обрадовался, что есть место в сети куда можно заходить и читать интересные статьи, "но чем дальше в лес тем толще партизаны". Поясню: когда читаешь чьи-то "опусы" начинаешь представлять человека, в начале мне показалось, что ты обыкновенный-нормальный человек(в хорошем смысле), НО, как и по статьям так и по форуму я понял, что это АбсолютнО не так, ты уж прости за критику. Теперь ты представляешься таким "злым преподом", который не умеет держать себя в руках, (можно тысячу раз говорить, что слово "идиотики" &lt;&gt; слову "идиот", но от этого оно не перестанет так быть), а на счёт отсутствия направленности в содержании сайта, я в чём-то согласен с Владом(я не помню имени, кажется его звали Влад), я пришёл на твой сайт по рассылке "Сайты о С++", мне понравилась именно "программистское" содержание, потом стали появлятся заметки о жизни(некоторые, кстати были сырыми), но они были интересными, пока не стали злыми, ты хочешь что бы все жили как ты и не смотришь, что люди разные. Мне жалко всех тех у кого ты преподаёшь(хотя я не отрицаю, что слушать тебя интересно), просто ты всё время думаешь о том как оценить, а не о том как научить. Зря ты и Иру обидел(кот про БрейнБенч в форум писала). А заклю чу я всё тем что скажу:<BR>в Инете по мимо тебя ещё есть много других страничек, где можно почитать сочинения _нормальных_ людей(Спектатор, Ремингтон...), а на твою я больше ходить не хочу, хотя я был наверное одним из самых старых её посетителей. Ты всех обижаешь, представляя себя "пупом Земли"
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+      </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE>
+      <br>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         <a name="TOP">&nbsp;</a>Table of contents</font></TD></TR></TABLE>
+         <br><TABLE 
+         BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="LEFT" COLSPAN="2">
+         <font SIZE="-1" FACE="arial,sans-serif" color="black">
+         
+               <img src="/dcforum//Images/message.gif">
+               <a href="#2">RE: просто мысли после прочтения </a>,
+               <b>om</b>, <font size="1">24-Nov-00, (2)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#3">RE: просто мысли после прочтения </a>,
+               <b>alk</b>, <font size="1">25-Nov-00, (3)</font><br>
+               
+               <img src="/dcforum//Images/message.gif">
+               <a href="#4">RE: просто мысли после прочтения </a>,
+               <b>Denis</b>, <font size="1">27-Nov-00, (4)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#5">RE: просто мысли после прочтения </a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">27-Nov-00, (5)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#6">RE: просто мысли после прочтения </a>,
+               <b>om</b>, <font size="1">27-Nov-00, (6)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#7">RE: просто мысли после прочтения </a>,
+               <b>scorp</b>, <font size="1">27-Nov-00, (7)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#8">RE: просто мысли после прочтения </a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">27-Nov-00, (8)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#9">RE: просто мысли после прочтения </a>,
+               <b>om</b>, <font size="1">27-Nov-00, (9)</font><br>
+               
+         </font></TD></TR></TABLE><p>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="right" COLSPAN="2">
+         <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=16&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=16&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+         </TD></TR></TABLE><TABLE BORDER="0" WIDTH="70%" 
+         cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Messages in this topic
+         </font></TD></TR></TABLE>
+         <br>
+         
+
+   <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="2"></a>2.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>om</b> <a 
+            href="mailto:olga_malkina@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      24-Nov-00,&nbsp;11:44&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Знаешь, Денис, ты не прав. Я знаю Андрея не только по заметкам на сайте, в смысле знакома с ним лично. И потому могу сказать "Ты очень неправ".<P>Мне во первых странно что люди вообще предъявляют претензии к нему на тему содержания сайта. (У меня самой есть домашняя страничка и потому я также считаю возможным так говорить). Тема сайта --- "Домашняя страничка". Это значит что это не страничка о С   или о чем либо еще. Это всего лишь тот материал, который человек посчитал возможным выложить на своей страничке. И по нему лишь можно сделать вывод об интересах или знаниях человека. А мне кажется что Андрей вполне может писать заметки на тему C  , он  действительно глубоко знаком с этой областью. <BR>А размещать статьи о жизни --- это тем более его право. Если ты не согласен это тоже твое право. Ты можешь тоже об этом написать.<P>Насчет его преподавания тоже могу добавить. К твоему сведению он готовит ребят из МАИ к олимпиадам по программированию. Ты считаешь ему за это сильно платят? Нет. Ему просто интересно преподавать. Ему есть чему учить. Мы просто недавно обсуждали эту тему в студенческой рассылке. Если человек преподает именно по своей инициативе --- он всегда преподает лучше, чем человек который преподает потому что он преподаватель. Он никогда не опуститься до отмечания посещения или какого-нибудь бреда в том же духе.<P>А насчет строгости преподавателей я всегда смотрела на это позитивно, если она была справедлива, а не абсурдна (как например придирки к оформлению и тп) А если учесть что Андрей принимает зачеты у самой слабой группы первого курса, при том что ведет у них семинары тетушка, которую опять таки не могут выгнать потому что она преподаватель (а давно пора), сказок не оберешься. В прошлом году мы столкнулись с таким преподавателем --- сдавали ему три задачи (из 9) курсовой с 14:00 до 22:20. Но при всем при этом я считаю если бы не он, мне пришлось бы трудно на экзамене. В итоге именно благодаря сдаче этой курсовой были основные знания предмета. Так что строгий преподаватель это даже хорошо. Обычно требует знания и дает их. Зачем иначе вообще учиться в институте?<P>Я даже не знаю говорить ли про форум вообще. Последние сообщения были написаны нашими одногруппниками. Не самыми лучшими людьми как можно понять. Такие сообщения надо сразу гасить, как мне кажется. Люди просто хотели сделать гадость. Сделали. <P>Ну а про девушку Иру;) Мне странно что ты высказал соболезнования;) Мало того что девушка (наверно все-таки не дама, судя по адресу) написала откровенную глупость, меня в общем возмутило не это. Если честно я ругалась по другому поводу. Не знаю как другие, но меня всегда раздражает когда мое имя извращают. Я считаю к человеку надо обращаться так как он представился. А я нигде не видела чтобы Андрей называл себя как-то иначе. В общем даже я себе такого не позволяю;) А делать выводы о мальчишестве тем более глупость. Как вообще об этом можно судить?<P>И еще. Быть одновременно и студентом и преподавателем я думаю не так-то просто. Надо чтобы "твои студенты тебя признавали за преподавателя", то есть уважали. А это тоже надо заслужить, и это наверно еще одно доказательство того что человек серьезный. Вряд ли бы ему иначе вообще доверили преподавание, тебе не кажется?<P>А про заметки Спектатора;) Может заглянешь к нему в "рекомендовано к посещению";)<P><P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=2"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="3"></a>3.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>alk</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      25-Nov-00,&nbsp;00:03&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Ой. Сколько всего, и все про меня <img src="/dcforum//Images/wink.gif"> Сейчас буду резать.<P>&gt;Знаешь, Денис, ты не прав. Я <BR>&gt;знаю Андрея не только по <BR>&gt;заметкам на сайте, в смысле <BR>&gt;знакома с ним лично. И <BR>&gt;потому могу сказать "Ты очень <BR>&gt;неправ". <P>Это как бы не аргумент, кстати <img src="/dcforum//Images/wink.gif"> личное знакомство зачастую как раз может давать несколько неправильные впечатления. Ну да ладно.<P>&gt;А мне <BR>&gt;кажется что Андрей вполне может <BR>&gt;писать заметки на тему C <BR>&gt; , он  действительно <BR>&gt;глубоко знаком с этой областью. <P>Опять же... не надо... так безаппеляционно. Пока что совсем не "глубоко", просто кое-что знаю.<P>&gt;Если человек преподает <BR>&gt;именно по своей инициативе --- <BR>&gt;он всегда преподает лучше, чем <BR>&gt;человек который преподает потому что <BR>&gt;он преподаватель. <P>Немного не так... и только не надо меня подставлять в эти выражения. Мое преподавание... оно не может быть уж очень удачным, по причине отсутствия опыта. <P>&gt;А если <BR>&gt;учесть что Андрей принимает зачеты <BR>&gt;у самой слабой группы первого <BR>&gt;курса, <P>8-() Чего?! С каких это пор у меня "самая слабая группа" первого курса?<P>Слабых групп не бывает. Вообще. Бывают глупые преподаватели, которые все сваливают на свои группы...<P>&gt;Я даже не знаю говорить ли <BR>&gt;про форум вообще. Последние сообщения <BR>&gt;были написаны нашими одногруппниками. Не <BR>&gt;самыми лучшими людьми как можно <BR>&gt;понять. Такие сообщения надо сразу <BR>&gt;гасить, как мне кажется. Люди <BR>&gt;просто хотели сделать гадость. Сделали. <P>Скоро удалю. Буквально завтра ввожу строгое "мо-де-ри-ро-ва-ние", как выражается Дима Спектатор <img src="/dcforum//Images/wink.gif"> А пока что пусть полежит, душу потревожит.<P>&gt;А делать <BR>&gt;выводы о мальчишестве тем более <BR>&gt;глупость. Как вообще об этом <BR>&gt;можно судить? <P>"Мальчишество" это замечательная черта характера <img src="/dcforum//Images/wink.gif"> Мне, во всяком случае, она очень нравится в людях... мало того, большая часть моих знакомых, которых я очень сильно уважаю и как профессионалов, и как хороших людей, будут та-а-акими "мальчишками", просто жуть. Так что это-то как раз был комплимент.<P>&gt;Вряд ли <BR>&gt;бы ему иначе вообще доверили <BR>&gt;преподавание, тебе не кажется? <P>Ты противоречишь сама себе <img src="/dcforum//Images/happy.gif"> чуть выше ты писала про "тетушку", а тут вот такое... доверили не из-за того, что очень серьезный, а потому что больше было некому. А тут я под руку подвернулся и теперь меня, как бы, тоже "не выгонишь" --- потому что живых людей у нас не выгоняют, они разве что сами уходят.<P>&gt;А про заметки Спектатора;) Может заглянешь <BR>&gt;к нему в "рекомендовано к <BR>&gt;посещению";) <P>Ну, этот раздел целиком и полностью на совести Спектатора, а вот то, что где-то в начале его заметок была раньше одна (сейчас, вроде бы удаленная), в которой он цитировал письмо наподобие того, что написано выше, это точно. <P><BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=3"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="4"></a>4.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Denis</b> <a 
+            href="mailto:denews@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Nov-00,&nbsp;11:14&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Моё предыдущее письмо в "Форум" устарело, как и моё отношение к автору странички. Конечно остались вещи с кот. я не согласен, но негативное отношение к Андрею пропало :).<BR>К om:<BR>   Хотя это и форум не стоит так явно защищать Андрея, можно всё говорить и в более мягкой форме, я когда писал в прошлый раз не хотел никого обидеть, особенно когда писал про содержание страничек, не надо напирать на то, что моя страничка, что хочу то и делаю, это не хорошо по отношению к читателям.(т.е. конечно надо продолжать делать как нравится, но отпускать такие реплики не стоит,а то странно как-то о том что в одном браузере не работае мы переживаем, а о том что люди говорят нет)<BR>к alk:<BR>   не стоит второй раз прибегать к одной и той же заметке, ты мне на неё уже один раз указывал :))), а во-вторых как ты мне написал - ты же не Спектатор :)(это не говорит, тчо ты хуже или лучше, просто другой)<P>Денис.<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=4"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="5"></a>5.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Nov-00,&nbsp;02:27&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Моё предыдущее письмо в "Форум" устарело, <BR>&gt;как и моё отношение к <BR>&gt;автору странички. Конечно остались вещи <BR>&gt;с кот. я не согласен, <BR>&gt;но негативное отношение к Андрею <BR>&gt;пропало :). <P>Классно <img src="/dcforum//Images/happy.gif"><P>&gt;К om: <BR>&gt;   Хотя это и <BR>&gt;форум не стоит так явно <BR>&gt;защищать Андрея, можно всё говорить <BR>&gt;и в более мягкой форме, <BR>&gt;я когда писал в прошлый <BR>&gt;раз не хотел никого обидеть, <BR>&gt;особенно когда писал про содержание <BR>&gt;страничек, не надо напирать на <BR>&gt;то, что моя страничка, что <BR>&gt;хочу то и делаю, это <BR>&gt;не хорошо по отношению к <BR>&gt;читателям.(т.е. конечно надо продолжать делать <BR>&gt;как нравится, но отпускать такие <BR>&gt;реплики не стоит,а то странно <BR>&gt;как-то о том что в <BR>&gt;одном браузере не работае мы <BR>&gt;переживаем, а о том что <BR>&gt;люди говорят нет) <P>Просто, если оно не работает в каком-нибудь браузере, то это я исправить могу, в принципе. А вот если сильно не нравлюсь (лично) кому-то из окружающих, то вряд ли. Просто все ищут совершенства. Но оно у всех разное <img src="/dcforum//Images/happy.gif"><P>&gt;к alk: <BR>&gt;   не стоит второй <BR>&gt;раз прибегать к одной и <BR>&gt;той же заметке, ты мне <BR>&gt;на неё уже один раз <BR>&gt;указывал :))), <P>Нет, я показывал на другую. А там была заметка, в которой Диму называют "не журналистом"... <P>&gt;а во-вторых как <BR>&gt;ты мне написал - ты <BR>&gt;же не Спектатор :)(это не <BR>&gt;говорит, тчо ты хуже или <BR>&gt;лучше, просто другой) <P>Надеюсь, что это так --- зачем нужны два Спектатора? <img src="/dcforum//Images/happy.gif"> но все грабли, на которые я натыкаюсь, фактически те же, что и у Спектатора. И я так думаю, что у всех они такие же...<P><BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=5"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="6"></a>6.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>om</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Nov-00,&nbsp;04:30&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Моё предыдущее письмо в "Форум" устарело, <BR>&gt;как и моё отношение к <BR>&gt;автору странички. Конечно остались вещи <BR>&gt;с кот. я не согласен, <BR>&gt;но негативное отношение к Андрею <BR>&gt;пропало :). <P>Надо же;)<P>&gt;К om: <BR>&gt;   Хотя это и <BR>&gt;форум не стоит так явно <BR>&gt;защищать Андрея, можно всё говорить <BR>&gt;и в более мягкой форме, <BR>&gt;я когда писал в прошлый <BR>&gt;раз не хотел никого обидеть, <BR>&gt;особенно когда писал про содержание <BR>&gt;страничек,<P>Нет прикольно;) После моих писем все почему-то начинают извиняться;)<BR>Даже не знаю;) может больше не стоит писать, а то у народа реакция странная.<P>Если я написала "Ты не прав" это оказ-ся грубо, а проводить аналогию с пупом земли, злым преподом или мальчишом это "по-мягче". Классно!;)<P>&gt; не надо напирать на <BR>&gt;то, что моя страничка, что <BR>&gt;хочу то и делаю, это <BR>&gt;не хорошо по отношению к <BR>&gt;читателям.(т.е. конечно надо продолжать делать <BR>&gt;как нравится, но отпускать такие <BR>&gt;реплики не стоит,а то странно <BR>&gt;как-то о том что в <BR>&gt;одном браузере не работае мы <BR>&gt;переживаем, а о том что <BR>&gt;люди говорят нет) <P>Знаешь, когда люди "советуют" (даже при том что их не спрашивают), или критика основательна, или они просто пишут что вот это им нравиться, а вот это не очень, это воспринимается нормально. Но когда...;)<P>To Andrey:<BR>Сам разбирайся со своими посетителями;) Больше не буду никого "обижать";)
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=6"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="7"></a>7.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>scorp</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Nov-00,&nbsp;06:25&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;К om: <BR>&gt;   Хотя это и <BR>&gt;форум не стоит так явно <BR>&gt;защищать Андрея, можно всё говорить <BR>&gt;и в более мягкой форме, <BR>&gt;<P>Андрюхе(om - простите, не сдержался :)) определенно пора обратить внимание на om ;)
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=7"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="8"></a>8.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Nov-00,&nbsp;06:46&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;&gt;К om: <BR>&gt;&gt;   Хотя это и <BR>&gt;&gt;форум не стоит так явно <BR>&gt;&gt;защищать Андрея, можно всё говорить <BR>&gt;&gt;и в более мягкой форме, <BR>&gt;Андрюхе(om - простите, не сдержался :)) <BR>&gt;определенно пора обратить внимание на <BR>&gt;om ;) <P>Определенно, уже обратил <img src="/dcforum//Images/happy.gif"><P><BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=8"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="9"></a>9.  <b>"RE: просто мысли после прочтения "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>om</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Nov-00,&nbsp;08:01&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         :)))<P>Еще и заботливые. Кошмар.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=16&selected=9"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=16&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=16&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=16&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="3">
+   <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif"> 
+      <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_archive_threads&forum=DCForumID1&selected=16"><font 
+      size="-1" color="black" face="arial,sans-serif">Archive</font></a> |  
+   <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_threads&forum=DCForumID1&selected=16&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Remove</font></a> </font>
+   <br>
+   </TD><TD ALIGN="RIGHT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=16&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=16&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+   </TD></TR>
+   
+   </TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

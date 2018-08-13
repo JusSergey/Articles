@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/dcforum//DCForumID1/3.html"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/dcforum//DCForumID1/3.html"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Compose your message</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+<p>
+         <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+         <TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         Original Message
+         </FONT></TH></tr>
+         <TR BGCOLOR="#EAE8E0"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <b>"RE: Эгоизм"</b><br>Posted by Andrey L. Kalinin on 23-Aug-00 at 11:54&nbsp;PM
+         </FONT></Td></tr>
+         <TR BGCOLOR="#FBF9F1"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt; Ну сразу скажу: <BR>&gt;все содержимое напоминает переведенное и <BR>&gt; продолженное стихотворение Р.Бернса "...Ни <BR>&gt;одно животное кроме человека не <BR>&gt;жалеет себя..." <P>Есть еще одна фраза: "человек --- это единственное животное, которое может быть дураком". Да, действительно --- многие человеческие недостатки выдуманы именно человеком и только к нему применимы.<P>&gt; Ну да суть <BR>&gt;не в этом. По-моему ВСЕ <BR>&gt;ЖАЛЕЮТ СЕБЯ, у всех есть <BR>&gt;ЭГОИЗМ и это не признак <BR>&gt;старости или слабости духа. <P>Смотря в какой степени. Помнишь "Понедельник начинается в субботу"? А когда у магов начинала расти шерсть на ушах?<P>&gt;Вопрос (возможно за него меня обольют <BR>&gt;презрением с ног до головы): <BR>&gt;<BR>&gt;Согласись, что гибель всего состава подводной <BR>&gt;лодки волнует тебя меньше, чем <BR>&gt;собственные проблемы на работе? <P>Хм. А ты читала то, что я написал по поводу "Курска"? Это я к тому, что мне совсем не хочется отвечать про себя. Потому что это сведется либо к "ой какой я хороший", либо к самобичеванию, что тоже будет плохо выглядеть.<P>Встречный вопрос. Как ты считаешь, спасатели (которые чуть не погибли во время очередного безуспешного спуска к "Курску") чем-то принципиально отличаются от остальных людей? У них же у всех тоже свои проблемы, но они почему-то рисковали своими жизнями... зачем? Почему?<P>&gt;Или <BR>&gt;это только у меня такое <BR>&gt;испорченное мышление и я не <BR>&gt;должна применять его к остальным <BR>&gt;приличным людям? <P>А никто не знает о том, как себя вести в подобных ситуациях. Только ты неверный пример выбрала. В случае с "Курском" от тебя ничего не зависело --- ни ты, ни я (к сожалению) ничем не смогли бы помочь. А вот когда наступает конкретная ситуация, что тогда? Людей надо оценивать по поступкам, это единственный достаточно верный критерий. Слова, письма --- немного не то.<P>&gt;Смысл в том, что все что <BR>&gt;ты называл "выпендрежем" и "запущенным <BR>&gt;эгоизмом", на мой взгляд есть <BR>&gt;в любом человеке и это <BR>&gt;нормально. Ну разве что не <BR>&gt;надо афишировать большинство своих эгоистичных <BR>&gt;мыслей и все ОК! <P>Афишировать? Это тоже без разницы. Я же говорю про поступки человека. Человек может кряхтеть, стонать, ругаться матом, рыдать, но делать. А может вежливо говорить "да, да, конечно же --- сегодня вечером" и не делать ничего. Так что "афиша" --- это совсем не то. И эгоизм "запущенный" это как раз эгоизм дошедший до реального поведения человека. <P>Нет людей, которые думают "правильно". У всех внутри происходит какая-то борьба --- как  хочется поступить и как поступить надо. Жалость к себе, кстати, как раз означает, что "хочется" окончательно и бесповортно перевешивает "надо".<P>Я не буду оригинален, если скажу, что человек должен жить против течения. Или вбок. Или просто барахтаться. Т.е., пытаться думать, размышлять и делать так, что бы хоть чуть-чуть быть похожим на собственные представления о жизни (которые появляются после раздумий). Очень просто перестать это делать.<P>&gt;В голове туча мыслей,  <BR>&gt;начинаю их излагать - получаю <BR>&gt;2-3  банальные фразы. <P>Да, этому надо учиться. Одна из причин создания этой странички заключается именно в этом...<BR>
+         </blockquote>
+         </FONT></Td></tr><TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         &nbsp;
+         </FONT></TH></tr>
+         </table>
+   <center>
+   <form ACTION="/cgi-bin/dcforum/dcboard.cgi" method="POST">
+   <input type=hidden name="om" value="3">
+   <input type=hidden name="forum" value="DCForumID1">
+   <input type=hidden name="omm" value="1">
+   
+         <input type="hidden" name="az" value="a_mesg">
+      
+   <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+   <TR><Td ALIGN="LEFT" valign="top" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   
+         <li><font color="#FF0000">
+         Image Links Enabled - just type the URL (e.g., http://www.dcscripts.com/image.gif)
+         </font>
+         
+      <li><font color="#FF0000">
+      Emotion Icons</font>
+      <a href="javascript:makeRemote('/cgi-bin/dcforum/dcboard.cgi?az=emotion_icon_short_cuts')"><FONT 
+      SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Emotion icon short cuts</FONT></a>
+   </TD>
+   </tr>
+   <TR BGCOLOR="#E3DAA5"><TH ALIGN="LEFT" COLSPAN="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+      Your Message
+      </FONT></TH></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Name<font color="black">*</font>:
+   </FONT>
+   </TH>
+   <TD>
+         <INPUT TYPE="TEXT" NAME="name" value="" SIZE=50>
+   </TD></TR>
+         <TR BGCOLOR="#EAE8E0">
+         <TH ALIGN="RIGHT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         EMail:
+         </FONT></TH>
+         <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="TEXT" NAME="email" value="" SIZE=50>
+         </TD></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Subject<font color="black">*</font>:
+   </FONT></TH>
+   <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="text" NAME="subject" VALUE="RE: Эгоизм" SIZE=50>
+      </TD></TR><TR BGCOLOR="#EAE8E0">
+      <TH ALIGN="RIGHT" VALIGN="TOP"><FONT SIZE="-1" 
+         FACE="arial,sans-serif" COLOR="black">
+         Message<font color="black">*</font>:</FONT>
+         </TH><TD>
+      <TEXTAREA NAME="body" ROWS="12"
+        COLS="50" WRAP="virtual"></TEXTAREA>
+    
+   </TD></TR>
+   <TR><TH ALIGN="RIGHT" BGCOLOR="#EAE8E0">
+   &nbsp;</TH>
+   <TD BGCOLOR="#EAE8E0" ALIGN="LEFT">
+   <INPUT TYPE="SUBMIT" NAME="preview" VALUE="Preview">
+      <INPUT TYPE="SUBMIT" NAME="post" VALUE="Post Message">
+   <INPUT TYPE="RESET" VALUE="Reset">
+   </TD></TR></TABLE>
+   </form>
+   </center>
+  
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

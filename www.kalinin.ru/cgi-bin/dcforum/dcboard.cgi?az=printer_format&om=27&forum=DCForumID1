@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 27<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/27.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"CORBA"</font></b><br>
+Posted by Bohdan  on 06-Mar-01 at 05:40&nbsp;AM<br>
+<blockquote>__Извините за ошибки в правописании, русский не мой родной язык. So :<BR>__Так вот, сел я поискать в сети чтото о распредел. програмировании, client/server, etс; для своей курсовой и попал на этот сайт(www.kalinin.ru).<BR>__Как я написал в Subject* заинтересовал меня здесь вопрос CORBA-ы(как за живое задело). Этим "ReqBrokerom" я пробую заниматься уже больше 3-х месяцев, уже и java подучил, и прочитал все статьи, что нашёл, о CORBA. Но вот низадача первый же пример из книги "java & CORBA"(Роверт Орфали, Дэн Харки) не работает(не компилируетьса). <BR>__Воот,, а весь кайф то для меня, получить в руки "живого примера", чото до него дописать, выжать с него всё что смогу и только потом углубляться в теорию.<BR>__Воот,, наверное я все-таки както не так компилирую, хотя столько уже провозилса..<BR>__Если кого-нибудь заинтересует этот эпос, на первый же зов высылаю sourse! (на e-mail)<BR>__Как написано в выше названой книге: "невозможно поблагодарить _сотни_ людей, которые .... ответят на этот Message*, .... но мы все-таки попробуем".</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: CORBA</b>,<b>Andrey L. Kalinin</b>, 09:19&nbsp;AM, 06-Mar-01
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: CORBA"</b><br>
+Posted by Andrey L. Kalinin  on 06-Mar-01 at 09:19&nbsp;AM<br>
+<blockquote>
+&gt;__Воот,, а весь кайф то для <BR>&gt;меня, получить в руки "живого <BR>&gt;примера", чото до него дописать, <BR>&gt;выжать с него всё что <BR>&gt;смогу и только потом углубляться <BR>&gt;в теорию. <BR>&gt;__Воот,, наверное я все-таки както не <BR>&gt;так компилирую, хотя столько уже <BR>&gt;провозилса.. <BR>&gt;__Если кого-нибудь заинтересует этот эпос, на <BR>&gt;первый же зов высылаю sourse! <BR>&gt;(на e-mail) <BR>&gt;__Как написано в выше названой книге: <BR>&gt;"невозможно поблагодарить _сотни_ людей, которые <BR>&gt;.... ответят на этот Message*, <BR>&gt;.... но мы все-таки попробуем". <P>Я, в общем-то, не программирую на Java (то есть, совсем <img src="/dcforum//Images/wink.gif"> ), поэтому вряд ли чем смогу помочь. Но в сети лежит еще очень много реализаций CORBA (включая и те, которые поддерживают Java), поставляемые с примерами. Поиски можно начать вот отсюда: <a href="http://www.cetus-links.org/oo_corba.html" target="_blank">http://www.cetus-links.org/oo_corba.html</a><P>
+</blockquote>
+<hr>
+</font></body></html>

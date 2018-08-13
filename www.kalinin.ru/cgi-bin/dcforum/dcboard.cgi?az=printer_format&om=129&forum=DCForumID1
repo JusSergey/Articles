@@ -1,0 +1,33 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 129<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/129.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Руской раскладка в X-Win32"</font></b><br>
+Posted by Lebedev A. V.  on 19-Nov-03 at 05:02&nbsp;PM<br>
+<blockquote>У кого-нибудь получалось работать удалённо под<BR>FreeBSD с X сервером, запущеным под Windows и при<BR>этом иметь возможность вводить русские буквы. <BR>Я пробовал X-Win32, но он не поддерживает xkb расширение X. Можно и без него, но я не знаю как.<BR>Я пробовал XFree86-cygwin, но к нему почему-то не<BR>может присоединиться ни одно X-приложение и<BR>gdm не может нарисовать приглашение.<BR>Посоветуйте любой рабочий вариант.<BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Руской раскладка в X-Win32</b>,<b>Andrey L. Kalinin</b>, 10:16&nbsp;PM, 22-Nov-03
+<ul>
+<li><b>RE: Руской раскладка в X-Win32</b>,<b>Lebedev A. v.</b>, 12:18&nbsp;PM, 24-Nov-03
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Руской раскладка в X-Win32"</b><br>
+Posted by Andrey L. Kalinin  on 22-Nov-03 at 10:16&nbsp;PM<br>
+<blockquote>
+&gt;Я пробовал XFree86-cygwin, но к нему <BR>&gt;почему-то не <BR>&gt;может присоединиться ни одно X-приложение и <BR>&gt;<BR>&gt;gdm не может нарисовать приглашение. <BR>&gt;Посоветуйте любой рабочий вариант. <P>А локальные X-приложения при этом работают? Потому что XFree86 я запускал и он даже работал, но удаленно не пробовал запускать (хотя уверен, что раз работают локальные приложения, то удаленные тоже должны работать). <BR>
+</blockquote>
+<hr>
+<b>"RE: Руской раскладка в X-Win32"</b><br>
+Posted by Lebedev A. v.  on 24-Nov-03 at 12:18&nbsp;PM<br>
+<blockquote>
+У меня, кажеться, заработало. Это проблема в gdm была. Но с раскладками проблема всё-равно не решена.<BR>В гноме есть аплет, переключающий раскладки, но с клавиатуры не получается переключать, только мышкой.<BR>Хотя это уже другая проблема.
+</blockquote>
+<hr>
+</font></body></html>

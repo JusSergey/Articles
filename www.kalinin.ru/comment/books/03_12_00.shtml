@@ -1,0 +1,403 @@
+<html><head><title>ALK :: Книги :: "Unix internals".</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/books/">книги</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/network/01_12_00.shtml">&lt;&lt;</a>&nbsp;03.12.00&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Unix internals: the new frontiers
+</h1> 
+<table align="right" border="0" cellspacing="0" cellpadding="5" width="102">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Иллюстрация</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><img src="/images/03_12_00_1.gif" width="102" height="140" border="0" alt="Обложка книги." /></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обложка книги.
+</font>
+</td></tr>
+</table>
+    <p align="justify">
+      Хочу сразу же предупредить, что эта книга, насколько
+      мне известно, в переводе
+      на русский язык не существует, поэтому прошу прощения, 
+      если кого-то этот факт расстроит. 
+    </p>
+    <p align="justify">
+      Возвращаясь к теме книг по Unix, хочется еще
+      раз с огорчением констатировать тот факт, что
+      на нашем с вами родном языке нет литературы,
+      изучение которой могло бы чем-то помочь 
+      русским программистам в освоении этой операционной
+      системы. Единственная более или менее удачная
+      книга по Unix это "Операционная система Unix" Робачевского,
+      о которой я говорил в предыдущей заметке, но она будет
+      интересна только тем, кто Unix видит впервые. 
+    </p>
+    <p align="justify">
+      Unix Internals книга достаточно необычная: она действительно
+      описывает то, как устроены современные ОС семейства Unix, а также
+      как были реализованы более ранние варианты. При этом, наверное,
+      не надо объяснять, что устройство "традиционного" Unix'а, в общем-то,
+      в достаточной степени просто, в то же самое время
+      организация современных Unix'ов очень интересна в смысле
+      реализованных алгоритмов и подходов. Среди особенно полезных тем,
+      которые рассматриваются в книге, можно отметить
+      достаточно хорошее изложение методов 
+      управления выделением памяти. 
+    </p>
+    <p align="justify">
+      Таким образом, я уверен в том, что книга очень интересная
+      и полезная, не имеющая аналогов в русскоязычной литературе. Мало
+      того, я думаю, что еще достаточно долго она не появится
+      в русском переводе: для того, что бы корректно перевести ее (или написать 
+      аналогичную) необходимо обладать глубокими познаниями в устройстве
+      современных операционных систем и иметь опыт разработки ОС семейства Unix.
+      Автор Unix Internals такой опыт имеет. Русские технические переводчики... 
+      боюсь, что нет. То есть, программисты такой квалификации, конечно же, есть,
+      но книг они не пишут. 
+    </p>
+    <p align="justify">
+      В отличие от "Ядро Linux в комментариях", о которой я уже рассказывал здесь, 
+      Unix Internals подробно объясняет принципиальные вопросы организации ОС, пропуская
+      ненужные тонкости конкретных реализаций. "Ядро Linux В комментариях" просто комментирует текст ядра,
+      поэтому в этих комментариях содержится очень много не особенно интересных на мой взгляд
+      вещей. Кроме того, Linux сам по себе не является благодарным предметом для изучения:
+      его внутренности совсем не так интересны, как внутренности той же FreeBSD. Вызвано  это тем, что
+      Linux никогда не позиционировался как "ОС с претензиями" и, в итоге, таким и не стал:
+      не стоит ожидать от Linux высокой производительности, качественной работы с несколькими
+      процессорами и т.д.; Linux это, на мой взгляд, ОС для домашнего компьютера. Попрошу не 
+      обижаться за эти слова энтузиастов этой операционной системы: мнение в достаточной степени
+      выстраданное ;-) посмотрим, что будет с HURD'ом.
+    </p>
+    <p align="justify">
+      Кроме всего прочего, Unix internals можно рассматривать как
+      книгу по теме "Operation System Design", так как достаточно большая
+      часть информации, содержащейся в ней, будет интересна не только
+      программистам под Unix, но и просто "сочувствующим". К таким
+      темам относится реализация многопоточности и многозадачности,
+      организация работы с виртуальной памятью и описание устройства
+      файловых систем.
+    </p>
+    <p align="justify">
+      Книга вышла в 1995 году. С тех пор прошло уже пять лет,
+      срок в достаточной степени длительный, что бы появиться
+      новому материалу для подобной книги, поэтому на 2001 год запланирован
+      выход нового издания. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Замечательная книга по внутреннему устройству ОС семейства Unix. Рассказывается
+      о том, какие принципы положены в основу технологических решений и сами
+      решения в конкретных ОС. Будет полезна программистам, которые уже
+      знакомы с Unix и хотят узнать больше о том, как он устроен внутри. 
+    </p>
+    <p align="justify">
+      На русском языке этой книги нет, поэтому читайте в оригинале. Вообще
+      говоря, это первый комментарий к книгам на иностранном языке здесь; в дальнейшем
+      я собираюсь продолжить описание подобной литературы.
+    </p>
+<h2>PS</h2>
+    <p align="justify">
+      Сегодня вечером я уезжаю из Москвы, таким образом что-то новое может появиться здесь
+      не раньше следующей субботы или, скорее всего, воскресенья. 
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/comment/books/print_03_12_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.lib.ru/LINUXGUIDE/" target="_blank">http://www.lib.ru/LINUXGUIDE/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Книги по Unix в электронном виде из "Библиотеки Мошкова". 
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://tru64unix.compaq.com/faqs/publications/pub_page/pubs_page.html" target="_blank">http://tru64unix.compaq.com/fa</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Комплект документации к Compaq Tru64 Unix.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.linuxdoc.org/" target="_blank">http://www.linuxdoc.org/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Linux documentation project.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/28_02_01.shtml">Decline and Fall of the American Programmer </a> (28.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эдвард Йордон является одним из самых известных специалистов в области создания больших программных систем. Широко известна его нотация, предназначенная для структурного...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/28_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_07_01.shtml">High Perfomance Computing, second edition. </a> (05.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Название книги можно перевести как "Высокопроизводительные вычисления" и эта тематика в русскоязычной литературе не освещена совсем. Традиционно считается, что самой важной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/19_06_01.shtml">Плагиат </a> (19.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В последнее время мне стало казаться, что с моим сайтом что-то не в порядке. Вроде, текст есть, живые люди тоже иногда...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/19_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_04_01.shtml">TCP/IP Illustrated, volume I. The Protocols </a> (22.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять, книга, о которой мне хочется рассказать, насколько мне известно, отсутствует в русском переводе. Тем не менее, в разделе сетевого...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/28_02_01.shtml">Decline and Fall of the American Programmer </a> (28.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эдвард Йордон является одним из самых известных специалистов в области создания больших программных систем. Широко известна его нотация, предназначенная для структурного...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/28_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/03_12_00.shtml">Unix internals: the new frontiers </a> (03.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочу сразу же предупредить, что эта книга, насколько мне известно, в переводе на русский язык не существует, поэтому прошу прощения, если...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/03_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/29_09_00.shtml">Язык UML, рукводство пользователя </a> (29.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+UML (Unified Modeling Language, унифицированный язык моделирования) является еще одной популярной аббревиатурой, которой очень часто пользуются, не понимая того, что за...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/29_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

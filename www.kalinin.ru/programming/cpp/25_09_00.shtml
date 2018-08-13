@@ -1,0 +1,491 @@
+<html><head><title>ALK :: C&amp;C++ :: Шаманство, или ошибки работы с памятью.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/24_09_00.shtml">&lt;&lt;</a>&nbsp;25.09.00&nbsp;<a href="/comment/urls/26_09_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Шаманство, или ошибки работы с памятью
+</h1> 
+    <p align="justify">
+      Когда программа становится внушительной по своему содержанию
+      (то есть, не по количеству строчек, а по непонятности внутренних
+      связей), то ее поведение становится похожим
+      на поведение настоящего живого существа. Такое
+      же непредсказуемое... впрочем, кое что все-таки предсказать
+      можно: работать оно не будет. Во всяком случае, сразу.
+    </p>
+    <p align="justify">
+      Программирование на C и C++ дает возможность
+      допускать такие ошибки, поиск которых 
+      озадачил бы самого Шерлока Холмса. Вообще говоря,
+      чем загадочнее ведет себя программа, тем проще
+      в ней допущена ошибка.
+      А искать простые ошибки сложнее всего, как 
+      это ни странно; все потому, что сложная ошибка
+      обычно приводит к каким-то принципиальным
+      неточностям в работе программы, а ошибка простая
+      либо превращает всю работу в бред пьяного программиста,
+      либо всегда приводит к одному и тому же: segmentation fault.
+    </p>
+    <p align="justify">
+      И зря говорят, что если ваша программа выдала фразу
+      core dumped, то ошибку найти очень просто: это, мол, всего лишь
+      обращение по неверному указателю, например, нулевому. Обращение-то,
+      конечно же, есть, но вот почему в указателе появилось неверное
+      значение? Откуда оно взялось? Зачастую на этот вопрос
+      не так просто ответить.
+    </p>
+    <p align="justify">
+      В Java исключены указатели именно потому, что работа с ними
+      является основным источником ошибок программистов. При этом
+      отсутствие инициализации является одним из самых простых
+      и легко отлавливаемых вариантов ошибок.
+    </p>
+    <p align="justify">
+      Самые трудные ошибки пояляются, по-моему, тогда, когда
+      в программе постоянно идут процессы выделения и удаления
+      памяти. То есть, в короткие промежутки времени
+      появляются объекты и уничтожаются. В этом случае,
+      если где-нибудь что-нибудь некорректно "указать",
+      то "core dumped", вполне вероятно, появится не сразу,
+      а лишь через некоторое время. Все дело в том, что 
+      ошибки с указателями проявляются обычно в двух случаях:
+      работа с несуществующим указателем и выход за пределы 
+      массива (тоже в конечном итоге сводится к несуществующему
+      указателю, но несколько чаще встречается).
+    </p>
+    <p align="justify">
+      Я уже писал о том, что загадки, возникающие при удалении
+      незанятой памяти, одни из самых трудных. Выход за границы
+      массива, пожалуй, еще сложнее. 
+    </p>
+    <p align="justify">
+      Представьте себе: вы выделили некоторый буфер и в него
+      что-то записываете, какие-то промежуточные данные. Это
+      критическое по времени место, поэтому тут быть
+      не может никаких проверок и, ко всему прочему,
+      вы уверены в том, что исходного размера буфера хватит
+      на все, что в него будут писать. Лично я бы не хотел
+      торопиться с подобными утвержденияями: а почему,
+      собественно, вы так в этом уверены? И вообще, а вы
+      уверены в том, что правильно вычиcлили этот самый размер
+      буфера?
+    </p>
+    <p align="justify">
+      Ответы на эти вопросы должны у вас быть. Мало того,
+      они должны находиться в комментариях рядом с 
+      вычислением размера буфера и его заполнением,
+      что бы потом не гадать, чем руководствовался
+      автор, когда написал 
+    </p>
+<pre>
+char buf[100];
+</pre>
+    <p align="justify">
+      Что он хотел сказать? Откуда взялось число 100? Совершенно непонятно.
+    </p>
+    <p align="justify">
+      Теперь о том, почему важно не ошибиться с размерами. Представьте
+      себе, что вы вышли за пределы массива. Там может
+      "ничего не быть", т.е. этот адрес не принадлежит программе
+      и тогда в нормальной операционной системе вы получите соответствующее
+      "матерное" выражение. А если там что-то было?
+    </p>
+    <p align="justify">
+      Самый простой случай --- если там были просто данные. Например,
+      какое-нибудь число. Тогда ошибка, по крайней мере, будет видна
+      почти сразу... а если там находился другой указатель? Тогда
+      у вас получается наведенная ошибка очень высокой сложности. Потому
+      что вы будете очень долго искать то место, где вы забыли
+      нужным образом проинициализировать этот указатель...
+    </p>
+    <p align="justify">
+      Мало того, подобные "наведенные" ошибки вполне могут
+      вести себя по-разному не только на разных тестах, но и на одинаковых.
+    </p>
+    <p align="justify">
+      А если еще программа "кормится" данными, которые поступают непрерывно...
+      и еще она сделана таким образом, что реагирует на события, которые
+      каким-то образом распределяются циклом обработки событий... тогда
+      все будет совсем плохо. Отлаживать подобные программы очень сложно,
+      тем более что, зачастую, для того, что бы получить замеченную
+      ошибку повторно, может потребоваться несколько часов выполнения программы.
+      И что делать в этих случаях?
+    </p>
+    <p align="justify">
+      Поиск таких ошибок более всего напоминает
+      шаманские пляски с бубном около костра, не зря
+      этот образ появился в программистком жаргоне. Потому
+      что программист, измученный бдениями, начинает
+      просто случайным образом "удалять" (закомментировав некоторую область,
+      или набрав <code>#if 0 ... #endif</code>) блоки своей программы, что бы 
+      посмотреть, в каком случае оно будет работать, а в каком --- нет.
+    </p>
+    <p align="justify">
+      Это действительно напоминает шаманство, потому что 
+      иногда программист уже не верит в то, что, например, 
+      "от перестановки мест сумма слагаемых не меняется" и
+      запросто может попытаться переставить  и проверить
+      результат... авось? 
+    </p>
+    <p align="justify">
+      А вот теперь я подобрался к тому, о чем хотел
+      сказать. В шаманстве тоже можно выделить систему.
+      Для этого достаточно осознать, что большинсто 
+      загадочных ошибок происходят именно из-за
+      манипуляций с указателями. Поэтому, вместо
+      того что бы переставлять местами
+      строчки программы, можно просто 
+      попытаться для начала закомментировать
+      в некоторых особенно опасных местах
+      удаление выделенной памяти и посмотреть что
+      получится.
+    </p>	
+    <p align="justify">
+      Кстати сказать, отладка таких моментов
+      требует (именно требует) наличия отладочной
+      информации во всех используемых библиотеках,
+      так будет легче работать. Так что, если
+      есть возможность скомпилировать библиотеку
+      с отладочной информацией, то так и надо делать ---
+      от лишнего можно будет избавиться потом.
+    </p>
+    <p align="justify">
+      Если загадки остались, то надо двинуться дальше и проверить
+      индексацию массивов на корректность. В идеале,
+      перед каждым обращением к массиву
+      должна находиться проверка инварианта относительно
+      того, что индекс находиться в допустимых пределах. Такие
+      проверки надо делать отключаемыми при помощи макросов
+      DEBUG/RELEASE с тем, что бы в окончательной
+      версии эти дополнительные проверки не мешались бы (этим,
+      в конце-концов, C отличается от Java: хотим --- проверяем,
+      не хотим --- не проверяем). В этом случае
+      вы значительно быстрее сможете найти глупую
+      ошибку (а ошибки вообще не бывают умными; но найденные --- глупее
+      оставшихся ;) ).
+    </p>
+    <p align="justify">
+      На самом деле, в C++ очень удобно использовать
+      для подобных проверок шаблонные типы данных. То есть,
+      сделать тип "массив", в котром переопределить
+      необходимые операции, снабдив каждую из них
+      нужными проверками. Операции реализовать как <code>inline</code>,
+      это позволит не потерять эффективность работы программы. В то же
+      самое время, очень легко будет удалить все 
+      отладочные проверки или вставить новые. В общем,
+      реализация своего собственного типа данных <code>Buffer</code>
+      является очень полезной.
+    </p>
+    <p align="justify">
+      Кстати, раз уж зашла об этом речь, то абзац выше 
+      является еще одним свидетельством того, что C++ надо
+      использовать "полностью" и никогда не писать на нем
+      как на "усовершенствованном C". Если вы предпочитаете
+      писать на C, то именно его и надо использовать. При помощи
+      C++ те же задачи решаются совсем по другому.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Ошибки допускают все и бессонные ночи бывают у каждого
+      программиста. Самое страшное заключается в том, что
+      когда ошибка найдена, то всегда появляется ощущение 
+      зря потерянного времени... вообще говоря, любой
+      опыт, если он не прошел даром, положителен. То есть,
+      это значит, что в следующий раз, возможно, подобную
+      ошибку вы будете искать не так долго.
+    </p>
+    <p align="justify">
+      Хотя, конечно же, лучше всего ошибок не допускать вообще.
+      А вот как это сделать?
+    </p>	
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_25_09_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Бъерн Страуструп</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Язык программирования C++, 3 издание. 
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/16_08_00.shtml">/comment/books/16_08_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     C++: библиотека программиста.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/27_08_00.html">/comment/books/27_08_00.html</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     C и C++. Правила программирования.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_09_00.shtml">free.rambler.ru, свободный доступ в интернет </a> (26.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На начали наконец-то мелькать баннеры нового Рамблеровского проекта под названием Rambler-FreeNet. Суть его достаточно проста: Рамблер предоставляет относительно свободный доступ в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/24_09_00.shtml">Свобода </a> (24.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда говорят о свободе человека, всегда подразумевается свобода относительная, во всяком случае в нашей стране. Имеется в виду свобода относительно несвободы...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/24_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_09_00.shtml">free.rambler.ru, свободный доступ в интернет </a> (26.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На начали наконец-то мелькать баннеры нового Рамблеровского проекта под названием Rambler-FreeNet. Суть его достаточно проста: Рамблер предоставляет относительно свободный доступ в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/24_09_00.shtml">Свобода </a> (24.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда говорят о свободе человека, всегда подразумевается свобода относительная, во всяком случае в нашей стране. Имеется в виду свобода относительно несвободы...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/24_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,560 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage  - "Что думаешь на счет .NET"
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+   <META HTTP-EQUIV="Expires" CONTENT="Tues, 04 Dec 1996 21:00:00 GMT">
+   <META HTTP-EQUIV="pragma" content="no cache">
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>"Что думаешь на счет .NET"</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+   <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" bgcolor="#EAE8E0">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=printer_format&om=72&forum=DCForumID1"><img
+   src="/dcforum//Images/printer_friendly.gif" align="bottom" border="0"><font 
+   SIZE="1" FACE="arial,sans-serif" 
+   color="black">Printer-friendly version of this topic</font></a></TD>
+   <TD ALIGN="RIGHT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <font color="black"><b></b></font>&nbsp;
+   <br><font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=72&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=72&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>&nbsp;</FONT></TD></TR>
+      <TR><TH COLSPAN="4" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+         face="arial,sans-serif" color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> 
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&archive="><font 
+         face="arial,sans-serif" color="black" size="-1">Основной форум</FONT></a> <font 
+         face="arial,sans-serif" color="black" size="-1">(Public)</font>
+         </TH></TR>
+      <TR BGCOLOR="#E3DAA5">
+      <TD ALIGN="LEFT" COLSPAN="4">
+      <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+      Original message</font></TD></TR></TABLE>
+      <br>
+      <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="0"></a> <b>"Что думаешь на счет .NET"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Gennadiy</b> <a 
+            href="mailto:tenor_19_99@hotmail.com"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      05-Mar-02,&nbsp;01:48&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Андрей, сайт твой очень интересен. Захожу частенько.<BR>Хочу услышать твое мнение на счет технологии .NET<BR>и языка C#. Заранее спаибо.<BR>Геннадий Чабан.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+      </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE>
+      <br>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         <a name="TOP">&nbsp;</a>Table of contents</font></TD></TR></TABLE>
+         <br><TABLE 
+         BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="LEFT" COLSPAN="2">
+         <font SIZE="-1" FACE="arial,sans-serif" color="black">
+         
+               <img src="/dcforum//Images/message.gif">
+               <a href="#1">RE: Что думаешь на счет .NET</a>,
+               <b>ivank</b>, <font size="1">05-Mar-02, (1)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#3">RE: Что думаешь на счет .NET</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">06-Mar-02, (3)</font><br>
+               
+               <img src="/dcforum//Images/message.gif">
+               <a href="#2">RE: Что думаешь на счет .NET</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">06-Mar-02, (2)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#4">MS рулит :)</a>,
+               <b>vladig</b>, <font size="1">13-May-02, (4)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#5">RE: MS рулит :)</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">13-May-02, (5)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="37" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#6">RE: MS рулит :)</a>,
+               <b>Borodin Oleg</b>, <font size="1">14-May-02, (6)</font><br>
+               
+               <img src="/dcforum//Images/message.gif">
+               <a href="#7">мысли о  .NET</a>,
+               <b>Denis</b>, <font size="1">24-May-02, (7)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#9">RE: мысли о  .NET</a>,
+               <b>alk</b>, <font size="1">23-Jun-02, (9)</font><br>
+               
+               <img src="/dcforum//Images/message.gif">
+               <a href="#8">RE: Что думаешь на счет .NET</a>,
+               <b>Sergey Cheban</b>, <font size="1">14-Jun-02, (8)</font><br>
+               
+         </font></TD></TR></TABLE><p>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="right" COLSPAN="2">
+         <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=72&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=72&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+         </TD></TR></TABLE><TABLE BORDER="0" WIDTH="70%" 
+         cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Messages in this topic
+         </font></TD></TR></TABLE>
+         <br>
+         
+
+   <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="1"></a>1.  <b>"RE: Что думаешь на счет .NET"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>ivank</b> <a 
+            href="mailto:ivank@oszone.net"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      05-Mar-02,&nbsp;11:16&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Если хорошо читал, то мог бы и сам найти: <a href="http://www.kalinin.ru/programming/cpp/23_07_00_c.shtml" target="_blank">http://www.kalinin.ru/programming/cpp/23_07_00_c.shtml</a> . Ста-арая (почти двухгодичной давности) заметка о C#...
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=1"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="3"></a>3.  <b>"RE: Что думаешь на счет .NET"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      06-Mar-02,&nbsp;00:25&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Если хорошо читал, то мог бы <BR>&gt;и сам найти: <a href="http://www.kalinin.ru/programming/cpp/23_07_00_c.shtml" target="_blank">http://www.kalinin.ru/programming/cpp/23_07_00_c.shtml</a> . <BR>&gt;Ста-арая (почти двухгодичной давности) заметка <BR>&gt;о C#... <P>Да, кстати. Написана почти сразу по его появлению <img src="/dcforum//Images/happy.gif"> Только вот выводы были неправильные: "Тем не менее, в ближайшие несколько лет будет очень интересно следить за развитием C# и Java." Было совершенно неинтересно <img src="/dcforum//Images/wink.gif"><P>Да и в остальном... "Я обязательно попытаюсь попробовать компилятор C# как только он попадет ко мне в руки, но пока что я со скептицизмом отношусь к подобным заявлениям." Мда. Так и не дошли до него руки <img src="/dcforum//Images/wink.gif"><P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=3"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="2"></a>2.  <b>"RE: Что думаешь на счет .NET"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      06-Mar-02,&nbsp;00:17&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Андрей, сайт твой очень интересен. Захожу <BR>&gt;частенько. <BR>&gt;Хочу услышать твое мнение на счет <BR>&gt;технологии .NET <BR>&gt;и языка C#. Заранее спаибо. <BR>&gt;Геннадий Чабан. <P><BR>Честно признаться, оформившегося мнения о C# и .NET у меня сейчас нет. <P>Точнее, о самом языке есть --- я к нему отношусь ровно так же, как отношусь к Java: то есть, ни для чего серьезного не пригоден. Во всяком случае, отдельно. А вот с .NET несколько сложнее --- руками я ее не щупал, да и попросту не понимаю, зачем это нужно. Точнее, зачем это нужно Microsoft я понимаю (денег содрать, грубо говоря), а вот остальным... <P>В любом случае, как и любая вещь, которая только-только появилась, к использованию в чем-либо оно не годится (именно из-за своей свежести). Несмотря на это, найдется много программистских коллективов, которые первыми пройдутся по граблям, потом еще раз, потом еще... глядишь, лет через 10 уже будет о чем говорить. А пока что... <P>Плюс еще моя специфика в виде того, что в последние пару лет я в основном программирую под Unix --- не вижу я необходимости в .NET. <P>Поэтому я с большим скептицизмом отношусь к любым статьям про .NET: как ругательным, так и хвалебным. Чтобы хорошо поругать или похвалить надо как минимум это использовать, да вот только крупные проекты могут подоспеть только через пару-тройку лет после выхода .NET.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=2"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="4"></a>4.  <b>"MS рулит :)"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>vladig</b> <a 
+            href="mailto:vlad_mail@khakasia.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      13-May-02,&nbsp;09:05&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         MS сделала лучшую Java машину и лучшую среду разработки Java приложений, а Sun загордился.<P>MS сделала .NET, и это будет лучше Jav'ы!<P>----- О первенстве языков: ------<P><a href="http://www.osp.ru/pcworld/2001/04/058.htm" target="_blank">http://www.osp.ru/pcworld/2001/04/058.htm</a><BR>Статья в Мир ПК "Летопись языков Паскаль"<P><a href="http://www.osp.ru/pcworld/2001/08/126.htm" target="_blank">http://www.osp.ru/pcworld/2001/08/126.htm</a><BR>Статья в Мир ПК "Летопись языков. Си"<P><a href="http://www.osp.ru/pcworld/2001/12/142.htm" target="_blank">http://www.osp.ru/pcworld/2001/12/142.htm</a><BR>"Java против .NET"<P>Про кросс-платформенные системы размером в 100Кб и раздельную компиляцию, которые уже работали 20 лет назад.<BR>Прочитав эти статейки еще раз убедитесь, что ничего нового ни SUN ни Microsoft не открыли. Это чистой воды Маркетинг.<P><BR>---- .NET для Linux ---<P>Одно упоминание Linux в MSDN должно наводить на мысли.<BR>Miguel de Icaza, автор Gnome и др, рассказывает о своем новом проекте Mono - среды разработки .NET для Linux<P><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/deicazainterview.asp" target="_blank">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/deicazainterview.asp</a><P><a href="http://www.go-mono.com" target="_blank">http://www.go-mono.com</a>/<P>Обуждение интервью Miguel de Icaza на slashdot<BR><a href="http://slashdot.org/interviews/01/12/13/0242205.shtml?tid=170" target="_blank">http://slashdot.org/interviews/01/12/13/0242205.shtml?tid=170</a> <P>Обсуждение .NET + Linux на dotnet<BR><a href="http://www.dotnet.za.net/viewcategory.asp?catid=5" target="_blank">http://www.dotnet.za.net/viewcategory.asp?catid=5</a><P>хватит ссылок или еще накидать? :)
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=4"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="5"></a>5.  <b>"RE: MS рулит :)"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      13-May-02,&nbsp;10:46&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;MS сделала .NET, и это будет <BR>&gt;лучше Jav'ы! <P>Только потому, что по другому называется? <img src="/dcforum//Images/wink.gif"><P>&gt;Про кросс-платформенные системы размером в 100Кб <BR>&gt;и раздельную компиляцию, которые уже <BR>&gt;работали 20 лет назад. <BR>&gt;Прочитав эти статейки еще раз убедитесь, <BR>&gt;что ничего нового ни SUN <BR>&gt;ни Microsoft не открыли. Это <BR>&gt;чистой воды Маркетинг. <P>Доля истины в этом есть. С другой стороны, интерпретаторы просмежуточного кода до Java не были столь... хм... глобальными. Так что, маркетинг, конечно тоже, но кое-что новое во всем этом было. <P>&gt;Одно упоминание Linux в MSDN должно <BR>&gt;наводить на мысли. <P>Ну и что? Есть реализация COM для Linux и Digital Unix (насколько я знаю), только кто же ей пользуется?<P>&gt;хватит ссылок или еще накидать? :) <P>За ссылки большое спасибо <img src="/dcforum//Images/wink.gif"> Лично я эти еще не успел до конца изучить, но если есть еще что-то, кидайте.<P>Тем не менее мое мнение не изменится: я практик и люблю когда мои программы работают. Использование чего-нибудь шибко нового обычно приводит к тому, что программы перестают работать совсем...
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=5"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="6"></a>6.  <b>"RE: MS рулит :)"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Borodin Oleg</b> <a 
+            href="mailto:borodin@escort-center.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      14-May-02,&nbsp;09:00&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Еще одна интересная ссылка - <BR>Portable.NET <BR><a href="http://www.southern-storm.com.au/portable_net.html" target="_blank">http://www.southern-storm.com.au/portable_net.html</a><P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=6"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="7"></a>7.  <b>"мысли о  .NET"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Denis</b> <a 
+            href="mailto:denews@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      24-May-02,&nbsp;11:28&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         вчера начал читать книгу Рихтера о .NET и на первых же страницах натолкнулся на две примечательные вещи:<BR>1) неявно говорится о том что может появится CPU, который сможет выполнять MSIL<BR>2) объясняется прелесть использования в одном проекте различных языков: один язык используем для операций IO(например C#) , а другой для финансовых вычислений(например АРL).<P>теперь малюсенькие комментарии<BR>к 1 - зная можь MS и его дружбу с Intell, вероятность этого явления не маленькая<BR>к 2 - помойму это просто замечательно. когда ты пользуешь при программировании тем инструментом который для этого предназначен<P>PS на .NET я уже написал 2 небольших intranet проекта - это к тому, что не новичок в этом.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=7"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="9"></a>9.  <b>"RE: мысли о  .NET"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>alk</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      23-Jun-02,&nbsp;02:19&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;вчера начал читать книгу Рихтера о <BR>&gt;.NET и на первых же <BR>&gt;страницах натолкнулся на две примечательные <BR>&gt;вещи: <BR>&gt;1) неявно говорится о том что <BR>&gt;может появится CPU, который сможет <BR>&gt;выполнять MSIL <BR>&gt;2) объясняется прелесть использования в одном <BR>&gt;проекте различных языков: один язык <BR>&gt;используем для операций IO(например C#) <BR>&gt;, а другой для финансовых <BR>&gt;вычислений(например АРL). <BR>&gt;<BR>&gt;теперь малюсенькие комментарии <BR>&gt;к 1 - зная можь MS <BR>&gt;и его дружбу с Intell, <BR>&gt;вероятность этого явления не маленькая <P>Хм. А смысл? Ну появится такой процессор, и что дальше? На мой взгляд, в данной ситуации это не очень важно. Хотя, конечно, может я и ошибаюсь.<P>Я имею в виду, что процессор-то, допустим, появится, но только кто и зачем им будет пользоваться?<P>&gt;к 2 - помойму это просто <BR>&gt;замечательно. когда ты пользуешь при <BR>&gt;программировании тем инструментом который для <BR>&gt;этого предназначен<P>Никто не спорит. А без C# это было невозможно? <img src="/dcforum//Images/wink.gif"><BR> <BR>&gt;PS на .NET я уже написал <BR>&gt;2 небольших intranet проекта - <BR>&gt;это к тому, что не <BR>&gt;новичок в этом. <P>А это уже значительно интереснее. И как оно? Производительность, удобство создания? Что за проекты, если не секрет? Причины использования .NET?<P>Я серьезно --- действительно интересно поспрашивать человека, который трогал руками это хозяйство. <BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=9"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="8"></a>8.  <b>"RE: Что думаешь на счет .NET"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Sergey Cheban</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      14-Jun-02,&nbsp;12:35&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Попробовал я собрать приложение на .NET Compact framework beta for Windows CE. Результаты такие:<BR>1. Запускается оно (простой диалог с одной кнопкой) около трех секунд, это очень медленно. Машина - Casio Cassiopeia.<BR>2. Оно нагенерировало мне 14 CAB'ов под различные платформы. А как же переносимость бинарников?! А так: в каждый cab кроме переносимого EXE была включена непереносимая setup.dll, которая проверяла наличие compact framework на машине и ругалась в случае его отсутствия.<P>PS. Даже не однофамилец.<BR>PPS. Почему CE? Работа у меня такая.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=72&selected=8"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=72&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=72&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=72&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="3">
+   <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif"> 
+      <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_archive_threads&forum=DCForumID1&selected=72"><font 
+      size="-1" color="black" face="arial,sans-serif">Archive</font></a> |  
+   <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_threads&forum=DCForumID1&selected=72&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Remove</font></a> </font>
+   <br>
+   </TD><TD ALIGN="RIGHT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=72&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=72&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+   </TD></TR>
+   
+   </TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

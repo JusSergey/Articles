@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 139<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/139.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Извлечение прототипов функций из DLL"</font></b><br>
+Posted by ilias  on 25-Jun-04 at 08:05&nbsp;AM<br>
+<blockquote>Мне понадобилось написать программу, которая будет использовать одну из стандартных DLL, а именно cards.dll (там хранятся функции отрисовки игральных карт и рубашек). Я обработал файл Борландовским TDUMP'ом и получил названия этих функций и их адреса. Но этого мало: нужен еще список аргументов. Откуда или чем его извлечь?</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Извлечение прототипов функций из DLL</b>,<b>Andrey L. Kalinin</b>, 01:38&nbsp;PM, 26-Jun-04
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Извлечение прототипов функций из DLL"</b><br>
+Posted by Andrey L. Kalinin  on 26-Jun-04 at 01:38&nbsp;PM<br>
+<blockquote>
+Я тут ничего практически не знаю, но думаю, что прототипы функций из DLL можно извлечь только путем анализирования команд получения параметров из стека в коде самой функции и исследования как они потом используются.<P>Просто названия функций и адреса в DLL нужны --- для динамического связывания. А вот прототипы целиком --- нет, так как во время динамического связывания программа все равно уже скомпилирована и знания о полных прототипах этих функций были получены из заголовков. 
+</blockquote>
+<hr>
+</font></body></html>

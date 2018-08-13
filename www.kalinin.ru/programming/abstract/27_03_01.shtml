@@ -1,0 +1,485 @@
+<html><head><title>ALK :: Отвлеченно :: Ответственность, доверие и качество.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/abstract/">отвлеченно</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/films/21_03_01.shtml">&lt;&lt;</a>&nbsp;27.03.01&nbsp;<a href="/comment/life/06_04_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Ответственность, доверие и качество
+</h1> 
+    <p align="justify">
+      Существует такая черта человеческого характера под названием
+      "ответственность". Вообще говоря, очень полезная черта: если она есть у
+      человека, то он может выполнять свою работу без присмотра со стороны
+      высшего руководства... всем хорошо: человеку, что за ним не следят;
+      руководству, что не надо следить за человеком; конечному пользователю, что
+      он получает продукт. То есть, лафа, а не жизнь.
+    </p>
+    <p align="justify">
+      В "Programming stone" как раз кое-где говориться о том, что контроль за
+      качеством выполнения работы должен быть на каждом уровне. Это значит не
+      то, что везде должен присутствовать некий "человек в штатском", а то, что
+      каждый человек должен (в идеале, конечно же) ответственно подходить к своей работе и выполнять ее так,
+      насколько это возможно. На самом деле, конечно же, "возможности" человека
+      принято оценивать очень приблизительно, часто эти оценки выставляют люди,
+      далекие от процесса работы, которые руководствуются некоторыми своими
+      принципами (обычно первым принципом идет "покрасоваться перед начальством").
+    </p>
+    <p align="justify">
+      Ответственность является очень хорошей чертой программиста. Честно. Просто
+      потому, что оценить качество работы программиста, вообще говоря,
+      невозможно: все существующие метрики качества программного обеспечения (по
+      которым можно судить о проделанной работе) настолько далеки от реальности,
+      что не выдерживают даже простейших логических возражений против них. Таким
+      образом, качество программного обеспечения (а также и работы программиста)
+      это очень субъективная оценка, основывающаяся на собственном опыте и
+      желаниях человека, который эту оценку выставляет. Мой опыт показывает, что
+      программист не может прыгнуть выше своей головы и выдавать "на ура" по
+      несколько тысяч строчек программного кода в день. Нет, в отдельные дни
+      (допустим, раз в месяц) это происходит. Но за подобными днями обязательно
+      последют дни с головной болью, похмельем, синдромом вечного "недосыпа",
+      плохого настроения, технических неполадок в компьютерах, отладки и
+      профайлинга. Все это усредняет количество произведенного продукта и, в
+      принципе, в общем программист выдает всегда какое-то среднее "количество
+      работы". Он не может сделать больше. Зато он может сделать меньше. 
+    </p>
+    <p align="justify">
+      Опять же, понятно что программист может работать всю ночь перед выпуском
+      проекта, работать сверхурочно и т.д. Но если некоторое время это
+      действительно будет приносить результаты, то, при отсутствии банального
+      отдыха (чем больше напряжения было испытано, тем больше отдыха требуется)
+      подобные мероприятия только ухудшат результаты. Но это тоже "не
+      намеренно", просто человек устает и становится менее внимательным. Опять
+      же, исходя из собственного опыта, пословица "утро вечера мудренее" очень
+      правильная: если вечером что-то "ломается", то "чинить" это лучше всего с
+      утра. И еще (если уж отвлекся) у меня появилось правило (которое, конечно
+      же, я изредка нарушаю) не затевать революционных действий вечером. Вечер
+      это время для тестирования, исправления мелких "глюков" и прочее ---
+      что-то новое я могу написать только утром или днем. Все, что я напишу
+      вечером, потом обычно исправляется ;)
+    </p>
+    <p align="justify">
+      Но я отвлекся от главной темы. Итак, программист пишет
+      программу. Проследить за ним не может никто и единственным стимулом для
+      программиста написать эту программу, фактически, является его личная
+      заинтересованность в успешном завершении проекта. Это может быть, конечно
+      же, высокая заработная плата и премия в конце, но обычно, кроме
+      меркантильных интересов, программисту для собственного самомнения нужно
+      сделать работу хорошо. Вообще, в любом "творческим" (примите это слово как
+      есть, я не хочу пару абзацев объяснять что я понимаю под этим термином) человеке
+      есть некоторая неудовлетворенность, которая, собственно, и толкает
+      его пытаться улучшить свой труд. 
+    </p>
+    <p align="justify">
+      Если это желание есть, то самое главное заключается в том, чтобы его не
+      погасить. А "погасить" очень просто. В прошлом опусе в этом разделе я
+      писал о "традиционном управлении" --- так вот это самый простой
+      способ, ведь когда человек понимает, что всю его работу начинают оценивать
+      внешними проявлениями... то он либо смиряется с этим и начинает
+      старательно их выказывать, либо находит себе новую работу (есть еще один
+      вариант, проявляющийся обычно в том случае, когда руководство еще можно
+      вразумить или когда программист относится к классу "незаменимых":
+      руковдство идет на попятную). 
+    </p>
+    <p align="justify">
+      Ведь посудите сами, какая может быть у человека внутренняя
+      неудовлетворенность, если от него требуется вовремя прийти на работу и
+      вовремя с нее уйти, и если он не выполняет этих требований, то к нему
+      относятся как к программисту, который не может выполнить свою
+      работу. Хотя, на самом деле, именно в работе программиста зависимость
+      между количеством проведенных на работе часов и выполненной работы, совсем
+      неявная. 
+    </p>
+    <p align="justify">
+      Я так думаю, что самое главное в работе программистов это доверие. То
+      есть, программисту доверяют выполнение работы и если, к примеру, он пришел
+      на час позже, а ушел на два часа раньше положенного срока, то не надо на
+      него смотреть как на преступника: если у него есть то, что я назвал
+      "внутренней неудовлетворенностью", то он сделал все что мог. Или сделает,
+      все что может. Если программист по собственному желанию начинает тратить
+      свое собственное время в субботу или воскресенье, или, к примеру, ночью,
+      то это уже проявление "внутренней неудовлетворенности", которое не мерятся
+      количеством отработанных часов в неделю.
+    </p>
+    <p align="justify">
+      Не сочтите это за нытье. Вопрос доверия, это очень важный вопрос. Если мне
+      не доверяют, как специалисту, как программисту, как человеку, в
+      конце-концов, то делать в такой конторе мне больше нечего (именно потому,
+      что я такой конторе тоже не нужен, раз не доверяют). И очень хорошо,
+      что это (пока что) не относится к тому месту, где я работаю сейчас (было
+      бы просто замечательным, если бы все так и осталось или стало только лучше). Но я знаю
+      точно, что любой человек, пусть даже с небольшим количеством опыта, если у
+      него есть чувство ответственности, требует доверия к себе. И если этого
+      доверия к нему не проявить, то он либо покидает компанию, либо его
+      покидает (уже навсегда) чувство ответственности. Обычно это опять же
+      зависит от уже имеющегося опыта. Впрочем, наверняка, бывают и исключения из правила. 
+    </p>
+    <p align="justify">
+      Предыдущий тезис можно обобщить, после чего получается так, что
+      ответственных людей в конторе не остается и... в общем, я почему-то
+      заметил следующую закономерность: продукция подобных контор... не
+      выдерживает критики, во всяком случае с моей стороны. Я мог бы привести
+      примеры, но зачем. Традиционно, именно подобные конторы пытаются что-то
+      "впарить" своим клиентам, обмануть их: просто никто в таких конторах не
+      заинтересован в конечном результате, обычно хочется просто получить денег
+      как можно быстрее и "отвалить".
+    </p>
+    <p align="justify">
+      Впрочем, не о "конторах" речь. Ответственный человек, когда знает, что ему
+      доверяют и не следят за ним как за потенциальным предателем, будет
+      прилагать все усилия к тому, чтобы сделать свою работу качественно. Именно
+      это будет являться основным источником желания сделать свою работу как
+      можно лучше и только  так можно достичь действительно хороших
+      результатов. 
+    </p>
+    <p align="justify">
+      Возвращаясь к качеству. В задачу управления входит создать условия, при
+      которых программисты будут работать с максимальной отдачей. Для этого
+      каждый из них должен сознавать собственную значимость, а для этого должны
+      выполняться некоторые, на мой взгляд просто необходимые, условия:
+    </p>
+    <ul>
+      <li>
+	Доверие. Об этом я уже говорил: какая же "значимость", если каждый шаг
+	проверяется? При этом "доверие" аналогично презумпции невиновности:
+	программист должен не заслуживать доверие в течение долгих лет
+	непорочной службы, а изначально его иметь. И только в том случае, если
+	он "не оправдал доверия", его надо этого доверия лишать или выгонять.
+      </li>
+      <li>
+	Возможность принимать решения самостоятельно. 
+	Собственно, вытекает из доверия; та же невозможность уйти без спросу с
+	работы раньше срока, является свидетельством полного отсутствия
+	самостоятельности.
+      </li>
+      <li>
+	Отсутствие бюрократии. Онять же, проблема доверия и
+	ответственности. Если программиста заставить заполнять форму (пусть даже
+	электронную) о проделанной за сегодняшний день работе, то ничего
+	хорошего из этого не получится. Как это должно выглядеть, если
+	программиста отчитывает за невыполнение работы чиновник! За что? За то
+	что тот не смог придумать нужного алгоритма вовремя? За то что
+	документация используемой им библиотеки написана совершенно непонятным
+	языком и неточно соответствует программному коду самой библиотеки, в
+	результате чего он потратил на ее изучение месяц вместо недели?
+	Смешно. Или грустно... в любом случае, программиста может судить только
+	программист. И оценивать его работу может только программист. И опять же
+	вопрос в том, насколько высшее руководство доверяет слову специалиста,
+	который дает подобные оценки.
+      </li>
+    </ul>
+    <p align="justify">
+      Как видно, все опять же свелось к доверию. Нет, я все еще помню о
+      меркантильных вопросах: за какую-то сумму, наверное, любой человек может
+      вытерпеть некоторое время и любую бюрократию. Но, я заметил, что повышение
+      заработной платы обычно на некоторое время отдаляет время увольнения
+      специалиста, но не заставляет его работать более качественно (я имею в
+      виду, при отсутствии доверия к нему).
+    </p>
+    <p align="justify">
+      Традиционное возражение против этого заключается в таинственном
+      словосочетании "трудовая дисциплина". Пардон, не надо подменять понятия:
+      эта дисциплина на то и трудовая, что контролирует именно труд, работу. А
+      не время, проведенное на работе и формальности, с ней связанные. Кто более
+      дисциплинирован? Программист, который работает дома, или программист,
+      который читает анекдоты на рабочем месте? И еще вопрос: кто мешает ему пойти на улицу, а
+      не читать анекдоты? И что от этого изменится?
+    </p>
+    <p align="justify">
+      У "трудовой дисциплины" в ее формальном понимании есть один
+      плюс. Сотрудников можно найти на их рабочих местах в рабочее время. С
+      другой стороны, сотовый телефон и e-mail
+      клиент являются достойными средствами коммуникации, на мой взгляд.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      На самом деле, конечно же, доверие вытекает из простых и хороших
+      человеческих отношений. Если в рабочем коллективе отношения между людьми
+      нормальные, то доверие друг к другу входит в их число. Понятно, что чем
+      больше компания, тем все более и более размытыми становятся эти
+      неформальные отношения, тем больше появляется людей, которые просто друг к
+      другу плохо относятся. Но рабочие коллективы, которые занимаются
+      отдельными задачами, обычно не раздуваются более десятка чеолвек (иначе их
+      надо уже делить), и вопрос доверия, конечно же, расширяется. Руководство
+      должно доверять начальнику коллектива, тот --- своим
+      сотрудникам. Руководство через голову начальника не пытается
+      проконтролировать сотрудников, а тот честно сообщает руководству обо всех
+      проблемах. Идилия...
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/abstract/print_27_03_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_08_00.shtml">/comment/books/05_08_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Мифический человеко-месяц или как создаются программные системы.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://progstone.nm.ru" target="_blank">http://progstone.nm.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Programming Stone на русском языке.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/28_02_01.shtml">/comment/books/28_02_01.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Decline and Fall of the American Programmer.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/15_02_02.shtml">Как стать программистом: часть первая, нравоучительная </a> (15.02.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не знаю почему, но где-то в среднем пару раз в месяц ко мне обращаются с подобным вопросом --- как стать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/15_02_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/06_02_01.shtml">Традиционное управление </a> (06.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Йордон пишет о том, что основная проблема создания программных систем заключается не в программировании или проектировании, а в управлении и он...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/06_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/06_04_01.shtml">НТВ </a> (06.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Надоевшая тема, но все-таки. Хочу сразу же оговориться: я не считаю себя носителем объективного мнения и не претендую на него. Мало...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/06_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/21_03_01.shtml">Горе от ума, 2000 </a> (21.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Ах! к воспитанью перейдем. Что нынче, так же, как издревле, Хлопочут набирать учителей полки, Числом поболее, ценою подешевле? Я так думаю,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/21_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/08_02_03.shtml">Postfix изнутри </a> (08.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка пишется после громадного перерыва и поэтому, наверняка, будет отличаться от всего остального. Что же, год назад я закончил нравоучениями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/08_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/04_03_02.shtml">Как стать программистом: часть вторая, книги и интернет-ресурсы </a> (04.03.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вторую часть статьи я публикую значительно позже, чем рассчитывал: просто не получилось выкроить немного времени на последнюю проверку текста перед публикацией....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/04_03_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/15_02_02.shtml">Как стать программистом: часть первая, нравоучительная </a> (15.02.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не знаю почему, но где-то в среднем пару раз в месяц ко мне обращаются с подобным вопросом --- как стать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/15_02_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/27_03_01.shtml">Ответственность, доверие и качество </a> (27.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существует такая черта человеческого характера под названием "ответственность". Вообще говоря, очень полезная черта: если она есть у человека, то он может...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/27_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/06_02_01.shtml">Традиционное управление </a> (06.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Йордон пишет о том, что основная проблема создания программных систем заключается не в программировании или проектировании, а в управлении и он...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/06_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/06_04_01.shtml">НТВ </a> (06.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Надоевшая тема, но все-таки. Хочу сразу же оговориться: я не считаю себя носителем объективного мнения и не претендую на него. Мало...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/06_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/21_03_01.shtml">Горе от ума, 2000 </a> (21.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Ах! к воспитанью перейдем. Что нынче, так же, как издревле, Хлопочут набирать учителей полки, Числом поболее, ценою подешевле? Я так думаю,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/21_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

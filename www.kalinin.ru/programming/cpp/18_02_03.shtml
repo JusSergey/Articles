@@ -1,0 +1,680 @@
+<html><head><title>ALK :: C&amp;C++ :: Простой, но полезный аллокатор памяти.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/abstract/08_02_03.shtml">&lt;&lt;</a>&nbsp;18.02.03&nbsp;<a href="/comment/internet/14_08_03.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Простой, но полезный аллокатор памяти
+</h1> 
+
+<table width="60%" cellspacing="0" cellpadding="0" align="center" border="0">
+<tr><td>
+<h2>Лицензии</h2>
+
+<font size="-1">
+<p>
+	В этой заметке использованы составные части исходного текста
+	почтовой системы postfix, автором которой является Wietse
+	Venema. Postfix распространяется по лицензии "IBM PUBLIC
+	LICENSE VERSION 1.0 - SECURE MAILER". Исходные тексты в этой
+	заметке предоставлены исключительно в образовательных целях,
+	если вы хотите их использовать как-то иначе, вы должны
+	ознакомиться с этой лицензией. Вы можете ее найти в поставке
+	Postfix'а, файл LICENSE.  
+</p>
+</font>
+</td></tr></table>
+
+<p align="justify">
+	Эта заметка --- продолжение "Postfix изнутри" в том смысле,
+	что в качестве примера опять берется postfix. Но если в
+	прошлый раз postfix рассматривался "с высоты птичьего полета",
+	то теперь, наоборот, будет взят небольшой кусочек программного
+	кода, не имеющего никакой специализации, и приведен в качестве
+	примера.  
+</p>
+<p align="justify">
+	Если у вас есть под рукой дистрибутив postfix'а, то
+	понадобятся файлы src/util/mymalloc.h и
+	src/util/mymalloc.c. Это функции сервисной библиотеки postfix'а
+	для всех модулей, можно сказать "среды программирования"
+	postfix'а. В заголовочном файле определены следующие
+	прототипы: 
+</p>
+<pre>
+extern char *mymalloc(int);
+extern char *myrealloc(char *, int);
+extern void myfree(char *);
+extern char *mystrdup(const char *);
+extern char *mystrndup(const char *, int len);
+extern char *mymemdup(const char *, int);
+</pre>
+<p align="justify">
+	Вообще, если вы сейчас смотрите внутрь настоящих файлов
+	postfix'а, то обратите внимание на их оформление: начало
+	файла, его окончание. Более подробно эти моменты мы попытаемся
+	обсудить позже, пока что просто отметьте эти подробные
+	комментарии в начале файлов, по которым можно достаточно
+	просто понять смысл того, что находится внутри. 
+</p>
+<p align="justify">
+	Назначение вышеперечисленных прототипов функций, на мой
+	взгляд, понятно: они дублируют функциональность 
+	стандартной библиотеки языка C, конкретно такие вызовы, как malloc,
+	realloc и strdup. Правда в стандартной библиотеке не
+	существует функции с именем memdup, но ее назначение тоже
+	должно быть понятным. 
+</p>
+<p align="justify">
+	На мой взгляд подобный файл чуть-ли не первый, который должен
+	быть создан (или заимствован из другого проекта) при начале
+	непосредственного программирования на языке C. Точно так же как и
+	реализация этих функций должна быть тоже очень простой: они
+	все сводятся к вызову функций malloc, realloc и т.п. И больше
+	ничего. 
+</p>
+<p align="justify">
+	Непосредственное использование библиотечных функций связано с
+	тем, что ситуация, когда способ выделения динамической памяти
+	является критичным сразу, очень редка. Обычно важнее сначала получить
+	что-нибудь работоспособное, а уже потом начинать
+	модифицировать различные части программы. 
+</p>
+<p align="justify">
+	Кроме того, углубившись в дебри оптимизации маленьких, но
+	очень интересных проблем, можно попросту потерять из виду
+	общую задачу. Очень вероятно, что хороший, умный менеджер
+	памяти приведет попросту к бесполезной трате времени и сил
+	программиста. То есть это то, что нужно уметь изменять по
+	потребности, но не делать сразу же. Обычно стандартного
+	менеджера памяти хватает. Кроме того, нестандартный аллокатор
+	обычно требуется не для всех объектов в программе, а только
+	для однотипных, имеющих особые свойства (например:
+	фиксированный размер, частота поиска, частота создания или
+	удаления объектов и т.д.) Для таких объектов можно реализовать
+	свои методы работы с памятью поверх стандартного менеджера
+	памяти. 
+</p>
+<p align="justify">
+	Тем не менее, использовать подобные обертки очень
+	полезно. Во-первых, если стандартного менеджера памяти
+	все-таки не хватит, то можно перейти на другой. Причем таким
+	менеджером может быть как просто реализация "кучи" иного вида,
+	так и, например, менеджер памяти, выделяющий исключительно
+	разделяемую между процессами памяти (кстати, существует
+	неплохой, по слухам, подобный менеджер памяти основанный на
+	shm_open и mmap).
+</p>
+<p align="justify">
+	Во-вторых, даже если стандартного менеджера памяти хватит,
+	вполне вероятно что захочется определять динамику выделения
+	памяти, размеры, утечки, помечать выделенные блоки памяти
+	некоей дополнительной информацией и т.д. Все это можно сделать, в
+	принципе, просто подменив malloc в стандартной библиотеке или
+	воспользовавшись средствами операционной системы, но
+	практически всегда значительно удобнее иметь все под своим
+	контролем. 
+</p>
+<p align="justify">
+	Оговорюсь сразу: все ситуации выше характерны именно при
+	использовании C, а не C++. В C++ существует оператор new,
+	который можно переопределять как для конкретного типа данных,
+	так и глобально для всей программы. Это значительно удобнее,
+	надо признать, хотя и не всегда помогает: использование STL
+	скрывает от программиста громадное количество деталей, в том
+	числе и используемые менеджеры памяти. Их можно менять, можно
+	писать новые, но это уже требует совсем иного знания STL,
+	чем то, которое обычно имеется у программистов на C++. Вообще, STL является
+	очень характерным примером того, что сложность решения
+	проблемы в общем виде (в данном случае решалась проблема
+	организации структур данных и методов их обработки) достигает
+	сложности самой проблемы. То есть, STL очень полезно при
+	написании небольших программ, но как только требуется что-то
+	необычное, сразу же оказывается что как именно это лучше
+	сделать при помощи STL в общем-то, неизвестно и не всегда
+	очевидно. Это не критика STL, не бессмысленное заявление из
+	разряда "да все там не так" коими кишат т.н. "программистские"
+	форумы (а дизайн STL, на самом деле, лично мне очень
+	нравится), это просто замечание о пагубности общих решений.
+</p>
+<p align="justify">
+	В случае с postfix'ом, стандартного менеджера памяти вполне
+	хватает. Это связано с тем, что простая приемка почты (без
+	фильтрации, проверки на вирусы и т.д.) не требует от
+	компьютера больших вычислительных ресурсов, но зависит от
+	скорости жесткого диска: любое письмо, проходящее через MTA
+	должно оказаться в очереди на отправку, то есть на жестком
+	диске. Мало того, MTA должен по возможности гарантировать
+	доставку почты даже в том случае, если компьютер работает
+	нестабильно (допустим, постоянно перезагружается). То есть,
+	MTA должен ответить посылающему релею "220 OK" тогда и только
+	тогда, когда почтовое сообщение прочно легло на жесткий
+	диск. А это значит, что MTA должен выполнять sync на очередь
+	после каждого помещения туда одного сообщения. Следовательно
+	буферизация жесткого диска (кеширование), полезная при обычной
+	работе с компьютером, никак не сказывается на
+	производительность почтовой системы. А вот производительность
+	жесткого диска (конкретно --- количество транзакций в секунду,
+	которые он может выполнить, а не скорость записи как это могло
+	бы показаться на первый взгляд) влияет на производительность
+	почтовой системы непосредственно. 
+</p>
+<p align="justify">
+	Тем самым, менеджер памяти в postfix'е нужен исключительно для
+	повышенного контроля за доступом к памяти, а не для увеличения
+	производительности. Собственно говоря, так он и реализован.
+</p>
+<p align="justify">
+	Давайте теперь перейдем к файлу src/util/mymalloc.c. Основная
+	структура, которая используется аллокатором, называется MBLOCK
+	и выглядит следующим образом:
+</p>
+<pre>
+typedef struct MBLOCK {
+    int     signature;			/* set when block is active */
+    int     length;			/* user requested length */
+    union {
+	ALIGN_TYPE align;
+	char    payload[1];		/* actually a bunch of bytes */
+    } u;
+} MBLOCK;
+
+#define SIGNATURE	0xdead
+#define FILLER		0xff
+</pre>
+<p align="justify">
+	Назначение поля length понятно --- это размер выделенного
+	блока. Имеется в виду именно тот размер, который был запрошен
+	при вызове mymalloc, а не тот, который был реально выделен. 
+</p>
+<p align="justify">
+	Поле signature так же достаточно простое: при выделении нового
+	блока памяти оно заполняется значением константы SIGNATURE, а
+	при освобождении --- каким-то другим. Это позволяет определять
+	такие ошибки, как повторный вызов myfree на тот же указатель
+	или вызов myfree на указатель, который был получен иным
+	способом, чем вызов mymalloc. 
+</p>
+<p align="justify">
+	Поле u.payload используется для доступа к выделенной
+	памяти. Это общепринятая практика для ситуаций, когда
+	структура данных не имеет фиксированного размера, а зависит от
+	каких-то внешних факторов (обычно сохраняется в этой же
+	структуре, как в length). То есть, структура MBLOCK имеет,
+	конечно же, фиксированный размер (sizeof(MBLOCK)), но так как
+	она выделяется при помощи malloc, то в качестве требуемого
+	размера мы можем указать любой размер, превышающий
+	sizeof(MBLOCK). После этого структура MBLOCK помещается в
+	начале выделенного блока памяти, а доступ к оставшейся памяти
+	может осуществляться как раз через массив u.payload, например
+	как u.payload[100]. Это возможно потому, что, во-первых, в языке C нет
+	встроенной проверки границ массивов и, во-вторых, компиляторы
+	обычно физически располагают поля структур данных в том же
+	порядке, в котором они были перечислены. Последнее замечание
+	нужно осознать: на самом деле, стандартом языка C это не
+	гарантируется и компилятор может перетасовать поля, но есть
+	т.н. "общепринятая практика", которой в данном случае можно
+	следовать. 
+</p>
+<p align="justify">
+	Поле align имеет тип ALIGN_TYPE, определенный в sys_defs.h
+	(имеется в виду заголовочный файл из библиотеки postfix) и
+	зависящий от архитектуры конкретной ЭВМ. Этот тип используется
+	аллокатором для выравнивания размеров своих структур исходя из
+	особенностей конкретной архитектуры. 
+</p>
+<p align="justify">
+	Кстати сказать, обратите внимание на обычный для языка C способ
+	определения структур --- через typedef, а не напрямую через
+	struct. Все дело в том, что typedef задает синоним имени (в
+	данном случае MBLOCK), а конструкция вида:
+</p>
+<pre>
+struct MBLOCK {
+...
+};
+</pre>
+<p align="justify">
+	задает именно структуру. Разница в этих понятиях заключается в
+	том, как эти имена могут быть использованы: синоним имени
+	используется напрямую (MBLOCK), а структура --- только как
+	структура (т.е., struct MBLOCK). То есть в последнем случае
+	(без typedef) следующий код будет некорректен:
+</p>
+<pre>
+MBLOCK block1, block2;
+MBLOCK *pblock;
+</pre>
+<p align="justify">
+	А корректным будет немного другой код:
+</p>
+<pre>
+struct MBLOCK block1, block2;
+struct MBLOCK *pblock;
+</pre>
+<p align="justify">
+	В C++ это поведение было изменено. 
+</p>
+<p align="justify">
+	Но вернемся к аллокатору. Вопрос, который должен был бы задать
+	себе читатель этой заметки, должен быть примерно следующего
+	вида: "Ну хорошо, структура MBLOCK понятна. Но mymalloc
+	возвращает void*, а не MBLOCK и myfree получает в качестве
+	аргумента void*. Тогда, если mymalloc может вернуть адрес
+	u.payload, то каким образом myfree по этому указателю сможет
+	восстановить указатель на структуру MBLOCK, соответствующую
+	u.payload?"
+</p>
+<p align="justify">
+	Ответ на этот вопрос "в первом приближении", конечно же, достаточно очевиден ---
+	так как u.payload входит в состав структуры MBLOCK, то по
+	смещению u.payload внутри MBLOCK, мы запросто можем вернуться
+	к указателю на MBLOCK путем вычитания этого смещения из
+	указателя на u.payload.
+</p>
+<p align="justify">
+	Но вот что неочевидно, так это каким образом можно получить
+	данное смещение --- сумма sizeof всех полей структуры до
+	payload вполне вероятно будет меньше реального смещения. Можно
+	вычислить смещение исходя из познаний о собственном
+	компиляторе и его выравнивании, но postfix, напомню,
+	собирается на большом количестве архитектур, а такое смещение
+	совершенно непереносимо.
+</p>
+<p align="justify">
+	На самом деле, я просто пытаюсь объяснить проблему. Существует
+	еще один оператор языка C (или, точнее сказать, макрос
+	стандартной библиотеки), который, как это ни странно, 
+	часто неизвестен даже опытным программистам. 
+	Это оператор offsetof, который как раз и
+	позволяет получить смещение поля в структуре: именно на его
+	основе myfree получает искомое смещение. Для демонстрации его
+	работы процитируем следующий макрос, используемый для этой
+	операции в myfree и myrealloc:
+</p>
+<pre>
+#define CHECK_IN_PTR(ptr, real_ptr, len, fname) { \
+    if (ptr == 0) \
+	msg_panic("%s: null pointer input", fname); \
+    real_ptr = (MBLOCK *) (ptr - offsetof(MBLOCK, u.payload[0])); \
+    if (real_ptr->signature != SIGNATURE) \
+	msg_panic("%s: corrupt or unallocated memory block", fname); \
+    real_ptr->signature = 0; \
+    if ((len = real_ptr->length) < 1) \
+	msg_panic("%s: corrupt memory block length", fname); \
+}
+</pre>
+<p align="justify">
+	Сразу же позволю обратить внимание на небольшой недочет:
+	операторных скобок в макросах не хватает для полноценного
+	поведения макроса как оператора. Это проявится тогда, когда
+	макрос будет использоваться в условном операторе. Нельзя
+	написать следующую конструкцию:
+</p>
+<pre>
+if( ... ) CHECK_IN_PTR(...) ; 
+else  ... ;
+</pre>
+<p align="justify">
+	Это связано с тем, что после применения макроса код выше
+	превратится в такой:
+</p>
+<pre>
+if( ... ) { } ; 
+else  ... ;
+</pre>
+<p align="justify">
+	А подобный код содержит в себе синтаксическую ошибку (точка с
+	запятой после закрывающей фигурной скобки является концом
+	оператора if, а за ним следует else). То есть, надо или убрать
+	точку с запятой после CHECK_IN_PTR (а это значит, что макрос
+	будет отличаться от операторов, потому что после, например,
+	какого-нибудь i++ точка с запятой будет обязательна), или
+	выполнить макрос немного по другому. Достаточно вместо
+	фигурных скобках использовать следующее:
+</p>
+<pre>
+#define CHECK_IN_PTR(ptr, real_ptr, len, fname) do { \
+... \
+} while(0)
+</pre>
+<p align="justify">
+	Тогда <nobr>do { } while(0)</nobr> будет как раз оператором и использование
+	CHECK_IN_PTR не будет отличаться от обычных операторов. 
+</p>
+<p align="justify">
+	Тем не менее, макрос CHECK_IN_PTR используется только в
+	mymalloc.c (то есть, контроллируемо) и при этом нет ни одного
+	условного оператора с его участием. Поэтому задумываться о
+	преимуществах <nobr>do { ... } while(0)</nobr> перед 
+	простым <nobr>{ ... }</nobr>, было совершенно необязательно. Я
+	же указал на это только из желания попридираться в учебных,
+	так сказать, целях. 
+</p>
+<p align="justify">
+	Если придираться дальше, то можно обратить внимание на то, что все
+	параметры макроса используются "как есть", без заключения в
+	скобки. Для макроса, который находился бы в общей библиотеке,
+	это очень плохо: неизвестно что и когда туда будет передано, а
+	потом придется разбираться с совершенно непонятными
+	ошибками. Но этот макрос, повторю, используется только в одном
+	файле в известном окружении. Можно было бы вообще сделать его
+	без параметров, опираясь на одинаковые названия переменных в
+	функциях, где он используется и это тоже было бы совершенно
+	нормально.  
+</p>
+<p align="justify">
+	Использование offsetof, я думаю, очевидно из его употребления
+	в макросе CHECK_IN_PTR: первый аргумент --- структура, второй
+	--- поле, смещение которого нас интересует. 
+</p>
+<p align="justify">
+	И напоследок, я хотел бы обратить внимание на константу
+	FILLER: она используется для заполнения выделенных блоков
+	памяти. Она не равна 0, хотя, казалось бы, 0 был бы
+	значительно удобнее. Это связано с тем, что нулевые значения
+	чего бы то ни было обычно имеют осмысленные значения и тогда
+	если объект забыть инициализировать (а это, повторю, не C++,
+	где ошибки связанные с инициализацией в большинстве своем
+	решены наличием конструкторов),	то им все равно можно будет
+	пользоваться. А вот ненулевые значения приведут, скорее всего,
+	к аварийному завершению программы и следовательно подобные
+	ошибки будут найдены быстрее. 
+</p>
+<p align="justify">
+	На этом рассматривать аллокатор postfix стоит закончить ---
+	все оставшееся, по-моему, предельно понятно из самого кода. 
+</p>
+
+<h2>Резюме</h2>
+<p align="justify">
+	Описанный аллокатор postfix'а обладает следующими
+	преимуществами: 
+</p>
+<ul>
+	<li>Контроль за памятью (размеры, повторное удаление и
+	т.д.)</li>
+	<li>Простота реализации: mymalloc.c содержит всего 200
+	строчек, при этом порядка 100 строк --- комментарии. </li>
+	<li>Переносимость.</li>
+	<li>Инициализация памяти.</li>
+</ul>
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_18_02_03.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.postfix.org" target="_blank">http://www.postfix.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Официальный сайт почтовой системы Postfix, оттуда его  можно скачать.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/14_08_03.shtml">Спамеры и антиспамеры: путь к компромиссу </a> (14.08.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Статья написана для электронного журнала . На данный момент в околокомпьютерной прессе опубликовано достаточно большое количество статей на тему спама. Большая...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/14_08_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/08_02_03.shtml">Postfix изнутри </a> (08.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка пишется после громадного перерыва и поэтому, наверняка, будет отличаться от всего остального. Что же, год назад я закончил нравоучениями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/08_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/14_08_03.shtml">Спамеры и антиспамеры: путь к компромиссу </a> (14.08.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Статья написана для электронного журнала . На данный момент в околокомпьютерной прессе опубликовано достаточно большое количество статей на тему спама. Большая...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/14_08_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/08_02_03.shtml">Postfix изнутри </a> (08.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка пишется после громадного перерыва и поэтому, наверняка, будет отличаться от всего остального. Что же, год назад я закончил нравоучениями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/08_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

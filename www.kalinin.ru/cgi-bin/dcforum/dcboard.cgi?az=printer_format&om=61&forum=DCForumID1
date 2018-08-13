@@ -1,0 +1,58 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 61<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/61.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"SSI"</font></b><br>
+Posted by user  on 06-Sep-01 at 12:34&nbsp;PM<br>
+<blockquote>Андрей, не знаешь ли ты программы, которая на вход получает shtml файл, а на выходе обыкновенный html?</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: SSI</b>,<b>Andrey L. Kalinin</b>, 11:44&nbsp;PM, 29-Sep-01
+<ul>
+<li><b>RE: SSI</b>,<b>BOLK</b>, 08:33&nbsp;PM, 13-Nov-01
+<ul>
+<li><b>RE: SSI</b>,<b>Andrey L. Kalinin</b>, 09:08&nbsp;PM, 13-Nov-01
+<li><b>RE: SSI</b>,<b>ivank</b>, 10:33&nbsp;AM, 14-Nov-01
+<ul>
+<li><b>RE: SSI</b>,<b>Andrey L. Kalinin</b>, 11:04&nbsp;AM, 14-Nov-01
+</ul>
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: SSI"</b><br>
+Posted by Andrey L. Kalinin  on 29-Sep-01 at 11:44&nbsp;PM<br>
+<blockquote>
+&gt;Андрей, не знаешь ли ты программы, <BR>&gt;которая на вход получает shtml <BR>&gt;файл, а на выходе обыкновенный <BR>&gt;html? <P><BR>Знаю <img src="/dcforum//Images/wink.gif"> Apache называется. <P>Еще googl'ом нашел что-то платное под windows, но, на мой взгляд, поднять Apache, а потом wget'ом выкачать его содержимое, значительно проще.
+</blockquote>
+<hr>
+<b>"RE: SSI"</b><br>
+Posted by BOLK  on 13-Nov-01 at 08:33&nbsp;PM<br>
+<blockquote>
+Я еще одну знаю. Гораздо легче Apache (правда, под Винды) и понимает Apache xSSI. Называется Small HTTP Server. Ищется в Инете.
+</blockquote>
+<hr>
+<b>"RE: SSI"</b><br>
+Posted by Andrey L. Kalinin  on 13-Nov-01 at 09:08&nbsp;PM<br>
+<blockquote>
+&gt;Я еще одну знаю. Гораздо легче <BR>&gt;Apache (правда, под Винды) и <BR>&gt;понимает Apache xSSI. Называется Small <BR>&gt;HTTP Server. Ищется в Инете. <P>Ну я имел в виду общее направление поисков --- поставить веб-сервер и выкачать. <P>
+</blockquote>
+<hr>
+<b>"RE: SSI"</b><br>
+Posted by ivank  on 14-Nov-01 at 10:33&nbsp;AM<br>
+<blockquote>
+&gt;Я еще одну знаю. Гораздо легче <BR>&gt;Apache (правда, под Винды) и <BR>&gt;понимает Apache xSSI. Называется Small <BR>&gt;HTTP Server. Ищется в Инете. <BR>&gt;<P><BR>У него с SSI глюков не наберёшься.<P>Кстати, где хоть одна новая статья?!
+</blockquote>
+<hr>
+<b>"RE: SSI"</b><br>
+Posted by Andrey L. Kalinin  on 14-Nov-01 at 11:04&nbsp;AM<br>
+<blockquote>
+&gt;Кстати, где хоть одна новая статья?! <P>А что, надо? <img src="/dcforum//Images/wink.gif"><P>Занят. Но будет. Скоро. <P>
+</blockquote>
+<hr>
+</font></body></html>

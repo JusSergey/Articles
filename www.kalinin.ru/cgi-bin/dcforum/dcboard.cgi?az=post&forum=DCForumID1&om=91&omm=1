@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/dcforum//DCForumID1/91.html"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/dcforum//DCForumID1/91.html"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Compose your message</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+<p>
+         <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+         <TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         Original Message
+         </FONT></TH></tr>
+         <TR BGCOLOR="#EAE8E0"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <b>"RE: Programmer vs. Computer Scientist"</b><br>Posted by Andrey L. Kalinin on 11-Jul-02 at 00:38&nbsp;AM
+         </FONT></Td></tr>
+         <TR BGCOLOR="#FBF9F1"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Вот ты считаешь себя программистом, и <BR>&gt;вроде уже учишь других. А <BR>&gt;какая тема была у твоего <BR>&gt;диплома и какой планиуешь дисер? <P>Сложно сформулировать. Вкратце --- автоматическое доказательство программ. Это, естественно то, что называется Computer Science в чистом виде: формальные методы "и все такое."<P>&gt;Сколько законченных прикладных программ ты написал, <BR>&gt;каков суммарный объем кода, сколько <BR>&gt;строчек плучается в среднем в <BR>&gt;день? <BR>&gt;Ты уж извини, но судя по <BR>&gt;статьям ты 100% рафинированный информатик. <P>Ха. Отвечать, естественно, не буду, потому что вопросы a-la "количество строчек" и "законченные программы", прямо скажем, несколько странные. (пошлость я стер, но она тут была) хм. В общем, мы тут разве чем-то меряемся?<P>Рафинированный. Информатик. Сколько угодно <img src="/dcforum//Images/happy.gif"> Хоть горшком обзови, только в печку не ставь.<P>Тем не менее, из того что я написал (или к чему прикладывал свою руку) и что я сейчас бы перечислил, если бы устраивался на работу... это то, что должно быть в резюме, но оно старое (единственное, без имен; ну их к черту, хотя часть из них достаточно громкие): система сборки статистики и рейтингования сайтов, поисковая система, библиотека автоматической рубрикации текстов, SMTP-фильтр спама... по каждому из этих пунктов можно много чего объяснить (в чем сложность и в чем, так скажем, бизнес-модель), но я не понимаю кому и зачем, поэтому не буду. Это то, что называется практическим программированием, потому что есть люди, которые это покупают или используют; естественно, список не полон. Кстати сказать, понятно что программный продукт сильно отличается от научной разработки, если претензии (хотя я не особенно понимаю, к чему они) были к этому.<P>Кстати сказать (к количеству строчек) программный продукт отличается от научной разработки не скоростью стучания по клавишам группы специально обученных программистов, а, прежде всего, тем что его позиционирует именно как продукт: потребителями, маркетингом, окупаемостью и т.д. Научные разработки ничего этого обычно не имеют и развиваются до тех пор, пока на них выделяются деньги или пока существует голый энтузиазм. Поэтому количество строк и скорость их набивания, кстати о птичках, в научных разработках могут быть значительно больше, чем в коммерческих (за счет фактического сведения на нет затрат на периодический вывод написанного программного обеспечения на рынок в качестве законченного программного продукта.) <P>А теперь благородный дон (судя по всему, 50% информатик) соизволит объяснить смысл своего вопроса?<BR>
+         </blockquote>
+         </FONT></Td></tr><TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         &nbsp;
+         </FONT></TH></tr>
+         </table>
+   <center>
+   <form ACTION="/cgi-bin/dcforum/dcboard.cgi" method="POST">
+   <input type=hidden name="om" value="91">
+   <input type=hidden name="forum" value="DCForumID1">
+   <input type=hidden name="omm" value="1">
+   
+         <input type="hidden" name="az" value="a_mesg">
+      
+   <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+   <TR><Td ALIGN="LEFT" valign="top" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   
+         <li><font color="#FF0000">
+         Image Links Enabled - just type the URL (e.g., http://www.dcscripts.com/image.gif)
+         </font>
+         
+      <li><font color="#FF0000">
+      Emotion Icons</font>
+      <a href="javascript:makeRemote('/cgi-bin/dcforum/dcboard.cgi?az=emotion_icon_short_cuts')"><FONT 
+      SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Emotion icon short cuts</FONT></a>
+   </TD>
+   </tr>
+   <TR BGCOLOR="#E3DAA5"><TH ALIGN="LEFT" COLSPAN="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+      Your Message
+      </FONT></TH></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Name<font color="black">*</font>:
+   </FONT>
+   </TH>
+   <TD>
+         <INPUT TYPE="TEXT" NAME="name" value="" SIZE=50>
+   </TD></TR>
+         <TR BGCOLOR="#EAE8E0">
+         <TH ALIGN="RIGHT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         EMail:
+         </FONT></TH>
+         <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="TEXT" NAME="email" value="" SIZE=50>
+         </TD></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Subject<font color="black">*</font>:
+   </FONT></TH>
+   <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="text" NAME="subject" VALUE="RE: Programmer vs. Computer Scientist" SIZE=50>
+      </TD></TR><TR BGCOLOR="#EAE8E0">
+      <TH ALIGN="RIGHT" VALIGN="TOP"><FONT SIZE="-1" 
+         FACE="arial,sans-serif" COLOR="black">
+         Message<font color="black">*</font>:</FONT>
+         </TH><TD>
+      <TEXTAREA NAME="body" ROWS="12"
+        COLS="50" WRAP="virtual"></TEXTAREA>
+    
+   </TD></TR>
+   <TR><TH ALIGN="RIGHT" BGCOLOR="#EAE8E0">
+   &nbsp;</TH>
+   <TD BGCOLOR="#EAE8E0" ALIGN="LEFT">
+   <INPUT TYPE="SUBMIT" NAME="preview" VALUE="Preview">
+      <INPUT TYPE="SUBMIT" NAME="post" VALUE="Post Message">
+   <INPUT TYPE="RESET" VALUE="Reset">
+   </TD></TR></TABLE>
+   </form>
+   </center>
+  
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

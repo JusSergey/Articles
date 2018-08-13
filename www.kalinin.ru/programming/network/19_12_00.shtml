@@ -1,0 +1,906 @@
+<html><head><title>ALK :: Сети :: &quot;Тонкий&quot; клиент.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/network/">сети</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/films/13_12_00.shtml">&lt;&lt;</a>&nbsp;19.12.00&nbsp;<a href="/comment/life/25_12_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>&quot;Тонкий&quot; клиент
+</h1> 
+    <p align="justify">
+      В предыдущей заметке Gregory Liokumovich рассказывал
+      о применении событийной модели WinSock для программирования
+      сетевых приложений. На самом деле, как мне кажется,
+      организация сетевой программы не должна зависеть от используемой
+      версии API. То есть, вычислительная часть и непосредственно
+      вызовы сетевых функций должны быть максимально разделены.
+    </p>
+    <p align="justify">
+      При этом, я не считаю абстракцию следующего вида (для клиента):
+    </p>
+<pre>
+class ClientSocket
+{
+public:
+   open( /* ... */ );
+   bind( /* ... */ );
+   close( /* ... */ );
+   read( /* ... */ );
+   write( /* ... */ );
+};
+</pre>
+    <p class="table">
+      удовлетворительной. Связано это с тем, что по сути такой класс ничуть
+      не скрывает деталей реализации, а, наоборот, подчеркивает их. На мой взгляд,
+      организация взаимодействия между клиентом и сервером не должна содержать
+      в себе &quot;пересылки данных&quot;, а должна проектироваться исходя из
+      сообщений, которыми те обмениваются. Следовательно, должен быть какой-то
+      метод скрыть в себе детали пересылки таким образом, что бы программист, использующий
+      код впоследствии даже не догадывался об использовании сокетов. На самом деле,
+      &quot;не догадываться&quot; --- это уже слишком, а вот сделать так,
+      что бы можно было хотя бы не особенно задумываться, вполне возможно.
+    </p>
+    <p align="justify">
+      То что будет написано ниже не стоит рассматривать как панацею от
+      всех бед; просто пример использования. 
+    </p>
+    <p align="justify">
+      Выделим две сущности: &quot;соединение&quot; и &quot;менеджер&quot;. Соединение
+      будет &quot;знать&quot; о том, как обрабатывать конкретный
+      дескриптор, а менеджер будет заниматься управлением соединений, т.е. ожидать
+      событий и передавать управление тому соединению, для которого было получено событие
+      нужного типа.
+    </p>
+    <h2>Соединение</h2>
+    <p align="justify">
+      Начнем с соединения, т.е. определим класс <code>Connection</code>. Понятно, что внутри
+      себя объект этого класса должен содержать системнозависимую информацию,
+      необходимую для обеспечения передачи данных. Для того, что бы продолжить
+      разговор не абстрактными терминами, а более-менее конкретно, скажу, что в качестве
+      протокола передачи данных будем использовать TCP с реализацией системного интерфейса 
+      в виде BSD sockets.
+    </p>
+<table align="right" columns="3" border="0" cellspacing="0" cellpadding="5" width="150">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Лирическое отступление:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2"><font face="arial,sans-serif" size="-2">
+    <p align="justify">
+      Область примения конечного автомата 
+      не ограничена одним только разбором
+      текста: зачастую очень удобно представить в 
+      виде конечного автомата и другие объекты
+      в программе, кроме парсеров. 
+    </p>
+</font></td></tr></table>
+    <p align="justify">
+      Будем рассматривать объект класса <code>Connection</code> как... 
+      <a href="/programming/alg/21_08_00.shtml">конечный автомат</a>. Понятно,
+      что набор его состояний определяется постановкой задачи для всей программы, но для
+      менеджера важны только следующие состояния:
+     </p>
+<pre>
+enum
+{
+   connecting,
+   writing,
+   reading,
+   closing
+} state;
+</pre>
+    <p align="justify">
+      Я думаю, понятно, что каждое из этих состояний будет характеризовать. 
+      Одно &quot;но&quot;: в списке этих состояний отображены только
+      состояния, существенные для менеджера соединений, остальные
+      нас пока что не интересуют. Опишем класс <code>Connection</code>
+      &quot;почти целиком&quot;:
+    </p>
+<pre>
+class Connection
+{
+  friend class Downloader;
+public:
+  Connection(const ip_address&amp; ia, unsigned int p /* , ... */ );
+  virtual ~Connection();
+private:
+  int         fd;
+
+  ip_address   ip_addr;
+  unsigned int port;
+
+  time_t last_accessed;
+
+  bool open();
+  void close();
+  void read();
+  void write();
+  void connected();
+
+  enum
+  {
+     /*
+      * ...
+      */
+
+  } state;
+};
+</pre>
+    <p align="justify">
+      Несложно заметить, что в нем присутствуют методы <code>read()</code>
+      и т.д., но на этот раз они несут другую смысловую нагрузку, чем в первом примере.
+      Во-первых, это реакция на событие, а не его инициация, как раньше 
+      (кроме <code>open()</code>). То есть, метод <code>read()</code> вызывается
+      менеджером тогда, когда есть что прочитать и соединение находилось
+      в нужном состоянии (<code>reading</code>). Тип <code>ip_address</code> нигде
+      не определяю, но это всего-навсего синоним используемого системного типа
+      для представления ip-адресов выбранного протокола (IPv4, IPv6). Соответственно,
+      многоточие в конструкторе оставлено для демонстрации того, что соединение выполняет
+      не только функции связи, но и некоторые функции обработки данных, нужная информация
+      для которых и передается через это многоточие. Т.е., реально вместо многоточия
+      находится еще какой-то список параметров, который сейчас для нас неважен.
+    </p>
+    <p align="justify">
+      Деструктор сделан <a href="/programming/cpp/28_07_00.shtml">виртуальным</a> для
+      того, что бы сделать возможным расширять возможности <code>Connection</code>
+      в случае необходимости (или использовать его в качестве одного из базовых
+      классов) и корректно удалять его через указатель.
+    </p>
+    <p align="justify">
+      На всякий случай приведу внутреннее устройство  функций типа <code>read()</code>,
+      хотя оно и  достаточно простое.
+    </p>
+<pre>
+bool Connection::open()
+{
+  assert(fd == -1);
+
+  struct sockaddr_in servaddr;
+
+  fd = socket(AF_INET, SOCK_STREAM, 0);
+
+  if(fd == -1) return false;
+		
+  bzero(&amp;servaddr, sizeof(servaddr));
+  servaddr.sin_family = AF_INET;
+  servaddr.sin_port = htons(port);
+  servaddr.sin_addr.s_addr = ip_addr;
+
+  int flags = fcntl(fd, F_GETFL, 0);
+  if(fcntl(fd, F_SETFL, flags | O_NONBLOCK) == -1)
+  {
+     ::close(fd);
+     fd = -1;
+     return false;
+  }
+
+  if(connect(fd, (sockaddr*)&amp;servaddr, sizeof(servaddr)) != 0)
+  {
+     if(errno == EINPROGRESS)
+     {
+        state = connecting;
+     }
+     else
+     {
+        ::close(fd);
+        fd = -1;
+        return false;
+     }
+  }
+  else
+    state = writing;
+
+  time(&amp;last_accessed);
+
+  return true;
+}
+</pre>
+    <p align="justify">
+      Функция <code>open()</code> выполняет необходимые подготовительные операции,
+      используя при этом технику <a href="01_12_00.shtml">неблокирующего <code>connect()</code></a>.
+      Об этом я уже подробно рассказывал, так что сейчас обращу ваше внимание только на 
+      изменение состояний на <code>connecting</code> и <code>writing</code>. На самом деле,
+      конечно же, лучше было бы предусмотреть отдельную функцию <code>changeState()</code>, 
+      которая бы по текущему контексту выбирала бы нужное состояние. В данном случае
+      правомерна &quot;в общем&quot; только смена состояния в <code>connecting</code>,
+      а вот <code>writing</code> --- зависит от конкретного приложения. Тем не менее,
+      я это обговорил, а дальше имейте ввиду, что этот код приведен здесь только ради примера
+      и многое в нем упрощено.
+    </p>
+    <p align="justify">
+      <code>last_accessed</code> используется для того, чтобы обеспечить проверку на 
+      затраченное время. Например, можно сказать, что если между последовательными операциями
+      чтения прошло уже более минуты, то такое соединение  надо закрыть.
+    </p>
+    <p align="justify">
+      В случае, если соединение с хостом прошло успешно, то 
+      реакцией на это событие будет:
+    </p>
+<pre>
+void Connection::connected()
+{
+  assert(state == connecting);
+
+  socklen_t n;
+  int error;
+		
+  n = sizeof(error);
+  if(getsockopt(fd, SOL_SOCKET, SO_ERROR, &amp;error, &amp;n) < 0 || error != 0)
+  {
+     state = closing;
+  }
+  else
+    state = writing;
+
+  time(&amp;last_accessed);
+}	
+</pre>
+    <p align="justify">
+      Хочу заметить, что вместо того, чтобы вызвать <code>close()</code> напрямую
+      самостоятельно, функция <code>connected()</code> переводит состояние 
+      в <code>closing</code>, т.е. непосредственный вызов произойдет из
+      менеджера соединений. Прошу обратить на это внимание:
+      во-первых, это укладывается в предложенную схему конечного автомата и, во-вторых,
+      дает возможность менеджеру выполнить какие-то свои операции перед тем, как закрыть соединение.
+    </p>
+    <p align="justify">
+      Соответственно, при завершении соединения, нужно закрыть дескриптор:
+    </p>
+<pre>
+void Connection::close()
+{
+  if(fd == -1) 
+     return;
+
+  ::close(fd);
+  fd = -1;
+}
+</pre>
+    <p align="justify">
+      Стоит обратить внимание на отсутствие изменения <code>last_accessed</code> и <code>state</code>: 
+      в данном случае оно ничего не значит (так как работа с соединением прекращена).
+    </p>
+    <p align="justify">
+      Перейдем к чтению и записи. Эти операции я привожу для демонстрации того,
+      как происходит работа с сокетами. Итак, сначала чтение из сокета:
+    </p>
+<pre>
+void Connection::read()
+{
+  int readed;
+  char buf[4096];
+
+  bool working = true;
+
+  assert(state == reading);
+
+  for( ; working ; )
+  {
+     readed = ::read(fd, buf, sizeof(buf));
+
+     switch(readed)
+     {
+     case 0:
+       {
+          /*
+           * Соединение завершено.
+           */
+
+          state = closing;
+          working = false;
+
+          break;
+       }
+     case -1:
+       {
+         /*
+          * Либо ошибка соединения, либо 
+          * надо подождать прихода новых данных.
+          */
+
+         if(errno == EAGAIN || errno == EINTR)
+         {
+            // Пусто.
+         }
+         else
+           state = closing;
+
+         working = false;
+
+         break;
+       }
+     default:
+       {
+          assert(readed > 0);
+
+          response += std::string(buf, readed);
+       }
+     }
+  }
+
+  time(&amp;last_accessed);
+}
+</pre>
+    <p align="justify">
+      Начнем с того, что здесь как раз, как мне кажется, вместо использования
+      флага <code>working</code> для выхода из цикла, больше подошел бы 
+      <a href="/programming/cpp/10_08_00.shtml"><code>goto</code></a>:
+      тогда бы этот цикл смотрелся бы логичнее. Кроме того, хочу обратить
+      внимание на комментарий &quot;Пусто&quot; внутри функции: хочется
+      сразу же заметить, что в подобных местах подобный комментарий очень
+      желателен.
+    </p>
+    <p align="justify">
+      <code>response</code>, который используется в конце функции, я нигде не 
+      определял, но это и не важно. Это всего-лишь хранилище принятой информации.
+    </p>
+    <p align="justify">
+      Опять же, перевод состояния в <code>closing</code> неправомерен в общем случае!
+      Потому что в общем принятую информацию надо обработать и, если надо,
+      ответить на нее.
+    </p>
+<pre>
+void Connection::write()
+{
+  ssize_t written;
+
+  assert(state == writing);
+		
+  written = ::write(fd, request.c_str() + write_pos, request.length() - write_pos);
+
+  if(written == 0)
+  {
+     if(errno == EAGAIN || errno == EINTR)
+     {
+        /*
+         * Это нормально, можно будет повторить вызов.
+         */
+     }
+     else
+     {
+        /*
+         * Все плохо, прекращаем запись.
+         */
+
+         state = closing;
+     }
+   }
+   else
+   {
+      write_pos += written;
+      if(written >= request.length())
+      {
+         /*
+          * Запись закончилась. 
+          */
+
+         shutdown(fd, 1);
+         state = reading;
+      }
+    }
+
+   time(&amp;last_accessed);
+ }
+</pre>
+    <p align="justify">
+      <code>request</code> и <code>write_pos</code> определяют
+      информацию, которую надо записать в сокет. Опять же, я их нигде
+      не определял, надеюсь что это никого не смущает. Вызов <code>shutdown()</code>
+      определяет то, что запись больше производится не будет: вообще, класс <code>Connection</code>
+      в таком виде обеспечивает следующую функциональность: запись запроса в сокет (например,
+      HTTP-запрос вида &quot;GET / HTTP/1.0&quot;) и прием ответа от сервера. Реально
+      может понадобиться другая функциональность, это достигается за счет
+      изменения логики смены состояний.
+    </p>
+    <h2>Менеджер соединений</h2>
+    <p align="justify">
+      Функционально менеджер соединений представляет из 
+      себя отдельный поток управления, который будет заниматься вызовом
+      <code>select()</code>. Связь с остальным миром будет поддерживаться
+      за счет двух очередей (FIFO), которые будут содержать соединения &quot;на вход&quot;
+      и уже обработанные соединения. Вызывающая сторона по своему усмотрению
+      обрабатывает эти очереди (она может добавлять во входную очередь соединения и выбирать
+      из выходной). Мне крайне не хочется приводить здесь еще и ненужный
+      код для создания потоков, поэтому сосредоточусь на одной функции класса <code>ConnectionsManager</code>,
+      которая является по совместительству функцией потока.
+    </p>
+<pre>
+class ConnectionsManager
+{
+  /*
+   * ...
+   */
+
+private:
+  void* process();
+
+  typedef std::map&lt;int, Connection*&gt; connections_container;
+  typedef std::queue&lt;Connection*&gt; output_queue_container;
+  typedef std::queue&lt;Connection*&gt; input_queue_container;
+
+  connections_container  connections;
+  output_queue_container output_queue;
+  input_queue_container  input_queue;
+
+  bool finish;
+
+  /*
+   * ...
+   */
+};
+</pre>
+    <p align="justify">
+      Реальная функция потока (для реализации pthreads) принимает в качестве аргумента указатель,
+      который определяет объект класса <code>ConnectionsManager</code>, и запускает
+      функцию класса <code>process()</code>. Теперь о том, как она выглядит:
+    </p>
+<pre>
+void* ConnectionsManager::process()
+{
+   fd_set rfds, wfds;
+   struct timeval tv;
+   tv.tv_sec = 0; tv.tv_usec = 500;
+
+   /*
+    * Здесь таймаут задан жестко внутри кода. На самом деле,
+    * он как-то задается через параметры программы.
+    */
+   const int timeout = 30; 
+
+   for( ; ; )
+     {
+</pre>
+    <p align="justify">
+      Функция логически делится на две части: до <code>select()</code> и после. 
+      В первой части обрабатывается входная очередь и устанавливаются дескрипторы
+      в нужных множествах. Заметьте, что тут же происходит попытка открыть соединение
+      и если она неудачна, то соединение сразу же помещается в выходную очередь. 
+      Это важно: все соединения, попавшие в менеджер, рано или поздно его покинут.
+    </p>
+<pre>
+        FD_ZERO(&amp;rfds); 
+        FD_ZERO(&amp;wfds);
+
+        int max_fd = -1;
+
+        Connection* to_add;
+        for( ; (to_add = get_from_input_queue()) ; )
+          {
+             if(to_add->open())
+                connections[to_add->getDescriptor()] = to_add;
+              else
+                put_in_output_queue(to_add);
+          }
+
+        for(connections_container::iterator i = connections.begin();
+            i != connections.end(); )
+        {
+           switch(i-&gt;second-&gt;state)
+           {
+              case Connection::reading:
+              {
+                 if(max_fd &lt; i-&gt;first)
+                 max_fd = i-&gt;first;
+
+                 FD_SET(i-&gt;first, &amp;rfds);
+
+                 i++;
+								
+                 break;
+              }
+              case Connection::writing:
+              {
+                 if(max_fd &lt; i-&gt;first)
+                 max_fd = i->first;
+
+                 FD_SET(i-&gt;first, &amp;wfds);
+
+                 i++;
+
+                 break;
+              }
+              case Connection::closing:
+              {
+                 i-&gt;second-&gt;close();
+                 put_in_output_queue(i-&gt;second);
+
+                 connections_container::iterator j = i;
+                 i++;
+
+                 connections.erase(j);
+                 break;
+              }
+              case Connection::connecting:
+              {
+                 if(max_fd &lt; i-&gt;first)
+                 max_fd = i-&gt;first;
+
+                 FD_SET(i->first, &amp;wfds);
+                 FD_SET(i->first, &amp;rfds);
+
+                 i++;
+
+                 break;
+              }
+           }
+        }
+
+        if(max_fd == -1)
+        {
+           if(finish)
+              break;
+
+            sched_yield();
+            continue;
+        }
+
+        select(max_fd + 1, &amp;rfds, &amp;wfds, NULL, &amp;tv);
+</pre>
+    <p align="justify">
+      Часть после <code>select()</code> занимается тем,
+      что передает сообщения нужным соединениям. 
+    </p>
+<pre>
+
+        for(connections_container::iterator i = connections.begin();
+            i != connections.end(); i++)
+        {
+           switch(i->second->state)
+           {
+              case Connection::reading:
+                {
+                   if (FD_ISSET(i-&gt;first, &amp;rfds)) 
+                   i->second->read();
+									
+                   break;
+                }
+              case Connection::writing:
+                {
+                   if (FD_ISSET(i-&gt;first, &amp;wfds)) 
+                   i->second->write();
+
+                   break;
+                }
+              case Connection::connecting:
+                {
+                   if(FD_ISSET(i-&gt;first, &amp;wfds) || FD_ISSET(i-&gt;first, &amp;rfds))
+                   i-&gt;second-&gt;connected();
+
+                   break;
+                }
+              case Connection::closing:
+                {
+                   break;
+                }
+           }
+
+           if(!(FD_ISSET(i-&gt;first, &amp;wfds) || FD_ISSET(i-&gt;first, &amp;rfds)))
+             if(time(NULL) &gt; (i-&gt;second-&gt;last_accessed + timeout))
+                i-&gt;second-&gt;state = Connection::closing;
+        }
+   return NULL;
+}
+</pre>
+    <p align="justify">
+      В качестве послесловия к этой функции хочется отметить, что установку
+      блокировок из нее (а это, все-таки, многопоточная программа) я удалил
+      специально. А вот <code>sched_yield()</code> оставил потому, что 
+      уверен в том, что этот вызов много лучше, чем вызов <code>sleep()</code>.
+    </p>
+    <p align="justify">
+      Подводя итоги, хочется поговорить об ограничениях. Все функции, которые
+      выполняются над соединениями, выполняются в том же потоке, что и <code>select()</code>,
+      следовательно время перехода из одного состояния в другое должно быть минимизировано (поэтому
+      и заголовок статьи такой). С другой стороны, видно как от этого можно избавиться --- заведя
+      еще один &quot;шедулер&quot;, который будет обрабатывать соединения в состояниях,
+      неинтересных для менеджера соединений. Кроме того, считается что все соединения
+      равнозначны и поэтому порядок посылки сообщений (и возможности
+      реакции на них) определяется... номером файлового дескриптора. В тех случаях,
+      когда такой подход невозможен, придется организовывать приоритетную очередь и как-то
+      назначать приоритеты соединениям. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      В общем, конечно же предложенная схема это
+      далеко не идеал. Но целью этого опуса я ставил немного другое: хотелось
+      показать то, что можно разделить обработку соединений в техническом и логическом смыслах.
+      Вообще говоря, эта схема хороша тем, что ее (немного усложнив)  можно выделить в отдельную
+      библиотеку и использовать для, я думаю, большинства клиентских приложений, которые тратят
+      большую часть времени на работу с сетью. Т.е., получается мечта программиста: code reuse. 
+      Опять же, схема не нова и много программистов независимо друг от друга &quot;изобретают&quot;
+      что-то в этом духе. 
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/network/print_19_12_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">W.&nbsp;Richard&nbsp;Stevens</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Unix Network programming, volume 1.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">W.&nbsp;Richard&nbsp;Stevens</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     TCP/IP Illustrated, volume 1.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">W.&nbsp;Richard&nbsp;Stevens, </td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     TCP/IP Illustrated, volume 2.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/12_12_00.shtml">Событийная модель в WinSock </a> (12.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Автором этого текста является Gregory Liokumovich ( ). Он любезно прислал мне этот текст, связанный с программированием сетей при помощи интерфейса...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/12_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/25_12_00.shtml">Гимн </a> (25.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+У Спектатора разгорелись жуткие дебаты по поводу новопринятого гимна и связанных с ним проблем... я очень внимательно читал эти отзывы, хотя...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/25_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/13_12_00.shtml">Быстрый и мертвый / The Quick and the Dead, 1995 </a> (13.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На этот раз я впервые рассказываю о фильме, который я посмотрел &quot;по телевизору&quot;: он был на канале &quot;Боевик&quot; от НТВ+. Собственно,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/13_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/12_12_00.shtml">Событийная модель в WinSock </a> (12.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Автором этого текста является Gregory Liokumovich ( ). Он любезно прислал мне этот текст, связанный с программированием сетей при помощи интерфейса...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/12_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/25_12_00.shtml">Гимн </a> (25.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+У Спектатора разгорелись жуткие дебаты по поводу новопринятого гимна и связанных с ним проблем... я очень внимательно читал эти отзывы, хотя...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/25_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/13_12_00.shtml">Быстрый и мертвый / The Quick and the Dead, 1995 </a> (13.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На этот раз я впервые рассказываю о фильме, который я посмотрел &quot;по телевизору&quot;: он был на канале &quot;Боевик&quot; от НТВ+. Собственно,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/13_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+<html><head><title>ALK :: Сети :: Lingering close.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/network/">сети</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/internet/26_10_00.shtml">&lt;&lt;</a>&nbsp;29.10.00&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>lingering close
+</h1> 
+    <p align="justify">
+      Когда программа выкачивает один файл с удаленного сервера с использованием
+      протокола TCP, а после этого сразу же "отваливается", то проблем, скорее всего,
+      не возникнет никаких. Допустим, для определенности, что эта
+      программа использует HTTP для передачи данных. В этом случае вся программа
+      сводится к тому, что открывается сокет, указывается адрес удаленной машины и порт,
+      туда передается, например, "GET /", после чего программа выкачивает все, что ей
+      в этот сокет кинули. Это очень просто и каждый программист, даже
+      никогда до этих пор не работавший с протоколами семейства TCP/IP, 
+      прочитав содержимое man-страниц, сможет
+      написать подобную программу. 
+    </p>
+    <p align="justify">
+      Тем не менее, редко когда программа ограничивается выкачиванием
+      одного лишь файла. Через некоторое время становится нужно
+      выкачать с удаленной машины еще что-нибудь, потом обработать
+      редиректы, потом еще кое-что появится... вы и оглянуться не успеете,
+      как будете анализировать содержимое файла robots.txt. 
+      Тем не менее, программа, которая выкачивает один файл, и программа,
+      которая выкачивает несколько файлов, совсем не одно и то же. 
+    </p>
+    <p align="justify">
+      Причины тому достаточно прозаические. Все дело в том, что программа,
+      которая выкачивает один файл, потом другой и только потом третий, будет
+      работать очень медленно. И это несмотря на скорость вашего канала: программа,
+      которая работает по такой схеме, большую часть времени будет
+      проводить в ожидании соединения или прихода данных.
+    </p>
+    <p align="justify">
+      Поэтому ни веб-клиенты, ни веб-сервера обычно не строятся по схеме изложенной выше,
+      а являются либо многопоточными программами, либо используют асинхронные или неблокирующие
+      функции ввода-вывода, либо выбирают "готовые" дескрипторы из некоторого списка... в общем,
+      вариантов много и я не буду сейчас их все расписывать. Достаточно понять то,
+      что программа будет несколько сложнее чем ее первоначальный вариант и будет
+      управляться событиями ввода-вывода от разных соединений, а не ожидать окончания
+      одного. 
+    </p>
+    <p align="justify">
+      И все хорошо до тех пор, пока количество файлов, подлежащих одновременному
+      выкачиванию не становится очень большим, а пропускная способность вашего канала
+      уже достаточно велика... как это произойдет, то через некоторое время, скорее всего, у вас
+      вдруг перестанут открываться сокеты с ошибкой наподобие ENOBUF. 
+    </p>
+    <p align="justify">
+      Происходит это потому, что в операционной системе имеется естественное ограничение
+      на количество одновременно открытых сокетов. Связано это с тем, что на каждый сокет
+      выделяется буфер, используемый для операций чтения и записи, который занимает некоторое
+      место. Обычно этот буфер выделяется из некоторого пула и, хотя я не знаю как
+      обстоит с ним дело в, например, Windows, но могу с некоторой долей уверенности
+      сказать, что и там он не резиновый. В BSD, к примеру, его размер можно указать
+      в конфигурации ядра. Тем не менее, количество открытых сокетов в вашей программе
+      не будет велико, так в чем же дело?
+    </p>
+    <p align="justify">
+      Ответ достаточно прост. То что вы вызвали функцию ядра <code>close()</code> на
+      сокет, еще не означает, что сразу же будут освобождены все структуры, с ним связанные.
+      Это, всего-лищь означает, что этот сокет больше не будет доступен
+      вашей программе, а ядро еще некоторое время будет удерживать его в состоянии вроде
+      <code>TIME_WAIT</code>. Время между вызовом <code>close()</code> и 
+      реальным освобождением сокета расчитывается исходя из максимального времени
+      существования пакета в сети. 
+    </p>
+    <p align="justify">
+      Существуют два решения этой проблемы. Первое заключается в увеличении количества
+      памяти, выделяемой операционной системой под сокеты. Второе --- в использовании
+      того, что в англоязычной литературе называется "lingering close". 
+    </p>
+    <p align="justify">
+      Существует атрибут у сокета, называемый <code>SO_LINGER</code>. При его помощи
+      можно изменить поведение <code>close()</code> на такое, при котором вызывающий
+      процесс будет переведен в состояние ожидания реального закрытия сокета. Выставив
+      этот атрибут, вам потребуется также указать время ожидания для данного сокета. 
+      Второе решение рассматриваемой проблемы заключается в том, что бы "включить" <code>SO_LINGER</code>
+      для сокетов и установить время ожидания в 0. В этом случае все
+      структуры, связанные с сокетами, будут освобождены сразу. Делается это
+      следующим образом:
+    </p>
+<pre>
+struct linger l = { 1, 0 };
+setsockopt(sock, SOL_SOCKET, SO_LINGER, &amp;l, sizeof(struct linger));
+close(sock);
+</pre>
+    <p align="justify">
+      Тем не менее, "второе решение" чревато новыми проблемами: через некоторое
+      время вы обнаружите странные ситуации обрыва связи с удаленной машиной при
+      одновременном выкачивании с нее нескольких файлов (в случае одного файла
+      все будет в порядке).
+    <p align="justify">
+      Тут 
+      надо четко понимать, откуда взялось время между вызовом <code>close()</code> и реальным
+      освобождением сокета. Все дело в том, что пакеты в сети не идут напрямую от одного 
+      адреса к другому, а "блуждают" по сети в поисках своего адресата. При использовании
+      TCP, пакеты характеризуются четырьмя параметрами: IP-адресом отправителя, портом отправителя,
+      IP-адресом получателя и портом получателя. Поэтому, если закрыть сокет сразу,
+      а потом случайно открыть соединение с той же удаленной машиной по тому же локальному
+      порту, то пакеты от старого соединения, которые все еще "блуждают", будут восприняты
+      как реальные данные нового соединения! В частности, очень просто получить потверждающий
+      FIN, который пришел в качестве реакции на предыдущий <code>close()</code>, в результате
+      которого произойдет разрыв соединения. 
+    </p>
+    <p align="justify">
+      И еще раз. При повторном HTTP запросе на сервер у вас три из четырех параметров в TCP пакете
+      будут точно такими же, как и при первом HTTP запросе, то есть IP-адреса компьютеров и 
+      порт сервера (80). Вероятность же того, что на локальной машине вы получите тот же порт,
+      что и в предыдущий раз, не нулевая и вполне реальная. Таким образом, данные могут быть
+      повреждены. 
+    </p>
+    <p align="justify">
+      Существует еще одно объяснение появления времени между вызовом <code>close()</code> 
+      и освобождением структур, связанных с сокетами, которое, правда, не имеет
+      прямого отношения к рассматриваемой гипотетической программе. Все дело в том, что 
+      при записи в сокет, вызов <code>close()</code> может последовать до того, как данные
+      будут реально переданы на удаленную машину. В этом случае, реализация TCP должна
+      будет "подождать" потверждение о приеме данных удаленной машиной. 
+    </p>
+    <p align="justify">
+      Таким образом, возвращаясь к проблеме с сокетами в состоянии <code>TIME_WAIT</code>.
+      Самым правильным будет увеличить размер памяти под сокеты: в этом случае
+      работа вашей программы сразу же станет более стабильной. Lingering close можно
+      применять только в том случае, когда вы уверены в том, что больше соединений
+      с удаленной машиной по данному IP-адресу или порту не будет. Тогда это допустимо. 
+      Иначе --- надо подождать.
+    </p>
+    <p align="justify">
+      Время же ожидания, как я уже сказал выше, расчитывается исходя из максимального
+      времени жизни пакета. Реально это время составляет несколько минут и зависит от 
+      конкретной реализации TCP.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Lingering close с нулевым временем ожидания можно применять только в тех случаях, когда
+      доподлинно известно, что "блуждающие" пакеты ничем больше повредить не могут.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/network/print_29_10_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Stevens</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Network programming, volume 1.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">А. Робачевский.   </td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Операционная система Unix.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/26_10_00.shtml">Глупости при создании сайтов </a> (26.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Нет, я не собираюсь в очередной раз рассказывать о том, как писать правильный HTML, или объяснять куда нужно "пихать" баннеры. Для...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/26_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/12_12_00.shtml">Событийная модель в WinSock </a> (12.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Автором этого текста является Gregory Liokumovich ( ). Он любезно прислал мне этот текст, связанный с программированием сетей при помощи интерфейса...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/12_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/26_10_00.shtml">Глупости при создании сайтов </a> (26.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Нет, я не собираюсь в очередной раз рассказывать о том, как писать правильный HTML, или объяснять куда нужно "пихать" баннеры. Для...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/26_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

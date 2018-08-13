@@ -1,0 +1,405 @@
+<html><head><title>ALK :: Интернет :: Глупости при создании сайтов.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/internet/">интернет</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/urls/25_10_00.shtml">&lt;&lt;</a>&nbsp;26.10.00&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Глупости при создании сайтов
+</h1> 
+    <p align="justify">
+      Нет, я не собираюсь в очередной раз рассказывать о том,
+      как писать правильный HTML, или объяснять куда нужно "пихать"
+      баннеры. Для этого есть другие места и другие люди, мне же
+      это пока что мало интересно.
+    </p>
+    <p align="justify">
+      А вот, в связи с моими насущными проблемами, я насмотрелся на такую 
+      кучу разных оригинальностей, что просто уже не могу молчать. 
+    </p>
+    <p align="justify">
+      Например, как вы думаете, какого размера может быть длина внутренностей
+      тега <code>&lt;title&gt;</code>? Нет, понятно что 
+      по спецификации HTML его никто не ограничивает, но ведь есть
+      вполне разумные пределы, которые получаются из ширины экрана у пользователя.
+      Думаете, сто символов? Двести? Тысяча? 240 КБ. Прописью: двести сорок килобайт. 
+      И вот что хотите, то с этим заголовком и делайте.
+    </p>
+<table align="right" columns="3" border="0" cellspacing="0" cellpadding="5" width="150">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Лирическое отступление:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2"><font face="arial,sans-serif" size="-2">
+    <p align="justify">
+      Или другой вывод: Мерфи
+      был оптимистом.
+    </p>
+</font></td></tr></table>
+    <p align="justify">
+      Понятно, что автор просто перепутал теги, но некоторые выводы сделать можно:
+      если ошибка может быть допущена, то ее обязательно допустят.
+    </p>
+    <p align="justify">
+      Невозможно предсказать все то, что иногда творится внутри сайтов. Например, 
+      бывает, что на 302 ответ сервера (это перенаправление, или, "по-русски", редирект)
+      вешают какую-то хитрую страницу,
+      которая опять дает 302 туда же. И так до бесконечности. Один раз видел
+      страницу с редиректом, на которой находился фреймсет с фреймом на эту же страницу.
+      Поведение web-клиента при этом просто не предсказуемо.
+    </p>
+    <p align="justify">
+      Но все-таки самое смешное, это HTML-код. Его читать иногда
+      представляет просто дикое удовольствие... например, некоторые
+      иногда удаляют <code>content-generator</code>, выставленный
+      столь прославленной программой, как MS FrontPage, но его присутствие
+      все равно определяется сразу же по, например, отцентрированным пробелам:
+    </p>
+<pre>
+&lt;p align="center"&gt;
+  &amp;nbsp;
+&lt;p&gt;
+</pre>
+    <p class="table">
+      И так раз десять. Каждый раз, когда я видел такое, и с уверенностью
+      говорил, что это сделано в FrontPage, я никогда не ошибался.
+    </p>
+    <p align="justify">
+      Но самое забавное, так это сайты, на которых находится "Best viewed with...". Там
+      обычно понаворочено столько всего, что при виде подобной
+      надписи можно смело предсказывать, что чтение исходника будет достаточно
+      занимательным. При этом, я не хочу сказать, что сам уж очень много чего
+      об этом знаю, но все-таки...
+    </p>
+    <p align="justify">
+      В качестве примера можно взять дизайн Апорта, <a href="http://www.aport.ru">www.aport.ru</a>.
+      Вот что значит, "дурная голова рукам покоя не дает": был очень
+      приличный дизайн, достаточно удобный и, по большому счету, симпатичный. Так
+      ведь нет, начали переделывать: получилось что-то такое, на что смотреть
+      без содрогания просто невозможно. Мало того, в качестве доказательства
+      дизайнерской беспомощности, у них несколько недель
+      "висел" вращающийся gif с идиотской надписью "New!" напротив
+      приглашения к вводу логина и пароля для почтового ящика. 
+      Причем по gif'у можно было сразу сказать, что он был взят из
+      какой-то галереи с бесплатной графикой. Так ведь теперь они туда повесили
+      не менее анимированную стрелку, которая, судя по всему, должна приковывать
+      взгляд пользователя к их бесплатной почте. Приковывает-то она приковывает, но дело
+      в том, что у меня даже в IE виден второй экземпляр этой стрелки, который
+      показывается прямо у левого края (у меня просто буквы шире, чем у них,
+      поэтому правая колонка получается несколько больше, чем расчитывал дизайнер),
+      а в Netscape под FreeBSD творится вообще какое-то безобразие: все дело в том,
+      что там находится таблица и эта стрелка является подложкой для всей таблицы,
+      а Netscape понял ее как подложку для каждой ячейки... там такое мельтешение, что
+      хочется уйти с Апорта сразу же. Понятно, что Netscape в последнее время стал
+      совсем непонятным браузером, но это еще не повод не смотреть, что в нем получилось.
+    </p>
+    <p align="justify">
+      А сколько всего веселого можно узнать из HTML-кода головной страницы на Апорте!
+      Например, там есть (внутри одного из закомментированных блоков, которых там превеликое
+      множество) следующие строки:
+    </p>
+<pre>
+&lt;td class=small&gt;Best experienced with&lt;br&gt;
+&lt;a href=http://www.microsoft.com/ie/default.asp&gt;&lt;img 
+alt="Microsoft Internet Explorer" border=0 height1 src=img/ie_static.gif 
+width+&gt;&lt;/a&gt;&lt;br&gt;Click here to start&lt;/td&gt;
+</pre>
+    <p align="justify">
+      Каково? "Best experienced with", и никаких сомнений. То есть,
+      жуткое желание побыть немного "Васей Пупкиным", но положение
+      уже не позволяет развернуться в полную силу.
+    </p>
+    <p align="justify">
+      Но самая большая оригинальность, так это код SpyLOG'овского
+      счетчика. Он очень хитрый и навороченный, с использованием
+      JavaScript различных версий... что имеем в итоге? Было замечено,
+      что из-за такого "кода" многие страницы просто не могут быть загружены
+      различными браузерами. А что делать?
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Сколько всякого можно насмотреться в исходниках web-страниц...
+      всего и не описать. В итоге, я понял, что никаких "логических"
+      предположений относительно страницы при ее автоматической обработке
+      делать нельзя, потому что встретить можно все что угодно, даже
+      самое глупое.
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/comment/internet/print_26_10_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.aport.ru" target="_blank">http://www.aport.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Головная страница Апорта.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/02_11_00.shtml">Информационно-поисковые системы </a> (02.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Поисковые системы в интернете на сегодняшний день являются единственным способом доступа пользователя к информации, расположенной в сети. Я имею в виду...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/02_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/14_08_03.shtml">Спамеры и антиспамеры: путь к компромиссу </a> (14.08.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Статья написана для электронного журнала . На данный момент в околокомпьютерной прессе опубликовано достаточно большое количество статей на тему спама. Большая...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/14_08_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/09_10_01.shtml">Коммерция электронная </a> (09.10.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И все таки она существует! Этот факт настолько удивителен, что заслуживает пристального внимания. Когда я пытался получить свою заказанную книжку из...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/09_10_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/29_07_01.shtml">Новые технологии в рекламе </a> (29.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как хорошо, что основной операционной системой, которой я пользуюсь, является малораспространенная среди российских интернетошатающихся FreeBSD. Как хорошо, что браузеры, которые я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/29_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/02_11_00.shtml">Информационно-поисковые системы </a> (02.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Поисковые системы в интернете на сегодняшний день являются единственным способом доступа пользователя к информации, расположенной в сети. Я имею в виду...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/02_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/26_10_00.shtml">Глупости при создании сайтов </a> (26.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Нет, я не собираюсь в очередной раз рассказывать о том, как писать правильный HTML, или объяснять куда нужно "пихать" баннеры. Для...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/26_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

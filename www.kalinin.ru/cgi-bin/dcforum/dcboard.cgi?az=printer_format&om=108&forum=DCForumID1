@@ -1,0 +1,31 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 108<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/108.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"VCL"</font></b><br>
+Posted by Ilias  on 14-Jan-03 at 08:58&nbsp;AM<br>
+<blockquote>Кто знает, как в Borland C++ Builder отключить VCL? Я хочу писать "нормальные" программы с использованием Win API, но стоит убрать строчку <BR>#include &lt;vcl.h&gt;<BR>как компоновщик начинает ругаться на отсутствие функции __InitVCL </blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: VCL</b>,<b>Proteus</b>, 02:50&nbsp;PM, 24-Jan-03
+<li><b>RE: VCL</b>,<b>Иван</b>, 08:39&nbsp;PM, 05-May-03
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: VCL"</b><br>
+Posted by Proteus  on 24-Jan-03 at 02:50&nbsp;PM<br>
+<blockquote>
+Я бы лучше Borland с компа убрал к чертям...<P>Поставь Visual C++<BR>Или GNU си для виндов...<BR>Или вот тут компилятор скачай <BR><a href="ftp://ftp.cs.virginia.edu/pub" target="_blank">ftp://ftp.cs.virginia.edu/pub</a>/<BR>  lcc-win32/lccwin32.exe<BR>   manual.exe
+</blockquote>
+<hr>
+<b>"RE: VCL"</b><br>
+Posted by Иван  on 05-May-03 at 08:39&nbsp;PM<br>
+<blockquote>
+&gt;Кто знает, как в Borland C++ Builder отключить VCL? Я хочу писать программы с использованием <BR>Win API, но но мешает строчка #include &lt;vcl.h&gt;<BR>подскажите за что она отвечает и где взять этот хед-файл.
+</blockquote>
+<hr>
+</font></body></html>

@@ -1,0 +1,618 @@
+<html><head><title>ALK :: C&amp;C++ :: Запись структур данных в двоичные файлы.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/30_07_00.shtml">&lt;&lt;</a>&nbsp;31.07.00&nbsp;<a href="/comment/films/01_08_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Запись структур данных в двоичные файлы
+</h1> 
+    <p align="justify">
+      Чтение и запись данных, вообще говоря, одна из
+      самых часто встречающихся операций. Сложно 
+      себе представить программу, которая бы
+      совсем не нуждалась бы в том, что бы отобразить
+      где-нибудь информацию, сохранить промежуточные
+      данные или, наоборот, восстановить состояние
+      прошлой сессии работы с программой.
+    </p>
+    <p align="justify">
+      Собственно, все эти операции достаточно просто
+      выполняются --- в стандартной библиотеке
+      любого языка программирования обязательно
+      найдутся средства для обеспечения ввода и вывода,
+      работы с внешними файлами. Но и тут находятся
+      некоторые сложности, о которых, обычно,
+      не задумываются.
+    </p>
+    <p align="justify">
+      Итак, как все это выглядит обычно? Имеется некоторая
+      структура данных:
+    </p>
+<pre>
+struct data_item
+{
+  type_1 field_1;
+  type_2 field_2;
+  // ...
+  type_n field_n; 
+};
+
+data_item i1;
+</pre>
+    <p class="table">
+      Каким образом, например, сохранить информацию из <code>i1</code>
+      так, что бы программа во время своего
+      повторного запуска, смогла восстановить ее?
+      Наиболее частое решение следующее:
+    </p>
+<pre>
+FILE* f = fopen("file", "wb");
+fwrite((char*)&amp;i1, sizeof(i1), 1, f);
+fclose(f);
+</pre>
+    <p class="table">
+      <code>assert</code> расставляется по вкусу, проверка
+      инвариантов в данном примере не является сутью. Тем не менее,
+      несмотря на частоту использования, этот вариант решения
+      проблемы не верен. 
+    </p>
+    <p align="justify">
+      Нет, он будет компилироваться и, даже будет работать.
+      Мало того, будет работать и соответствующий код
+      для чтения структуры:
+    </p>
+<pre>
+FILE* f = fopen("file", "rb");
+fread((char*)&amp;i1, sizeof(i1), 1, f);
+fclose(f);
+</pre>
+    <p align="justify">
+      Что же тут неправильного? Ну что же, для этого
+      придется немного пофилософствовать. Как бы много
+      не говорили о том, что C --- это почти то же самое,
+      что и ассемблер, не надо забывать, что он является
+      все-таки языком высокого уровня. Следовательно, в принципе,
+      программа написанная на C (или C++) может
+      (теоретически) компилироваться на разных компиляторах
+      и разных плафтормах. К чему это? К тому, что данные,
+      которые сохранены подобным образом, в принципе не переносимы.
+    </p>
+    <p align="justify">
+      Стоит вспомнить о том, что для структур неизвестно
+      их физическое представление. То есть, для конкретного
+      компилятора оно, быть может, и известно (для
+      этого достаточно посмотреть работу программы
+      "вооруженным взглядом", т.е. отладчиком), но о том,
+      как будут расположены в памяти поля структуры на
+      какой-нибудь оригинальной машине, неизвестно. Компилятор
+      со спокойной душой может перетасовать поля (это,
+      в принципе, возможно, но я такого, честно говоря, не встречал)
+      или выравнять положение полей по размеру машинного слова
+      (встречается сплошь и рядом). Для чего? Для 
+      увеличения скорости доступа к полям. Понятно, что если
+      поле начинается с адреса, не кратного машинному слову, то
+      прочитать его содержимое не так быстро, как в ином случае.
+      Таким образом, сохранив данные из памяти
+      в бинарный файл напрямую мы получаем дамп памяти
+      конкретной архитектуры (и это я еще не сказал о том,
+      что <code>sizeof</code> совершенно не обязан
+      возвращать количество байт).
+    </p>
+    <p align="justify">
+      Плохо это тем, что при переносе данных на другую 
+      машину при попытке прочитать их той же программой
+      (или программой, использующую те же структуры)
+      вполне можно ожидать несколько некорректных результатов.
+      Это связано с тем, что структуры могут быть представлены
+      по другому в памяти (другое выравнивание), различается
+      порядок следования байтов в слове и т.п. Как этого избежать?
+    </p>
+    <p align="justify">
+      Обычный "костыль", который применяется, например, при проблемах
+      с выравниванием, заключается в том, что компилятору явно указывается
+      как надо расставлять поля в структурах. В принципе,
+      любой компилятор дает возможность управлять выравниванием. Но выставить одно значение
+      для всего проекта при помощи ключей компилятора (обычно это значение равно 1, потому что при
+      этом в сохраненном файле не будет пустых мест) нехорошо,
+      потому что это может снизить скорость выполнения программы. Есть
+      еще один способ указания компилятору размера выравнивания, он заключается
+      в использовании директивы препроцессора <code>#pragma</code>. Это 
+      не оговорено стандартом, но обычно есть директива <code>#pragma pack</code>,
+      позволяющая сменить выравнивание для определенного отрезка
+      исходного текста. Выглядит это обычно примерно так:
+    </p>
+<pre>
+#pragma pack(1)
+
+struct { /* ... */ };
+
+#pragma pack(4)
+</pre>
+    <p align="justify">
+      Последняя директива <code>#pragma pack(4)</code> служит для того, что бы
+      вернуться к более раннему значению выравнивания. В принципе, конечно же
+      при написании исходного текста никогда доподлинно заранее неизвестно,
+      какое же было значение выравнивания до его смены, поэтому в
+      некоторых компиляторах под Win32 есть возможность использования
+      стека значений (пошло это, насколько я понимаю, из MS Visual C++):
+    </p>
+<pre>
+#pragma pack(push, 1)
+
+struct { /* ... */ };
+
+#pragma pack(pop)
+</pre>
+    <p align="justify">
+      В примере выше сначала сохраняется текущее значение выравнивания,
+      затем оно заменяется 1, затем восстанавливается ранее сохраненное значение.
+      При этом, подобный синтаксис поддерживает даже gcc для win32 (еще
+      стоит заметить, что, вроде, он же под Unix использовать такую
+      запись <code>#pragma pack</code> не дает). Есть альтернативная
+      форма <code>#pragma pack()</code>, поддерживаемая многими компилятороами (включая
+      msvc и gcc), которая устанавливает значение выравнивания по-умолчанию.
+    </p>
+    <p align="justify">
+      И, тем не менее, это не хорошо. Опять же, это дает очень интересные
+      ошибки. Представим себе следующую организацию исходного текста. Сначала
+      заголовочный файл inc.h:
+    </p>
+<pre>
+#ifndef __inc_h__
+#define __inc_h__
+
+class Object
+{
+  // ...
+};
+
+#endif // __inc_h__
+</pre>
+    <p align="justify">
+      Представьте себе, что существуют три файла file1.cpp,
+      file2.cpp и  file2.h, которые этот хидер используют. Допустим,
+      что в file2.h находится функция <code>foo</code>, которая (например)
+      записывает <code>Object</code> в файл:
+    </p>
+<pre>
+// file1.cpp
+#include "inc.h"
+#include "file2.h"
+
+int main()
+{
+  Object* obj = new Object();
+
+  foo(obj, "file");
+
+  delete obj;
+
+  return 0;
+}
+</pre>
+<pre>
+// file2.h
+#ifndef __file2_h__
+#define __file2_h__
+
+#pragma pack(1)
+
+#include "inc.h"
+
+void foo(const Object* obj, const char* fname);
+
+#pragma pack(4)
+
+#endif // __file2_h__
+</pre>
+<pre>
+// file2.cpp
+#include "file2.h"
+
+void foo(const Object* obj, const char* fname)
+{
+  // ...
+}
+</pre>
+    <p align="justify">
+      Это все скомпилируется, но работать не будет. Почему? Потому
+      что в двух разных единицах компиляции (file1.cpp и file2.cpp)
+      используется разное выравнивание для одних и тех же структур данных
+      (в данном случае, для объектов класса <code>Object</code>). Это 
+      даст то, что объект переданный по указателю в функцию <code>foo()</code>
+      из функции <code>main()</code> будет разным (и, конечно же, совсем 
+      неправдоподобным). Понятно, что это явный пример "плохой" организации
+      исходных текстов --- использование
+      директив компилятора при включении заголовочных файлов, но, поверьте,
+      он не высосан из пальца. Мне такое несколько раз попадалось.
+    </p>
+    <p align="justify">
+      Отклоняясь от темы, хочу сказать, что отладка программы,
+      содержащую подобную ошибку, оказывается проверкой
+      на устойчивость психики. Потому что выглядит
+      это примерно так: следим за объектом, за его
+      полями, все выглядит просто замечательно и вдруг,
+      после того как управление передается какой-то 
+      функции, все, что содержится в объекте, 
+      принимает "бредовые" формы, какие-что неизвестно откуда
+      взявшиеся цифры... 
+    </p>
+    <p align="justify">
+      К чему я веду: на самом деле <code>#pragma pack</code> не является
+      панацеей. Мало того, использование этой директивы практически всегда
+      неправомерно. Я даже могу сказать более: эта директива в принципе
+      редко когда нужна (во всяком случае, при прикладном программировании).
+    </p>
+    <p align="justify">
+      Правильным же подходом, на мой взгляд, является сначала запись
+      всех полей структуры в нужном порядке в некоторый буфер и скидывать в файл
+      уже содержимое буфера. Это очень просто
+      и очень эффективно, потому что все операции чтения/записи можно собрать
+      в подпрограммы и менять их при необходимости таким образом, что бы обеспечить
+      нормальную работу с внешними файлами. Проиллюстрирую этот подход (примерно
+      так, кстати, я все это использую у себя):
+    </p>
+<pre>
+template&lt;class T&gt;
+inline size_t get_size(const T&amp; obj)
+{
+  return sizeof(obj);
+}
+</pre>
+    <p class="table">
+      Эта функция возвращает размер, необходимый для записи объекта. Зачем
+      она понадобилась? Во-первых, возможен вариант, что <code>sizeof</code>
+      возвращает размер не в байтах, а в каких-то собственных единицах. Во-вторых,
+      и это значительно более необходимо, объекты, для которых вычисляется размер,
+      могут быть не настолько простыми, как <code>int</code>. Например:
+    </p>
+<pre>
+template&lt;&gt;
+inline size_t get_size&lt;std::string&gt;(const std::string& s)
+{
+  return s.length() + 1;
+}
+</pre>
+    <p class="table">
+      Надеюсь, понятно, почему выше нельзя было использовать <code>sizeof</code>.
+    </p>
+    <p align="justify">
+      Аналогичным образом определяются функции, сохраняющие в буфер данные
+      и извлекающие из буфера информацию:
+    </p>
+<pre>
+typedef unsigned char byte_t;
+
+template&lt;class T&gt;
+inline size_t save(const T&amp; i, byte_t* buf)
+{
+  *((T*)buf) = i;
+  return get_size(i);
+}
+
+template&lt;class T&gt;
+inline size_t restore(T&amp; i, const byte_t* buf)
+{
+  i = *((T*)buf);
+  return get_size(i);
+}
+</pre>
+    <p align="justify">
+      Понятно, что это работает только для простых типов (<code>int</code>
+      или <code>float</code>), уж очень много чего наворочено: явное приведение
+      указателя к другому типу, оператор присваивания... конечно же, очень
+      нехорошо, что такой <code>save()</code> доступен для всех
+      объектов. Понятно, что очень просто от него избавиться убрав
+      шаблонность функции и реализовав аналогичный <code>save()</code>
+      для каждого из простых типов данных. Тем не менее, это всего-лишь
+      примеры использования, не судите строго --- я писал их параллельно с этим
+      текстом.
+    </p>
+<pre>
+template&lt;&gt;
+inline size_t save&lt;MyObject&gt;(const MyObject&amp; s, byte_t* buf)
+{
+  // ...
+}
+</pre>
+    <p align="justify">
+      Не спорю, можно сделать и по другому. Например, ввести методы
+      <code>save()</code> и <code>restore()</code> в каждый
+      из сохраняемых классов, но это не столь важно
+      для принципа этой схемы. Поверьте, это достаточно просто 
+      использовать, надо только попробовать.
+      Мало того, здесь можно вставить в <code>save&lt;long&gt;()</code>
+      вызов <code>htonl()</code> и в <code>restore&lt;long&gt;()</code>
+      вызов <code>ntohl()</code>, после чего сразу же
+      упрощяется перенос двоичных файлов на плафтормы с другим
+      порядком байтов в слове... в общем, преимуществ --- море. Перечислять
+      все из них не стоит, но как после этого лучше выглядит
+      исходный текст ;) а как приятно вносить изменения ;)
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Работа с бинарными файлами далеко не так проста как
+      кажется. Немного невнимательности, и работа
+      программы уже не так предсказуема, как 
+      ранее.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_31_07_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Бъерн Страуструп</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Язык программирования C++, 3 издание. 
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/10_08_00.shtml">Оператор безусловного перехода goto </a> (10.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Так уж сложилось, что именно присутствие или отсутствие этого оператора в яызке программирования всегда вызывает жаркие дебаты среди сторонников "хорошего стиля"...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/10_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/28_07_00.shtml">Виртуальные деструкторы </a> (28.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В принципе, в практически любой мало-мальски толковой книге по C++ рассказывается, зачем нужны виртуальные деструкторы и почему их надо использовать. Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/28_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/01_08_00.shtml">Кто я / Who am i, 1998 </a> (01.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, фраза, с которой стоит начать комментарий: в этом фильме играет Джекки Чан. Мало того, на мой взгляд, это у него...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/01_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_07_00.shtml">"Человеческое лицо" в интернете </a> (30.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, на мой взгляд, самое интересное, что есть в интернете, это "домашние странички". Многие из них, зачастую, плохо сделаны, большинство ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/01_08_00.shtml">Кто я / Who am i, 1998 </a> (01.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, фраза, с которой стоит начать комментарий: в этом фильме играет Джекки Чан. Мало того, на мой взгляд, это у него...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/01_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_07_00.shtml">"Человеческое лицо" в интернете </a> (30.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, на мой взгляд, самое интересное, что есть в интернете, это "домашние странички". Многие из них, зачастую, плохо сделаны, большинство ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

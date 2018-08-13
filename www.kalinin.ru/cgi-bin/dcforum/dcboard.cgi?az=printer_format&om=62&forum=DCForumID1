@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 62<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/62.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Помогите девушке"</font></b><br>
+Posted by Nata  on 27-Sep-01 at 07:43&nbsp;AM<br>
+<blockquote>Подскажите, пожалуйста, как мне передавать параметры из С++ в Visual Foxpro и обратно?<BR>Нужно вызвать из С++ exe-ник, написанный на VFoxpro и передать ему параметр.<BR>Я пробовала WinExec, но эта функция передает только текст, а не значение параметра.<BR>А обратно из FoxPro параметр вообще не передается в С++. Его С++ не видит.<P>Если кто может, помогите, пожалуйста.</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Помогите девушке</b>,<b>Andrey L. Kalinin</b>, 11:42&nbsp;PM, 29-Sep-01
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Помогите девушке"</b><br>
+Posted by Andrey L. Kalinin  on 29-Sep-01 at 11:42&nbsp;PM<br>
+<blockquote>
+&gt;Подскажите, пожалуйста, как мне передавать параметры <BR>&gt;из С   в Visual Foxpro <BR>&gt;и обратно? <BR>&gt;Нужно вызвать из С   exe-ник, написанный <BR>&gt;на VFoxpro и передать ему <BR>&gt;параметр. <BR>&gt;Я пробовала WinExec, но эта функция <BR>&gt;передает только текст, а не <BR>&gt;значение параметра. <BR>&gt;А обратно из FoxPro параметр вообще <BR>&gt;не передается в С  . Его <BR>&gt;С   не видит. <BR>&gt;<BR>&gt;Если кто может, помогите, пожалуйста. <P>Не понимаю, в чем проблема. Можно передавать через stdin/stdout (или через pipe), можно через командную чтроку (argv), можно через переменные окружения. Казалось бы, множество вариантов. <img src="/dcforum//Images/wink.gif"><BR>
+</blockquote>
+<hr>
+</font></body></html>

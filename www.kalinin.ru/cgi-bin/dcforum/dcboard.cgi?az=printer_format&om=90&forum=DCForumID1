@@ -1,0 +1,47 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 90<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/90.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"запустить DOS-овскую программу из-под Windows"</font></b><br>
+Posted by fedor  on 09-Jul-02 at 12:12&nbsp;PM<br>
+<blockquote>Очень хочется запустить DOS-овскую программу из-под Windows, и при этом обеспечить возможность передать в нее какие-либо данные (например имя файла) без набора вручную на клавиатуре. Есть ли такая функция или команда, позволяющая это?</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>Передача данных</b>,<b>Михаил Эзау</b>, 06:58&nbsp;PM, 09-Jul-02
+<li><b>RE: запустить DOS-овскую программу из-под Windows</b>,<b>Andrey L. Kalinin</b>, 00:36&nbsp;AM, 10-Jul-02
+<ul>
+<li><b>RE: запустить DOS-овскую программу из-под Windows</b>,<b>Jan</b>, 03:54&nbsp;PM, 20-Mar-04
+<li><b>RE: запустить DOS-овскую программу из-под Windows</b>,<b>Jan</b>, 03:55&nbsp;PM, 20-Mar-04
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"Передача данных"</b><br>
+Posted by Михаил Эзау  on 09-Jul-02 at 06:58&nbsp;PM<br>
+<blockquote>
+Весьма нечетко сформулированно, я бы сказал.... В какой момент передавать? Объем какого порядка? Если при запуске - то может, в аргументах командной строки или в переменных окружения? Если во время работы - то может, записывать в файл, кторый потом программа прочтет?
+</blockquote>
+<hr>
+<b>"RE: запустить DOS-овскую программу из-под Windows"</b><br>
+Posted by Andrey L. Kalinin  on 10-Jul-02 at 00:36&nbsp;AM<br>
+<blockquote>
+&gt;Очень хочется запустить DOS-овскую программу из-под <BR>&gt;Windows, и при этом обеспечить <BR>&gt;возможность передать в нее какие-либо <BR>&gt;данные (например имя файла) без <BR>&gt;набора вручную на клавиатуре. Есть <BR>&gt;ли такая функция или команда, <BR>&gt;позволяющая это? <P>Непонятно. DOS-овская программа --- это что? Консольная, графическая? Как устроен ввод/вывод и т.п.? Аргументы командной строки?<P>Предположу, что это все-таки консоль. Тогда есть (наверняка в Windows это тоже имеется) конвееры, перенаправление ввода-вывода. Можно воспользоваться чем-нибудь вроде popen() (я не знаю, есть ли оно под Windows --- наверное, есть; или какой-то аналог) после чего можно работать с программой (ее потоком ввода или вывода) как с обычным FILE*.<P>Но опять же, хотелось бы услышать подробный вопрос. И вообще, кстати, хороший вопрос содержит в себе большую часть ответа <img src="/dcforum//Images/wink.gif"> так что, вполне вероятно, что попытавшись корректно его сформулировать, ответ найдется самостоятельно. 
+</blockquote>
+<hr>
+<b>"RE: запустить DOS-овскую программу из-под Windows"</b><br>
+Posted by Jan  on 20-Mar-04 at 03:54&nbsp;PM<br>
+<blockquote>
+MSDN:    Creating a Child Process with Redirected Input and Output<BR>
+</blockquote>
+<hr>
+<b>"RE: запустить DOS-овскую программу из-под Windows"</b><br>
+Posted by Jan  on 20-Mar-04 at 03:55&nbsp;PM<br>
+<blockquote>
+MSDN:    Creating a Child Process with Redirected Input and Output<BR>
+</blockquote>
+<hr>
+</font></body></html>

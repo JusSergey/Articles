@@ -1,0 +1,15 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 88<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/88.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"События в Winsock... Нужна помощь"</font></b><br>
+Posted by Dima  on 20-Jun-02 at 03:08&nbsp;PM<br>
+<blockquote>В справке на WSAEventSelect написано, что значение FD_WRITE заносится в запись состояния соответствующему сокету, в частности, после вызова send(). Однако нижеприведенный код (сервер в режиме эха) не работает, из-за того, что после  первого вызова send(S, ...) FD_WRITE для S не ставится. В чем я ошибся?<P><BR>#include "stdafx.h"<BR>#include "winsock2.h"<P>const int buffer_size = 4096;<BR>int cur_bufsize;<BR>char buffer<buffer_size>;<P>const char* local_ip = "127.0.0.1";<BR>const unsigned short local_port = 1005;<P>int main(int argc, char* argv<>)<BR>{<BR>	WORD wVersionRequested;<BR>	WSADATA wsaData;<BR>	int err;<P>	wVersionRequested = MAKEWORD(2, 2);<BR>	WSAStartup(wVersionRequested, &wsaData);<P>	SOCKET s; <BR>	SOCKET s_client;<BR>	<BR>	sockaddr_in a_input;<BR>	a_input.sin_family = AF_INET;<BR>	a_input.sin_port = htons(local_port);<BR>	a_input.sin_addr.s_addr = inet_addr(local_ip);<BR>		<BR>	s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);<BR>	bind(s , (sockaddr*)&a_input, sizeof(a_input));<BR>	listen(s , 0);<BR>	s_client = accept(s, 0, 0);<BR>	<BR>	WSAEVENT event_c = WSACreateEvent();<BR>	WSANETWORKEVENTS c_event;<BR>	long c_current_state = 0;<BR>	<BR>	WSAEventSelect(s_client, event_c, FD_WRITE | FD_READ | FD_CLOSE);<P>	for(;;)<BR>	{<BR>		for(;;)<BR>		{<BR>			if((c_current_state & FD_READ) || (c_current_state & FD_CLOSE)) break;<BR>			WSAWaitForMultipleEvents(1, &event_c, FALSE, WSA_INFINITE, FALSE);<BR>			err = WSAEnumNetworkEvents(s_client, event_c, &c_event);<BR>			c_current_state |= c_event.lNetworkEvents;<BR>		};<P>		if(c_current_state & FD_CLOSE) break;<P>		cur_bufsize = recv(s_client, buffer, buffer_size, 0);<BR>		c_current_state &= ~FD_READ;<P>		for(;;)<BR>		{<BR>			if((c_current_state & FD_WRITE) || (c_current_state & FD_CLOSE)) break;<BR>			WSAWaitForMultipleEvents(1, &event_c, FALSE, WSA_INFINITE, FALSE);<BR>			err = WSAEnumNetworkEvents(s_client, event_c, &c_event);<BR>			c_current_state |= c_event.lNetworkEvents;<BR>		};<P>		if(c_current_state & FD_CLOSE) break;<P>		err = send(s_client, buffer, cur_bufsize, 0); //Вот после этого вызова должно устанавливаться FD_WRITE (теоретически)<BR>		c_current_state &= ~FD_WRITE;<BR>	};<P>	closesocket(s_client);<BR>	closesocket(s);	<BR>	WSACleanup();<BR>		<BR>	return 0;<BR>};</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+</font></body></html>

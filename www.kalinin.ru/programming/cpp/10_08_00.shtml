@@ -1,0 +1,514 @@
+<html><head><title>ALK :: C&amp;C++ :: Оператор безусловного перехода goto.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/09_08_00.shtml">&lt;&lt;</a>&nbsp;10.08.00&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Оператор безусловного перехода goto
+</h1> 
+    <p align="justify">
+      Так уж сложилось, что именно присутствие или отсутствие этого
+      оператора в яызке программирования всегда вызывает
+      жаркие дебаты среди сторонников "хорошего стиля" программирования.
+      При этом, и те, кто "за", и те, кто "против" всегда
+      считают признаком "хорошего тона" именно использование
+      <code>goto</code> или, наоборот, его неиспользование. 
+      Я не собираюсь изображать из себя сторонника одной
+      из этих "школ", я просто хочу показать, что действительно
+      есть места, где использование <code>goto</code> 
+      выглядит вполне логично. 
+    </p>
+    <p align="justify">
+      Но сначала о грустном. Обычно в вину <code>goto</code>
+      ставится то, что его присутствие в языке программирования
+      позволяет делать примерно такие вещи:
+    </p>
+<pre>
+int i, j;
+for(i = 0; i < 10; i++)
+{
+  // ...
+
+  if(condition1)
+    {
+      j = 4;
+      goto label1;
+    }
+
+  // ...
+
+  for(j = 0; j < 10; j++)
+  {
+    // ... 
+  label1: 
+    // ... 
+    if(condition2)
+      {
+        i = 6;
+        goto label2;
+      }
+  }
+
+  // ...
+label2:
+  // ...
+}
+</pre>
+    <p class="table">
+      Прямо скажем, что такое использование <code>goto</code> 
+      несолько раздражает, потому что понять при этом
+      как работает программа при ее чтении будет очень сложно.
+      А для человека, который не является ее автором, так
+      и вообще невозможно. Понятно, что вполне вероятны случаи,
+      когда такого подхода требует какая-нибудь очень серьезная
+      оптимизация работы программы, но делать что-то подобное
+      программист в здравом уме не должен. На самом деле, 
+      раз уж я привел подобный пример, в нем есть еще
+      один замечательный нюанс ---- изменение значения переменной
+      цикла внутри цикла. Смею вас заверить, что такое 
+      поведение вполне допустимо внутри <code>do</code> или
+      <code>while</code>; но когда используется <code>for</code>
+      такого надо избегать, потому что отличительная черта
+      <code>for</code> как раз и есть жестко определенное местоположение
+      инициализации, проверки условия и инкремента (т.е., изменения переменной
+      цикла). Я к чему: читатель исходного текста, увидев "полный" <code>for</code>
+      (т.е. такой, в котором заполнены все эти три места) может и не заметить
+      изменения переменной где-то внутри цикла. Хотя для циклов с небольшим телом это,
+      наверное, все-таки допустимо --- такая практика обычно применяется
+      при обработке строк (когда надо, например, считать какой-то символ, который
+      идет за "спецсимволом", как "\\" в строках на C; вместо того, что бы вводить
+      дополнительный флаг, значительно проще увидев "\" сразу же сдвинуться на одну
+      позицию и посмотреть, что находится там). В общем, всегда надо
+      руководствоваться здравым смыслом и читабельностью программы. Если здравый
+      смысл по каким-то причинам становится в противовес читабельности программы,
+      то это место надо обнести красными флагами, чтобы читатель сразу видел 
+      подстерегающие его опасности.
+    </p>
+    <p align="justify">
+      Тем не менее, вернемся к <code>goto</code>. Несмотря на то,
+      что такое расположние операторов безусловного перехода несколько
+      нелогично (все-таки, вход внутрь тела цикла это, конечно же,
+      неправильно), это встречается. Я сам видел три вложенных бесконечных цикла,
+      расположенных на пятистах строчках исходного текста, внутри которых
+      примерно такой "зюзей" были расставлены <code>goto</code>. Понять такой
+      текст, по-моему, просто невозможно.
+    </p>
+    <p align="justify">
+      Итак, противники использования <code>goto</code> в конечном итоге
+      приходят к подобным примерам и говорят о том, что раз такое его
+      использование возможно, то лучше что бы его совсем не было. При 
+      этом, конечно же, никто обычно не спорит против применения, например,
+      <code>break</code>, потому что его действие жестко ограничено.
+      Хочется сказать, что подобную ситуацию тоже можно довести до абсурда,
+      потому что я видел программу, в котрой был введен цикл только для 
+      того, что бы внутри его тела использовать <code>break</code> для
+      выхода из него (т.е., цикл делал только одну итерацию, просто в зависимости
+      от исходного состояния заканчивался в разных местах). Вот что помешало
+      автору использовать <code>goto</code> (раз уж хотелось), кроме
+      догматических соображений, я не понимаю.
+    </p>
+    <p align="justify">
+      Собственно, я как раз подошел к тому, что обычно называется "разумным" 
+      применением этого оператора. Вот пример:
+    </p>
+<pre>
+switch(key1)
+{
+case q1 : 
+    switch(key2)
+    {
+       case q2 : break;
+    }
+    break;
+}
+</pre>
+    <p class="table">
+      Все упрощено до безобразия, но, в принципе, намек понятен. Есть ситуации,
+      когда нужно что-то в духе <code>break</code>, но на несколько окружающих
+      циклов или операторов <code>switch</code>, а <code>break</code> завершает
+      только один. Понятно, что в этом примере читабельность, наверное, не нарушена (в смысле,
+      использовался бы вместо внутреннего <code>break</code> <code>goto</code> или нет),
+      единственное, что в таком случае будет выполненно два оператора перехода вместо одного
+      (<code>break</code> это, все-таки, разновидность <code>goto</code>).
+    </p>
+    <p align="justify">
+      Значительно более показателен другой пример:
+    </p>
+<pre>
+bool end_needed = false;
+for( ... )
+{
+   for( ... )
+   {
+      if(cond1) { end_needed = true; break; }
+   }
+   if(end_needed) break;
+}
+</pre>
+    <p class="table">
+      Т.е., вместо того, что бы использовать <code>goto</code> и выйти
+      из обоих циклов сразу, пришлось завести еще одну переменную и еще одну 
+      проверку условия. Тут хочется сказать, что <code>goto</code> в такой ситуации
+      выглядит много лучше --- сразу видно, что происходит; а то в этом случае придется
+      пройти по всем условиями и посмотреть, куда они выведут. Надо сказать (раз
+      уж я начал приводить примеры из жизни), что я не раз видел эту
+      ситуацию доведенную до крайности --- четыре вложенных цикла (ну что поделать) и
+      позарез надо инициировать выход из самого внутреннего. И что? Три лишних проверки...
+      Кроме того, введение еще одной переменной, конечно же, дает возможность еще
+      раз где-нибудь допустить ошибку, например, в ее инициализации. Опять же,
+      читателю исходного текста придется постоянно лазить по тексту и смотреть,
+      зачем была нужна эта переменная... в общем: не плодите сущностей без надобности. Это
+      только запутает.
+    </p>
+    <p align="justify">
+      Другой пример разумного использования <code>goto</code> следующий:
+    </p>
+<pre>
+int foo()
+{
+  int res;
+
+  // ...
+  if(...)
+  {
+     res = 10;
+     goto finish;
+  }
+  // ...
+
+finish:
+  return res;  
+}
+</pre>
+    <p class="table">
+      Понятно, что без <code>goto</code> это выглядело бы как <code>return 10</code>
+      внутри <code>if</code>. Итак, в чем преимущества такого подхода. Ну, сразу же
+      надо вспомнить про концептуальность --- у функции становится только один "выход",
+      вместо нескольких (быстро вспоминаем про IDEF). Правда, концептуальность это вещь
+      такая... неиспользование <code>goto</code> тоже в своем роде концептуальность, так
+      что это не показатель (нельзя противопоставлять догму догме, это просто глупо).
+      Тем не менее, выгоды у такого подхода есть. Во-первых, вполне вероятно, что перед
+      возвратом из функции придется сделать какие-то телодвижения (закрыть открытый
+      файл, например). При этом, вполне вероятно, что когда эта функция писалась, этого и не
+      требовалось --- просто потом пришлось дополнить. И что? Если операторов <code>return</code>
+      много, то перед каждым из них появится одинаковый кусочек кода. Как это делается?
+      Правильно, методом "cut&amp;paste". А если потом придется поменять? Тоже верно, "search&amp;replace".
+      Объяснять почему это неудобно не буду --- это надо принять как данность.
+    </p>
+    <p align="justify">
+      Во-вторых, обработка ошибок, которая так же требует немедленного выхода с 
+      возвратом используемых ресурсов. В принципе, в C++ для этого есть механизм
+      исключительных ситуаций, но когда он отсутствует (просто выключен для повышения
+      производительности), это будет работать не хуже. А может и лучше по причине более
+      высокой скорости.
+    </p>
+    <p align="justify">
+      В третьих, упрощается процесс отладки. Всегда можно проверить что возвращает
+      функция, поставить точку останова (хотя сейчас некоторые отладчики дают
+      возможность найти все <code>return</code> и поставить на них точки останова),
+      выставить дополнительный <code>assert</code> или еще что-нибудь в этом духе.
+      В общем, удобно.
+    </p>
+    <p align="justify">
+      Еще <code>goto</code> очень успешно применятся при автоматическом
+      создании кода --- читателя исходного текста там не будет, он будет
+      изучать то, по чему исходный текст был создан, поэтому можно (и нужно)
+      допускать различные вольности. Для примера посылаю к результатам
+      lex или yacc.
+    </p>
+    <p align="justify">
+      В принципе, больше навскидку вспомнить примеров оправданного применения
+      оператора <code>goto</code> я не смог, но это и не надо. Мне просто
+      хотелось показать, что при правильном использовании он очень полезен.
+      Надо только соблюдать здравый смысл, но это общая рекомендация 
+      к программированию на С/С++ (да и вообще, на любом языке программирования),
+      поэтому непонятно почему <code>goto</code> надо исключать.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Оператор <code>goto</code> имеет полное право на существование,
+      потому что существуют ситуации, в которых он может значительно
+      улучшить читабельность исходных текстов. Использовать его, или
+      нет --- решать каждому программисту самостоятельно, но иметь
+      такую возможность полезно.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_10_08_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Бъерн Страуструп</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Язык программирования C++, 3 издание.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/12_08_00.shtml">Виртуальный конструктор </a> (12.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Перелистывая архив сообщений из конференции SU.C_CPP, натолкнулся на любопытное письмо, которое решил поместить к себе на страничку. Автор --- опять Alexander...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/12_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/31_07_00.shtml">Запись структур данных в двоичные файлы </a> (31.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Чтение и запись данных, вообще говоря, одна из самых часто встречающихся операций. Сложно себе представить программу, которая бы совсем не нуждалась...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/31_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/11_08_00_x.shtml">Преобразование XML при помощи XSL </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Одна из самых частых операций, которую требуется произвести с XML-документом, это показать его. Хочется предупредить сразу, что на этот раз я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/09_08_00.shtml">Первый месяц </a> (09.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Месяц тому назад я нарисовал себе новую титульную страницу для размещения в интернете. В принципе, уже давно назревала мысль о том,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/09_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/11_08_00_x.shtml">Преобразование XML при помощи XSL </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Одна из самых частых операций, которую требуется произвести с XML-документом, это показать его. Хочется предупредить сразу, что на этот раз я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/09_08_00.shtml">Первый месяц </a> (09.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Месяц тому назад я нарисовал себе новую титульную страницу для размещения в интернете. В принципе, уже давно назревала мысль о том,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/09_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

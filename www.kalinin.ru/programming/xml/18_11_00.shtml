@@ -1,0 +1,423 @@
+<html><head><title>ALK :: XML :: HTML.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/xml/">xml</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/12_11_00.shtml">&lt;&lt;</a>&nbsp;18.11.00&nbsp;<a href="/stud/19_11_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>HTML must die
+</h1> 
+    <p align="justify">
+      Язык гипертекстовой разметки документов (HTML)
+      используется сейчас повсеместно. 
+      Задачи, которые ставились перед создателями
+      этого языка заключались в необходимости
+      создания универсального формата для представления
+      текста, содержащего ссылки 
+      на другие документы, и пригодного для автоматической
+      обработки. При этом было очень желательно,
+      что бы программа, которая использует HTML,
+      была бы максимально простой --- это способствовало
+      распространению HTML.
+    </p>
+    <p align="justify">
+      Авторы выделили некоторые базовые
+      элементы документов, такие как заголовки и параграфы,
+      при помощи которых можно было бы 
+      оформлять свои тексты. 
+    </p>
+    <p align="justify">
+      Результатом стало то, что HTML был признан фактически в качестве
+      основного формата данных современного интернета...
+      но, как это ни странно,
+      именно сейчас он уже не является приемлимым
+      для большинства приложений. Собственно, 
+      об этих проблемах мне и хотелось бы сегодня поговорить.
+    </p>
+    <p align="justify">
+      Если посмотреть внимательно на большинство
+      современных сайтов, то можно заметить, что
+      HTML уже давно не используется для &quot;чистого&quot;
+      форматирования документов; его предназначение
+      сейчас это создание пользовательского интерфейса.
+      Смешно то, что для этой задачи приходится
+      нагромождать в исходном коде страниц такое,
+      что в страшном сне не могло приснится создателям
+      HTML. Например, вложенные таблицы для рисования рамочек ---
+      неужели это &quot;лезет&quot; в идеологию оформления документа
+      при помощи базовых элементов?
+    </p>
+    <p align="justify">
+      Кроме того, был период, когда создатели браузеров
+      изменяли HTML по своему усмотрению для того, что бы
+      предоставить более широкие оформительские
+      возможности создателям сайтов. 
+      Результатом этого стало появление новой профессии,
+      которая связана с интернетом, под названием &quot;HTML-верстальщик&quot;. 
+    </p>
+    <p align="justify">
+      По своей сути эта профессия лишняя. Есть человек, который
+      создает &quot;содержание&quot; --- автор. Есть человек,
+      который рисует &quot;оформление&quot; --- дизайнер.
+      А кто в данном случае HTML-верстальщик? Он выполняет
+      функцию наборщика: вставляет авторское содержание в оформление
+      от дизайнера. И это тогда, когда космические корабли
+      бороздят Большой Театр!
+    </p>
+    <p align="justify">
+      HTML-код сейчас является больным местом любого web-мастера. 
+      Если хочется покритиковать некий сайт, то можно
+      даже ни о чем особенно не думать, достаточно
+      открыть исходный текст странички, а после этого
+      с чрезвычайно умным видом заявить, что &quot;вот
+      тут кавычки неправильно поставлены&quot; или
+      &quot;не соответствует стандарту&quot;. 
+      Можно еще проще: вытащить некий малоизвестный браузер
+      и сказать, что вот в нем-то как раз ничего и не показывается.
+      Если же телодвижений никаких делать не хочется,
+      то достаточно объявить &quot;кривой HTML&quot;...
+    </p>
+    <p align="justify">
+      И все это только из-за того, что в схеме
+      создания сайтов есть лишнее место. Сами посудите,
+      никто же не может обвинить автора &quot;содержания&quot; в том,
+      что он буквы не те использует? &quot;Не такую букву
+      'А', а такую букву 'А' надо было вставить.&quot;
+      Точно так же, дизайнера никто не попрекает неправильным tiff'ом.
+      И у автора, и у дизайнера  есть устоявшиеся форматы 
+      электронного представления результатов их работы
+      и только HTML на стыке добавляет неразберихи.
+    </p>
+    <p align="justify">
+      HTML --- лишний. Этому свидетельствует и тот факт, 
+      что практически во всех относительно серьезных 
+      проектах HTML-код для браузеров генерируется
+      автоматически на основании авторского
+      содержания и предоставленного дизайнером
+      оформления. 
+      Собственно, именно на этом месте
+      предполагается какая-то замена HTML для
+      того, что бы предоставить в распоряжение разработчиков
+      более специализированные инструменты для создания
+      пользовательского интерфейса.
+      Понятно, что если говорить о стандартах,
+      то XML нужен автору, а XSL --- дизайнеру.
+      Вопрос только в том, в какой формат
+      перекодировать исходный XML-документ. Сейчас
+      обычно выбирается все тот же HTML, 
+      что, опять же, не очень хорошо: он
+      не предназначен для оформления документов.
+      Вообще. Поэтому здесь нужен совсем 
+      иной формат, который предоставит
+      создателям сайтов неограниченные возможности по
+      оформлению. Тот же Flash в этом качестве много
+      более ценен, чем HTML (в перспективе, конечно). 
+    </p>
+    <p align="justify">
+      HTML не умрет сразу. Он еще достаточно долгое
+      время просуществует, пока ему не будет
+      найдена достойная и признанная разработчиками замена.
+      После того, как этот новый технологический процесс устоится,
+      сайты  будут поддерживать два варианта
+      оформления: через HTML и новую технологию. И так будет
+      до тех пор, пока HTML в качестве средства
+      для оформления сайтов не превратится в рудимент.
+      Это будет происходить медленно, но уже сейчас
+      заметно, что все идет именно к этому. Во-первых,
+      современные браузеры могут расширяться
+      сторонними разработчиками, таким образом
+      конечный пользователь может вообще
+      ничего не знать о методе, который применялся
+      при оформлении сайта: он все равно будет показываться
+      его любимой программой. Во-вторых, груды
+      HTML-документов уже сейчас неудобны для
+      представления информации как в глобальном
+      масштабе всего интернета в целом, так и в пределах
+      одного сайта. 
+    </p>
+    <p align="justify">
+      Конечно же, есть еще некоторые вторичные сложности. 
+      Например, информационно-поисковые системы, которые на
+      текущий момент работают как раз с грудой HTML-документов.
+      Поэтому, скорее всего, кроме человеческого входа
+      на сайт (т.е. такого, при котором будет отдаваться
+      уже оформленная страница, с навигацией, графикой и прочим),
+      должен быть предусмотрен отдельный вход для роботов, через
+      который будет отдаваться только информация в некотором
+      структурированном виде. Логично, что если
+      этим стандартом станет XML, то и внутренности сайтов
+      будут держатся в этом формате. Или, к примеру, будет принят
+      специализированный формат для поисковых систем, в котором
+      можно расставлять ключевые слова и фразы для
+      поиска, определять наиболее важные предложения и абзацы
+      документа и т.д. На основании разделенного содержания
+      и оформления, сделать это для хозяев сайтов
+      будет совсем просто, а сколько удобства может принести
+      в целом!
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      HTML в качестве средства для оформления сайтов
+      себя изжил. Он так и останется в интернете
+      для оформления простых документов, не требующих
+      интерфейса с пользователем, кроме предоставляемого 
+      браузером, но для чего-то более сложного будут применяться
+      иные технологические решения.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/xml/print_18_11_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Дмитрий&nbsp;Кирсанов</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Веб-дизайн.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/27_09_00.shtml">Средства для разбора XML-файлов </a> (27.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+С момента последнего обновления в этом разделе прошло уже больше месяца... но ведь никто же никому ничего не обещал? ;) Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/27_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/11_08_00_x.shtml">Преобразование XML при помощи XSL </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Одна из самых частых операций, которую требуется произвести с XML-документом, это показать его. Хочется предупредить сразу, что на этот раз я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/19_11_00.shtml">Преподаватели </a> (19.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сегодня я буду брюзжать. Почему? Хочется... настроение такое. Кроме того, мне надоело рассказывать о молодых и неопытных студентах, поэтому теперь немножко...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/19_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_11_00.shtml">Высокий штиль </a> (12.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+У О. Генри есть забавный рассказ под названием &quot;Теория и практика&quot;, в котором редактор журнала и бедный писатель спорят друг с...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/18_11_00.shtml">HTML must die </a> (18.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Язык гипертекстовой разметки документов (HTML) используется сейчас повсеместно. Задачи, которые ставились перед создателями этого языка заключались в необходимости создания универсального формата...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/18_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/27_09_00.shtml">Средства для разбора XML-файлов </a> (27.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+С момента последнего обновления в этом разделе прошло уже больше месяца... но ведь никто же никому ничего не обещал? ;) Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/27_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/11_08_00_x.shtml">Преобразование XML при помощи XSL </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Одна из самых частых операций, которую требуется произвести с XML-документом, это показать его. Хочется предупредить сразу, что на этот раз я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/02_08_00.shtml">Зачем же все-таки нужен XML </a> (02.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+XML сейчас является очень модным словом --- обычно вместе с его упоминанием встречаются слова "метаязык", "перспективная технология" и прочее. Вообще, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/02_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/19_11_00.shtml">Преподаватели </a> (19.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сегодня я буду брюзжать. Почему? Хочется... настроение такое. Кроме того, мне надоело рассказывать о молодых и неопытных студентах, поэтому теперь немножко...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/19_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_11_00.shtml">Высокий штиль </a> (12.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+У О. Генри есть забавный рассказ под названием &quot;Теория и практика&quot;, в котором редактор журнала и бедный писатель спорят друг с...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

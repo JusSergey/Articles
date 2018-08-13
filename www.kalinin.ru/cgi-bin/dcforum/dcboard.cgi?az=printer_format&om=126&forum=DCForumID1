@@ -1,0 +1,83 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 126<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/126.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Размер блока памяти?"</font></b><br>
+Posted by Igor  on 17-Oct-03 at 05:36&nbsp;AM<br>
+<blockquote>Помогите pls определить размер блока памяти выделленного функцией malloc().<BR>Он должен где-то быть, функция free() где-то его берет. И как с этим делом у new/delete?<BR>10X!</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Размер блока памяти?</b>,<b>Lebedev A. V.</b>, 06:17&nbsp;PM, 29-Oct-03
+<li><b>RE: Размер блока памяти?</b>,<b>Игорь</b>, 09:07&nbsp;AM, 17-Feb-04
+<ul>
+<li><b>RE: Размер блока памяти?</b>,<b>1</b>, 03:59&nbsp;PM, 19-Feb-04
+</ul>
+<li><b>RE: Размер блока памяти?</b>,<b>Proteus</b>, 02:20&nbsp;AM, 20-Nov-04
+<ul>
+<li><b>RE: Размер блока памяти?</b>,<b>alk</b>, 05:39&nbsp;PM, 22-Nov-04
+<ul>
+<li><b>RE: Размер блока памяти?</b>,<b>Proteus</b>, 03:11&nbsp;PM, 25-Nov-04
+<ul>
+<li><b>RE: Размер блока памяти?</b>,<b>alk</b>, 11:51&nbsp;PM, 13-Dec-04
+<ul>
+<li><b>RE: Размер блока памяти?</b>,<b>Proteus</b>, 07:56&nbsp;PM, 16-Jan-05
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by Lebedev A. V.  on 29-Oct-03 at 06:17&nbsp;PM<br>
+<blockquote>
+Мне кажется, что лучше самому запоминать размер блока, это надёжнее и переносимее (если понадобиться поменять политику распределения памяти. В этом смысле вообще лучше сделать праметризацию аллокатором со значением по умолчанию std::allocator).
+</blockquote>
+<hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by Игорь  on 17-Feb-04 at 09:07&nbsp;AM<br>
+<blockquote>
+&gt;Помогите pls определить размер блока памяти <BR>&gt;выделленного функцией malloc(). <BR>&gt;Он должен где-то быть, функция free() <BR>&gt;где-то его берет. И как <BR>&gt;с этим делом у new/delete? <BR>&gt;<BR>&gt;10X! <BR>Удалось ли Вам найти способ Я тоже ищу<BR>Если что скинте мне<P><BR>
+</blockquote>
+<hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by 1  on 19-Feb-04 at 03:59&nbsp;PM<br>
+<blockquote>
+смотри в исходниках
+</blockquote>
+<hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by Proteus  on 20-Nov-04 at 02:20&nbsp;AM<br>
+<blockquote>
+#include "malloc.h"<P>int *text=new int;<BR>int size=_msize(text);<P>Делай так. Чем угодно память выделяй - оно определит.
+</blockquote>
+<hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by alk  on 22-Nov-04 at 05:39&nbsp;PM<br>
+<blockquote>
+&gt;int size=_msize(text); <P>Насколько я понимаю, это MS Visual C++ only.<P>Стандартных средств для определения размера блока памяти, выделенного через malloc, нет. <P>
+</blockquote>
+<hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by Proteus  on 25-Nov-04 at 03:11&nbsp;PM<br>
+<blockquote>
+Зато определить его можно, где угодно.<BR>Было бы желание...
+</blockquote>
+<hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by alk  on 13-Dec-04 at 11:51&nbsp;PM<br>
+<blockquote>
+Но ведь непереносимо, верно? А то что везде --- совершенно верно, естественно что системный аллокатор эти данные где-то содержит в том или ином виде. Другое дело, что это совершенно необязательно будет размер блока памяти в чистой записи. 
+</blockquote>
+<hr>
+<b>"RE: Размер блока памяти?"</b><br>
+Posted by Proteus  on 16-Jan-05 at 07:56&nbsp;PM<br>
+<blockquote>
+Ну под виндой алокатор всегда память выделяет по адресу кратному 16, но размер такой-же. Но сколько запрашивал помнит точно до байта. Под Линуксом вполне возможно дела не хуже. А вообще мне не очень интересно всем этим голову морочить. А её всегда тока выделял и удалял. Мне на уши становиться ещё не приходилось....
+</blockquote>
+<hr>
+</font></body></html>

@@ -1,0 +1,549 @@
+<html><head><title>ALK :: Сети :: adns.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/network/">сети</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/internet/02_11_00.shtml">&lt;&lt;</a>&nbsp;05.11.00&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Определение ip-адреса по имени хоста, adns
+</h1> 
+    <p align="justify">
+      Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а,
+      системный вызов под названием <code>gethostbyname()</code>:
+    </p>
+<pre>
+struct hostent *
+gethostbyname(const char *name);
+</pre>
+    <p align="justify">
+      Традиционен он
+      тем, что его нельзя использовать в многопоточных программах по той причине,
+      что два параллельных обращения к <code>gethostbyname()</code> приведут
+      к повреждению данных, используемых внутри функции: ее результат --- указатель
+      на статическую область памяти.
+    </p>
+    <p align="justify">
+      Собственно, обычно, для того, что бы получить IP-адрес по DNS-имени,
+      используют именно этот вызов. Его недостатками являются уже упомянутая
+      выше не &quot;реентерабельность&quot; (это английское слово, судя по всему,
+      стало термином), отсутствие возможности определения адреса хоста, соответствующему
+      иному протоколу, чем IPv4 и...
+      низкая производительность, как это ни странно.
+    </p>
+    <p align="justify">
+      Надо понимать, что DNS, кроме самих серверов, включает в себя
+      еще и протокол передачи данных, который принципиально ничем не отличается
+      от других (того же HTTP). В предыдущей заметке в этом разделе я уже говорил о том, 
+      что программа, выкачивающая один файл, отличается от программы, которая
+      выкачивает несколько файлов. Тоже самое и с обращениями к DNS-серверам: если
+      &quot;разрешение&quot; одного хоста произойдет достаточно быстро (относительно),
+      то в случае с большим количеством хостов все уже не так радужно.
+    </p>
+    <p align="justify">
+      То есть, программа, которая качает одновременно несколько
+      файлов, должна управляться событиями ввода-вывода: как конкретно
+      она это будет делать, не особенно интересно, но все дело в том,
+      что использование любых операций, блокирующих процесс,
+      могут свести на нет все усилия по обеспечению параллельности запросов. 
+      В тоже самое время, <code>gethostbyname()</code>
+      занимает в среднем несколько секунд и это достаточно чувствительно.
+    </p>
+    <p align="justify">
+      Вообще говоря, конечно же, можно как-то попытаться ускорить процесс. Например,
+      перед тем, как обратиться к DNS-серверу, <code>gethostbyname()</code> просматривает
+      содержимое локального файла <code>/etc/hosts</code>... или, еще можно
+      использовать тот факт, что DNS-сервер имеет свой кэш и, если подряд следуют
+      два запроса на одинаковые хосты, ответ на второй запрос будет отдан клиенту
+      из кэша. Таким образом, можно установить DNS-сервер (тот же named) на локальной
+      машине, тогда все повторные запросы будут выполняться моментально.
+    </p>
+    <p align="justify">
+      В случае, когда все хосты известны заранее, можно разбить программу
+      на две части: сначала происходит разрешение имен, а затем --- выкачивание
+      информации. Но, если честно, это не выход.
+    </p>
+    <p align="justify">
+      Более логичное решение заключается в том, что, если программа
+      управляется событиями ввода-вывода, то надо добавить сюда
+      еще и события &quot;определения IP-адреса&quot;. Это уже 
+      предполагает то, что <code>gethostbyname()</code> использовать больше
+      нельзя: этот вызов блокирует процесс. Можно воспользоваться
+      &quot;реентерабельной&quot; версией <code>gethostbyname_r()</code>
+      и выделить несколько потоков в программе, которые будут постоянно ожидать
+      завершения определения IP-адреса... только это... скорее всего опять
+      несколько неправильно.
+<table align="right" columns="3" border="0" cellspacing="0" cellpadding="5" width="150">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Лирическое отступление:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2"><font face="arial,sans-serif" size="-2">
+    <p align="justify">
+      Наверно, все-таки стоит об этом упомянуть здесь:
+      потоки бывают трех типов: потоки ядра, реальные потоки
+      и потоки пользовательские. Первые, понятно, работают 
+      внутри ядра и для его нужд; вторые --- то же самое,
+      что и потоки ядра, но с доступом к данным процесса... А вот пользовательские
+      потоки --- это библиотечная реализация потоков и может
+      быть вообще никак не связана с реальными потоками в ОС. Те 
+      же pthreads --- на самом деле, пользовательские потоки; собственно,
+      тем и хороши. Вполне вероятно, что по этой тематике я пройдусь
+      когда-нибудь подробнее, но выделение DNS-ресолвера в отдельный
+      пользовательский поток, это вполне здравая мысль. Если, конечно
+      же, вы уверены в том, что сможете это корректно сделать.
+    </p>
+</font></td></tr></table>
+      Посудите сами: ввод-вывод обычно вполне спокойно организовывается
+      в одном потоке управления (при помощи, например, <code>select()</code>), 
+      а под какое-то определение IP-адреса приходится либо еще потоки
+      запускать, либо, как это делает webalaizer, несколько дочерних
+      процесоов создавать. В то же самое время, многопоточная программа
+      много сложнее однопоточной и совсем не факт, что преимущества
+      относительно быстрого и неблокирующего определения IP-адресов 
+      покроет все усилия, связанные с синхронизацией потоков. 
+    При этом учтите и то, что тот факт, что многопоточная программа
+    нормально работает на компьютере с одним процессором, совсем не означает,
+    что она так же нормально будет работать на компьютере с несколькими процессорами.
+    </p>
+    <p align="justify">
+      Теперь, возвращаясь к, собственно, теме сегодняшней заметки. ADNS. Это
+      такой пакет, в который входит библиотека с заголовочными файлами и несколько
+      утилит, которые можно использовать в скриптах. Среди ее преимуществ, кроме того,
+      что она исключает существенные недостатки <code>gethostbyname()</code>, можно
+      выделить еще и такие, как простота использования. Поверьте, это достаточно существенно,
+      потому что подобные библиотеки существуют давно, но их далеко не так удобно
+      использовать в своих программах. 
+    </p>
+    <p align="justify">
+      В принципе, ADNS так же не является &quot;реентерабельной&quot;. Но
+      ее скорость работы, вообще говоря, снимает проблемы с необходимостью
+      в &quot;реентарабельности&quot; функций. 
+    </p>
+    <p align="justify">
+      Документация к ADNS есть только одна: внутри заголовочного файла. Зная
+      о нелюбви русского программиста читать даже хорошо оформленную
+      документацию, на этот раз приведу кусок простейшей программы, которая с этим
+      ADNS работает. На самом деле, приведенной функциональности хватит для большинства 
+      приложений.
+    </p>
+<pre>
+#include &lt;sys/types.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;signal.h&gt;
+
+#include &lt;adns.h&gt;
+
+int main(int argc, char* argv[])
+{
+</pre>
+<table align="right" columns="3" border="0" cellspacing="0" cellpadding="5" width="150">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Лирическое отступление:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2"><font face="arial,sans-serif" size="-2">
+    <p align="justify">
+      Любая программа, которая работает с сетями, должна
+      каким-либо образом обрабатывать сигнал <code>SIGPIPE</code>,
+      обычно этот сигнал просто игнорируется. Все дело в том,
+      что ядро сгенерирует его для вашей программы
+      в случае обрыва свзязи (что является обычной ситуацией),
+      а обработчик по-умолчанию просто прекратит работу вашей
+      программы.
+    </p>
+    <p align="justify">
+      Библиотека ADNS, в принципе, сама устанавливает обработчик
+      SIGPIPE в SIG_IGN, но это можно отключить :-)
+    </p>
+</font></td></tr></table>
+<pre>
+  struct sigaction sigpipe, sigpipeo;
+  
+  sigemptyset(&amp;sigpipe.sa_mask);
+  sigpipe.sa_flags = SA_RESTART;
+  sigpipe.sa_handler = SIG_IGN;
+  sigaction(SIGPIPE, &amp;sigpipe, &amp;sigpipeo);
+  
+  adns_state ads = NULL;
+  
+  /*
+   * Инициализация ADNS. 
+   */
+  adns_init(&amp;ads, adns_if_nosigpipe, 0);
+
+  // ...
+  
+  /*
+   * Осуществляем все запросы к ADNS. В данном случае ---
+   * пачкой и сразу, но можно и в процессе обработки.
+   */
+  for( ; ; )
+    {
+       // ...
+
+       adns_query aquery = 0;
+
+       /*
+        * А вот документацию на эту функцию, скорее
+        * всего, посмотреть придется, потому что тут
+        * надо указать флаги, характеризующие то, что
+        * вы хотите от ADNS получить. Под hostname
+        * понимается название хоста.
+        */
+       adns_submit(ads, hostname,
+                   (adns_rrtype)adns_r_addr,
+                   (adns_queryflags)adns_qf_owner,
+                   0,
+                   &amp;aquery);
+
+       // ...
+    }
+  
+  /*
+   * Теперь все запросы поданы, надо обработать
+   * результаты. В данном случае, запрос _ожидается_.
+   * Но можно и просто проверять наличие выполненных
+   * запросов.
+   */
+  for( ; ; )
+    {
+      adns_answer* answer = NULL;
+      adns_query query = NULL;
+      
+      adns_wait_poll(ads, &amp;query, &amp;answer, NULL);
+      
+      if(!answer) break;
+      
+      if(answer-&gt;status == adns_s_ok)
+        {
+          /*
+           * Ответ получен. Теперь в answer находится то,
+           * что вы "заказали" при submit'е. В данном
+           * случае имеют интерес поля answer-&gt;owner,
+           * answer-&gt;rrs и answer-&gt;nrrs.
+           */
+        }
+    }
+  
+  /*
+   * Завершение работы. Об этом надо сказать ADNS.
+   */
+  adns_finish(ads);
+  
+  return 0;
+}
+</pre>
+    <p align="justify">
+      Ресолвер очень быстрый. Желающие могут написать маленькую итеративную программу с использованием
+      <code>gethostbyname()</code>, а потом попробовать утилиту, идущую в комплекте с ADNS, под
+      названием adnshost, и сравнить количество затраченного времени на большом списке хостов. 
+      Кстати сказать, еще один из недостатков libwww заключается как раз в том,
+      что работа с DNS в ней, в конце-концов, сводится именно к вызову <code>gethostbyname()</code>.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Использование <code>gethostbyname</code> в реальных программах обычно приводит
+      к потере производительности. Для решения этой проблемы можно использовать
+      &quot;реентерабельную&quot; версию этого же системного вызова, но лучше взять
+      библиотеки, использующие асинхронные операции ввода-вывода для работы с DNS, например,
+      adns.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/network/print_05_11_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.chiark.greenend.org.uk/~ian/adns/" target="_blank">http://www.chiark.greenend.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальная страница ADNS.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">W.&nbsp;Richard&nbsp;Stevens</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Network programming, volume 1.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">W.&nbsp;Richard&nbsp;Stevens</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     TCP/IP illustrated, volume 1.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_11_00.shtml">acm.gui.uva.es, задачник по программированию </a> (07.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Наконец-то я вспомнил о действительно полезном ресурсе, который стоит описать. Вообще, полезность или бесполезность чего-либо, конечно же, нельзя оценить &quot;огульно&quot;, надо...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/02_11_00.shtml">Информационно-поисковые системы </a> (02.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Поисковые системы в интернете на сегодняшний день являются единственным способом доступа пользователя к информации, расположенной в сети. Я имею в виду...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/02_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/12_12_00.shtml">Событийная модель в WinSock </a> (12.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Автором этого текста является Gregory Liokumovich ( ). Он любезно прислал мне этот текст, связанный с программированием сетей при помощи интерфейса...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/12_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_11_00.shtml">acm.gui.uva.es, задачник по программированию </a> (07.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Наконец-то я вспомнил о действительно полезном ресурсе, который стоит описать. Вообще, полезность или бесполезность чего-либо, конечно же, нельзя оценить &quot;огульно&quot;, надо...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/02_11_00.shtml">Информационно-поисковые системы </a> (02.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Поисковые системы в интернете на сегодняшний день являются единственным способом доступа пользователя к информации, расположенной в сети. Я имею в виду...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/02_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

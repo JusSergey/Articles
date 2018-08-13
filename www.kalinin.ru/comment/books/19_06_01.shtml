@@ -1,0 +1,402 @@
+<html><head><title>ALK :: Книги :: Плагиат.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/books/">книги</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/15_06_01.shtml">&lt;&lt;</a>&nbsp;19.06.01&nbsp;<a href="/programming/opt/22_06_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Плагиат
+</h1> 
+  <p align="justify">
+    В последнее время мне стало казаться, что с моим сайтом что-то не в порядке. Вроде,
+    текст есть, живые люди тоже иногда появляются, некоторые даже
+    письма пишут, а вот тексты с него --- не воруют. Так и лежат,
+    нетронутые. 
+  </p>
+  <p align="justify">
+    Было вполне ожидаемо, что некоторый Вася Пупкин, в юном порыве создать 
+    очередное вечное творение в Рунете и снабдить его эмблемкой under
+    construction, сопрет туда что-нибудь и у меня. То есть, это меня
+    не удивило бы.
+  </p>
+  <p align="justify">
+    Но когда я зашел в книжный магазин и, восхитившись глупостью
+    названия, начал листать "Справочное руководство пользователя ПК:
+    языки программирования C и C++"... честно говоря, первые
+    несколько минут я просто был в ступоре. 
+  </p>
+  <p align="justify">
+    Все дело в том, что примерно сотня страниц в этой книге ---
+    перепечатка из раздела "C и C++" отсюда. 
+  </p>
+  <p align="justify">
+    Удивительное дело! Я так долго распространялся об авторском праве, 
+    о том, что кто деньги может заработать, тот пусть и зарабатывает,
+    но когда увидел свои тексты под чужой фамилией, то если бы
+    владелец этого имени стоял бы рядом, была бы просто гадкая
+    сцена. В смысле, я был несколько раздражен. 
+  </p>
+  <p align="justify">
+    Оказалось, что книга выпущена издательством "Познавательная книга
+    плюс", которое вообще специализируется на подобном способе
+    публикации материалов. Самый громкий скандал, который был с ними
+    связан --- опубликование энциклопедии интернет-рекламы с
+    book.promo.ru под авторством некоего Антона Высоткина. Тимофей Бокарев, настоящий автор энциклопедии, несколько
+    оскорбился и подал в суд на издательство --- чем дело закончилось
+    я не особенно хорошо понял, потому что суд то признавал претензии
+    истца, то аппеляции ответчика, но с тех пор действия издательства
+    нисколько не изменились.
+  </p>
+  <p align="justify">
+    На самом деле, своего мнения я не изменил. Да, мне обидно, что
+    никто не спросил моего разрешения на публикацию материалов в своей 
+    книге. Именно из-за этого я считаю сам факт издания подобной 
+    книги плагиатом (и еще  потому, что внутри нет моей фамилии, разве
+    что ссылка на источник в конце). Но я прекрасно понимаю, что сам
+    факт появления текстов в интернете делает мое правообладание ими
+    настолько эфемерным, что лучше просто отвернуться. Или погрозить
+    пальцем (что я и делаю сейчас).
+  </p>
+  <p align="justify">
+    Кроме того, материалы с моей домашней страничкой не могут быть
+    напечатаны в какой-либо книге без предварительной обработки ---
+    они не для этого предназначены. Эти тексты... они неформальные. По 
+    стилю изложения, по структуре, по задумке, в конце-концов. Нельзя
+    их просто так взять, и получить готовую, хорошую книгу. Для того
+    же, чтобы сделать хорошую книгу, их надо перерабатывать, а лучше
+    всего --- переписывать, но для этого надо хотя бы понимать, о чем
+    идет речь. Сергей Сабуров не является специалистом того уровня,
+    который требуется для создания (или даже составления) книги о C
+    или C++, мягко говоря он вообще не является специалистом. Так... в 
+    общем, лучше его не трогать --- запахов неприятных будет меньше.
+  </p>
+  <p align="justify">
+    Мои тексты, конечно же, не составляют основу книги, в ней содержится большое количество другой,
+    публично доступной информации о C и C++. В частности, большая
+    составляющая --- перевод фирменной документации на Turbo C++,
+    которая копируется буквально на каждом сайте о C и
+    C++. Присутствуют оригинальные статьи других авторов, взятых с
+    сайтов аналогичной направленности, что и моя домашняя страничка, к 
+    примеру Игоря Ткачева о использовании директивы
+    <code>#import</code> или Евгения Моисеева об умных
+    указателях. Все тексты разные, эффект от соединения их в книгу
+    потрясающий --- все вместе читать невозможно. 
+  </p>
+  <p align="justify">
+    Так что, это даже хорошо, что там нет моей фамилии. Мне было бы
+    попросту стыдно. Что же касается рекомендаций... не покупайте эту
+    книгу. Мои статьи вы можете прочитать и здесь, статьи других
+    авторов, которые послужили основой для книги  можно найти в интернете, остальные тексты точно так же
+    доступны, к примеру, в библиотеке Мошкова. Кроме того, лично мне
+    будет приятно, если эту книгу купит как можно меньшее количество
+    людей --- так писать книги нельзя. Или, если принять термин из
+    "копирайтах", "составлять" книги --- смысл от этого не меняется. 
+  </p>
+
+<h2>Резюме</h2>
+  <p align="justify">
+    Как говорил Остап Бендер, "Теперь  у  нас  самое  настоящее
+    учреждение, есть собственный растратчик, он же  швейцар-пропойца.
+    Оба эти типа делают реальными все наши начинания." Не могу с ним не
+    согласиться -- раз что-то воруют, значит есть, что воровать. Это
+    очень хорошо.
+  </p>
+  <p align="justify">
+    Неприятно то, что делается это все очень нагло. Зачем? Ведь если
+    бы меня кто спросил, то я бы наверняка согласился бы на
+    публикацию. Оговорил бы условия расстановки ссылок и фамилий, но
+    согласился бы. А так... Ну их, убогих, куда подальше. 
+  </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/books/print_19_06_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.promo.ru/plagiat.htm" target="_blank">http://www.promo.ru/plagiat.ht</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Тимофей Бокарев и его сайт Promo.Ru стали жертвой плагиата
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://bugtraq.ru/review/16-05-1.html" target="_blank">http://bugtraq.ru/review/16-05</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Алексей Лукацкий, который тоже стал жертвой "Познавательной книги".
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://bugtraq.ru/review/30-07-99.html" target="_blank">http://bugtraq.ru/review/30-07</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ О книге "эффектиный хакинг" того же издательства.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/12_02_01.shtml">/etc/12_02_01.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Мое мнение об авторском праве.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_07_01.shtml">High Perfomance Computing, second edition. </a> (05.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Название книги можно перевести как "Высокопроизводительные вычисления" и эта тематика в русскоязычной литературе не освещена совсем. Традиционно считается, что самой важной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_04_01.shtml">TCP/IP Illustrated, volume I. The Protocols </a> (22.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять, книга, о которой мне хочется рассказать, насколько мне известно, отсутствует в русском переводе. Тем не менее, в разделе сетевого...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/22_06_01.shtml">Ассемблер x86 против C </a> (22.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Весь текст ниже взят из переписки с . Моего тут только несколько строчек, выделенных курсивом и резюме. Текст основан на трех...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/opt/22_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/15_06_01.shtml">Новый дизайн, часть 2 </a> (15.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как многие могли заметить, kalinin.ru наконец-то сменил дизайн. Тому было много причин, о которых я хотел бы рассказать, кроме того просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/15_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_07_01.shtml">High Perfomance Computing, second edition. </a> (05.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Название книги можно перевести как "Высокопроизводительные вычисления" и эта тематика в русскоязычной литературе не освещена совсем. Традиционно считается, что самой важной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/19_06_01.shtml">Плагиат </a> (19.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В последнее время мне стало казаться, что с моим сайтом что-то не в порядке. Вроде, текст есть, живые люди тоже иногда...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/19_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_04_01.shtml">TCP/IP Illustrated, volume I. The Protocols </a> (22.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять, книга, о которой мне хочется рассказать, насколько мне известно, отсутствует в русском переводе. Тем не менее, в разделе сетевого...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/28_02_01.shtml">Decline and Fall of the American Programmer </a> (28.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эдвард Йордон является одним из самых известных специалистов в области создания больших программных систем. Широко известна его нотация, предназначенная для структурного...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/28_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/03_12_00.shtml">Unix internals: the new frontiers </a> (03.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочу сразу же предупредить, что эта книга, насколько мне известно, в переводе на русский язык не существует, поэтому прошу прощения, если...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/03_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/29_09_00.shtml">Язык UML, рукводство пользователя </a> (29.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+UML (Unified Modeling Language, унифицированный язык моделирования) является еще одной популярной аббревиатурой, которой очень часто пользуются, не понимая того, что за...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/29_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/22_06_01.shtml">Ассемблер x86 против C </a> (22.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Весь текст ниже взят из переписки с . Моего тут только несколько строчек, выделенных курсивом и резюме. Текст основан на трех...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/opt/22_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/15_06_01.shtml">Новый дизайн, часть 2 </a> (15.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как многие могли заметить, kalinin.ru наконец-то сменил дизайн. Тому было много причин, о которых я хотел бы рассказать, кроме того просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/15_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

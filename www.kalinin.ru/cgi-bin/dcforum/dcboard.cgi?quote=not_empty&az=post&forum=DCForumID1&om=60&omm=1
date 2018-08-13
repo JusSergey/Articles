@@ -1,0 +1,264 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/dcforum//DCForumID1/60.html"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/dcforum//DCForumID1/60.html"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Compose your message</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+<p>
+         <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+         <TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         Original Message
+         </FONT></TH></tr>
+         <TR BGCOLOR="#EAE8E0"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b><br>Posted by Andrey L. Kalinin on 08-Sep-01 at 10:17&nbsp;PM
+         </FONT></Td></tr>
+         <TR BGCOLOR="#FBF9F1"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Dobryj den'. <BR>&gt;<BR>&gt;Prochital ja zametku pro winsock ( <BR>&gt;<a href="http://www.kalinin.ru/programming/network/12_12_00.shtml" target="_blank">http://www.kalinin.ru/programming/network/12_12_00.shtml</a> ) i obidno mne <BR>&gt;stalo za staryj dobryj "select". <P>Хм. Ну заметка это не моя, так что было бы логично передать "возумщения" ее автору, но и я отвечу как я себе это понимаю.<P>Сразу же хочу сказать, что ничего "идеального" не существует. Нет техники в сетевом программировании, которая одинаково хорошо подошла бы под любые требования. Поэтому "старый добрый select" хорош только в тех приложениях, для которых он создавался (что-то о его недостатках есть в статье про kevent'ы).<P>&gt;Prochitaet takoe chelovek v oznakomitel'nyx <BR>&gt;zeljax i reshit ne pol'zovatsja <BR>&gt;selectom. Nachnet pod windows pisat', <BR>&gt;a esli Micro$oft ( ne <BR>&gt;daj bog )obankrotitsja, ostanetsja on <BR>&gt;bez raboty, v samom rascvete <BR>&gt;sil. <P>Я бы не стал считать абстрактного человека, читающего мой хоумпейджер, глупее себя <img src="/dcforum//Images/wink.gif"> <P><BR>&gt;A vot WaitForMultipleEvents dejstvitel'no sluchaj <BR>&gt;kretichnyj. Teper' podumaem chto bysree: <BR>&gt;prosten'kij "loop" na 1024 iteracii <BR>&gt;ili odin "context switch" pri <BR>&gt;perekluchenii threadov ? <P>Да, с этим я согласен. Но, когда мы обсуждали эту статью с ее автором, то выяснилось, что ему _легче_ разрабатывать его конкретный сервер основываясь на потоках, обрабатывающих каждый сокет в отдельности. Можно себе представить ситуацию, когда обработка сообщения в сокете настолько велика, что переключение контекста перестает быть значительным.<P>&gt;Resume: <BR>&gt;Pol'zavatsja nado asynchronnym IO, tam gde <BR>&gt;ono est', i selectom, tam <BR>&gt;gde ego ( AsynchIO ) <BR>&gt;net. <P>aio достаточно сложно в программировании, imho. Кроме того лично у меня были проблемы в использовании aio на разных платформах.<P>А пользоваться надо тем, что лучше подходит под конкретную задачу <img src="/dcforum//Images/wink.gif"><P>&gt;Tem bolee chto est' takoj zamechatel'nyj <BR>&gt;call kak "asynch. file transfer". <BR>&gt;Beret socket, beret file i <BR>&gt;zvonit Vam kogda vse uze <BR>&gt;gotovo. <BR>&gt;( eto k teme "staticheskih serverov" -&gt; <a href="http://www.kalinin.ru/programming/network/16_07_01.shtml" target="_blank">http://www.kalinin.ru/programming/network/16_07_01.shtml</a> :) )<P>А есть ли уверенность, что такая техника будет быстрее kqueue в freebsd или /dev/poll в solaris? Я думаю, нет. А kqueue значительно более общая техника...<BR>
+         </blockquote>
+         </FONT></Td></tr><TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         &nbsp;
+         </FONT></TH></tr>
+         </table>
+   <center>
+   <form ACTION="/cgi-bin/dcforum/dcboard.cgi" method="POST">
+   <input type=hidden name="om" value="60">
+   <input type=hidden name="forum" value="DCForumID1">
+   <input type=hidden name="omm" value="1">
+   
+         <input type="hidden" name="az" value="a_mesg">
+      
+   <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+   <TR><Td ALIGN="LEFT" valign="top" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   
+         <li><font color="#FF0000">
+         Image Links Enabled - just type the URL (e.g., http://www.dcscripts.com/image.gif)
+         </font>
+         
+      <li><font color="#FF0000">
+      Emotion Icons</font>
+      <a href="javascript:makeRemote('/cgi-bin/dcforum/dcboard.cgi?az=emotion_icon_short_cuts')"><FONT 
+      SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Emotion icon short cuts</FONT></a>
+   </TD>
+   </tr>
+   <TR BGCOLOR="#E3DAA5"><TH ALIGN="LEFT" COLSPAN="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+      Your Message
+      </FONT></TH></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Name<font color="black">*</font>:
+   </FONT>
+   </TH>
+   <TD>
+         <INPUT TYPE="TEXT" NAME="name" value="" SIZE=50>
+   </TD></TR>
+         <TR BGCOLOR="#EAE8E0">
+         <TH ALIGN="RIGHT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         EMail:
+         </FONT></TH>
+         <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="TEXT" NAME="email" value="" SIZE=50>
+         </TD></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Subject<font color="black">*</font>:
+   </FONT></TH>
+   <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="text" NAME="subject" VALUE="RE: Событийная модель в WinSock: Pozvol'te vozmutitsja." SIZE=50>
+      </TD></TR><TR BGCOLOR="#EAE8E0">
+      <TH ALIGN="RIGHT" VALIGN="TOP"><FONT SIZE="-1" 
+         FACE="arial,sans-serif" COLOR="black">
+         Message<font color="black">*</font>:</FONT>
+         </TH><TD>
+         <TEXTAREA NAME="body" ROWS="15"
+         COLS="50" WRAP="virtual">>>Dobryj den'. 
+>>
+>>Prochital ja zametku pro winsock ( 
+>>http://www.kalinin.ru/programming/network/12_12_00.shtml ) i obidno mne 
+>>stalo za staryj dobryj "select". 
+>
+>Хм. Ну заметка это не моя, 
+>так что было бы логично 
+>передать "возумщения" ее автору, но 
+>и я отвечу как я 
+>себе это понимаю. 
+>
+>Сразу же хочу сказать, что ничего 
+>"идеального" не существует. Нет техники 
+>в сетевом программировании, которая одинаково 
+>хорошо подошла бы под любые 
+>требования. Поэтому "старый добрый select" 
+>хорош только в тех приложениях, 
+>для которых он создавался (что-то 
+>о его недостатках есть в 
+>статье про kevent'ы). 
+>
+>>Prochitaet takoe chelovek v oznakomitel'nyx 
+>>zeljax i reshit ne pol'zovatsja 
+>>selectom. Nachnet pod windows pisat', 
+>>a esli Micro$oft ( ne 
+>>daj bog )obankrotitsja, ostanetsja on 
+>>bez raboty, v samom rascvete 
+>>sil. 
+>
+>Я бы не стал считать абстрактного 
+>человека, читающего мой хоумпейджер, глупее 
+>себя ;-) 
+>
+>
+>>A vot WaitForMultipleEvents dejstvitel'no sluchaj 
+>>kretichnyj. Teper' podumaem chto bysree: 
+>>prosten'kij "loop" na 1024 iteracii 
+>>ili odin "context switch" pri 
+>>perekluchenii threadov ? 
+>
+>Да, с этим я согласен. Но, 
+>когда мы обсуждали эту статью 
+>с ее автором, то выяснилось, 
+>что ему _легче_ разрабатывать его 
+>конкретный сервер основываясь на потоках, 
+>обрабатывающих каждый сокет в отдельности. 
+>Можно себе представить ситуацию, когда 
+>обработка сообщения в сокете настолько 
+>велика, что переключение контекста перестает 
+>быть значительным. 
+>
+>>Resume: 
+>>Pol'zavatsja nado asynchronnym IO, tam gde 
+>>ono est', i selectom, tam 
+>>gde ego ( AsynchIO ) 
+>>net. 
+>
+>aio достаточно сложно в программировании, imho. 
+>Кроме того лично у меня 
+>были проблемы в использовании aio 
+>на разных платформах. 
+>
+>А пользоваться надо тем, что лучше 
+>подходит под конкретную задачу ;-) 
+>
+>
+>>Tem bolee chto est' takoj zamechatel'nyj 
+>>call kak "asynch. file transfer". 
+>>Beret socket, beret file i 
+>>zvonit Vam kogda vse uze 
+>>gotovo. 
+>>( eto k teme "staticheskih serverov" -> http://www.kalinin.ru/programming/network/16_07_01.shtml :) )
+>
+>А есть ли уверенность, что такая 
+>техника будет быстрее kqueue в 
+>freebsd или /dev/poll в solaris? 
+>Я думаю, нет. А kqueue 
+>значительно более общая техника... 
+
+
+</TEXTAREA>
+   </TD></TR>
+   <TR><TH ALIGN="RIGHT" BGCOLOR="#EAE8E0">
+   &nbsp;</TH>
+   <TD BGCOLOR="#EAE8E0" ALIGN="LEFT">
+   <INPUT TYPE="SUBMIT" NAME="preview" VALUE="Preview">
+      <INPUT TYPE="SUBMIT" NAME="post" VALUE="Post Message">
+   <INPUT TYPE="RESET" VALUE="Reset">
+   </TD></TR></TABLE>
+   </form>
+   </center>
+  
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

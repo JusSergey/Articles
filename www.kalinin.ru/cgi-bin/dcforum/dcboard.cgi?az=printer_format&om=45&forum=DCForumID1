@@ -1,0 +1,42 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 45<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/45.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"А что означают проценты в конце темы треда?"</font></b><br>
+Posted by Rolling  on 17-Jun-01 at 03:07&nbsp;AM<br>
+<blockquote>Сабж, собственно. Не увидел никакой нагрузки.</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: А что означают проценты в конце темы треда?</b>,<b>Rolling</b>, 03:08&nbsp;AM, 17-Jun-01
+<ul>
+<li><b>RE: А что означают проценты в конце темы треда?</b>,<b>Andrey L. Kalinin</b>, 10:38&nbsp;AM, 17-Jun-01
+<ul>
+<li><b>RE:сокращенное содержание "Солнце мертвых" Шмелева</b>,<b>helen</b>, 05:54&nbsp;PM, 06-Oct-04
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: А что означают проценты в конце темы треда?"</b><br>
+Posted by Rolling  on 17-Jun-01 at 03:08&nbsp;AM<br>
+<blockquote>
+сорри, уже вообще заговариваюсь.. Не темы, а сокращенного содержания.. Нет, вообще заговариваюсь. Пойду лучше про билд спрошу...
+</blockquote>
+<hr>
+<b>"RE: А что означают проценты в конце темы треда?"</b><br>
+Posted by Andrey L. Kalinin  on 17-Jun-01 at 10:38&nbsp;AM<br>
+<blockquote>
+&gt;сорри, уже вообще заговариваюсь.. Не темы, <BR>&gt;а сокращенного содержания.. Нет, вообще <BR>&gt;заговариваюсь. Пойду лучше про билд <BR>&gt;спрошу... <P>Ничего не значат, как я понимаю. издержки dcforum'а --- там внутри все хранится в quoted-printable, так вот эти проценты, как я понимаю, остаток от строки в том случае, если она поделилась по середине quoted-printable символа. Глупость, конечно, но для того чтобы исправить, надо с исходниками форума разбираться.<BR>
+</blockquote>
+<hr>
+<b>"RE:сокращенное содержание "Солнце мертвых" Шмелева"</b><br>
+Posted by helen  on 06-Oct-04 at 05:54&nbsp;PM<br>
+<blockquote>
+&gt;&gt;сорри, уже вообще заговариваюсь.. Не темы, <BR>&gt;&gt;а сокращенного содержания.. Нет, вообще <BR>&gt;&gt;заговариваюсь. Пойду лучше про билд <BR>&gt;&gt;спрошу... <BR>&gt;<BR>&gt;Ничего не значат, как я понимаю. <BR>&gt;издержки dcforum'а --- там внутри <BR>&gt;все хранится в quoted-printable, так <BR>&gt;вот эти проценты, как я <BR>&gt;понимаю, остаток от строки в <BR>&gt;том случае, если она поделилась <BR>&gt;по середине quoted-printable символа. Глупость, <BR>&gt;конечно, но для того чтобы <BR>&gt;исправить, надо с исходниками форума <BR>&gt;разбираться. <P><BR>
+</blockquote>
+<hr>
+</font></body></html>

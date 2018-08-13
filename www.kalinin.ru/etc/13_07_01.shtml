@@ -1,0 +1,458 @@
+<html><head><title>ALK :: Просто так :: Круглая дата.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/etc/">просто так</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/cpp/09_07_01.shtml">&lt;&lt;</a>&nbsp;13.07.01&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Круглая дата
+</h1> 
+  <p align="justify">
+    Тихо-тихо и незаметно прошла историческая дата: 11 июля 2000 года
+    я написал первую заметку и выложил ее на свою домашнюю страничку. На самом
+    деле, я сам про это забыл и ни за чтобы не вспомнил, если бы меня
+    не поздравил в форуме мой бывший одногруппник... надо сказать,
+    было очень приятно. Сам забыл, а вот кто-то помнит. Спасибо.
+  </p>
+  <p align="justify">
+    Другое дело, что у меня уже давно сложилось такое впечатление, что 
+    это отмечание круглых дат несколько бессмысленно. Ну год. Ну и
+    что, спрашивается, дальше? Вот первый месяц дался в свое время
+    значительно сложнее, было непонятно о чем писать и кому это надо, 
+    а сейчас все как-то устаканилось, превратилось в приятное
+    времяпровождение. Поэтому дата сама по себе никакого значения не
+    играет. 
+  </p>
+  <p align="justify">
+    Принято по истечению подобных временных интервалов подводить
+    итоги, говорить о планах на будущее --- не буду. Уже недавно этим
+    занимался, приурочив подведение итогов к такому более
+    знаменательному событию, как смена дизайна.
+  </p>
+  <p align="justify">
+    Но первый месяц, на мой взгляд, был значительно более
+    определяющим, чем весь год. Мало того, заметил, что практически во
+    всех более-менее долгоживущих местах интернета, ведомых одним
+    человеком (то что Дима Смирнов называет "авторскими проектами")
+    всегда где-нибудь в начале есть заметка о том, что нужно помещать
+    на домашние странички и чего делать нельзя ни в коем случае. 
+  </p>
+  <p align="justify">
+    Объясняется это достаточно просто: человек ищет то, чем он 
+    хотел бы заниматься. Крайне редко, когда автор начинает писать статьи 
+    в таком странном жанре, как сетевое графоманство, зная о том, что
+    он хочет написать. Это странно, я думаю, слышать, но это так. Если 
+    автор знает, что он хочет написать, то он выбирает себе более
+    специализированные формы самовыражения, например, журналы.
+  </p>
+  <p align="justify">
+    Надо сказать, что  подобные опыты не становятся
+    интересными сразу. Обычно этот период метаний из стороны в сторону
+    совершенно бестолков, если не считать того, что дает автору
+    понимание своих желаний. Потому что,
+    "авторский проект" никогда не рождается осознанно. Он появляется
+    потому, что в человеке накопилась некоторая критическая масса
+    самых разнообразных желаний, начиная от простого "хочу как
+    Экслер!" и кончая желанием рассказать людям о морских свинках. 
+  </p>
+  <p align="justify">
+    При этом очень важно, чтобы нежизнеспособные, неконструктивные
+    желания умерли бы как можно раньше. То есть перестать хотеть быть
+    Экслером надо, по возможности, в первую неделю.
+  </p>
+  <p align="justify">
+    Зато по истечению какого-нибудь, достаточно продолжительного
+    срока, можно говорить о жизнеспособности оставшихся желаний. 
+    Метания прекращаются, автор перестает изображать из себя акына, а
+    просто обдумывает, планирует свои тексты. Это очень полезно, честно говоря. 
+  </p>
+  <p align="justify">
+    Кстати сказать, возможность писать тексты так, как хочется автору, 
+    это замечательно. И это вторая проблема, которая появляется сразу
+    же после первого месяца: потому что если печь статьи для того,
+    чтобы дотянуть до годовщины, то автор может перестать понимать,
+    о чем ему хочется рассказывать. Зато будет привычка рассказывать.
+    После этого тексты станут жвачкой. Эту жвачку
+    точно так же будут читать, будут приходить люди, приученные ее
+    потреблять и именно тогда годовалость будет великим достижением.
+  </p>
+  <p align="justify">
+    Для того, чтобы чуть понятнее объяснить то, что я имею в виду,
+    попытаюсь привести пример "из жизни".
+    В начале этого года мне предложили начать писать 
+    статьи для журнала BYTE/Россия. Я этому предложению обрадовался,
+    но... в итоге выяснилось, что все далеко не так просто, как я думаю.
+  </p>
+  <p align="justify">
+    Надо сказать, что российские журналы, связанные с компьютерной
+    тематикой, я обычно не читаю. Чтобы не расстраиваться. Потому что
+    авторы, пишущие туда статьи, в большинстве своем настолько странно 
+    излагают информацию, что возникает много сомнений в их
+    компетентности. Точнее, есть один академический журнал
+    "Программирование", выпускаемый РАН, но он выходит раз в два
+    месяца и его можно получать только по подписке. Этот журнал,
+    конечно же, вполне профессионален. 
+  </p>
+  <p align="justify">
+    Глянцевые же журналы рассчитаны, по моим наблюдениям, на
+    домохозяек. Мало того, всегда есть странное ощущение, что статьи
+    написаны по рекламным проспектам фирмы
+    Microsoft. 
+  </p>
+  <p align="justify">
+    Честно говоря, я думал что с BYTE ситуация будет иной. Но
+    выходящие номера не переставали удивлять. Чего стоит номер
+    посвященный Unix! В нем рассказывалось, к примеру, о браузере
+    Konquer (как им пользоваться).
+  </p>
+  <p align="justify">
+    Мой стиль изложения несколько
+    витиеват и мне, конечно же, хотелось бы выслушать критику
+    профессионального редактора. Сотрудничество с BYTE, как я
+    надеялся, дало бы мне такую возможность и позволило бы мне выправить в
+    лучшую сторону "письменную речь". Но... в общем, почему-то
+    BYTE откровенно пытается занять нишу "мурзилки" для среднего
+    менеджмента. Соответственно, странно было бы видеть свои
+    технические статьи в таком окружении. Например, вскоре я опубликую 
+    здесь статью о kevent'ах, комментарии со стороны редакции BYTE к
+    которой поразили меня просто до глубины души...
+  </p>
+  <p align="justify">
+    Но главное из этих комментариев, как я думаю, я все же понял. Дело 
+    совсем не в том, что журналисты не понимают о чем
+    пишут. Точнее, они знают об отрывочности своих знаний, но уверены,
+    что есть некоторый магический джентльменский набор, при
+    помощи которого они могут "уловить суть" и донести ее до
+    читателя. При этом, автоматически, любой читатель, который знает
+    больше этого джентльменского набора журналиста, ставится в глупое 
+    положение: его заставляют читать какой-то срез по знаниям
+    журналиста. Это, почему-то, считается профессионализмом и заботой
+    о читателях.
+  </p>
+  <p align="justify">
+    В то же самое время, мне казалось, что статья о kevent'ах является 
+    очень своевременной. Эта возможность появилась относительно
+    недавно в FreeBSD, а у меня буквально "на глазах" имеется
+    пример ее успешного использования. 
+    Поэтому хочется
+    донести до сетевых программистов ощущения человека, который видел
+    данную технологию в действии. Тем не менее, это как раз такая тема, 
+    когда "малого джентльменского набора" попросту не хватает. Можно 
+    много и долго говорить о знакомстве с основными понятиями теории
+    информации, но это не заменит прикосновения к реальной проблеме
+    сетевого программирования, когда нельзя увеличить
+    производительность программы не меняя при этом код ядра
+    операционной системы, занимающегося  переливанием из
+    пустого в порожнее. Мне
+    было предложено "не считать читателей виноватыми в том, что они
+    чего-то не понимают" (странное утверждение) и написать о том, на
+    что "малого набора" хватит. "Вот у меня есть домашняя страничка,
+    на ней фотография и немного текста. Что Вы мне предложите?"
+    Это вопрос к статье, в которой рассматривались сравнительные
+    характеристики использования select(), poll() и kqueue() в
+    web-серверах, работающих под большими нагрузками!
+  </p>
+  <p align="justify">
+    Насколько же лучше писать о том, что знаешь и о том, о чем хочешь
+    написать, не пользуясь при этом "малым джентльменским набором"
+    и не впадая в маразм. Это значительно приятнее. Я уверен в том,
+    что любой человек, который хочет о чем-то рассказывать, лучше
+    всего будет делать это о том, в чем он хорошо разбирается и что он 
+    уже в достаточной степени выстрадал. Профессионализм в этой
+    ситуации (тот, который приходит с годами) может только помешаться.
+  </p>
+  <p align="justify">
+    Так вот, прошедший год не имеет никакого отношения к качеству
+    материала. Скорее, наоборот --- чем дольше, тем все выше
+    вероятность скатиться до написания статей с использованием
+    подобного "малого джентльменского набора", рассказывая о том, с
+    чем сам не работал.
+  </p>
+
+<h2>Резюме</h2>
+  <p align="justify">
+    Годовщина моей домашней странички это совсем не показатель
+    качества. То что я пишу статьи год, совершенно не значит, что эта
+    статья лучше самой первой или то, что материал, написанный мною,
+    качественен. В данном случае, если качество и можно как-то
+    измерять, то это не время, а одобрение или неодобрение людей, не
+    ограничивающимися "джентльменскими наборами". 
+  </p>
+<br>
+<p align="right"><a target="_blank" href="/etc/print_13_07_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://spectator.ru/issues/261" target="_blank">http://spectator.ru/issues/261</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Статья "ежекризисы" у Спектатора. Наверное, вполне в тему.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_09_01.shtml">После отпуска </a> (23.09.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется иногда написать что-то в виде зарисовки. Так сказать, "из жизни" --- О.Генри очень много издевался над подобным жанром и авторами,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_09_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/15_06_01.shtml">Новый дизайн, часть 2 </a> (15.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как многие могли заметить, kalinin.ru наконец-то сменил дизайн. Тому было много причин, о которых я хотел бы рассказать, кроме того просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/15_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_11_08.shtml">Арендованный сервер от hcenter.ru и хостинг в Германии </a> (30.11.08)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Началось всё с того, что я решил попробовать арендовать сервер в Германии. Я слышал много положительных отзывов в пользу такого мнения,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_11_08.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_09_01.shtml">После отпуска </a> (23.09.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется иногда написать что-то в виде зарисовки. Так сказать, "из жизни" --- О.Генри очень много издевался над подобным жанром и авторами,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_09_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/13_07_01.shtml">Круглая дата </a> (13.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Тихо-тихо и незаметно прошла историческая дата: 11 июля 2000 года я написал первую заметку и выложил ее на свою домашнюю страничку....<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/13_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/15_06_01.shtml">Новый дизайн, часть 2 </a> (15.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как многие могли заметить, kalinin.ru наконец-то сменил дизайн. Тому было много причин, о которых я хотел бы рассказать, кроме того просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/15_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/05_03_01.shtml">Театральные билеты </a> (05.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Мне всегда смешно смотреть по телевидению на очередного актера, когда тот с придыханием начинает говорить об искусстве, о спектаклях, о театре......<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/05_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_02_01.shtml">Авторское право </a> (12.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Авторское право... до чего же, однако, скользкий термин. Самое смешное, каждый автор и каждый нарушитель авторского права трактуют его по-своему и...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/31_12_00.shtml">С новым годом! </a> (31.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Прекрасно понимаю, что поздравления с Новым Годом, наверное, уже приелись людям... но, с другой стороны, это, фактически, единственный настоящий праздник. Настоящий...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/31_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

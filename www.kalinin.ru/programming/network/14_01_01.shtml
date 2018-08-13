@@ -1,0 +1,464 @@
+<html><head><title>ALK :: Сети :: Введение в CORBA.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/network/">сети</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/soft/07_01_01.shtml">&lt;&lt;</a>&nbsp;14.01.01&nbsp;<a href="/stud/22_01_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Обзор CORBA
+</h1> 
+    <p align="justify">
+      CORBA (расшифровывается как Common Object Request Broker)
+      это технология, которая позволяет рассматривать 
+      компоненты распределенной системы как объекты,
+      отвечающие некоторым определенным интерфейсам. Эта
+      технология дает возможность единым образом конструировать
+      эти интерфейс при помощи специального декларативного
+      языка IDL (Interface Definition Language). При этом
+      интерфейс и его описание не зависит от используемого
+      языка программирования, операционной системы или архитектуры
+      процессора. Таким образом, один объект может быть написан
+      на C++, другой --- на Java, и эта два объекта могут
+      успешно друг с другом взаимодействовать и при этом
+      не заботиться о формате данных (например, представления
+      целых чисел или символов). 
+    </p>
+    <p align="justify">
+      Эта возможность очень удобна для программистов, потому
+      что используя такой подход можно конструировать взаимодействие
+      между распределенными объектами при помощи тех же средств, которые
+      применяются для описания взаимосвязей обычных объектов в пределах
+      одной программы на одном компьютере. Популярные 
+      CASE-средства, такие как Rational Rose, WithClasses или Together,
+      позволяют создавать UML-схемы и экспортировать их в
+      описания интерфейсов IDL.
+    </p>
+    <p align="justify">
+      Основой технологии CORBA является ORB (Object Request Broker) --- 
+      нечто, что позволяет передавать сообщения от одного объекта к другому.
+      Это "нечто" может быть реализовано в виде библиотеки, специального
+      сетевого сервиса, объектно-ориентированной СУБД или уже быть
+      включенным в операционную систему. ORB дает возможность не задумываться
+      объектам, которых он обслуживает, о том, где находятся 
+      другие объекты, которым передаются сообщения. Кроме того,
+      он скрывает все детали реализации объектов, оставляя
+      снаружи только их интерфейсы. 
+    </p>
+    <p align="justify">
+      Под названием "реализация CORBA", по сути, понимается
+      как раз наличие конкретного ORB и средств для общения с ним.
+      Кроме того, в реализацию CORBA входят дополнительные утилиты,
+      такие как транслятор интерфейса, написанного на IDL,
+      в код, который будет обеспечивать поддержку сетевых средств 
+      CORBA в конкретном языке программирования (например,
+      Java или C++). Таким образом, один ORB обеспечивает средства
+      для общения объектов, написанных при помощи средств,
+      с ним поставляемым.
+    </p>
+    <p align="justify">
+      Это все не было бы так интересно, если бы отсутствовала возможность
+      взаимного использования объектов, написанных и существующих
+      в сети при посредстве различных ORB. Эта возможность
+      существует и достигается она при помощи специального
+      протокола взаимодействия между ORB, что позволяет передавать сообщения
+      и запросы
+      от одного ORB к другому. Поэтому есть
+      возможность вызывать методы любого объекта, который существует
+      на данный момент в сети. 
+    </p>
+    <p align="justify">
+      Каждый объект определяется специальной
+      ссылкой на него. Эта сслыка служит аналогом указателя
+      в терминологии обычных языков программирования. Для того, чтобы
+      получить доступ к некоторому объекту, сначала необходимо каким-то
+      образом узнать ссылку на него. Удобным является то, что 
+      существуют средства преобразования ссылки в строку и обратно.
+      Подобная строка едина для всех ORB и позволяет уникальным
+      образом идентифицировать объект. Опять же, было бы не особенно
+      удобным пользоваться этой услугой, если бы не существовало средств
+      для получения ссылок на объекты через их наименования, интерфейсы 
+      и т.п. 
+    </p>
+    <p align="justify">
+      Одной из самых главных черт технологии CORBA является
+      полное скрытие деталей реализации. Об этом уже написано
+      выше, но хотелось бы еще раз подчеркнуть это свойство. 
+      Используя CORBA, пользователь некоторого объекта
+      видит перед собой только описание интерфейсов
+      объекта в виде IDL, например:
+    </p>
+<pre>
+interface Random {
+
+    // return non-negative long 
+    // integer in the interval [0, 2^31)
+    long lrand48();
+
+    // return signed long integer 
+    // in the interval [-2^31, 2^31)
+    long mrand48();
+};
+</pre>
+    <p class="table">
+      Это реальный интерфейс демонстрационного объекта,
+      доступный по адресу random.org. Объект
+      идентифицируется строкой
+    </p>
+<pre>
+IOR:000000000000000f49444c3a52616e646f6d3
+a312e300000000000010000000000000050000100
+0000000016706c616e7874792e6473672e63732e7
+463642e69650006220000002c3a5c706c616e7874
+792e6473672e63732e7463642e69653a52616e646
+f6d3a303a3a49523a52616e646f6d00
+</pre>
+    <p class="table">
+      и позволяет получить случайное число. Смотря на эти данные,
+      пользователь объекта ничего не знает о том, как
+      устроен генератор случайных чисел, на каком языке
+      программирования он написан и где находится. Но после
+      некоторых предварительных действий в своей программе (инициализация
+      ORB) он может использовать этот генератор случайных
+      чисел как обычный объект, который написан на
+      используемом языке программирования:
+    </p>
+<pre>
+for(int i = 0; i &lt; 10; i++)
+   printf("%li\n", obj-&gt;lrand48();
+</pre>
+    <p align="justify">
+      Вообще говоря, клиент может вообще сначала не знать
+      интерфейса объекта, который пытается использовать.
+      Средствами ORB можно узнать этот интерфейс во время
+      выполнения (без IDL) и сгенерировать запрос
+      к объекту на основе его интерфейса.
+    </p>
+    <p align="justify">
+      Таким образом, CORBA дает возможность прозрачного
+      использования различных объектов, вне зависимости
+      от их месторасположения и используемого языка программирования.
+      Это очень удобно, поскольку при помощи CORBA для
+      написания распределенной программной системы от
+      программиста не требуется знаний сетевых протоколов
+      или заботы об исключительных ситуациях. 
+    </p>
+    <p align="justify">
+      Но... как обычно, и у этой технологии есть свои
+      недостатки. Прежде всего, за все удобства надо расплачиваться.
+      Использование CORBA более ресурсоемко, чем использование
+      менее "удобных" технологий, например, интерфейса сокетов.
+      Кроме того, как мне кажется, CORBA становится слишком
+      перегружена заложенными в нее возможностями. Понятно, что 
+      большая часть задач решается при помощи CORBA без
+      использования всех ее возможностей, но их количество
+      ведет к усложнению реализаций и, как следствие, к большему
+      количеству ошибок. В дополнение еще можно сказать о том,
+      что CORBA относительно молодая (относительно того же интерфейса
+      сокетов), поэтому значительно менее "обкатанная" технология. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      На мой взгляд, CORBA является весьма перспективной технологией, но
+      на текущий момент я бы не стал рекомендовать ее к использованию. Связано
+      это просто с отсутствием доверия к ее реализациям и сомнением в быстродействии.
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/programming/network/print_14_01_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.corba.org" target="_blank">http://www.corba.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт CORBA.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.omg.org" target="_blank">http://www.omg.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт OMG.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.mico.org" target="_blank">http://www.mico.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт MICO (Mico Is COrba), реализация CORBA 2.3 для C++, распространяемая     по лицензии GPL. Очень хорошая документация, содержащая подробно прокомментированные     примеры; рекомендую знакомиться с CORBA именно по этой документации.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.cetus-links.org/oo_corba.html" target="_blank">http://www.cetus-links.org/oo_</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Коллекция ссылок по CORBA на сайте Cetus links.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://random.org" target="_blank">http://random.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Генератор "настоящих" случайных чисел.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/22_01_01.shtml">Опыт, сын ошибок трудных... </a> (22.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Не умеют студенты программировать. Не все, конечно же, бывают и исключения, но "ан масс" --- не умеют. Можно обвинять в этом...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/22_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/12_12_00.shtml">Событийная модель в WinSock </a> (12.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Автором этого текста является Gregory Liokumovich ( ). Он любезно прислал мне этот текст, связанный с программированием сетей при помощи интерфейса...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/12_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/22_01_01.shtml">Опыт, сын ошибок трудных... </a> (22.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Не умеют студенты программировать. Не все, конечно же, бывают и исключения, но "ан масс" --- не умеют. Можно обвинять в этом...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/22_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

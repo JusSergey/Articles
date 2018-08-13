@@ -1,0 +1,15 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 189<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/189.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"помогите с xslt преобразованием "</font></b><br>
+Posted by александр   on 21-Feb-06 at 01:10&nbsp;AM<br>
+<blockquote>Помогите,пожалуйста написать преобразование. Мне нужно преобразовать xml-документ с вложенной структурой в линейный список. <BR>То есть,к примеру,есть следующая схема: <BR>&lt;книга&gt; <BR>&lt;автор&gt; <BR>&lt;ID&gt;1&lt;/ID&gt; <BR>&lt;Фамилия&gt;Толстой&lt;/Фамилия&gt; <BR>&lt;год рождения&gt;1828&lt;/год рождения&gt; <BR>&lt;страна&gt; <BR>&lt;ID&gt;1&lt;/ID&gt; <BR>&lt;название&gt;Россия&lt;/название&gt; <BR>&lt;/страна&gt; <BR>&lt;/автор&gt; <BR>&lt;название&gt;Воина и мир&lt;/название&gt; <BR>&lt;издательство&gt; <BR>&lt;ID&gt;10&lt;/ID&gt; <BR>&lt;название&gt;Просвещение&lt;/название&gt; <BR>&lt;адрес&gt;АДРЕС&lt;/адрес&gt; <BR>&lt;/издательсво&gt; <BR>&lt;тираж&gt;250000&lt;/тираж&gt; <BR>&lt;/книга&gt; <P>Нужно получить на выходе следующее: <P>&lt;книга&gt; <BR>&lt;ID автора&gt;1&lt;/ID автора&gt; <BR>&lt;название&gt;Воина и мир&lt;/название&gt; <BR>&lt;ID издательства&gt;10&lt;/ID издательства&gt; <BR>&lt;тираж&gt;250000&lt;/тираж&gt; <BR>&lt;/книга&gt; <BR>&lt;автор&gt; <BR>&lt;ID&gt;1&lt;/ID&gt; <BR>&lt;Фамилия&gt;Толстой&lt;/Фамилия&gt; <BR>&lt;год рождения&gt;1828&lt;/год рождения&gt; <BR>&lt;ID страны&gt;1&lt;/ID страны&gt; <BR>&lt;/автор&gt; <BR>&lt;издательство&gt; <BR>&lt;ID&gt;10&lt;/ID&gt; <BR>&lt;название&gt;Просвещение&lt;/название&gt; <BR>&lt;адрес&gt;АДРЕС&lt;/адрес&gt; <BR>&lt;/издательсво&gt; <BR>&lt;страна&gt; <BR>&lt;ID&gt;1&lt;/ID&gt; <BR>&lt;название&gt;Россия&lt;/название&gt; <BR>&lt;/страна&gt; <BR>То есть задача состоит в том,чтобы преобразовать вложенную схему(любой уровень вложенности) в линейную структуру. <BR>Буду очень благодарен за помощь!</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+</font></body></html>

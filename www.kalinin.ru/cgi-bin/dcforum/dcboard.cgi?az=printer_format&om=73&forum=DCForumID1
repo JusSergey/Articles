@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 73<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/73.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"аналог RegisterServiceProcess в виндовс ХР"</font></b><br>
+Posted by deTest  on 22-Mar-02 at 08:14&nbsp;PM<br>
+<blockquote>народ помогите пожалуйста! написал прогу для удаленного администрирования, все прекрасно работает...но есть нюансы. Я прячу маленький сервачок от ctrl+alt+del (я имею в виду список процессов) с помощью функции kernel32.dll RegisterServiceProcess. под 9х все отлично! а под ХР/2000 не работает пишет что функции таковой нет!<BR>Помогите плиз решить проблемку прятания своего кода от посторонних глаз - чтоб не отображалась прожка в списке процессов! Сенкс!</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: аналог RegisterServiceProcess в виндовс ХР</b>,<b>Guru</b>, 09:08&nbsp;PM, 28-Oct-02
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: аналог RegisterServiceProcess в виндовс ХР"</b><br>
+Posted by Guru  on 28-Oct-02 at 09:08&nbsp;PM<br>
+<blockquote>
+У меня таже фигня! Только ты ошибочку допустил-он не может писать, что такой функции нет. Он пишет, что не может ее использовать! У меня как-то под XP зароботала... Теперь опять глючит!
+</blockquote>
+<hr>
+</font></body></html>

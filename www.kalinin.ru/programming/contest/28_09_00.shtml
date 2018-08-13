@@ -1,0 +1,457 @@
+<html><head><title>ALK :: Соревнования :: Критика правил олимпиад ACM.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/contest/">соревнования</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/xml/27_09_00.shtml">&lt;&lt;</a>&nbsp;28.09.00&nbsp;<a href="/comment/books/29_09_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Критика правил олимпиад ACM
+</h1> 
+    <p align="justify">
+      Вы знаете, самое смешное заключается в том, что я уверен
+      в полной практической бесполезности навыков, которые были
+      мной получены на олимпиадах. Понятно, что особенно похвастаться
+      мне не чем: команда, в которой я выступал никогда не была самой первой...
+      один раз она была второй, это оказалось пределом для нас (хотя тогда
+      казалось, что нет). 
+    </p>
+    <p align="justify">
+      Так вот: на практике все эти "соревновательные" рефлексы просто не к чему,
+      а иногда просто мешают...
+    </p>
+    <p align="justify">
+      Но хочется рассказать о том, как сейчас проводятся соревнования по 
+      программированию среди студентов. Состязания командные: команда состоит
+      из трех человек и на каждую команду выделяется один
+      компьютер. Обычно соревнование длится 5-6 часов, за которые
+      надо решить как можно больше задач из предложенного
+      набора (количеством от 5 до 7). 
+    </p>
+    <p align="justify">
+      Участники могут сколько угодно раз посылать программы-решения
+      на проверку и видеть текущее состояние
+      турнирной таблицы, на которой показано положение всех команд,
+      рассчитываемое исходя из количества решенных задач и полученных
+      штрафных очков. За час до конца состязаний турнирная таблица
+      "замораживается", т.е. перестает показывать актуальное состояние.
+      Это позволяет сохранить интерес участников к результатам
+      олимпиады. Кроме того, за пять минут до конца перестают
+      приходить результаты тестирования решений: при
+      помощи этого организаторы борятся со шквалом решений, поступающих
+      от участников в последние минуты матча (сдают все, что только можно:
+      вдруг пройдет?) и еще более драматизируют развязку.
+    </p>
+    <p align="justify">
+      Кроме того, программа-решение считается правильной, если
+      ее вывод признан правильным на наборе тестов жюри, при этом
+      исходный текст никак не анализируется (кроме проверки
+      выполнения запрещенных действий) и решение засчитывается
+      только "целиком", без всяких "идея верна, но где-то ошибка
+      в реализации".
+    </p>
+    <p align="justify">
+      Все это, а в особенности существование доступной
+      участникам турнирной таблицы, делает соревнования
+      очень похожими на спортивные. Страсти иногда накаляются
+      до такой степени, что болельщики становятся похожими
+      на футбольных фанатов.
+    </p>
+    <p align="justify">
+      Раньше в СССР проводились свои олимпиады по программированию, которые
+      были устроены немного по-другому. Во-первых, каждый участник 
+      имел свой собственный компьютер и командная оценка выставлялась
+      как сумма оценок всех участников. Во-вторых, не была доступна
+      турнирная таблица. В-третьих, тщательно выверялся исходный
+      текст решений с целью поиска в них правильных идей. В-четвертых,
+      никто не требовал от команд сдачи решений в как можно сжатые
+      сроки (в современных олимпиадах на команду начисляется тем больше
+      штрафных очков, чем дольше времени прошло в момент подачи решения от 
+      начала состязаний) и все решения анализировались после истечения
+      времени олимпиады.
+    </p>
+    <p align="justify">
+      На мой взгляд, "старый" подход значительно объективнее "нового", который
+      позаимствован из олимпиад ACM (Association for Computer Machinery). Прежде
+      всего, весь этот накал страстей среди участников не способствует
+      их собранности и, поэтому, внутреннее психологическое
+      состояние человека очень шатко. Любая неудача может вывести
+      его из себя до конца соревнований так, что он больше
+      ничего сделать не сможет. Таким образом, выиграет
+      команда, которая является более психологически собранной в данный
+      момент, даже если ее участники относительно слабые. А это
+      достаточно странно: потому что оцениваются "программистские" качества
+      людей, а не их устойчивость к внешним раздражителям. Фактически
+      на командах сказывается практически все, что происходило с ними
+      в последние дни: переезд в другой город, гостиница, новое место,
+      бессоница, легкая простуда и т.д.
+    </p>
+    <p align="justify">
+      Кроме того, получается так, что людей заставляют решать
+      задачи на скорость. А это совсем оторвано от реальности, потому
+      что программист должен писать программы прежде всего качественно
+      и в расчете на последующие изменения, а не на использование в ближайшие
+      пять минут. Программист --- не курьерский поезд. 
+    </p>
+    <p align="justify">
+      Все задачи оцениваются одинаково. Фактически это означает, что если
+      в блоке задач была одна нерешаемая и несколько простых, то команда,
+      решившая простые, займет более высокое положение,
+      чем команда, которая решила "нерешаемую" задачу (одну). Это уж совсем неправильно,
+      потому что реальной заслугой является именно решение сложных задач,
+      а не простых. Организаторы утверждают, что таким образом
+      они заставляют команды (и участников) оценивать задачи самостоятельно.
+      Это сомнительно, потому что решение сложной задачи (пусть и с заранее
+      известной оценкой) опять же много более ценно, чем умение выдлять
+      простые.
+    </p>
+    <p align="justify">
+      Решения оцениваются по работе программ, их представляющих.
+      Это значит, что программа пропускается сквозь набор тестов и ответы
+      сверяются с заранее подготовленными. Это неправильно в принципе: еще Дейкстра
+      писал о том, что тестирование не может доказать корректность
+      работы программы, оно может лишь опровергнуть это утверждение.
+      Таким образом, отказ от анализа решения приводит к тому, что
+      участники стараются сделать программу, дающую ответы "как у жюри"
+      на предложенные тесты (они неизвестны, но о них
+      можно догадаться), а не решить задачу. Надеюсь, разница ясна?
+    </p>
+    <p align="justify">
+      Кроме того, мне совершенно неясно, почему на олимпиаде по
+      программированию (!!!) не учитывается исходный текст программы. Это
+      просто жутко, если вдуматься: в реальной жизни человек
+      может решать любые задачи, но ему будет грош цена, если
+      у него будет непонятный исходный текст. Программа никогда
+      не становится законченной вещью, всегда через
+      некоторое время в нее придется  добавить новую
+      функциональность. И что хорошего, если для этого все придется переписывать
+      заново?
+    </p>
+    <p align="justify">
+      Остальные замечания относятся к выбору задач на олимпиадах.
+      На самом деле, очень сложно отделить программирование от
+      конкретных приложений. Все дело в том, что программирование
+      само по себе никогда не существует, оно всегда применятся для
+      решения возникающих проблем из самых разных областей человеческого
+      знания. Тем не менее, программирование представляет из себя
+      отдельную науку, которая требует тщательнейшего изучения и
+      своей собственной методики оценок. К сожалению, это 
+      до сих пор не сделано, и задач именно по программированию,
+      фактически, не существует. Есть задачи на приложение
+      программирования к, например, решению математических 
+      проблем. Существуют множество задач на знание основных
+      алгоритмов обработки данных... задачи на теорию
+      расписаний... на комбинаторику... в общем, на все что угодно.
+      Обычно выбор темы остается на совести автора задачи, который
+      сам по себе является специалистом в какой-то области
+      математики или просто вспомнил какую-то теорему, когда
+      придумывал задачу. Это не является задачами на программирование!
+      Понятно, что программист должен знать комбинаторику, владеть
+      элементами математического анализа, но это не значит, что
+      его "качество" как программиста можно оценить по знаниям этих
+      предметов. На всякий случай повторю: нельзя в олимпиаде по
+      программированию оценивать решение без учета организации
+      исходного текста. Это просто абсурд.
+    </p>
+    <p align="justify">
+      Все эти недостатки приводят к тому, что лучшими на подобных
+      соревнованиях, скорее всего, будут не самые сильные и опытные
+      программисты. Мало того, программисты "практикующие", т.е.
+      реально работающие, будут на таких олимпиадах проигрывать,
+      просто потому что никогда не пишут программы на скорость; не 
+      привыкли нервничать при работе; решают задачи в удобном 
+      порядке, а не в нужном.
+    </p>
+    <p align="justify">
+      Организаторы состязаний утверждают, что "упаковка" участников
+      в команды дает им опыт работы в  группе разработчиков. 
+      Смею вас заверить, это бред чистейшей воды. "Команда" придает 
+      лишнюю нервозность: один человек находится за компьютером
+      и, если у него что-то не получается, то он будет "тормозить"
+      весь коллектив, от чего сразу же становится не по себе
+      всем участникам команды. А работа группы разработчиков подчиняется
+      другим правилам и, вообще, управление группой в реальной жизни
+      совсем не похоже на игру команды. Кроме того, группа разработчиков
+      никогда не решает задачи, которые может сделать один человек.
+      Группа набирается только для работы над большими программными
+      системами, где основные проблемы уже не алгоритмические, а проектные.
+      Точнее, нельзя сказать, что какая-то из этих проблем доминирующая: они
+      вообще "ортогональны" друг другу. Проектирование же является задачей
+      ничуть не менее сложной, чем алгоритмические проблемы. Таким образом,
+      командная игра в смысле ACM ничего не дает участникам как будущим программистам.
+    </p>
+    <p align="justify">
+      Так вот: "старые" олимпиады были значительно честнее. Потому что оценивали
+      программистов и не устраивали шоу.
+    </p>
+    <p align="justify">
+      Хотя, как шоу олимпиада по этим правилам очень здорово смотрится. Честно. И участие
+      в них... в общем, это что-то сложно описуемое (в смысле, не в этой заметке). За
+      это можно многое простить. Но я никогда не считал полученную
+      турнирную таблицу объективной. Во всяком случае, полностью объективной --- команда, которая
+      занимает первое место обычно вполне достойна этого (как, впрочем, и многие другие).
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      В олимпиадах очень интересно участвовать; кроме того,
+      интересно их проводить. Но результаты соревнований
+      никогда не бывают полностью объективными: в отличие от спорта,
+      программирование имеет конкретное приложение и профессиональный
+      программист не нуждается в каких-либо оценках "со стороны".
+    </p>
+<h2>PS</h2>
+    <p align="justify">
+      Со 2 по 4 октября состоятся четвертьфинальные соревнования чемпионата мира
+      по программированию. Пройдут они, опять, в Рыбинске... соответственно, я везу
+      туда две команды от МАИ, потому и мысли мои  обращены в последнее время к 
+      предстоящим соревнованиям.
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/programming/contest/print_28_09_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.acm.org/contest" target="_blank">http://www.acm.org/contest</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Домашняя страница олимпиад ACM.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.ifmo.ru/neerc" target="_blank">http://www.ifmo.ru/neerc</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Официальная страница полуфинала чемпионата мира по программированию на сервере Института Точной Механики и Оптики в Санкт-Петербурге.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/22_10_00.shtml">III Московская командная олимпиада по программированию </a> (22.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вот уже в третий раз МГУ проводит Московскую командную олимпиаду по программированию по правилам, аналогичным правилам ACM. Можно о корректности этих...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/22_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/29_09_00.shtml">Язык UML, рукводство пользователя </a> (29.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+UML (Unified Modeling Language, унифицированный язык моделирования) является еще одной популярной аббревиатурой, которой очень часто пользуются, не понимая того, что за...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/29_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/27_09_00.shtml">Средства для разбора XML-файлов </a> (27.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+С момента последнего обновления в этом разделе прошло уже больше месяца... но ведь никто же никому ничего не обещал? ;) Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/27_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/22_10_00.shtml">III Московская командная олимпиада по программированию </a> (22.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вот уже в третий раз МГУ проводит Московскую командную олимпиаду по программированию по правилам, аналогичным правилам ACM. Можно о корректности этих...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/22_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/28_09_00.shtml">Критика правил олимпиад ACM </a> (28.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы знаете, самое смешное заключается в том, что я уверен в полной практической бесполезности навыков, которые были мной получены на олимпиадах....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/28_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/29_09_00.shtml">Язык UML, рукводство пользователя </a> (29.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+UML (Unified Modeling Language, унифицированный язык моделирования) является еще одной популярной аббревиатурой, которой очень часто пользуются, не понимая того, что за...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/29_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/27_09_00.shtml">Средства для разбора XML-файлов </a> (27.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+С момента последнего обновления в этом разделе прошло уже больше месяца... но ведь никто же никому ничего не обещал? ;) Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/27_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html><head><title>ALK :: Digest :: 18.01.02</title>
+</head>
+<body bgcolor="white" text="black">
+<a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+Этот текст распечатан с домашней странички Андрея Калинина 
+(<a href="http://www.kalinin.ru">www.kalinin.ru</a>).<br>
+Оригинал статьи находится по этому адресу: <a href="http://www.kalinin.ru/digest/18.01.02.shtml">http://www.kalinin.ru/digest/18.01.02.shtml</a><br>
+<hr>
+<br>
+
+<h1>Дайджест (18.01.02)</h1>
+<p><a href="http://www.ice.ru/~vitus/catdoc/">Программа для чтения документов Word и Excel.</a> (21:09)</b><br>
+<table width="100%" cellspacing="0" cellpading="0"><tr>
+<td width="15"><img src="/images/1x1.gif" border="0" alt="" width="15" heigth="1"></td>
+<td valign="top" align="justify"><p align="justify">Действительно работоспособная программа, позволяющая 
+читать документы WinWord на терминалах разнообразных
+Unix'ов. На удивление приятно работает с кодировками,
+умеет транслировать из Unicode в koi8 (то есть, надеюсь, использует
+iconv). Макровирусов не запускает. <nobr>&nbsp;&nbsp;&nbsp;<a href="http://www.ice.ru/~vitus/catdoc/">&gt;&gt;&gt;&gt;</a></nobr>
+</p></td></tr></table>
+<p><a href="http://www.research.att.com/~bs/whitespace98.pdf">Статья Б.Страуструпа о переопределении оператора "пробел" [pdf].</a> (19:41)</b><br>
+<table width="100%" cellspacing="0" cellpading="0"><tr>
+<td width="15"><img src="/images/1x1.gif" border="0" alt="" width="15" heigth="1"></td>
+<td valign="top" align="justify"><p align="justify">Несмотря на то, что это всего-лишь первоапрельская
+шутка 1998 года от создателя C++, все равно поучительно.
+Вообще, на мой взгляд возможность переопределения 
+операторов (таких, как сложение или умножение) скорее
+недостаток языка, чем достоинство: от всех этих изысков
+крыша у программиста, читающего исходник, сносится практически
+мгновенно. <nobr>&nbsp;&nbsp;&nbsp;<a href="http://www.research.att.com/~bs/whitespace98.pdf">&gt;&gt;&gt;&gt;</a></nobr>
+</p></td></tr></table>
+
+
+
+
+<hr>
+&copy;2000-2001 by Andrey L. Kalinin, 
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://images.rambler.ru/top100/banner-88x31-rambler-black2.gif" border=0 width=88 height=31></a>
+<br>
+andrey@kalinin.ru
+</body>
+</html>

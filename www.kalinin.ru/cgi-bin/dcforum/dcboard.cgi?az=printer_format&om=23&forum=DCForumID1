@@ -1,0 +1,56 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 23<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/23.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Люди помогите чайнику с реестром..."</font></b><br>
+Posted by johnn  on 24-Jan-01 at 04:23&nbsp;PM<br>
+<blockquote>Если кто знает, объясните как в VC++6.0 считать<BR>информацию из реестра?<BR>Я пытался разобратся сам с функциями типа RegEnumValue() RegSetValue() и иже с ними<BR>но получалось у меня тоько создать ключь в реестре. Да и то с геммороем потому как все эти функции требуют хренову тучу параметров на входе,причем непонятных мне параметров.<BR>Коли невлом объясните как , к примеру, считать<BR>из реестра, ну скажем место расположение папки <BR>Windows или любой другой строки находящейся гденибудь в HKLM\KEY_A\KEY_B...\KEY_N<BR>Буду очень благодарен!</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Люди помогите чайнику с реестром...</b>,<b>Andrey L. Kalinin</b>, 06:09&nbsp;PM, 24-Jan-01
+<ul>
+<li><b>RE: Люди помогите чайнику с реестром...</b>,<b>johnn</b>, 03:20&nbsp;AM, 25-Jan-01
+<li><b>RE: Люди помогите чайнику с реестром...</b>,<b>Denis</b>, 02:25&nbsp;PM, 25-Jan-01
+<ul>
+<li><b>RE: Люди помогите чайнику с реестром...</b>,<b>johnn</b>, 04:19&nbsp;PM, 25-Jan-01
+</ul>
+</ul>
+<li><b>RE: Люди помогите чайнику с реестром...</b>,<b>Denis</b>, 07:05&nbsp;PM, 24-Jan-01
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Люди помогите чайнику с реестром..."</b><br>
+Posted by Andrey L. Kalinin  on 24-Jan-01 at 06:09&nbsp;PM<br>
+<blockquote>
+&gt;Если кто знает, объясните как в <BR>&gt;VC  6.0 считать <BR>&gt;информацию из реестра? <P>К сожалению, у меня сейчас нет доступа к MSDN и старым программам под Windows, которые я когда-то писал (и где были примеры исполльзования), так что привести код я не смогу.<P>&gt;Я пытался разобратся сам с функциями <BR>&gt;типа RegEnumValue() RegSetValue() и иже <BR>&gt;с ними <BR>&gt;но получалось у меня тоько создать <BR>&gt;ключь в реестре. Да и <BR>&gt;то с геммороем потому как <BR>&gt;все эти функции требуют хренову <BR>&gt;тучу параметров на входе,причем непонятных <BR>&gt;мне параметров.<P>Но там, вроде бы, все просто. Вот пример от  Microsoft: <P><a href="http://msdn.microsoft.com/library/psdk/winbase/regapi_0tq1.htm" target="_blank">http://msdn.microsoft.com/library/psdk/winbase/regapi_0tq1.htm</a><BR> <BR>&gt;Коли невлом объясните как , к <BR>&gt;примеру, считать <BR>&gt;из реестра, ну скажем место расположение <BR>&gt;папки <BR>&gt;Windows или любой другой строки находящейся <BR>&gt;гденибудь в HKLM\KEY_A\KEY_B...\KEY_N <BR>&gt;Буду очень благодарен! <P>Насколько я понимаю (MSDN --- вещь) надо сначала сделать RegKeyOpenEx (<a href="http://msdn.microsoft.com/library/psdk/winbase/regapi_7yns.htm" target="_blank">http://msdn.microsoft.com/library/psdk/winbase/regapi_7yns.htm</a>) с правами доступа KEY_READ, затем RegEnumValue или RegQueryValueEx. И RegCloseKey <img src="/dcforum//Images/wink.gif"><P><BR>В общем --- что не работает-то? (что может не работать <img src="/dcforum//Images/wink.gif"> )<BR>
+</blockquote>
+<hr>
+<b>"RE: Люди помогите чайнику с реестром..."</b><br>
+Posted by johnn  on 25-Jan-01 at 03:20&nbsp;AM<br>
+<blockquote>
+Привет.<BR>Денис а поподробнее можно, что такое WSHost?
+</blockquote>
+<hr>
+<b>"RE: Люди помогите чайнику с реестром..."</b><br>
+Posted by Denis  on 25-Jan-01 at 02:25&nbsp;PM<br>
+<blockquote>
+WSHost - Win Script Host.<BR>но это меня чем-то по голове вчера ударило, в VB я ей пользуюсь, а  VC СRegKey - ATL-класс, у него все функции для работы с реестром есть, для его использования надо прописать "Atlbase.h" и всё, если что спрашивай, просто проще действительно в MSDN взять
+</blockquote>
+<hr>
+<b>"RE: Люди помогите чайнику с реестром..."</b><br>
+Posted by johnn  on 25-Jan-01 at 04:19&nbsp;PM<br>
+<blockquote>
+Денис спасибо.<BR>Это именно то что я искал. Намного все проще и понятнее чем в глабальных ф-ях.<BR>Благодарствую!
+</blockquote>
+<hr>
+<b>"RE: Люди помогите чайнику с реестром..."</b><br>
+Posted by Denis  on 24-Jan-01 at 07:05&nbsp;PM<br>
+<blockquote>
+Приветик!<BR>А если использовать WSHost?<BR>если такой путь подходит, то он самый простой.<P>Денис.
+</blockquote>
+<hr>
+</font></body></html>

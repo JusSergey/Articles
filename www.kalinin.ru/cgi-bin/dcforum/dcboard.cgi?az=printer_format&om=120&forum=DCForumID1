@@ -1,0 +1,15 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 120<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/120.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Руссификация XEmacs"</font></b><br>
+Posted by Иван Коростелёв  on 22-Jul-03 at 12:16&nbsp;PM<br>
+<blockquote>Андрей, вы вроде пользуетесь этой программой каждой день, в том числе и для набора текстов на русском языке, а следовательно какой-то выход вы из нижеследующей проблеммы нашли. Например, если я набираю некий текст, и понимаю что последняя строчка ни к чёрту не годится, то логично набрать C-a C-k. В случае, если я пишу по русски, то это сочитание интерпретируется как C-Cyrillyc_f C-Cyrillyc_l, а соответствующих биндингов нет <img src="/dcforum//Images/angry.gif"> Переключать всё время раскладку неудобно, Биндить всё руками мне не улыбается. Может есть какой способ научить XEmacs понимать такую ситуацию?<P>P.S. Какой читалкой почты и новостей вы пользуютесь?</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+</font></body></html>

@@ -1,0 +1,443 @@
+<html><head><title>ALK :: Просто так :: Фабрики домашних страниц.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/etc/">просто так</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/books/05_08_00.shtml">&lt;&lt;</a>&nbsp;06.08.00&nbsp;<a href="/comment/urls/07_08_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Фабрики домашних страниц
+</h1> 
+    <p align="justify">
+      Я уже не помню, какой из серверов в Рунете стал
+      первым предоставлять свободное место под 
+      домашние странички или проекты, возможно, что
+      это была <a href="http://www.halyava.ru">Халява.Ру</a>
+      или <a href="http://kulichki.rambler.ru">Чертовы Куличики</a>,
+      но еще пару лет назад самым известным  и популярным "хостингом" для
+      домашних страниц русских интернетошатающихся был <a href="http://www.chat.ru">www.chat.ru</a>.
+    </p>
+    <p align="justify">
+      В принципе, на Чат.Ру не было ничего такого уж интересного: несколько
+      мегабайт места, доступ к гостевой книге, почтовый ящик и, вроде бы, все.
+      В то же самое время на иностранных серверах свободного "хостинга"
+      предоставляется все, вплоть до домена третьего уровня и возможности
+      выкладвать собственные скрипты на страничку. 
+    </p>
+    <p align="justify">
+      Но где-то уже за последние полгода-год начали появляться
+      российские сервера, ориентированные на предоставление дискового
+      пространства и доступа к страницам своих пользователей.
+      При этом, в отличие от иностранных серверов, тут не требуется
+      размещение рекламы на страницах.
+    </p>	
+    <p align="justify">
+      Еще одно отличие новых серверов web-хостинга заключается в том,
+      что они предоставляют возможность создания страничек
+      по имеющимся шаблонам. В результате за полгода их
+      существования (я говорю о <a href="http://narod.yandex.ru">Народ.Ру</a>
+      и <a href="http://www.boom.ru">Бум.Ру</a>) появилось огромное
+      количество страничек, похожих друг на друга как две капли воды.
+      При этом, утверждается, что так как дизайн страниц разрабатывался
+      профессиональными дизайнерами, то результат будет много лучше,
+      чем если бы новичок в web-верстании взялся бы за такую работу сам.
+    </p>
+    <p align="justify">
+      Тем не менее, мне захотелось попробовать этот интерфейс, так что я сейчас 
+      опишу результаты попыток его использования. Конечно же, адреса kalinin.{narod|boom}.ru были уже 
+      заняты, поэтому я зарезервировал на обоих серверах <a href="http://andreykalinin.narod.ru">andreykalinin.narod.ru</a>
+      и <a href="andreykalinin.boom.ru">andreykalinin.boom.ru</a>. Сразу
+      же огворюсь, что результаты получились просто-таки поразительными ;)
+    </p>
+    <p align="justify">
+      Собственно, я не знал, чего ожидать. Заходишь, а тебе сразу же 
+      предлагают та-а-акое обалденное оформление, от которого
+      я сразу же закрываю www.kalinin.ru и переезжаю на бесплатный
+      хостинг с конструктором...
+    </p>
+    <p align="justify">
+      Сначала я побывал на Народ.Ру. Скажу сразу, что меня не впечатляет
+      ни общее оформление *.yandex.ru (хотя <a href="http://www.ya.ru">www.ya.ru</a>
+      конечно же хорош) и, собственно, совсем не нравятся предложенные шаблоны
+      страниц. Вообще, как все это происходит --- вы заходите, выбираете себе
+      шаблон, двигаетесь дальше, заполняете текст в формах (заголовок, общий текст,
+      текст первой ссылки, текст второй ссылки и т.д.), изменяете, если надо,
+      цвета и двигаетесь дальше. Зачем там нужен выбор цвета --- я так и не понял,
+      потому что среди представленных цветов все остальные, кроме выставленных по-умолчанию,
+      смотрелись вообще неприглядно. Кроме того, в некоторых шаблонах
+      можно использовать собственные картинки. Шаблоны представлены для главных
+      страниц, резюме, деловых страниц, фотоальбомов... в общем, этих вариантов
+      там совсем немного. Я некоторое время попытался поиграть с конструктором,
+      выбрать какой-нибудь шаблон "покрасивше", но, к сожалению, ничего 
+      хорошего не нашел. Прямо скажем, результат, который я получил на
+      <a href="http://andreykalinin.narod.ru">andreykalinin.narod.ru</a> меня
+      совсем не впечатлил. 
+    </p>
+    <p align="justify">
+      Регистрация на Бум.Ру прошла для меня вообще без боли --- я уже не выпендривался
+      с названием и выбрал то же, что и на Народ.Ру. Количество групп шаблонов, вроде бы, 
+      поменьше, но некоторые из  шаблонов, на мой взгляд, много качественнее, чем
+      у Народа. Впрочем, есть и откровенно неудачные. Что еще сказать --- конструктор
+      Бум.Ру мне понравился больше, чем Народа. В нем используется JavaScript (что
+      наверняка ограничивает область применения набором из максимум двух браузеров),
+      но он просто много нагляднее чем тот, что находится на Народ.Ру. Результат находится
+      на <a href="http://andreykalinin.boom.ru">andreykalinin.boom.ru</a> и он, как
+      мне кажется, немного приятнее, чем то, что было на Народе. Хотя по сути оба этих
+      конструктора одно и тоже.
+    </p>
+    <p align="justify">
+      Так что, при помощи конструкторов можно буквально за пару минут
+      набить несколько стандартных страничек и выложить их на хостинг...
+      хорошо ли это? На мой взгляд, не очень --- по крайней мере в этом
+      исполнении. Все дело в том, что не мучаясь это все можно сделать
+      и так --- используя стандартные теги языка HTML для
+      выделения заголовков. Я не знаю, почему об этом вообще
+      приходится говорить, но стандартный дизайн, который соответствует
+      "академическому" (в терминах Кирсанова) исполнению страниц, далеко
+      не так уж и плох. Мало того, он даже хорош, потому что
+      позволяет читателю ознакомиться со страничкой без особенного напряжения на глаза.
+      А так как я не вижу особенной необходимости в дизайне, предлагаемом конструкторами
+      Народ.Ру и Бум.Ру (потому что он не являются дизайном, оринетированном на передачу
+      некоторой информации а используются просто так, что бы красиво было), то
+      использование стандартных тегов будет более правильным решением,
+      чем использование конструткторов.
+    </p>
+    <p align="justify">
+      Кроме того, основной недостаток многих домашних страничек заключается
+      не в том, что они некрасиво нарисованы, а в том, что у них
+      недостаточно интересное содержание. В смысле, совсем неинтересное. А это
+      нельзя исправить конструктором страничек.
+    </p>
+    <p align="justify">
+      Тем не менее, допустим имеется человек, который хочет открыть свою
+      домашнюю страничку, при этом у него есть интересное содержание но нет
+      желания изучать HTML. Что ему делать? Ну загрузит он себе этот конструктор,
+      а дальше? Будет клепать странички. Но, я в этом уверен, он не найдет себе именно
+      того шаблона, который оформлен таким образом, что бы соответствовать содержанию.
+      Следовательно, он будет использовать некоторый другой шаблон, пытаясь
+      втиснуть в него свою бесценную информацию. Так вот, уже через пару дней
+      он взвоет от того, что этот дизайн страниц, скорее всего, отпугивает посетителей,
+      чем привлекает, потому что не подходит к его содержанию.
+    </p>
+    <p align="justify">
+      В принципе, как я себе вижу более удачный конструктор. Во-первых,
+      сначала пользователем задается структура информации, которую он
+      хотел бы разместить на страничке. Во-вторых, он выбирает некоторый
+      общий стиль оформления, который ему будет предложен. В третьих,
+      он настраивает внешний вид каждого элемента своей иерархической структуры.
+      Т.е., например, мне было бы удобно задать следующий шаблон документа,
+      который состоит из заголовка, тела документа, резюме, набора ссылок, необязательного
+      посткриптума. Для каждого из этих элементов я задаю их отображение,
+      после чего просто захожу каждый день в редактор конструктора, вбиваю
+      соответствующие поля и, ни о чем больше не беспокоясь, ухожу. Кстати,
+      открою секрет --- вполне вероятно, что через некоторое время моя 
+      страничка будет пополняться примерно таким образом: все содержание
+      будет находиться в XML, а при помощи XSLT-процессора будет генерироваться
+      HTML код, который будет выкладываться на хостинге. Или, будут выкладываться
+      сами XML-файлы и XSL-таблица, при помощи которой браузеры самостоятельно
+      будут создавать HTML-представление. Правда, пока что с этим может работать
+      только IE...
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      В общем, я считаю, что конструктор домашних страниц вещь, в принципе,
+      не особенно полезная. То есть, количество домашних страничек несомненно
+      возрастет, но "инетересных" (это была опечатка, но когда я ее заметил,
+      решил оставить --- очень символично)
+      останется столько же, причем в количественном, а не в относительном исчислении. 
+    </p>
+    <p align="justify">
+      Кроме того, при помощи конструкторов можно сделать только такую страничку,
+      каких в Рунете уже превеликое множество: "меня зовут... родился... пока что здесь
+      ничего нет, но уже завтра будет, а пока что можете посмотреть фотографии
+      меня на даче у родителей". Именно этим фактом навеяно название данной статьи.
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/etc/print_06_08_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://narod.yandex.ru" target="_blank">http://narod.yandex.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Народ.Ру.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.boom.ru" target="_blank">http://www.boom.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Бум.Ру.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.f2s.com" target="_blank">http://www.f2s.com</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Английский бесплатный хостинг. Очень много чего предоставляется: CGI, PHP3, БД, доступ к логам, Webalizer, 15-20МБ места (не помню точно). И все это при полном отcутствии рекламы. Правда, при всем этом имеется еще очень плохой канал в Россию...
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/09_08_00.shtml">Первый месяц </a> (09.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Месяц тому назад я нарисовал себе новую титульную страницу для размещения в интернете. В принципе, уже давно назревала мысль о том,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/09_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_07_00.shtml">"Человеческое лицо" в интернете </a> (30.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, на мой взгляд, самое интересное, что есть в интернете, это "домашние странички". Многие из них, зачастую, плохо сделаны, большинство ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_08_00.shtml">www.gordon.ru, официальный сайт Александра Гордона </a> (07.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как это видно из названия, это домашняя страничка Александра Гордона. Вообще говоря, личность довольно-таки известная; лично мне он нравится прежде всего...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_08_00.shtml">Мифический человеко-месяц </a> (05.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В принципе, эта книга для "ветеранов программирования" в комментариях не нуждается --- в свое время ее первое издание было очень популярно....<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_11_08.shtml">Арендованный сервер от hcenter.ru и хостинг в Германии </a> (30.11.08)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Началось всё с того, что я решил попробовать арендовать сервер в Германии. Я слышал много положительных отзывов в пользу такого мнения,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_11_08.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_09_01.shtml">После отпуска </a> (23.09.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется иногда написать что-то в виде зарисовки. Так сказать, "из жизни" --- О.Генри очень много издевался над подобным жанром и авторами,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_09_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/13_07_01.shtml">Круглая дата </a> (13.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Тихо-тихо и незаметно прошла историческая дата: 11 июля 2000 года я написал первую заметку и выложил ее на свою домашнюю страничку....<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/13_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/15_06_01.shtml">Новый дизайн, часть 2 </a> (15.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как многие могли заметить, kalinin.ru наконец-то сменил дизайн. Тому было много причин, о которых я хотел бы рассказать, кроме того просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/15_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/05_03_01.shtml">Театральные билеты </a> (05.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Мне всегда смешно смотреть по телевидению на очередного актера, когда тот с придыханием начинает говорить об искусстве, о спектаклях, о театре......<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/05_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_02_01.shtml">Авторское право </a> (12.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Авторское право... до чего же, однако, скользкий термин. Самое смешное, каждый автор и каждый нарушитель авторского права трактуют его по-своему и...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/31_12_00.shtml">С новым годом! </a> (31.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Прекрасно понимаю, что поздравления с Новым Годом, наверное, уже приелись людям... но, с другой стороны, это, фактически, единственный настоящий праздник. Настоящий...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/31_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_08_00.shtml">www.gordon.ru, официальный сайт Александра Гордона </a> (07.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как это видно из названия, это домашняя страничка Александра Гордона. Вообще говоря, личность довольно-таки известная; лично мне он нравится прежде всего...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_08_00.shtml">Мифический человеко-месяц </a> (05.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В принципе, эта книга для "ветеранов программирования" в комментариях не нуждается --- в свое время ее первое издание было очень популярно....<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

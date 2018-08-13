@@ -1,0 +1,484 @@
+<html><head><title>ALK :: Книги :: "C и C++. Правила программирования."</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/books/">книги</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/26_08_00.shtml">&lt;&lt;</a>&nbsp;27.08.00&nbsp;<a href="/comment/urls/28_08_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>C &amp; C++: правила программирования
+</h1> 
+    <p align="justify">
+      Еще одна книга по C и C++, о которой мне хотелось
+      бы рассказать. Она совсем тоненькая и маленькая, всего 270
+      страниц. Сейчас она стоит в Библио-Глобусе 15 (!) рублей, судя
+      по всему из-за того что выпущена в 1996 году тиражом в 11000 экземпляров.
+      Несмотря на такую смешную цену (по отношению к другим книгам
+      по C/C++) ее очень сложно переоценить.
+    </p>
+    <p align="justify">
+      Все дело в том, что эта книга является попыткой автора (профессионального
+      программиста) передать свой опыт другим программистам. В книге действительно
+      находятся правила (общим количеством 161), некоторые из них
+      спорны, но все они являются теми выводами, к которым (или к подобным)
+      приходит программист с каждой тысячей строчек кода (написанных самостоятельно,
+      прочитанных или просто "продуманных"). 
+    </p>
+    <p align="justify">
+      Вообще я заметил, что каждый программист приходит, в основном, к одим
+      и тем же выводам, т.е., можно предположить, что если человек придет,
+      прочитает какую-нибудь книжку по C/C++ с тем, что бы ознакомиться с синтаксисом,
+      а затем прочитает "правила программирования", то он сэкономит массу времени и нервов потому что
+      сразу же "перепрыгнет несколько ступенек".
+    </p>
+    <p align="justify">
+      Это только на первый вгляд. "Правила программирования" мне посоветовали прочитать
+      (это было несколько месяцев назад и я только сейчас удосужился это сделать) со словами
+      "два года назад я пытался ее прочитать и ничего в ней не понял, зато
+      недавно перечитал с громадным удовольствием". Это очень правильные слова --- потому
+      что ценность книги поймут только те, для кого подобные правила не пустой звук.
+    </p>
+    <p align="justify">
+      Хочу сразу сказать, что с некоторыми правилами я не согласен (т.е., по некоторым
+      рассуждениям автора у меня имеется совершенно иное мнение), но это терпимо. В основном
+      же я пришел примерно к таким же утверждениям, только никогда их не формулировал
+      для себя в столь ясном виде. Я думаю, это полезно --- иметь подобную книжку, потому
+      что чтение правил позволяет более упорядочить свои представления о совершенстве в 
+      программировании.
+    </p>
+    <p align="justify">
+      Но перейду непосредственно к комментированию. Правила разделены по тематике: 
+    </p>
+    <ul>
+      <li>процесс проектирования;</li>
+      <li>общие проблемы разработки программ;</li>
+      <li>форматирование и документация;</li>
+      <li>имена и идентификаторы;</li>
+      <li>общие правила программирования;</li>
+      <li>препроцессор;</li>
+      <li>правила, относящиеся к языку C;</li>
+      <li>правила программирования на C++.</li>
+    </ul>
+    <p align="justify">
+      Ну что тут можно сказать... читать --- удовольствие, потому что все утверждения
+      вполне разумны. 
+    </p>
+    <p align="justify">
+      Правило 6 гласит: "если вы не можете выразить что-то на повседневном
+      языке, то вы не сможете сделать это на C/C++":
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Акт записи на обычном языке описания того, что делает программа,
+      и что делает каждая функция в программе, является критическим шагом
+      в мыслительном процессе. Хорошо построенное, грамматически правильное предложение ---
+      признак ясного мышления. Если вы не можете это записать, то велика вероятность того,
+      что вы не полностью продумали задачу или метод ее решения.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Это настолько разумно, что мне нечего добавить к этому. Вообще, часть книги, которая не 
+      относится к языкам программирования C/C++, а посвящена программированию вообще,
+      имеет свою отдельную ценность даже для тех программистов, кто не использует C/C++
+      в повседневной жизни.
+    </p>
+    <p align="justify">
+      Правило 25: "пропустите свой код через программу орфографической проверки". Я никогда
+      не делал этого, но, честно говоря, очень часто у меня появлялись подобные мысли...
+      зачастую очень тяжело читать код, когда постоянно натыкаешься на орфографические
+      ошибки. Это раздражает в комментариях, но совсем становится несносно в идентификаторах.
+    </p>
+    <p align="justify">
+      Кстати сказать. Понятно, что автор --- иностранец, и поэтому не затрагивал 
+      проблему использования в идентификаторах других языков, но мне хочется это 
+      добавить... слово, записанное транслитом смотрится просто ужасно. Один мой
+      знакомый программист жаловался как-то на то, что очень долго не мог понять,
+      что делает функция <code>izbotirr()</code>, написанная другим программистом (комментариев
+      они не делали абсолютно, потому что очень торопились; кстати сказать, из-за
+      того что они торопились, они опоздали на год). Оказалось, что это (барабанная
+      дробь) "избавиться от иррациональности" (всеобщее изумление). Кстати, этот идентификатор
+      нарушает еще одно правило из книги: "избегайте аббревиатур". Это правильно,
+      потому что хорошо названый идентификатор скажет больше, чем самый лучший
+      комментарий.
+    </p>
+    <p align="justify">
+      Мне очень понравился комментарий автора к "венгерской" нотации (это та, которая
+      используется программистами, начинавшими с использованием
+      Windows SDK, т.е. когда в название переменной включается ее тип, например <code>lpzstr</code>).
+      Автор книги совершенно прав, говоря следующее:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Венгерская запись дает многое для Ассемблера, в котором все, что вы знаете о переменной ---
+      это ее размер. Включение информации о типе в имя переменной сразу говорит о ее
+      использовании. В этих целях языки более высокого уровня, как C и C++, используют
+      объявление переменных. 
+    </p>
+    <p align="justify">
+      Доктор Саймони (автор венгерской записи) несколько раз защищал
+      такую нотацию в своих публикациях, но я не хотел бы рекомендовать
+      это для вас в применении к C или C++. По моему мнению,
+      венгерская нотация не дает ничего, кроме ухудшения читаемости 
+      программ. Простые <code>str</code> или <code>string</code> 
+      значительно легче читаются и содержат ту же информацию. Если 
+      вам на самом деле нужно узнать тип, то для этого достаточно вернуться
+      к определнию.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Честно говоря, я никогда не мог смотреть без содрогания на 
+      код в венгерской нотации. И никогда не понимал, почему это вдруг
+      названия классов начинаются с <code>T</code> или <code>C</code> ---
+      все лишнее только ухудшает читабельность программы. Кстати, я обычно
+      придерживаюсь того правила, что названия классов начинается с "большой"
+      буквы, а переменных --- с маленькой. Кроме того, несмотря на то, что
+      относительно недавно для переменных я предпочитал что-то в духе <code>someGoodVariable</code>,
+      то теперь пишу <code>some_good_variable</code>, потому что разделение
+      подчеркиваниями значительно лучше читается.
+    </p>
+    <p align="justify">
+      Или вот такая цитата:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Тут вообще нет ничего неверного при присваивании в цикле:
+    </p>
+<pre>
+        while(p = f())
+            g(p);
+</pre>
+    <p align="justify">
+      Даже если новичок в программировании может воспользоваться
+      символом = вместо ==. (Трудности новичков не должны приниматься
+      во внимание, когда вы обсуждаете рекомендуемый стиль для профессионалов.
+      Это похоже на принятие закона, который требует, чтобы все велосипеды
+      оснащались боковыми колесиками, потому что двухлетним малышам без
+      них тяжело кататься.)
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      В общем, я просматривал книгу в поисках цитат с начала и прошел первую
+      треть... все дело в том, что тут непонятно, что именно в ней выделяется
+      настолько, что надо цитировать --- ощущается желание процитировать все.
+      Тем не менее, надеюсь, я дал вам представление об этой, не скрою, замечательной
+      книге.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Книга будет несомненно полезна всем, кто знает C++. Т.е., даже не столько
+      полезна, сколько интересна тем, что в ней собрана такая структура реальных
+      правил программирования.
+    </p>
+    <p align="justify">
+      Думаю, что книга будет интересна даже программистам на других языках, кроме C и
+      C++. Единственное, не могу ее советовать для людей, которые только-только начали
+      программировать. Купить ее, наверно, стоит (для того что бы прочитать попозже),
+      но в начале она будет непонятна.
+    </p>	
+<br>
+<p align="right"><a target="_blank" href="/comment/books/print_27_08_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.cs.umd.edu/users/cml/cstyle/" target="_blank">http://www.cs.umd.edu/users/cm</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     C and C++ Style Guides.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://corelinux.sourceforge.net" target="_blank">http://corelinux.sourceforge.n</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Сайт, посвященный (в частности) формализации требований к тексту программ на C++.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/02_09_00.shtml">Ядро Linux в комментариях </a> (02.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть вещи, которые, как мне кажется, будут интересны любому программисту. В частности, это объяснение того, как устроены реально работающие программные системы....<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/02_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_08_00.shtml">Java 2: руководство разработчика </a> (22.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я решил, что мне нужна книга по Java тогда, когда появилось требование что-то написать на этом языке более серьезное, чем рисование...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/28_08_00.shtml">dmt.df.ru, digital mind transform </a> (28.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Строго говоря, это страница веб-дизайнерской конторы (коих сейчас развелось в превеликом множестве, как хороших, так и не очень), но я не...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/28_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/26_08_00.shtml">Дети... </a> (26.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Меня вот интересует, почему "взрослые" люди считают детей "глупыми"? Совсем не понимаю... недавно видел в маршрутке такую ситуацию: на задних сидениях...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/26_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_07_01.shtml">High Perfomance Computing, second edition. </a> (05.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Название книги можно перевести как "Высокопроизводительные вычисления" и эта тематика в русскоязычной литературе не освещена совсем. Традиционно считается, что самой важной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/19_06_01.shtml">Плагиат </a> (19.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В последнее время мне стало казаться, что с моим сайтом что-то не в порядке. Вроде, текст есть, живые люди тоже иногда...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/19_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_04_01.shtml">TCP/IP Illustrated, volume I. The Protocols </a> (22.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять, книга, о которой мне хочется рассказать, насколько мне известно, отсутствует в русском переводе. Тем не менее, в разделе сетевого...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/28_02_01.shtml">Decline and Fall of the American Programmer </a> (28.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эдвард Йордон является одним из самых известных специалистов в области создания больших программных систем. Широко известна его нотация, предназначенная для структурного...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/28_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/03_12_00.shtml">Unix internals: the new frontiers </a> (03.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочу сразу же предупредить, что эта книга, насколько мне известно, в переводе на русский язык не существует, поэтому прошу прощения, если...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/03_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/29_09_00.shtml">Язык UML, рукводство пользователя </a> (29.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+UML (Unified Modeling Language, унифицированный язык моделирования) является еще одной популярной аббревиатурой, которой очень часто пользуются, не понимая того, что за...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/29_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/28_08_00.shtml">dmt.df.ru, digital mind transform </a> (28.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Строго говоря, это страница веб-дизайнерской конторы (коих сейчас развелось в превеликом множестве, как хороших, так и не очень), но я не...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/28_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/26_08_00.shtml">Дети... </a> (26.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Меня вот интересует, почему "взрослые" люди считают детей "глупыми"? Совсем не понимаю... недавно видел в маршрутке такую ситуацию: на задних сидениях...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/26_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

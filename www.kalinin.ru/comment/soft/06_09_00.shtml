@@ -1,0 +1,422 @@
+<html><head><title>ALK :: Программное обеспечение :: Текстовый редактор XEmacs.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/soft/">по</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/tourism/story/05_09_00.shtml">&lt;&lt;</a>&nbsp;06.09.00&nbsp;<a href="/stud/07_09_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Emacs
+</h1> 
+    <p align="justify">
+      Emacs является культовой программой для редактирования текстов. Я думаю,
+      что у людей, которые впервые о нем слышат, должно вызвать удивление
+      номер версии Emacs'а, например стандартный GNU Emacs нумеруется уже 20 версией,
+      а XEmacs --- 21. Количество версий, я думаю, свидетельствует
+      о популярности, распространенности и возрасте этой программы.
+    </p>
+    <p align="justify">
+      Фактически, Emacs не является текстовым редактором в том виде, в котором
+      он представляется, например, программой Notepad из стандартной поставки
+      Windows. Все дело в том, что предназначение Emacs как программы не столько в 
+      предоставлении жестко запрограммированных возможностей по редактированию
+      текста, а в предоставлении расширения этих возможностей. Для этого
+      предназначен специальный язык программирования Emacs Lisp. Практически все,
+      что представляет из себя Emacs тогда, когда вы его запустите в перый раз,
+      является результатом работы "дополнений", написанных на Emacs Lisp'е.
+    </p>
+    <p align="justify">
+      Этот редактор текстов очень популярен в среде Unix. Все дело в том,
+      что он существует практически для каждой архитектуры и каждой
+      вариации Unix'а, что позволяет использовать его
+      вне зависимости от операционной системы. Да и "родился" он
+      именно в Unix'е...
+    </p>
+    <p align="justify">
+      Под Windows он тоже есть, но тут несколько все сложнее. Его
+      идеология пользовательского интерфейса несколько не совпадает с той, которая
+      присутствует в Windows, поэтому обычного Windows-пользователя 
+      Emacs только отпугивает.
+    </p>
+    <p align="justify">
+      Во-первых, у него свои собственные "горячие" клавиши, что всегда несколько
+      неприятно. То есть, например, Shift-стрелки могут и не выделять блок,
+      как это принято. Вместо этого надо нажать Ctrl-Space в начале блока а 
+      концом блока будет считаться позиция курсора (или "точки" в терминологии Emacs'а)
+      на момент выполнения команды, оперирующей с этим блоком. И разговоры
+      о том, что все эти клавиши могут быть настроены таким образом, как
+      это захочет пользователь, но для этого надо немного разобраться,
+      ни к чему не приводят.
+    </p>
+    <p align="justify">
+      Во-вторых, он построен таким образом, что при работе
+      с ним человеку можно вообще не пользоваться меню.
+      Все доступные команды могут выполняться из его
+      собственной командной строки (минибуфера)
+      и для того что бы записать файл можно нажать Ctrl-x Ctrl-s, а можно
+      набрать Alt-x save-buffer. И так --- для любой команды, включая
+      те, которым "горячие" клавиши не назначены.
+    </p>
+    <p align="justify">
+      Но все это было бы совершенно бесполезно, если
+      бы командная строка Emacs не предоставляла бы удобные
+      средства для набора команд. Согласитесь, помнить
+      все, что можно набрать, совершенно нереально. Поэтому
+      в ней работает идеология завершения имен, что выражается
+      в следующем: набираете часть команды (что можно вспомнить 
+      или догадаться, например, понятно что команда сохранения
+      будет начинаться на save), после этого нажимаете TAB. Если
+      такая команда единственная, то ее название автоматически завершится,
+      иначе будет выдан список возможных вариантов.
+    </p>
+    <p align="justify">
+      Тем самым пользователь может выполнить любую операцию не убирая
+      рук с клавиатуры; мало того, даже не перенося пальцев на дополнительную
+      клавиатуру "со стрелочками". Это очень удобно.
+    </p>
+    <p align="justify">
+      Вообще говоря, тут стоит отвлечься и сказать несколько слов про интерфейсы.
+      Ален Голуб в своих <a href="../books/27_08_00.shtml">"Правилах программирования на C и C++"</a>
+      пишет о том, что интерфейс бывает понятный, а бывает удобный. Разница заключается
+      в том, что при использовании понятного интерфейса человек, который
+      никогда не видел компьютера, все равно может выполнить некоторые операции,
+      потому что ему будет понятно как это сделать. То есть, идеология меню
+      является понятной, потому что изучив его в течение нескольких минут,
+      можно все-таки найти то место, где можно выполнить требуемое действие.
+      Это понятно.
+    </p>
+    <p align="justify">
+      Но неудобно. Потому что даже если вы умеете пользоваться
+      компьютером, вам все равно придется искать по тому же
+      меню нужный пункт и вы потратите пару лишних минут. В тоже самое
+      время, используя Emacs (который не будет сразу же понятен и на его
+      изучение уйдет некоторое время) вы очень удобно, только при помощи
+      основной клавиатуры, сможете выполнить любое действие. Вот это --- удобно.
+    </p>
+    <p align="justify">
+      Что лучше, потратить несколько дней на изучение непонятного сразу интерфейса, но
+      потом не мучаться с его использованием, или приступать сразу к работе с использованием
+      понятного интерфейса но неудобного? По-моему, первое лучше. Потому что мой личный
+      опыт показывает, что выполнение операций "руками" всегда будет быстрее, чем 
+      каждый раз разбираться с "понятным" интерфейсом. Потому что используя
+      удобный интерфейс мысли всегда сосредоточены на действии, а при использовании
+      понятного приходиться еще думать что и как сделать. 
+    </p>
+    <p align="justify">
+      Тем не менее, вернемся к Emacs. Он существует в практически любых вариантах. Он
+      может быть консольным, может быть графическим. Может использовать X-сервер или рисовать
+      свои окна через графический интерфейс пользователя операционной системы (я имею в виду,
+      например, Windows). 
+    </p>
+    <p align="justify">
+      Для Emacs существует громадное количество "расширений". Есть режимы
+      чтения почты, новостей; есть даже свой собственный Web-браузер. Под
+      Emacs написаны игры (тетрис, сокобан и т.д.). Есть
+      поддержка большого количества режимов редактирования текстов: исходные
+      тексты программ на C/C++, html/xml/sgml, TeX, nroff, ... Для многих
+      из этих режимов есть автоматическая расстановка отступов. 
+      Он это делает не так, как обычные редакторы для программистов: "тупо"
+      вставляя столько же пробелов, сколько было на предыдущей строчке,
+      а анализирует текст и расставляет отступы в соответствии 
+      с тем, чем является строка. В общем, это очень удобно, потому
+      что после, например, "обнесения" некоторого блока текста C++
+      фигурными скобками вам не потребуется везде вставлять
+      символы табуляции для того, что бы восстановить структурный
+      внешний вид программы. Все это сделает Emacs, когда
+      ему подадут команду indent-region.
+    </p>
+    <p align="justify">
+      Emacs позволяет запускать компилятор и автоматически "выдирает" сообщения
+      о синтаксических ошибках, после чего можно позиционировать курсор
+      сразу же на место ошибки. Есть поддержка gdb, в результате чего
+      Emacs'ом можно отлаживать программы. В общем, много чего можно
+      сделать при его помощи. Для этого надо просто попробовать и посмотреть
+      что получится. Повторю, даже если он вам не понравится, от Emacs'а все
+      равно будет много пользы, потому что с ним можно будет работать
+      на любой платформе. На моей прошлой работе мои сотрудники пытались
+      угадать, под чем я сейчас "сижу": Windows, FreeBSD или Linux. Это
+      было очень непросто сделать, потому что во всех
+      операционных системах внешний вид экрана был одинаковый: "распахнутое"
+      окно Emacs'а, по которому очень сложно что-то сказать. Определяли по ICQ: я
+      им пользуюсь только под Windows'ом (больше по привычке, наверно, скоро перестану; этот
+      "интернет-пейджер" уже достал; электронная почта надежнее и удобнее), поэтому под Win32 в
+      правом верхнем углу у меня была зеленая ромашка, чего не было в остальных ОС.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Emacs является одним из самых популярных текстовых редакторов для программистов (да
+      и не только для них). Он поддерживает большое количество режимов и позволяет расширять
+      себя до того вида, в котором он будет удобен пользователю. Несмотря на то, что 
+      его использованию относительно сложно обучиться, это того стоит. 
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/soft/print_06_09_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.emacs.org" target="_blank">http://www.emacs.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт "правильного" Столлменовского Emacs'а.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.xemacs.org" target="_blank">http://www.xemacs.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     "Ветка" emacs'а; на самом деле, несколько более удобный, чем стандартный GNU Emacs.     Я пользуюсь именно им.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/22_09_00.shtml">Командный интерпретатор bash </a> (22.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Текст ниже предназначен для тех людей, которые по принципиальным соображениям не пользуются командной строкой, мотивируя это тем, что им там работать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/22_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/07_09_00.shtml">Формальные оценки </a> (07.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Оценка знаний у студента, на мой взгляд, является самым спорным вопросом всего "учебного процесса". Вообще, выставление отметок превращается в некоторое странное...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/07_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/story/05_09_00.shtml">Охотовед </a> (05.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Где-то к полудню дядя Билл вернулся, поймав некоторое количество окуней, из которых сделали уху. В это же время мы начали знакомиться...<nobr>&nbsp;&nbsp;&nbsp;<a href="/tourism/story/05_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/01_12_01.shtml">Игры </a> (01.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я очень давно не играл в компьютерные игры (за редким исключением --- например, дорвавшись до тетриса) и когда наконец-то собрал себе...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/01_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/22_09_00.shtml">Командный интерпретатор bash </a> (22.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Текст ниже предназначен для тех людей, которые по принципиальным соображениям не пользуются командной строкой, мотивируя это тем, что им там работать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/22_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/06_09_00.shtml">Emacs </a> (06.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Emacs является культовой программой для редактирования текстов. Я думаю, что у людей, которые впервые о нем слышат, должно вызвать удивление номер...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/06_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/07_09_00.shtml">Формальные оценки </a> (07.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Оценка знаний у студента, на мой взгляд, является самым спорным вопросом всего "учебного процесса". Вообще, выставление отметок превращается в некоторое странное...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/07_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/story/05_09_00.shtml">Охотовед </a> (05.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Где-то к полудню дядя Билл вернулся, поймав некоторое количество окуней, из которых сделали уху. В это же время мы начали знакомиться...<nobr>&nbsp;&nbsp;&nbsp;<a href="/tourism/story/05_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

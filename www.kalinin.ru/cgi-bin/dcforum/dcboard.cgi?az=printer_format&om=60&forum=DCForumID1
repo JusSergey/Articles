@@ -1,0 +1,69 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 60<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/60.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Событийная модель в WinSock: Pozvol'te vozmutitsja."</font></b><br>
+Posted by Boris  on 05-Sep-01 at 04:16&nbsp;AM<br>
+<blockquote>Dobryj den'.<P>Prochital ja zametku pro winsock ( <a href="http://www.kalinin.ru/programming/network/12_12_00.shtml" target="_blank">http://www.kalinin.ru/programming/network/12_12_00.shtml</a> ) i obidno mne stalo za staryj dobryj "select". Prochitaet takoe chelovek v oznakomitel'nyx zeljax i reshit ne pol'zovatsja selectom. Nachnet pod windows pisat', a esli Micro$oft ( ne daj bog )obankrotitsja, ostanetsja on bez raboty, v samom rascvete sil. <P>V obshjem, i cheloveka zhalko, i za select obidno.<BR>Izvenite Grigorij.<BR>---<P><P>Немного вводной информации<BR>...<BR>Что интересно тип WSAEVENT является просто переопределением типа HANDLE со всеми вытекающими отсюда возможностями.<P>IMXO, eti vozmozhnosti -- lishnie bugi.<BR>To chto funkcii mozhno "skormit'" luboj "void *", a ona sama reshit', padat' ej ili net, ne javljaetsja ee: ( funkcii ) dostoinstvom, skoree naoborot. Otsutstvie tipizacii -- eto ploxo.<P>Причина первая, эстетическая.<BR>Eto delo vkusa. Menja naprimer win API pugaet.<P>Причина вторая, элегантная.<BR>...<BR>Если в программе, только один поток то проблемы нет, но не надо забывать что обе эти функции поддерживают не более 64 сокетов. А если надо больше?  .... Так вот, единственный разумный выход из описанной ситуации который мне видится --- это многопоточность.Каждый поток работает со своими соединениями и все замечательно.... <P>Stroka: <BR>#define FD_SETSIZE 1024 <P>Rastjagivaet vozmozhnosti selecta do neobhodimogo razmera. A vot WaitForMultipleEvents dejstvitel'no sluchaj kretichnyj. Teper' podumaem chto bysree: prosten'kij "loop" na 1024 iteracii ili odin "context switch" pri perekluchenii threadov ? <P>Resume:<BR>Pol'zavatsja nado asynchronnym IO, tam gde ono est', i selectom, tam gde ego ( AsynchIO ) net.<P>Tem bolee chto est' takoj zamechatel'nyj call kak "asynch. file transfer". Beret socket, beret file i zvonit Vam kogda vse uze gotovo. <BR>( eto k teme "staticheskih serverov" -&gt; <a href="http://www.kalinin.ru/programming/network/16_07_01.shtml" target="_blank">http://www.kalinin.ru/programming/network/16_07_01.shtml</a> :) )<P><P><BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Событийная модель в WinSock: Pozvol'te vozmutitsja.</b>,<b>Andrey L. Kalinin</b>, 10:17&nbsp;PM, 08-Sep-01
+<ul>
+<li><b>RE: Событийная модель в WinSock: Pozvol'te vozmutitsja.</b>,<b>Алексей В. Лебедев</b>, 03:53&nbsp;PM, 23-Jun-02
+<ul>
+<li><b>RE: Событийная модель в WinSock: Pozvol'te vozmutitsja.</b>,<b>alk</b>, 04:01&nbsp;PM, 23-Jun-02
+<ul>
+<li><b>RE: Событийная модель в WinSock: Pozvol'te vozmutitsja.</b>,<b>Алексей В. Лебедев</b>, 04:39&nbsp;PM, 06-Jul-02
+<ul>
+<li><b>RE: Событийная модель в WinSock: Pozvol'te vozmutitsja.</b>,<b>Andrey L. Kalinin</b>, 08:59&nbsp;AM, 07-Jul-02
+<ul>
+<li><b>RE: Событийная модель в WinSock: Pozvol'te vozmutitsja.</b>,<b>Алексей В. Лебедев</b>, 12:26&nbsp;PM, 07-Jul-02
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b><br>
+Posted by Andrey L. Kalinin  on 08-Sep-01 at 10:17&nbsp;PM<br>
+<blockquote>
+&gt;Dobryj den'. <BR>&gt;<BR>&gt;Prochital ja zametku pro winsock ( <BR>&gt;<a href="http://www.kalinin.ru/programming/network/12_12_00.shtml" target="_blank">http://www.kalinin.ru/programming/network/12_12_00.shtml</a> ) i obidno mne <BR>&gt;stalo za staryj dobryj "select". <P>Хм. Ну заметка это не моя, так что было бы логично передать "возумщения" ее автору, но и я отвечу как я себе это понимаю.<P>Сразу же хочу сказать, что ничего "идеального" не существует. Нет техники в сетевом программировании, которая одинаково хорошо подошла бы под любые требования. Поэтому "старый добрый select" хорош только в тех приложениях, для которых он создавался (что-то о его недостатках есть в статье про kevent'ы).<P>&gt;Prochitaet takoe chelovek v oznakomitel'nyx <BR>&gt;zeljax i reshit ne pol'zovatsja <BR>&gt;selectom. Nachnet pod windows pisat', <BR>&gt;a esli Micro$oft ( ne <BR>&gt;daj bog )obankrotitsja, ostanetsja on <BR>&gt;bez raboty, v samom rascvete <BR>&gt;sil. <P>Я бы не стал считать абстрактного человека, читающего мой хоумпейджер, глупее себя <img src="/dcforum//Images/wink.gif"> <P><BR>&gt;A vot WaitForMultipleEvents dejstvitel'no sluchaj <BR>&gt;kretichnyj. Teper' podumaem chto bysree: <BR>&gt;prosten'kij "loop" na 1024 iteracii <BR>&gt;ili odin "context switch" pri <BR>&gt;perekluchenii threadov ? <P>Да, с этим я согласен. Но, когда мы обсуждали эту статью с ее автором, то выяснилось, что ему _легче_ разрабатывать его конкретный сервер основываясь на потоках, обрабатывающих каждый сокет в отдельности. Можно себе представить ситуацию, когда обработка сообщения в сокете настолько велика, что переключение контекста перестает быть значительным.<P>&gt;Resume: <BR>&gt;Pol'zavatsja nado asynchronnym IO, tam gde <BR>&gt;ono est', i selectom, tam <BR>&gt;gde ego ( AsynchIO ) <BR>&gt;net. <P>aio достаточно сложно в программировании, imho. Кроме того лично у меня были проблемы в использовании aio на разных платформах.<P>А пользоваться надо тем, что лучше подходит под конкретную задачу <img src="/dcforum//Images/wink.gif"><P>&gt;Tem bolee chto est' takoj zamechatel'nyj <BR>&gt;call kak "asynch. file transfer". <BR>&gt;Beret socket, beret file i <BR>&gt;zvonit Vam kogda vse uze <BR>&gt;gotovo. <BR>&gt;( eto k teme "staticheskih serverov" -&gt; <a href="http://www.kalinin.ru/programming/network/16_07_01.shtml" target="_blank">http://www.kalinin.ru/programming/network/16_07_01.shtml</a> :) )<P>А есть ли уверенность, что такая техника будет быстрее kqueue в freebsd или /dev/poll в solaris? Я думаю, нет. А kqueue значительно более общая техника...<BR>
+</blockquote>
+<hr>
+<b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b><br>
+Posted by Алексей В. Лебедев  on 23-Jun-02 at 03:53&nbsp;PM<br>
+<blockquote>
+&gt;&gt;...Resume: <BR>&gt;&gt;Pol'zavatsja nado asynchronnym IO, tam gde <BR>&gt;&gt;ono est', i selectom, tam <BR>&gt;&gt;gde ego ( AsynchIO ) <BR>&gt;&gt;net. <P>&gt;aio достаточно сложно в программировании, imho. &gt;Кроме того лично у меня были проблемы в &gt;использовании aio на разных платформах.<P>Интересно, а ты думаешь с использованием WSAWaitForMultipleEvents() на разных платформах проблем меньше? 8-)<BR>(Это не попытка защитить aio -- я его так и не использую, видимо по причине сложности. В моём случае оказалось проще<BR>использовать select() и пул thread-ов)<BR>
+</blockquote>
+<hr>
+<b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b><br>
+Posted by alk  on 23-Jun-02 at 04:01&nbsp;PM<br>
+<blockquote>
+&gt;&gt;&gt;...Resume: <BR>&gt;&gt;&gt;Pol'zavatsja nado asynchronnym IO, tam gde <BR>&gt;&gt;&gt;ono est', i selectom, tam <BR>&gt;&gt;&gt;gde ego ( AsynchIO ) <BR>&gt;&gt;&gt;net. <BR>&gt;&gt;aio достаточно сложно в программировании, imho. &gt;&gt;Кроме того лично у меня были проблемы в &gt;&gt;использовании aio на разных платформах.<BR>&gt;Интересно, а ты думаешь с использованием <BR>&gt;WSAWaitForMultipleEvents() на разных платформах проблем <BR>&gt;меньше? 8-) <P>Ну да, уел <img src="/dcforum//Images/wink.gif"><P>&gt;(Это не попытка защитить aio -- <BR>&gt;я его так и не <BR>&gt;использую, видимо по причине сложности. <BR>&gt;В моём случае оказалось проще <BR>&gt;использовать select() и пул thread-ов) <P>А пул тредов зачем? <img src="/dcforum//Images/wink.gif"><BR>
+</blockquote>
+<hr>
+<b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b><br>
+Posted by Алексей В. Лебедев  on 06-Jul-02 at 04:39&nbsp;PM<br>
+<blockquote>
+&gt;А пул тредов зачем?<P>Просто не охота запускать тредд на каждый коннект -- их слишком много.<P>
+</blockquote>
+<hr>
+<b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b><br>
+Posted by Andrey L. Kalinin  on 07-Jul-02 at 08:59&nbsp;AM<br>
+<blockquote>
+&gt;&gt;А пул тредов зачем?<BR>&gt;Просто не охота запускать тредд на <BR>&gt;каждый коннект -- их слишком <BR>&gt;много. <P>Я спрашивал не столько про пул, сколько про треды. <img src="/dcforum//Images/wink.gif"><BR>
+</blockquote>
+<hr>
+<b>"RE: Событийная модель в WinSock: Pozvol'te vozmutitsja."</b><br>
+Posted by Алексей В. Лебедев  on 07-Jul-02 at 12:26&nbsp;PM<br>
+<blockquote>
+&gt;Я спрашивал не столько про пул, <BR>&gt;сколько про треды. <img src="/dcforum//Images/wink.gif"> <P>8-) У меня нет точного ответа на этот вопрос, но наверное с ними проще. Хотя нет. С ними всегда было сложнее. Я имею ввиду проще, если отбросить все заботы, связанные с синхронизацией. В сумме, возможно , ты и прав, но точно сказать не могу: для этого нужно попробовать написать тоже без них.<BR>
+</blockquote>
+<hr>
+</font></body></html>

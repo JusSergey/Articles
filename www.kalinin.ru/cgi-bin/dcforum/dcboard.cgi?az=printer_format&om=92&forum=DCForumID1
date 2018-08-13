@@ -1,0 +1,40 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 92<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/92.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"STL set<>, map<> from DLL to App "</font></b><br>
+Posted by Андрей  on 11-Jul-02 at 04:04&nbsp;PM<br>
+<blockquote>Здравствуйте все! <P>Подскажите пожалуйста кто знает. <P>Проблема с ассоциативными контейнерами STL(set,map...). <P>В DLL у меня есть классы имеющие члены - контейнеры STL. <BR>При обращении к ним из приложения программа падает (только с первым элементом <BR>контейнера нет проблем, дальше мусор) <P>//=========================== <BR>in DLL <BR>-------------------------------------- <BR>class CFoo <BR>{ <BR>public: <BR>.......... <BR>BOOL GetSet111(set&lt;int&gt;& setLaLa) <BR>{ <BR>setLaLa = m_setTuTu; <P>return (!setLaLa.empty()); <BR>} <BR>protected: <BR>set&lt;int&gt; m_setTuTu; <BR>}; <P>//========================================= <BR>// in App <BR>------------------------------------------------------- <BR>CFoo foo; <P>set&lt;int&gt; setGuGa; <BR>foo.GetSet111(setGuGa); //BOOOH!!!!!!!!!! <P><BR>Проблема как я понял из MSDN известная, но решение я не понял. <P>Пишите на E-mail. Зарание спасибо. <BR>Андрей. <BR>P.S: Версия STL у меня та, что идёт с Visual Studio 6 (SP5) <P>mglandre@trendline.co.il <BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: STL set<>, map<> from DLL to App </b>,<b>Andrey L. Kalinin</b>, 06:09&nbsp;PM, 11-Jul-02
+<li><b>RE: STL set<>, map<> from DLL to App </b>,<b>sergey</b>, 08:29&nbsp;AM, 31-Jul-02
+<ul>
+<li><b>RE: STL set<>, map<> from DLL to App </b>,<b>Алексей В. Лебедев</b>, 09:35&nbsp;AM, 07-Aug-02
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: STL set<>, map<> from DLL to App "</b><br>
+Posted by Andrey L. Kalinin  on 11-Jul-02 at 06:09&nbsp;PM<br>
+<blockquote>
+&gt;В DLL у меня есть классы <BR>&gt;имеющие члены - контейнеры STL. <BR>&gt;При обращении к ним из приложения <BR>&gt;программа падает (только с первым <BR>&gt;элементом <BR>&gt;контейнера нет проблем, дальше мусор) <P>Думать времени нет <img src="/dcforum//Images/wink.gif"> поэтому задам сразу же прямой вопрос: выравнивание (то что задается через pragma pack) в обоих проектах одинаковое?<BR>
+</blockquote>
+<hr>
+<b>"RE: STL set<>, map<> from DLL to App "</b><br>
+Posted by sergey  on 31-Jul-02 at 08:29&nbsp;AM<br>
+<blockquote>
+у меня таже проблема. дело не в выравнивании.<BR>см. в МСДН<BR>PRB: Access Violation When Accessing STL Object in DLL<BR><a href="http://support.microsoft.com/default.aspx?scid=KB" target="_blank">http://support.microsoft.com/default.aspx?scid=KB</a>;EN-US;Q172396&
+</blockquote>
+<hr>
+<b>"RE: STL set<>, map<> from DLL to App "</b><br>
+Posted by Алексей В. Лебедев  on 07-Aug-02 at 09:35&nbsp;AM<br>
+<blockquote>
+Спасибо. Мне тоже пригодилось...<BR>
+</blockquote>
+<hr>
+</font></body></html>

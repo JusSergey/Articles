@@ -1,0 +1,534 @@
+<html><head><title>ALK :: Просто так :: Хостинг.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/etc/">просто так</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/cpp/16_10_00.shtml">&lt;&lt;</a>&nbsp;19.10.00&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Хостинг
+</h1> 
+    <p align="justify">
+      Как я уже намекнул в предыдущей заметке, я искал себе новый хостинг.
+      Хочу сразу же сказать, что я его себе, вроде бы, нашел, но пока что
+      страничка все еще "висит"  на старом месте.
+    </p>
+    <p align="justify">
+      Тем не менее, я осмотрел очень много предложений различных "контор", 
+      предоставляющих подобный вид услуг. Смею вас заверить --- среди них столько
+      всего смешного! 
+    </p>
+    <p align="justify">
+      Сначала пройдусь по старому хостингу. Надо сказать, что три месяца назад
+      я, в общем-то, от доменного имени хотел только одного: почтового адреса. Поэтому
+      и искал себе хостинг исходя из соображений дешевизны. Кроме того, так как 
+      мне хотелось, конечно, иметь еще и домашнюю страничку (непонятно в каком виде),
+      то было бы очень желательно "прикрутить" к ней свою поисковую систему,
+      которая была на тот момент очень требовательна к дисковому пространству. 
+      Поэтому было нужно много места... 100МБ хватило бы. 
+    </p>
+    <p align="justify">
+      ООО "Нет", www.net.ru, подошло для этих целей. Ссылку не делаю
+      гипертекстовой, потому что обойдутся ;) У них был самый дешевый
+      хостинг из всех, которые я где-то видел и поэтому я, не особенно раздумывая,
+      оплатил у них год... а подумать надо было бы. Хотя, с другой стороны,
+      три месяца назад мне ничего лучше и не надо было.
+    </p>
+    <p align="justify">
+      Итак, ООО "Нет" предоставляет доступ по ftp, один почтовый ящик с доступом
+      по IMAP и POP3, SSI, CGI и PHP3. Если вам эти слова ничего не говорят, то объясню:
+    </p>
+    <ul>
+      <li>
+	Доступ к сайту дает возможность контролировать его содержимое. FTP (file
+	transfer protocol) позволяет управлять файлами на удаленной машине: удалять,
+	изменять права доступа, копировать. Это не самый удобный способ, значительно
+	приятнее иметь доступ по SSH или Telnet. Последние два варианта
+	дают возможность запустить командный интерпретатор на удаленной машине и
+	при его помощи делать все, что вам заблагорассудится, примерно
+	так же, как если бы вы сидели за консолью сервера. Доступ по SSH отличается от 
+	доступа по Telnet защитой соединения: потенциально при работе с сервером
+	через FTP или Telnet ваши пароли могут стать достоянием заинтересованных лиц.
+      </li>
+      <li>
+	SSI, CGI и PHP3 являются средствами для генерации HTML страниц. Чем
+	они отличаются и как ими пользоваться, каждый заинтересованный может
+	узнать из других мест; пока же достаточно понимать, что все эти
+	"штуки" позволяют делать сайты с дизайном наподобие моего "текущего".
+      </li>
+      <li>
+	Почтовый ящик дает возможность... правильно, получать почту. SMTP, т.е.
+	возможность отправлять почту, обычно не предоставляется по причинам достаточно
+	прозаического характера: для того, что бы настроить SMTP-сервер желательно иметь
+	отдельный IP адрес, а это повысит цену хостинга еще на 5 долларов в месяц. Количество
+	почтовых ящиков ограничивается обычно исходя из соображений, что каждый из них
+	будет проверяться лишним человеком, что создаст дополнительные нагрузки на сервер.
+	Тут обычно выходят созданием alias'ов, т.е. возможностей перенаправления почты
+	на какой-то другой почтовый ящик.
+      </li>
+    </ul>
+    <p align="justify">
+      Обычно еще дается возможность доступа к СУБД, который меня пока что слабо интересует. 
+      Хочется только отметить, что обычно предоставляется либо PostgreSQL, либо mySQL. PostgreSQL лучше. mySQL
+      создает меньше нагрузки на сервер.
+    </p>
+    <p align="justify">
+      Все, что написано выше, предоставляется каждым хостинг-провайдером, потому
+      что иначе было бы бессмысленно этот хостинг вообще покупать. Тем не менее, затраты
+      провайдера уходят на оплату канала передачи данных и на сами технические площадки (сервера).
+      Соответственно, ограничения хостинга по трафику вызваны используемым каналом,
+      а ограничения на возможности по выполнению скриптов --- оборудованием. 
+    </p>
+    <p align="justify">
+      В случае с ООО "Нет", ограничения на трафик обычны, то есть составляют несколько ГБ в месяц. Но
+      ограничения на оборудование... это что-то. Вот что написано у них на сайте:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Большое достоинство NET.RU-хостинга - система "прозрачных" зеркал и кэширование. 
+      Зеркала обеспечивают максимальную скорость передачи данных от сервера к 
+      пользователю - при запросе файла с веб-сайта, его передает ближайшее к 
+      посетителю зеркало. Кэширование на зеркалах минимизирует задержки при 
+      передаче файла, примерно в 5-200 раз ускоряет передачу 
+      результатов CGI-скриптов, PHP3 и SSI-документов. 
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      "Зеркалирование" и прочее --- чушь собачья. Честно. Имея нормальный канал об
+      этом даже заикаться не стоит, нужно это все только для одного: снизить нагрузку
+      на сервера. Это вы зря так думаете, что скрипт на Perl очень эффективен. Неправда:
+      когда их (скриптов)  выполняется несколько штук, они могут очень сильно
+      загрузить сервер. Учитывая то, что у ООО "Нет" максимум три сервера при их
+      количестве клиентов, то не кешируя сайты они просто не смогут выполнять
+      функции интернет-провайдера. Фактически, кеширование в смысле ООО "Нет", означает,
+      что между вашими страницами и пользователем всегда будет находится
+      Squid, основательно доработанный напильником до такого состояния, что лучше
+      к нему не притрагиваться. 
+    </p>
+    <p align="justify">
+      Сначала я думал, что это неважно... я ошибался. Потому что именно из-за
+      этого мне пришлось держать свой форум по загадочному адресу www.kalinin.ru.host.inc.ru
+      (или, еще можно было бы разместить no-cache.kalinin.ru)... из-за этого я до сих
+      пор не добавил в страницы формы типа "оставьте ваш комментарий". Именно поэтому я меняю 
+      хостинг. Потому что смена дизайна меня так "заколебала", что это вообще сложно описать: в течение
+      14 часов отдавалась головная страница index.html, которой на самом деле не существовало! Была 
+      страница index.shtml, но Squid'у на это было наплевать.
+    </p>
+    <p align="justify">
+      Кроме того, несколько раз сервер, на котором находится моя страничка, "падал". Пару раз
+      это пришлось на субботу и в итоге страница не была доступна до понедельника (потому что
+      в воскресные дни служба технической поддержки, как я понимаю, отдыхает). Один раз какой-то
+      процесс поставил lock на мой почтовый ящик, в результате чего я сутки не мог получить
+      доступ к почтовому ящику, хотя знал даже pid этого процесса --- просто служба технической
+      поддержки столько времени реагировала на мои письма. И т.д. и т.п. В общем, от ООО "Нет" у меня
+      остались только самые гадкие впечатления. 
+    </p>
+    <p align="justify">
+      Понятно, что ничего хорошего от хостинга за такую сумму ожидать было нельзя... но что бы
+      настолько ;)
+    </p>
+    <p align="justify">
+      В общем, я не жалею. Просто хочу предупредить о "граблях", которые тут могут находится. И если
+      я три месяца назад просто не знал, какое качество хостинга меня удовлетворит, потому
+      что не понимал зачем он мне нужен, то теперь знаю. И несовпадение моих идеалов с реалиями
+      ООО "Нет" очень большое.
+    </p>
+    <p align="justify">
+      Но сегодняшнюю заметку я не собирался посвящать антирекламе фирмы "Нет", просто она является
+      наиболее показательной в плане всего того идиотизма, который по недосмотру называется хостингом. 
+      Я, конечно же, привередничаю, но все-таки...
+    </p>
+    <p align="justify">
+      Cityline, "самый нескучный..." Это же замечательно, когда видишь такое вот предложение:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Бесплатные услуги, предоставляемые компанией Ситилайн для 
+      поддержки WEB-страниц клиентов (для абонентов тарифных 
+      планов "Персональный", "Корпоративный" и "Оптимальный") <br />
+      установка - бесплатно <br />
+      SSI - бесплатно <br />
+      FTP-доступ - бесплатно <br />
+      Резервное копирование - бесплатно <br />
+      Смена пароля - бесплатно <br />
+      Еженедельное архивирование - бесплатно <br />
+      Круглосуточная поддержка - бесплатно 
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Ей-богу, это что-то. Я не особенно хорошо понимаю, как при отсутствии хотя бы
+      одной из этих "бесплатных" услуг можно вообще было бы говорить о хостинге. Очень
+      забавно смотрится услуга по смене пароля...
+    </p>
+    <p align="justify">
+      350MB.Ru предоставляет тоже что-то оригинальное. Раздел "система", написано буквально
+      следующее:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Языки программирования: C++ c доступом к компилятору.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Поймите меня правильно... я не знаю что такое C++ без доступа к компилятору...
+      и не думаю, что при наличии SSH можно дать "C++ без доступа к компилятору".
+    </p>
+    <p align="justify">
+      Вообще, "бесплатные услуги" это что-то. А, в особенности, платные. Например,
+      стоимость домена в зоне .ru составляет 36$ в год, а не 50. Стоимость же
+      доменов третьего уровня вообще нулевая и непонятно почему за это можно требовать
+      деньги. А ведь требуют, например на 100MB.Ru:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Регистрация поддомена 0$ 0$ <br />
+      Поддержка поддомена в мес. [имя.вашеимя.ru] 3$ 3$ 
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      За что там можно брать деньги? За обращения к DNS? Смешно. Или webhosting.Russia:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Регистрация дополнительных доменных имен третьего уровня сверх бесплатных:
+      5 у.е.       
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Аналогичным образом имена в доменах msk.ru, spb.ru, org.ru и т.п. тоже
+      являются бесплатными. В смысле, должны, потому что денег за них все-таки
+      требуют.
+    </p>
+    <p align="justify">
+      Понятно, что можно оплачивать поддержку домена --- потому что, в частности, там требуется
+      два dns-сервера в рзличных сетях. Но почему это надо так вуалировать?
+    </p>
+    <p align="justify">
+      Иногда за отдельную услугу выдается возможность создания своей собственной
+      страницы на, к примеру, 404 ошибку Web-сервера. Почему --- непонятно.
+    </p>
+    <p align="justify">
+      В общем, большинство компаний упорно пытается продать воздух. Вызвано
+      это, конечно же, тем, что существуют покупатели этого воздуха: люди
+      иногда просто не понимают, какие слова и что означают. Я вот только 
+      не понимаю одного: почему, даже при существовании таких клиентов,
+      компании считают возможным для себя пытаться их обмануть? Дикость какая-то.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Но лучше всего смотрятся предложения о платном хостинге, размещенные
+      на бесплатных серверах, таких как newmail.ru или f2s.com. 
+    </p>
+    <p align="justify">
+      Я надеюсь, что хостинг себе я все-таки нашел. При этом иногда обидно то,
+      что я, в общем-то, могу  без особенных проблем разместить свою
+      страничку где-нибудь "по знакомству" где я совершенно бесплатно
+      буду иметь очень большое счастье... только я не люблю "халяву". 
+    </p>
+<h2>PS</h2>
+    <p align="justify">
+      Кстати сказать, я видел очень много домашних страничек, на которых
+      есть единственный текст вида "сравнение бесплатных хостингов" с двумя
+      ссылками на Narod.Ru и Boom.Ru ;) чего там можно сравнивать в смысле предоставляемых
+      услуг хостинга, я вообще не понимаю,
+      если честно признаться.
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/etc/print_19_10_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_11_00.shtml">Высокий штиль </a> (12.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+У О. Генри есть забавный рассказ под названием &quot;Теория и практика&quot;, в котором редактор журнала и бедный писатель спорят друг с...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/14_10_00.shtml">Новый дизайн </a> (14.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я раньше не понимал фраз типа "содержание выросло из оформления", пока две недели назад не попытался просто полистать свою страничку. Вы...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/14_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/20_10_00.shtml">Космические корабли бороздят большой театр </a> (20.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В бланке отчета по нашим лабораторным работам, которые заполняют студенты после их выполнения, кроме пунктов "задание" и невнятного "сценарий выполнения", существует...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/30_11_08.shtml">Арендованный сервер от hcenter.ru и хостинг в Германии </a> (30.11.08)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Началось всё с того, что я решил попробовать арендовать сервер в Германии. Я слышал много положительных отзывов в пользу такого мнения,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/30_11_08.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_09_01.shtml">После отпуска </a> (23.09.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется иногда написать что-то в виде зарисовки. Так сказать, "из жизни" --- О.Генри очень много издевался над подобным жанром и авторами,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_09_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/13_07_01.shtml">Круглая дата </a> (13.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Тихо-тихо и незаметно прошла историческая дата: 11 июля 2000 года я написал первую заметку и выложил ее на свою домашнюю страничку....<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/13_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/15_06_01.shtml">Новый дизайн, часть 2 </a> (15.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как многие могли заметить, kalinin.ru наконец-то сменил дизайн. Тому было много причин, о которых я хотел бы рассказать, кроме того просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/15_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/05_03_01.shtml">Театральные билеты </a> (05.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Мне всегда смешно смотреть по телевидению на очередного актера, когда тот с придыханием начинает говорить об искусстве, о спектаклях, о театре......<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/05_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_02_01.shtml">Авторское право </a> (12.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Авторское право... до чего же, однако, скользкий термин. Самое смешное, каждый автор и каждый нарушитель авторского права трактуют его по-своему и...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/31_12_00.shtml">С новым годом! </a> (31.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Прекрасно понимаю, что поздравления с Новым Годом, наверное, уже приелись людям... но, с другой стороны, это, фактически, единственный настоящий праздник. Настоящий...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/31_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/20_10_00.shtml">Космические корабли бороздят большой театр </a> (20.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В бланке отчета по нашим лабораторным работам, которые заполняют студенты после их выполнения, кроме пунктов "задание" и невнятного "сценарий выполнения", существует...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

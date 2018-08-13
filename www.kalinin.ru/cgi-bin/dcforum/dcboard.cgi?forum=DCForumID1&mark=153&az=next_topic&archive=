@@ -1,0 +1,521 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage  - "Winodws API"
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+   <META HTTP-EQUIV="Expires" CONTENT="Tues, 04 Dec 1996 21:00:00 GMT">
+   <META HTTP-EQUIV="pragma" content="no cache">
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>"Winodws API"</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+   <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" bgcolor="#EAE8E0">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=printer_format&om=146&forum=DCForumID1"><img
+   src="/dcforum//Images/printer_friendly.gif" align="bottom" border="0"><font 
+   SIZE="1" FACE="arial,sans-serif" 
+   color="black">Printer-friendly version of this topic</font></a></TD>
+   <TD ALIGN="RIGHT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <font color="black"><b></b></font>&nbsp;
+   <br><font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=146&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=146&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>&nbsp;</FONT></TD></TR>
+      <TR><TH COLSPAN="4" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+         face="arial,sans-serif" color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> 
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&archive="><font 
+         face="arial,sans-serif" color="black" size="-1">Основной форум</FONT></a> <font 
+         face="arial,sans-serif" color="black" size="-1">(Public)</font>
+         </TH></TR>
+      <TR BGCOLOR="#E3DAA5">
+      <TD ALIGN="LEFT" COLSPAN="4">
+      <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+      Original message</font></TD></TR></TABLE>
+      <br>
+      <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="0"></a> <b>"Winodws API"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Тарас</b> <a 
+            href="mailto:Daidalos@rambler.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      03-Oct-04,&nbsp;11:59&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Суть в следующем:<BR>Оконная процедура создаёт окна: "редакторы" и кнопку<P>HWND wedit<2>,iedit<2>, button;<BR>int i;<P>case WM_CREATE:<BR>for(i=0...<BR>{<BR>wedit<i>=CreateWindow("EDIT",...<BR>iedit<i>=CreateWindow("EDIT",...<BR>...<BR>}<BR>button=CreateWindow("BUTTON",...<BR>return 0;<P>Все они выводятся на экран и даже делают то, что я прописал в их процедурах через SetWindowLong().<BR>Далее мне нужно достать текст из "редакторов".<BR>Делаю я это так:<P>case WM_COMMAND: ...<P>char txt<15>;<BR>int a<2>,b<2>;<BR>for(i=0;i&lt;2;i  )<BR>	 {<BR>	 GetWindowText(wedit<i>,txt,3);<BR>(txt=="1")?a<i>=1:a<i>=-1;<BR>...<BR>	 GetWindowText(iedit<i>,txt,2);<BR>(txt=="1")?b<i>=1:b<i>=0;<BR>	 ...<BR>	 }<BR>А вот тут то и начинается самое интересное. Оба значения а становятся равны -1, b - 0 (соответственно). Более того, если я пытабсь просто вывести на экран буфер txt через MessageBox(...), то вместо предполагаемого txt пустая строка. При это GetWindowText считывает с кнопки текст вполне номрально (проверял MessageBox'ом). Пытался реализовать "редакторы" не через массивы ( a<2>), а как отдельные переменные (a1,a1). Даже при одном окне-"редакторе" на главном окне, результат - та же пустая строка. <P>Извечный русский вопрос "Что Делать???"
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+      </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE>
+      <br>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         <a name="TOP">&nbsp;</a>Table of contents</font></TD></TR></TABLE>
+         <br><TABLE 
+         BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="LEFT" COLSPAN="2">
+         <font SIZE="-1" FACE="arial,sans-serif" color="black">
+         
+               <img src="/dcforum//Images/message.gif">
+               <a href="#2">RE: Winodws API</a>,
+               <b>Proteus</b>, <font size="1">20-Nov-04, (2)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#3">RE: Winodws API</a>,
+               <b>Тарас</b>, <font size="1">22-Nov-04, (3)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#4">RE: Winodws API</a>,
+               <b>alk</b>, <font size="1">22-Nov-04, (4)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="37" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#5">RE: Winodws API</a>,
+               <b>Тарас</b>, <font size="1">23-Nov-04, (5)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="55" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#6">Sockets</a>,
+               <b>Тарас</b>, <font size="1">24-Nov-04, (6)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="55" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#7">RE: Winodws API</a>,
+               <b>Proteus</b>, <font size="1">25-Nov-04, (7)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="73" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#8">Proteus</a>,
+               <b>Тарас</b>, <font size="1">26-Nov-04, (8)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="91" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#9">RE: Proteus</a>,
+               <b>Proteus</b>, <font size="1">05-Dec-04, (9)</font><br>
+               
+         </font></TD></TR></TABLE><p>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="right" COLSPAN="2">
+         <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=146&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=146&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+         </TD></TR></TABLE><TABLE BORDER="0" WIDTH="70%" 
+         cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Messages in this topic
+         </font></TD></TR></TABLE>
+         <br>
+         
+
+   <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="2"></a>2.  <b>"RE: Winodws API"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Proteus</b> <a 
+            href="mailto:lawnmower-man@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      20-Nov-04,&nbsp;02:34&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         В винде ты не плохо разбираешься, но :<BR>GetWindowText(wedit,txt,3);<BR>3 хорошо бы поменять на sizeof(txt), но это тока ради приличия...<P>И самое главное!!!<BR>(txt=="1")?a=1:a=-1;<BR>(txt=="1") поменяй на (!strcmp(txt,"1")) или на<BR>(txt<0>=='1' && !txt<1>)<P>Если ты выбрал первый вариант то добавь в начале #include&lt;string.h&gt;
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=2"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="3"></a>3.  <b>"RE: Winodws API"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Тарас</b> <a 
+            href="mailto:Dedal@email.su"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      22-Nov-04,&nbsp;05:21&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Приятно осозновать, что на тебя вобщем-то обращают внимание. Проблему эту же я решил 2 часа спустя.<BR>Но отвечать не стал. Просто посмотреть на местную аудиторию.<BR>А теперь задачка посложнее:<BR>Написать программу, которая скачивает из ИНЕТА курсы валютных котировок хотябы на текущий день (но лучше по указываемой в программе дате).<BR>Я начал тут сокеты изучать. Туго идёт. Подскажите ресурсы или пример кода.<BR>Заранее благодарен:)
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=3"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="4"></a>4.  <b>"RE: Winodws API"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>alk</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      22-Nov-04,&nbsp;05:44&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Приятно осозновать, что на тебя вобщем-то <BR>&gt;обращают внимание. Проблему эту же <BR>&gt;я решил 2 часа спустя. <BR>&gt;<BR>&gt;Но отвечать не стал. Просто посмотреть <BR>&gt;на местную аудиторию. <BR>&gt;А теперь задачка посложнее: <BR>&gt;Написать программу, которая скачивает из ИНЕТА <BR>&gt;курсы валютных котировок хотябы на <BR>&gt;текущий день (но лучше по <BR>&gt;указываемой в программе дате). <BR>&gt;Я начал тут сокеты изучать. Туго <BR>&gt;идёт. Подскажите ресурсы или пример <BR>&gt;кода. <BR>&gt;Заранее благодарен:) <P>Простой путь будет следующим: натравить wget на нужный сайт и распарсить perl'ом полученный html.<P>А так, использовать сокеты только для того, чтобы выкачать один url, достаточно просто и примеров в интернете много. Вот, например, первое попавшееся для winsocket'ов из googl'а --- <a href="http://www.adp-gmbh.ch/win/misc/sockets.html" target="_blank">http://www.adp-gmbh.ch/win/misc/sockets.html</a>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=4"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="5"></a>5.  <b>"RE: Winodws API"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Тарас</b> <a 
+            href="mailto:Dedal@email.su"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      23-Nov-04,&nbsp;05:14&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Спасибо за код - работает:) Только под WIN API тормозит сильно, но это я сам доработаю.<BR>Глупый вопрос - а что такое WGET?<BR>Ещё пытался до этого сам подключит сокет клиента к сети из дома чарез dial-up, но прога выдавала ошибку соединения а WSAGetLastError показывал WSAECONNREFUSED (10061). При этом скачанный код работает (хоть и с тормозами).<BR>Второй глупый вопрос: где я мог ошибиться?<BR>Жду продолжения обсуждения:)<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=5"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="6"></a>6.  <b>"Sockets"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Тарас</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      24-Nov-04,&nbsp;10:30&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Увлекательная это штука  -программирование.<BR>Когда свой клиент создал, загрузил по примеру стр с mail.ru - работает.<BR>На rbc.ru не хочет создавать coоkies.<BR>На provodka.ru не поддерживает метод GET/HTTP/1.1<BR>Где бы документацию найти на эти самые методы, запросы клиента и т.п.?<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=6"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="7"></a>7.  <b>"RE: Winodws API"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Proteus</b> <a 
+            href="mailto:lawnmower-man@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      25-Nov-04,&nbsp;03:11&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Если ты первый раз это делаешь. То может быть WSA запустить забыл. Без него под виндой ни один сокет не заработает.<P>В вот тебе ресурс про сокеты www.sockets.com <BR>там море сокетов )))
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=7"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="8"></a>8.  <b>"Proteus"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Тарас</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      26-Nov-04,&nbsp;08:44&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Нет. Не забыл. Просто я, как самый умный в host обозначал через "hpp://" (привычка от пользования старой версии эксплорера:)) Сейчас всё работает дома через dial-up. Но показывать прогу надо в универе, а там - локальная сеть с proxy сервером. Какие-нибудь доки по теме proxy и клиентов в этой же области подайте please:) Или хоть что-то похожее. Буду благодарен бесконечно.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=8"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="9"></a>9.  <b>"RE: Proteus"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Proteus</b> <a 
+            href="mailto:lawnmower-man@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      05-Dec-04,&nbsp;01:34&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Ну прокси они разные бывают. И вряд ли где-то ты найдёшь документ который всё сразу тебе опишет (тем более на русском).<P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=146&selected=9"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=146&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=146&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=146&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="3">
+   <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif"> 
+      <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_archive_threads&forum=DCForumID1&selected=146"><font 
+      size="-1" color="black" face="arial,sans-serif">Archive</font></a> |  
+   <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_threads&forum=DCForumID1&selected=146&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Remove</font></a> </font>
+   <br>
+   </TD><TD ALIGN="RIGHT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=146&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=146&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+   </TD></TR>
+   
+   </TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

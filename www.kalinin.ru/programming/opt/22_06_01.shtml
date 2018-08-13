@@ -1,0 +1,744 @@
+<html><head><title>ALK :: Оптимизация :: Ассемблер x86 против C.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/opt/">оптимизация</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/books/19_06_01.shtml">&lt;&lt;</a>&nbsp;22.06.01&nbsp;<a href="/programming/unix/03_07_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Ассемблер x86 против C
+</h1><table width="60%" cellspacing="0" cellpadding="0" align="center" border="0">
+<tr><td>
+<h2>Автор</h2>
+<font size="-1">
+
+  <p align="justify">
+    Весь текст ниже взят из переписки с 
+    <a href="mailto:shelwien@thermosyn.com">Eugene D. Shelwien</a>.
+    Моего тут только несколько строчек, выделенных курсивом и
+    резюме. Текст основан на трех письмах, поэтому, возможно, не
+    совсем целостный, но все равно очень интересный. Пользуясь
+    случаем, хочу еще раз поблагодарить Евгения за интересные письма. 
+  </p>
+</font>
+</td></tr></table>
+
+
+ 
+<h3>Математика</h3>
+
+<p<i>
+    В любом случае, я не думаю, что производительность ПО будет сильно выше,
+    если его взять и переписать на ассемблере. </i>
+</p>
+
+<p align="justify">
+  Во-первых, часто может быть выше в разы - хотя бы за счет деталей архитектуры,
+  о которых компилятор "не знает". Скажем, FPU на x86 просто логарифм считать не
+  умеет - только y*log2(x). Как ты думаешь, будет у меня разница если я попытаюсь
+  вычислять такую функцию на сях и на асме?
+</p>
+<p align="justify">
+  Даже MSVC6 и то компилит из
+</p>
+
+<pre>
+void main(void)
+{
+  int x = 66666*66666;
+  printf("%lf\n", 128*log(x) );
+}
+</pre>
+	<p align="justify">
+	  вот такое вот:
+	</p>
+<pre>
+	fldln2
+	sub	esp, 8
+	fld	QWORD PTR __real@8@401a8e77be4000000000
+	fyl2x
+	fmul	QWORD PTR __real@8@40068000000000000000
+	fstp	QWORD PTR [esp]
+	push	OFFSET FLAT:
+	call	DWORD PTR __imp__printf
+	add	esp, 12
+</pre>
+<p align="justify">
+Intel - и то облажался
+</p>
+<pre>
+        fld       QWORD PTR 1_2il0floatpacket1              ;7.27
+        fldln2                                                  ;7.27
+        fxch                                                    ;7.27
+        fyl2x                                                   ;7.27
+        fmul      QWORD PTR 1_2il0floatpacket              ;7.27
+        mov       DWORD PTR [esp], OFFSET FLAT: ??_C@_04A@??6?@ ;7.27
+        fstp      QWORD PTR [esp+4]                             ;7.27
+        call      DWORD PTR __imp__printf                       ;7.27
+</pre>
+	<p align="justify">
+	  Не говоря уж о том, что мне логарифм по основанию "e" вообще
+	  как-то нафиг не нужен :). Между тем log2 я в math.h
+	  отчего-то не вижу :(
+	</p>
+	<p align="justify">
+	  Короче, уверяю тебя - математика даже минимальной сложности, написанная
+	  на асме, работает много быстрее :(.
+	</p>
+
+	<h3>Оптимизатор</h3>
+
+	<p align="justify"><i>
+	    Ну от ассемблера практическая польза у ЯВУ есть еще одна ;)
+	    Заключается она в том, что это не ассемблер ;) у меня такое
+	    ощущение, что руками делать то, что делает оптимизатор для
+	    кода (то есть, перестановку инструкций так, что бы они помещались
+	    в конвейер, оптимизацию использования кеша и т.д. и т.п.) руками
+	    не сделать. Точнее, не факт что будет лучше ;)
+	  </i>
+	</p>
+
+	<p align="justify">
+	  Гм. Это ты еще не знаешь, с кем связался :).
+	  Я вообще сишный компилятор (IntelC 4.5, в основном) использую 
+	  чуть больше четырех месяцев - потому что завел сайт и оказалось,
+	  что некоторые мало того, что ничего не понимают в моих исходниках,
+	  так у них еще и на экзешники идиосинкразия :).
+	  В смысле, до того мне кроме асма как-то ничего не требовалось :)
+	  (ес-сно, для моих проектов; не для коммерческих)
+	  Так вот. Оптимизатора лучше, чем в IntelC, я не видел, но на то,
+	  что он компилит, все равно лучше не смотреть.
+	  Ни о какой автоматической оптимизации использования кэша просто
+	  речи быть не может (ты о выравнивании, что ли?). Просто потому,
+	  что развернутый код/выравненные данные очень легко могут в него
+	  не поместиться и я наблюдал подобное реально (душераздирающее
+	  зрелище - после установки inline на одну маленькую функцию,
+	  вызываемую два раза, программа вдруг начала работать раз в десять
+	  медленнее :).
+	</p>
+	<p align="justify">
+	  В общем, единственное, от чего есть польза по скорости - это от
+	  разворачивания циклов с внутренними условиями - если это сделать
+	  вручную, то очень трудно будет потом что-то менять.
+	</p>
+	<p align="justify">
+	  А вот по нескольким вещам, которые доступны мне при писании на асме,
+	  я очень скучаю. Во-первых, это макропроцессор - сишный несравнимо
+	  хуже и из-за этого в сложных проектах часто попадаются дополнительные
+	  препроцессоры etc. Во-вторых - глобальная оптимизация; например,
+	  я сделал макросов для определения/использования глобальных переменных
+	  и возможность доступа к ним относительно EBP (который должен при этом
+	  указывать в начало соответствующего буфера). Выглядит это так:
+	</p>
+<pre>
+ifproc PrepareParamFiles
+% define
+local inpfile,outfile
+NameBufLen = 256
+dvd SourceLen
+dvd SourceSeg
+dvd TargetFil
+buffer inpfile, NameBufLen
+buffer outfile, NameBufLen
+dvd SourceNam, offset inpfile
+dvd TargetNam, offset outfile
+
+PrepareParamFiles:      pushad
+                        mov     esi,81h
+                        mov     edi,[d_SourceNam]
+                        calls   FetchFilename
+                            edx,"Filename must be specified.",13,10
+                        jc      ItsError
+
+; copy filename to output buffer and change its extension
+                        push    edi ; save inpfile
+                        mov     edi,[d_TargetNam]
+                        calls   FetchFilename
+                        smov    es,ds
+                        jnc     ReadOk
+; generate output filename by self
+                        mov     esi,[s4s 0]
+                        calls   Truename
+			...
+endm
+</pre>
+	<p align="justify">
+	  а компилится в следующее:
+	</p>
+<pre>
+ 60                           pushad
+ BE81000000                   mov    esi,000000081
+ 8B7D80                       mov    edi,[ebp][-0080]
+ E853000000                   call   00000011E
+ BAD7050000                   mov    edx,0000005D7
+ 7242                         jb     000000114
+ 57                           push   edi
+ 8B7D84                       mov    edi,[ebp][-007C]
+ E843000000                   call   00000011E
+ 1E                           push   ds
+ 07                           pop    es
+ 7313                         jae    0000000F2
+ 8B3424                       mov    esi,[esp]
+ E860000000                   call   000000147
+                              ...
+</pre>
+	<p align="justify">
+	  Как ты можешь заметить, однобайтовые относительные адреса
+	  несколько короче абсолютных ;).
+	  (Не говоря уж о том, что функции, определенные по ifproc/endm
+	  компилятся только в том случае, если в скомпилированном коде
+	  будет к ним обращение; по calls, например)
+	</p>
+	<p align="justify">
+	  Но это все мелочи.
+	  А вот о том, что на любой из современных архитектур с поддержкой
+	  виртуальной памяти использование каких-то специальных средств для
+	  динамической аллокации памяти и т.п. - это полный бред, ты знаешь?
+	  Потому что для расширения (выравненного на страницу) блока памяти
+	  необходимо всего лишь отмапить дополнительную страничку по 
+	  соответствующему адресу. В общем, все средства для эффективной
+	  работы с динамической памятью входят в состав любой современной ОС.
+	  (Любая RTL использует их + навернутый сверху собственный менеджер
+	  памяти).
+	</p>
+	<p align="justify">
+	  Только вот использовать их при программировании на сях, 
+	  например, я затрудняюсь. Фишка простая - при изменении размера
+	  ОСового блока памяти у него может поменяться адрес. А поскольку
+	  компиляторы ничего, кроме flat-модели не поддерживают, то
+	  автоматически использовать такой способ аллокации нельзя -
+	  каждый указатель в середину блока должен "знать" начальный
+	  адрес этого блока. А архитектура x86, между тем, поддерживает
+	  такое понятие, как "селектор". 
+	</p>
+	<p align="justify">
+	  Оказывается возможным, например, следующее:
+	</p>
+<pre>
+                        ...
+                        mov     edi,[d_BufferPtr]
+                        cmp     edi,[d_BufferSize]
+                        jae     ResizeOutBuffer0
+ContinueWriting0:       stos    [e4y smp_Value]
+                        mov     [d_BufferPtr],edi
+                        ...
+
+ResizeOutBuffer0:       pushad
+                        add     [d_BufferSize],BufferSizeIncrement
+                        mov     eax,es
+                        mov     ecx,[d_BufferSize]
+                        calls   mResize
+                        mov     es,eax
+                        popad
+                        jmp     ContinueWriting0
+</pre>
+
+	<p align="justify">
+	  Причем все указатели на этот же блок, хранящиеся где-то в памяти
+	  в виде селектор:смещение будут _всегда_ ссылаться именно на этот
+	  блок, куда бы он ни уехал по памяти.
+	</p>
+
+	<p align="justify">
+	  А компиляторы Си (из соображений портабельности? :) указателей 
+	  с селекторами не поддерживает в принципе. остается либо при
+	  каждом обращении по указателю суммировать его с базой блока
+	  (подобное возможно за счет одного из "дополнений" в MSVC -
+	  тага __based - пример:
+	</p>
+<pre>
+    void *vpBuffer;
+    struct llist_t
+    {
+      void __based( vpBuffer ) *vpData;
+      llist_t __based( vpBuffer ) *llNext;
+    }; 
+</pre>
+	<p align="justify">
+	  )
+	  либо перебазировать каждый раз все ссылающиеся на блок указатели,
+	  либо как-то эмулировать селекторную систему.
+	</p>
+	<p align="justify">
+	  Может я и напишу когда-нибудь замену malloc etc на системных 
+	  вызовах и __based'ных указателях... только в сложных случаях
+	  это может оказаться менее эффективно, чем стандартный способ -
+	  регистры закончатся в два раза быстрее.
+	  А вот селекторный вариант определенно быстрее - я проверял.
+	</p>
+	<p align="justify">
+	  А уж как чудно malloc'омания отражается на функциональности
+	  программ... :). В частности, архиваторам нужна опция для указания
+	  размера словаря, в первую очередь, именно чтобы его не
+	  realloc'ить.
+	</p>
+
+	<h3>Ассемблер vs C</h3>
+
+	<p align="justify"><i>
+	    А вот алгоритмическая часть значительно важнее, потому как ошибки там
+	    обычно стоят порядки...
+	  </i>
+	</p>
+	<p align="justify">
+	  Вот-вот. Как ты думаешь, навязывание мне авторами компилятора flat-модели
+	  может влиять на выбор алгоритмов?
+	  Или... вспоминается мне, например, прикол, когда я написал макрос для
+	  выравнивания функций по parity младшего байта адреса :).
+	</p>
+<pre>
+			mov     bp,offset OpTable
+GetNextChar:            lodsb
+                        mov     ah,0
+                        shl     ax,1
+                        add     bp,ax
+                        mov     bp,[word ss:bp]
+                        inc     bp
+			jp      ExecuteOperator
+                        loop    GetNextChar
+			...
+ExecuteOperator:	jmp	bp
+</pre>
+	<p align="justify">
+	  Это я интерпретатор писал, еще в XT'шные времена :). Там было некоторое
+	  множество операторов, и для их разбора я изобразил trie в виде наборов
+	  табличек, индексируемых очередным символом и содержащих либо адрес
+	  очередной таблички, либо адрес функции-обработчика. Которые отличались,
+	  как видно, по parity младшего байта адреса минус один - это оказалось
+	  несколько быстрее всех прочих приходивших мне в голову решений :).
+	  Дык вот. Слабо заставить компилятор сей скомпилить функцию по адресу
+	  с такими ограничениями? :)
+	</p>
+	<p align="justify">
+	  Или более серьезный пример - понадобился мне как-то словарь в виде
+	  тернарного дерева. Так вот когда я сделал ветвление после сравнения
+	  символов не по больше/меньше, а по parity... можешь себе представить,
+	  насколько улучшились характеристики.
+	</p>
+	<p align="justify">
+	  Или битовые операции те же. Ты знаешь, что на x86 есть возможность
+	  работать с битовыми массивами длины до 2^31, причем в обе "стороны"
+	  от указанного адреса? Т.е. команды для этого есть. Типа
+	</p>
+<pre>
+mov eax,-10000
+m0:
+btr [ArrayEnd],eax
+inc eax
+jnz m0
+</pre>
+	<p align="justify">
+	  (это к вопросу о соотношении строк в сишном/асмовском исходниках)
+	</p>
+
+	
+	<h4>1. Умножение</h4>
+	<p align="justify">
+	  Для процессора, реализация умножения с выдачей двойного слова на
+	  выходе является очень логичной. (Аналогично с делением).
+	  Т.е. если сделать не так, то умножение в длинной арифметике придется
+	  делать сдвигами - что совсем не рулез :).
+	  ЯВУ, который бы это понимал, мне пока не попадался :(.
+	  Поэтому большинство арифметических кодеров, использующих деление,
+	  дают на несколько сотых процента худшее сжатие. Полкилобайта
+	  на метр архива - считай мусор, который обязан своим существованием
+	  ограничениям языка :).
+	</p>
+	<p align="justify">
+	  Причина: 
+	  компилятор Си поймет запись 
+	</p>
+<pre>
+   low += cumFreq * (range/= totFreq);
+</pre>
+	<p align="justify">
+	  правильно, а вот
+	</p>
+<pre>
+   low += (cumFreq*range)/totFreq
+</pre>
+	<p align="justify">
+ - увы, нет. Насильное приведение к __int64 вызовет ужасные
+тормоза... а на асме я запишу
+	</p>
+<pre>
+   mov eax,cumFreq
+   mul range
+   div totFreq
+</pre>
+	<p align="justify">
+	  и получу _точный_ результат :).
+	</p>
+	
+	<h4>2. Самомодификация</h4>
+	<p align="justify">
+	  Были времена, когда это была чуть ли не панацея. После появления
+	  кэша кода, увы, с этим стало хуже :).
+	  Только вот в случаях, когда тебе нужно вызывать некую функцию
+	  на каждой итерации цикла, пока не случится нечто, а потом уже
+	  не нужно... Нет, можно, конечно, сделать две копии цикла :)
+	  Правда, никакой оптимизатор в этом тебе помогать не захочет.
+	  А вручную - задолбаешься синхронно вносить изменения во все
+	  копии.
+	</p>
+	<p align="justify">
+	  В общем, вот есть у процессора (все еще :) возможность модифицировать
+	  код. А из ЯВУ это доступно с трудом, непортабельно etc. 
+	  Ну и кто в этом виноват? :)
+	</p>
+	<h4>2a. Генерация кода</h4>
+	<p align="justify">
+	  Это финальная стадия оптимизации. Только в runtime ты можешь знать
+	  точно, какой код тебе понадобится - и сгенерить его. 
+	  Это, к счастью, кое-где все-таки доступно. Но не в сях :)
+	  И с оптимизацией там... того :)
+	</p>
+	<h4>3. Передачи управления</h4>
+	<p align="justify">
+	  Не знаю, как у кого, а у меня редко, но возникает необходимость в
+	  использовании функций с несколькими точками _входа_. При использовании
+	  рекурсии, в основном, но не только.
+	  Сделать это даже на встроенном асме... очень сложно.
+	</p>
+	<p align="justify">
+	  Аналогично, изредка требуется возможность вернуться из функции несколько
+	  не туда, откуда вызывали. longjmp и setjmp, вон, даже сочинили.
+	  Вот только это решение за счет потери производительности :(.
+	</p>
+	<p align="justify">
+	  Ну и есть еще один трюк, который я очень люблю... но уж он-то к ЯВУ
+	  отношения не имеет точно :)
+	</p>
+<pre>
+00000057:
+BEDF01          mov    si,001DF       ; загружаем смещение
+84BE2202        test   [bp][00222],bh ; никуда ничего не пишем
+  ^^^^^^
+58              pop    ax
+9C              pushf
+0E              push   cs
+E8C9FF          call   00000002D   ---------- (2)
+E80200          call   000000069   ---------- (3)
+5E              pop    si
+CF              iret
+
+0000005B:
+BE2202          mov    si,00222
+^^^^^^
+58              pop    ax
+9C              pushf
+0E              push   cs
+E8C9FF          call   00000002D   ---------- (1)
+E80200          call   000000069   ---------- (2)
+5E              pop    si
+CF              iret
+</pre>
+	<p align="justify">
+	  Это, конечно, оптимизация по размеру кода в чистом виде, но нередко может
+	  помочь и по скорости - все-таки избавляемся от лишнего перехода.
+	</p>
+	<h4>4. Флаги</h4>
+	<p align="justify">
+	  На большинстве процессоров кроме обычных регистров есть еще и флаги результата
+	  и переходы по ним. Никакой их поддержки в ЯВУ не присутствует, а понимать,
+	  что
+	</p>
+<pre>
+   uint tmp=low;
+   low += cumFreq * (range/= totFreq);
+   if (low&lt;tmp) Carry++;
+</pre>
+	<p align="justify">
+	  нужно компилить как
+	</p>
+<pre>
+   [...]
+   add low,eax
+   adc Carry,0
+</pre>
+	<p align="justify">
+	  , не громоздя лишних проверок... Это выше способностей IntelC, по
+	  крайней мере :)
+	</p>
+	<h4>5. Стек</h4>
+	<p align="justify">
+	  Опять же, обычно он есть. Только вот кое-кто его узурпировал для хранения 
+	  параметров функции. А что можно что-нибудь туда пихать, чтобы выбрать потом
+	  в обратном порядке (и дофига других применений можно придумать) - посчитано
+	  лишним :).
+	</p>
+	<p align="justify">
+	  Не говоря уж о том, что в современных ОС при возникновении прерывания в
+	  стек программы ну никак не может ничего записаться. Так что ESP, как бы,
+	  можно пользоваться вполне свободно - что очень важно, когда это один из
+	  всего восьми доступных регистров. Но увы.
+	</p>
+	<p align="justify">
+	  А уж о том, что стековыми операциями можно очень быстро (и удобно) читать
+	  что-то из памяти, ходить по связанным структурам по POP ESP etc... лучше
+	  и вовсе не вспоминать, чтоб ностальгия не замучала :)
+	</p>
+
+<h2>Резюме</h2>
+  <p align="justify">
+    Мне очень сложно писать это заключение, потому что переписка, я
+    надеюсь, еще не окончена, а резюме обычно выглядит как подведение
+    итогов... но, imho, рассматривать этот текст надо через призму специфики работы. К
+    примеру, мне достаточно сложно выйти за пределы своего текущего
+    проекта, где основную сложность составляют не вычисления и
+    производительность кода, а отложенная запись данных на жесткий
+    диск и связанные с этим проблемы транзакций, кеширования... тем
+    не менее, это очень полезно --- думать  за
+    пределами контекста текущих задач. 
+  </p>
+    <p align="justify">
+      Но даже если все написанное выше не особенно понятно
+      (после публикации этого текста мне стали приходить письма с
+      общим содержанием вида "какие люди!"), то осознание того, что
+      языки программирования C или C++ не всегда подходят для решения
+      любых задач, очень полезно. Мало того, как можно видеть, эти
+      языки программирования не являются близкими к ассемблеру, хотя
+      это заблуждение является общепринятым.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/opt/print_22_06_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.pilabs.org.ua/sh" target="_blank">http://www.pilabs.org.ua/sh</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Сайт Евгения, на котором можно найти его программы и некоторые тексты.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/08_08_01.shtml">Списки и последовательный доступ </a> (08.08.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Список как структура для хранения данных известна достаточно широко. Фактически, наверняка в любом курсе программирования ее изучают в том или ином...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/opt/08_08_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/03_07_01.shtml">Потоки </a> (03.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется наконец-то выполнить данное мною еще полгода назад обещание и рассказать о том, что такое потоки в Unix и каких типов...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/03_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/19_06_01.shtml">Плагиат </a> (19.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В последнее время мне стало казаться, что с моим сайтом что-то не в порядке. Вроде, текст есть, живые люди тоже иногда...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/19_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/08_08_01.shtml">Списки и последовательный доступ </a> (08.08.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Список как структура для хранения данных известна достаточно широко. Фактически, наверняка в любом курсе программирования ее изучают в том или ином...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/opt/08_08_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/22_06_01.shtml">Ассемблер x86 против C </a> (22.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Весь текст ниже взят из переписки с . Моего тут только несколько строчек, выделенных курсивом и резюме. Текст основан на трех...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/opt/22_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/03_07_01.shtml">Потоки </a> (03.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется наконец-то выполнить данное мною еще полгода назад обещание и рассказать о том, что такое потоки в Unix и каких типов...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/03_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/19_06_01.shtml">Плагиат </a> (19.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В последнее время мне стало казаться, что с моим сайтом что-то не в порядке. Вроде, текст есть, живые люди тоже иногда...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/19_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

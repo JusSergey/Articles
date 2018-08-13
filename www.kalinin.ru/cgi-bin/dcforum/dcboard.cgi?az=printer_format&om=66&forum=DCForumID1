@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 66<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/66.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Как монопольно открыть файл в стандартной C++ б-ке ввода-вывода"</font></b><br>
+Posted by Roman  on 21-Nov-01 at 02:51&nbsp;PM<br>
+<blockquote>Как монопольно открыть файл в стандартной C++ б-ке ввода-вывода. В старой C++ б-ке у метода open было три параметра. Можно было указать ios::sh_none 3-м параметром и OK. В новой версии б-ки у метода open есть два параметра, второй - open_mode, но нет каких-либо упоминаний о флаге монопольного использовании файла. Что-то ничего не нашел в MSDN.<BR>Help me, please somebody!</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Как монопольно открыть файл в стандартной C   б-ке ввода-вывода</b>,<b>Andrey L. Kalinin</b>, 01:45&nbsp;PM, 23-Nov-01
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Как монопольно открыть файл в стандартной C   б-ке ввода-вывода"</b><br>
+Posted by Andrey L. Kalinin  on 23-Nov-01 at 01:45&nbsp;PM<br>
+<blockquote>
+&gt;Как монопольно открыть файл в стандартной <BR>&gt;C   б-ке ввода-вывода. В старой <BR>&gt;C   б-ке у метода open <BR>&gt;было три параметра. Можно было <BR>&gt;указать ios::sh_none 3-м параметром и <BR>&gt;OK. В новой версии б-ки <BR>&gt;у метода open есть два <BR>&gt;параметра, второй - open_mode, но <BR>&gt;нет каких-либо упоминаний о флаге <BR>&gt;монопольного использовании файла. Что-то ничего <BR>&gt;не нашел в MSDN. <BR>&gt;Help me, please somebody! <P>Честно признаться, потоки из STL я не использую очень давно --- как-то не особенно они мне нравятся. Тем не менее, если есть возможность создать поток по открытому файловому дескриптору, то все достаточно просто: открыть с нужными параметрами файловый дескриптор и по нему создать поток (или создать буфер, потом по нему создать поток). В Unix'е эксклюзивный доступ обеспечивается добавлением в маску O_EXLOCK.<BR>
+</blockquote>
+<hr>
+</font></body></html>

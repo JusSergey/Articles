@@ -1,0 +1,517 @@
+<html><head><title>ALK :: Алгоритмы :: Использование конечных автоматов.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/alg/">алгоритмы</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/life/20_08_00.shtml">&lt;&lt;</a>&nbsp;21.08.00&nbsp;<a href="/comment/books/22_08_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Использование конечных автоматов
+</h1> 
+    <p align="justify">
+      Я не хочу давать формальных определений, цель этой заметки ---
+      показать "на пальцах" использование конечных автоматов (КА) для
+      решения различных задач разбора.
+    </p>
+    <p align="justify">
+      Все дело в том, что программисты очень часто сталкиваются
+      с проблемой разделения строк на некоторые осмысленные части,
+      проверки правильности ввода значений и т.д. В принципе,
+      так как очень часто пользователем является человек, то 
+      самым естественным для него путем передачи информации будет
+      человеческая речь. Тем не менее, задача выделения
+      смысла из человеческой речи до сих пор не решена (и, вообще-то,
+      вряд ли будет решена в ближайшем будущем). Поэтому
+      для подобных случаев используется формальные описания некоторых
+      структур --- формальные грамматики. Этот раздел информатики является
+      частью более общего --- формальных методов.
+    </p>
+    <p align="justify">
+      Заданная грамматика позволяет указать, какая строка символов принадлежит
+      некоторому множеству, а какая --- нет. Можно привести
+      пример с множеством корректных URL-адресов: грамматика, заданная соответствующим
+      RFC, указывает на то, какие строки являются правильными URL-адресами, а какие --- нет.
+    </p>
+    <p align="justify">
+      Для некоторых типов грамматик существуют соответствующие им алгоритмы
+      разбора строк символов, именно этим и хорошо применение грамматик. Конечные
+      автоматы применяются для простейших грамматик, но зачастую этого хватает.
+      Обычно КА применятся для того, что называется лексическим анализом, т.е.
+      для разбиения исходной строки на набор некоторых лексических единиц (например,
+      выделение из текста слов и чисел).
+    </p>
+    <p align="justify">
+      Традиционно КА определяется как некоторая абстрактная машина, которая
+      позволяет по ленте, содержащей строку, выдать ответ: допустима строка, или нет.
+      Практически же, при применении КА одновременно с проверкой допустимости осуществляются
+      нужные преобразования (очень редко, когда требуется проверить именно допустимость;
+      обычно, если ответ положительный, то нужны дополнительные данные --- если строка является
+      числом, то нужно получить его значение).
+    </p>
+    <p align="justify">
+      Простейший детерминированый КА работает следующим образом: в нем находится внутренний
+      регистр для хранения текущего состояния и таблица
+      правил вида "символ-состояние ===&gt; состояние" позволяющая по текущему символу
+      на ленте и текущему состоянию перейти в другое состояние (со сдвигом по ленте).
+      Цепочка символов допустима, если КА завершил свою работу в одном из "разрешенных"
+      состояний и не допустима в обратном случае.
+    </p>
+    <p align="justify">
+      На практике составлять таблицу вручную достаточно сложно (для большого количества правил ---
+      если это требуется, то используются автоматические генераторы кода). Тем не менее, подобные
+      задачи, которые просто решаются именно при помощи КА встречаются
+      сплошь и рядом. Например, упомянутая уже задача разбиения текста на числа и слова.
+      Давайте договоримся, что словом считается алфавитносимвольная последовательность,
+      а числом --- только последовательность цифр с возможным знаком перед ней.
+    </p>
+    <p align="justify">
+      Прототип функции, разбирающей текст:
+    </p>
+<pre>
+void parse(const char* string);
+</pre>
+    <p class="table">
+      Будем считать, что результат работы будет доступен... только внутри функции ;) это 
+      не принципиально; мы просто подсчитаем количество слов и чисел в исходном тексте.
+      Для того, что бы хранить текущее состояние, вводится соответствующая переменная
+      (лучше всего использовать перечислимый тип --- нагляднее).
+    </p>
+<pre>
+enum
+{
+   skip,
+   sign,
+   digit,
+   letter,
+   finish
+} state = skip;
+</pre>
+    <p align="justify">
+      Рассматриваемый тип КА работает без возвратов (на это прошу обратить особое
+      внимание --- для разбора строки потребуется только один проход):
+    </p>
+<pre>
+for(const char* current = string; state != finish; current++)
+{
+  // ...
+}
+</pre>
+    <p class="table">
+      Вышеприведенный цикл как раз и организует этот проход. Теперь интереснее всего
+      содержимое  цикла. Оно состоит из оператора <code>switch</code>:
+    </p>
+<pre>
+switch(state)
+{
+case skip   : // ...
+case sign   : // ...
+case letter : // ...
+case digit  : // ...
+case finish : // ...
+}
+</pre>
+    <p align="justify">
+      Т.е., используется для  определения текущего состояния КА и перехода в новое. Последний <code>case</code>
+      введен для общности --- при его отсутствии  компилятор gcc с флагом <code>-Wall</code> выдаст
+      предупреждение о том, что не все варианты перечислимой переменной были учтены в операторе
+      выбора. 
+    </p>
+    <p align="justify">
+      Состояние <code>skip</code> введено для того, что бы обеспечить пропуск всех сивмолов, не
+      являющемеся буквами или цифрами. Логично, что именно с него начинает свою работу КА.
+    </p>
+<pre>
+case skip :
+  if(isalpha(*current)) { state = letter; break; }
+  if(isdigit(*current)) { state = digit; break; }
+  if(*current == '+' || *current == '-') { state = sign; break; }
+  if(*current == 0) { state = finish; break; }
+  break; 
+</pre>
+    <p align="justify">
+      В этом состоянии, при получении на вход буквы КА считает, что впереди --- слово,
+      цифры или знака --- возможно число. Выражение типа <code>*current == 0</code>,
+      а не <code>!(*current)</code> как написали бы некоторые умники, используется
+      для повышения общности записи и для более удобного последующего чтения.  
+      Т.е., я не против записи <code>if(*current)</code>, но отрицание там смотрится
+      очень... незаметно, по-моему. Может быть, конечно же, я не прав --- это замечание
+      касается "стиля", а подобные вопросы традиционно вызывают массовые споры ;)
+    </p>
+    <p align="justify">
+      Если на вход поступил знак, то:
+    </p>
+<pre>
+case sign : 
+  if(isdigit(*current)) { state = digit; break; }
+  if(isalpha(*current)) { state = letter; break; }
+  if(*current == 0) { state = finish; break; }
+  state = skip;
+  break;
+</pre>
+    <p align="justify">
+      После знака '+' или '-' в случае поступления на вход цифры все еще возможно, что 
+      обрабатывается число. Если попалась буква, то никакого числа не было, а началось
+      слово. Во всех остальных случаях требуется вернуться к состоянию <code>skip</code>
+      для того, что бы продолжить пропуск символов.
+    </p>
+<pre>
+case digit :
+  if(isdigit(*current)) break;
+  if(isalpha(*current)) { state = letter; break; }
+  count_of_numbers++;
+  state == *current ? skip : finish;
+  break;
+</pre>
+    <p align="justify">
+      Предельно ясно --- в случае, если цифровая последовательность закончилась
+      не буквой, то это было число (увеличиваем счетчик --- единственная полезной
+      работой нашего КА будет подсчет количества чисел и слов). Если же встретилась
+      буква, то (по определению выше) последовательность является словом.
+    </p>
+<pre>
+case letter :
+  if(isalpha(*current)) break;
+  count_of_words++;
+  state = *current ? skip : finish;
+  break;
+</pre>
+    <p align="justify">
+      Собственно говоря, это все --- после выхода из цикла переменные <code>count_of_numbers</code>
+      и <code>count_of_words</code> будут содержать в себе количество чисел и слов соответственно (перед
+      входом в цикл их, конечно же, надо было обнулить).
+    </p>
+    <p align="justify">
+      Кто-то мог заметить, что в состоянии <code>sign</code> в данном случае нет
+      необходимости. Это так, но оно введено для того, что бы было проще адаптировать
+      этот пример не только к подсчету слов и чисел, а еще и к выделению слов и  чисел со знаком.
+    </p>
+    <p align="justify">
+      Задача и пример элментарны. Но я не стал бы приводить их здесь, если
+      бы, к моему сожалению, очень часто не видел бы то, как вполне грамотные люди
+      в очередной раз пытаются изобрести велосипед. При этом велосипеды
+      получаются, зачастую, настолько кособокие и неправильные, что 
+      смотреть на это становится сложно. Например, часто встречающаяся
+      ошибка заключается в том, что организуются возвраты по строке в обратную
+      сторону. Т.е., например, была попытка применить какое-нибудь правило,
+      она оказалась неудачной, тогда для проверки следующего правила
+      производится откат назад и попытка применить новое и т.д. Зачастую
+      это становится очень медленно, а КА позволяет (если его можно, конечно же,
+      применить) обработать строку в один проход. Нет, сущестуют, конечно же,
+      варианты, когда без этого не обойтись. Но в самых распространенных простейших
+      случаях можно обойтись без возвратов.
+    </p>
+    <p align="justify">
+      Если в примере выше этого еще не видно, то могу привести другие примеры. Кроме
+      таких простейших случаев разбора (числа и слова подчинялись в примере очень
+      простым правилам), существуют несколько более сложные варианты применения КА.
+      Например, поиск по образцу.
+    </p>
+    <p align="justify">
+      Задача поиска по образцу заключается в том, что существует большая строка (больше
+      образца) и надо найти вхождение, удовлетворяющее по каким-то правилам более
+      маленькой строке (например, точное совпадение или что-то в духе регулярных выражений).
+      Для упрощения рассмотрим точное совпадение --- т.е., поиск подстроки в строке.
+    </p>
+    <p align="justify">
+      Я видел очень много решений этой задачи, которые программисты делали "от сохи". Существуют
+      специализированные алгоритмы поиска вхождений подстроки в строку (например,
+      алгоритм Кнута-Мориса-Пратта), но то, что делают чаще всего, несколько сомнительно
+      по своему качеству.
+    </p>
+    <p align="justify">
+      Обычно задача решается следующим образом: фиксируется некоторая позиция, начиная с нее
+      сверяется совпадение с шаблоном, если совпадения не было --- берется следующая позиция за
+      фиксированной и все повторяется снова.
+    </p>
+    <p align="justify">
+      Это совершенно неправильно! Все дело в том, что на каждой такой итерации теряется информация
+      о том, что на предыдущем шаге символы строки уже сверялись с шаблоном (пусть, и в другом месте),
+      а это можно было бы использовать. Для этого строится конечный автомат с состояниями,
+      соотвествующими длине совпавшей подстроки и правилами, которые каждой паре "длина-символ" выставляют
+      новую "длину" совпавшей подстроки. Например, для подстроки "ababc" можно говорить, что пары "2,a" и
+      "4.a" соответствуют переходу в состояние 3.
+    </p>
+    <p align="justify">
+      Особенно заметен выигрыш построения таблицы переходов (это достаточно простая задача:
+      по подстроке построить подобную таблицу) тогда, когда надо найти не первое,
+      а последнее вхождение подстроки. Год назад я давал задачку на олимпиаде для
+      первокурсников, в которой требовалось как раз найти в строке длиной до 1МБ последнее вхождение
+      подстроки длиной до 255 символов. При этом был тест, в котором вся исходная строка и строка
+      образец состояли из одних только букв "a". В этом случае, используя возвраты, 
+      потребовалось бы сделать 255*1024*1024 сравнения... и это ровно в 255 раз больше одного
+      прохода. 
+    </p>
+    <p align="justify">
+      Кстати, алгоритм Кнута-Мориса-Прата, в принципе, как раз и является вариацией на 
+      тему построения КА, только в нем указано каким именно образом строится таблица переходов.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      КА это очень полезный инструмент. Очень простой и надежный,
+      к сожалению, о нем часто забывают...
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/alg/print_21_08_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/11_07_00.shtml">/comment/books/11_07_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Программирование: теоремы и задачи.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/08_09_00.shtml">/comment/books/08_09_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Искусство программирования.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_09_00.shtml">Рекурсия, часть II </a> (11.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Собственно, в своей я рассказал немного не о том, о чем хотел. Поэтому сегодня придется дополнять ;) Кроме того, что рекурсия...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/04_09_00.shtml">Рекурсия </a> (04.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Возможно для кого-то это будет удивительным, но наиболее известным алгоритмом является сортировка пузырьком (не то, что бы ее все знали, просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/04_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_08_00.shtml">Java 2: руководство разработчика </a> (22.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я решил, что мне нужна книга по Java тогда, когда появилось требование что-то написать на этом языке более серьезное, чем рисование...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/20_08_00.shtml">Курск </a> (20.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда я только раздумывал о том, какие разделы будут на моей страничке, этот я решил не организовывать... ну кому интересно то,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/20_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_11_00.shtml">Полный перебор </a> (11.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Зачастую, когда говорят о качестве решения некоторой задачи, для того что бы определить наихудший вариант, приводят пример "полного перебора". Сколько раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_09_00.shtml">Рекурсия, часть II </a> (11.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Собственно, в своей я рассказал немного не о том, о чем хотел. Поэтому сегодня придется дополнять ;) Кроме того, что рекурсия...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/04_09_00.shtml">Рекурсия </a> (04.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Возможно для кого-то это будет удивительным, но наиболее известным алгоритмом является сортировка пузырьком (не то, что бы ее все знали, просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/04_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/21_08_00.shtml">Использование конечных автоматов </a> (21.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не хочу давать формальных определений, цель этой заметки --- показать "на пальцах" использование конечных автоматов (КА) для решения различных задач...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/21_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_08_00.shtml">Java 2: руководство разработчика </a> (22.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я решил, что мне нужна книга по Java тогда, когда появилось требование что-то написать на этом языке более серьезное, чем рисование...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/life/20_08_00.shtml">Курск </a> (20.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда я только раздумывал о том, какие разделы будут на моей страничке, этот я решил не организовывать... ну кому интересно то,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/life/20_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

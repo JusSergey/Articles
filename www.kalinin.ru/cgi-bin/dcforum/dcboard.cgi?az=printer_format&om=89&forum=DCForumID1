@@ -1,0 +1,15 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 89<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/89.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Треды и сигналы."</font></b><br>
+Posted by Алексей В. Лебедев  on 07-Jul-02 at 12:51&nbsp;PM<br>
+<blockquote>Если кто-нибудь сталкивался с такой проблемой, посоветуйте.<BR>Нужно послать сигнал отдельному треду, чтобы система гарантировала его доставку. В Стивенсе написано, что для того, чтобы гарантировать доставку это должен быть сигнал в пределах SIGRTMIN.. SIGRTMAX и послан он должен быть чем-то вроде sigqueue() (в смысле не kill()). Чтобы послать сигнал треду, я не знаю ничего кроме pthread_kill() (которой, кстати, до 98 года не было в POSIX, сейчас -- не знаю), но pthread_kill -- это же просто kill, в смысле нельзя передать sigvalue и, что важнее, не гарантируется доставка. Как быть?<BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+</font></body></html>

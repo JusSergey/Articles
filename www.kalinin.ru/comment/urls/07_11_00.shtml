@@ -1,0 +1,431 @@
+<html><head><title>ALK :: Web-ресурсы :: acm.gui.uva.es, задачник по программированию.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/urls/">web-ресурсы</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/network/05_11_00.shtml">&lt;&lt;</a>&nbsp;07.11.00&nbsp;<a href="/programming/alg/11_11_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>acm.gui.uva.es, задачник по программированию
+</h1> 
+<table align="right" border="0" cellspacing="0" cellpadding="5" width="200">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Иллюстрация</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><img src="/images/07_11_00_1.jpg" width="200" height="156" border="0" alt="Первая страница задачника." /></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Первая страница задачника.
+</font>
+</td></tr>
+</table>
+    <p align="justify">
+      Наконец-то я вспомнил о действительно полезном ресурсе, 
+      который стоит описать. Вообще,
+      полезность или бесполезность чего-либо, конечно же,
+      нельзя оценить &quot;огульно&quot;, надо обязательно
+      говорить о том, для кого это &quot;что-то&quot; будет
+      полезным... но в этом случае все просто: большая часть читателей
+      моей странички является программистами, таким образом
+      для них этот ресурс действительно будет полезен или, во всяком
+      случае, хотя бы интересен.
+    </p>
+    <p align="justify">
+      В разделе, посвященном соревнованиям, я некоторое время распространялся
+      о том, как это здорово --- соревноваться. Но реальных соревнований
+      по программированию я вам не обещаю, а вот получить ответ
+      на вопрос, сумеете ли вы решить олимпиадные задачи, вы сможете
+      запросто.
+    </p>
+    <p align="justify">
+      Потому что испанский Universidad de Valladolid
+      несколько лет тому назад организовал задачник 
+      по программированию, который позволяет каждому
+      желающему попытаться решить любую из 800 задач,
+      предлагавшихся в свое время на различных
+      олимпиадах по программированию. 
+    </p>
+    <p align="justify">
+      Но просто как набор задач этот ресурс был бы не так
+      интересен (потому что сборников задач в интернете достаточное
+      количество), в нем есть возможность прислать свое решение
+      задачи на проверку, воспользовавшись электронной почтой.
+      И, соответственно, возможность получить ответ... 
+    </p>
+    <p align="justify">
+      Это, конечно же, немного не одно и то же, что и настоящие
+      соревнования, но все равно очень занятно. В наборе
+      задач представлены как и очень простые задачки,
+      так и задачи, которые до сих пор не смог решить
+      ни один из пользователей задачника. Таким образом,
+      рекомендую зарегистрироваться и попробовать 
+      кое-что порешать. Это вполне сойдет за развлечение...
+      а так же является хорошей разминкой &quot;для хвоста&quot;.
+    </p>
+    <p align="justify">
+      Иногда там же проводятся соревнования по программированию
+      через интернет. То есть все правила аналогичны
+      стандартным правилам ACM, только нет излишней
+      нервотрепки и призов, а в остальном --- очень похоже.
+      Такие соревнования длятся несколько часов, в них
+      может принять участие любой зарегистрированный
+      пользователь задачника.
+    </p>
+    <p align="justify">
+      Теперь о полезности этого ресурса. Его ценность
+      составляется из ценности задач, в нем предложенных.
+      Эти задачи, вполне возможно, не являются типовыми
+      для большинства современных русских программистов, но тот
+      факт, что вы не встречаетесь с ними в реальной
+      жизни, еще не оправдывает того, что вы не умеете
+      их решать. Может быть, вы из-за того и не сталкиваетесь
+      с подобными задачами, что не знаете, как их решать?
+    </p>
+    <p align="justify">
+      Ценность задачника заключается именно в том, что вы можете
+      попробовать свои силы в совершенно иной области, чем обычное
+      на сегодняшний день прикладное программирование. Можно
+      рассматривать все это как разгадывание ребусов,
+      увлечение математическими головоломками... то есть
+      бесполезно это все только на первый взгляд.
+    </p>
+    <p align="justify">
+      Если же говорить совсем серьезно, то можно вернуться
+      к моей предыдущей заметке в этом разделе, про 
+      <a href="25_10_00.shtml">brainbench</a>, где я писал о том,
+      что занятие это (сертификация), по своей сути, бесполезно. Тем самым
+      я задел какие-то особенно нежные струны душ моих
+      читателей, после чего получил в форуме письмо, в котором
+      мне объяснялось, наконец-то, все что обо мне думают.
+      Среди прочих аргументов, там была &quot;возможность испытать себя&quot;.
+      Так вот, испытать себя при помощи brainbench невозможно... но если,
+      все-таки, очень хочется, то прошу пожаловать на гораздо
+      менее популярный ресурс, но значительно более способствующий
+      испытаниям. Как мне кажется, хорошие результаты
+      в задачнике будут много ценнее, чем хорошие результаты
+      на brainbench.
+    </p>
+    <p align="justify">
+      Кстати, меня в списке пользователей задачника нет ;-) Вызвано это прежде
+      всего тем, что в свое время, когда мне надо было тренироваться,
+      у меня не было постоянного доступа в internet... поэтому я 
+      решал задачи по другому: брал набор задач с какой-нибудь
+      из региональных олимпиад (хорошо, если к нему прилагались тесты)
+      и сначала в течение 5 часов пытался решить все, что мог. И оставшуюся
+      неделю пытался &quot;добить&quot; нерешенные задачи. Потом все повторял...
+      Сейчас я уже не могу тратить столько времени на это занятие (тем
+      более, что тренироваться мне уже не к чему), поэтому
+      иногда серьезно задумываюсь о регистрации в задачнике. Просто потому, что
+      иногда хочется решить какую-то задачу, кроме тех, которые решаю
+      на работе. И вам рекомендую.
+    </p>
+    <p align="justify">
+      Еще интересный раздел задачника относится к статистке. То есть,
+      количество решенных задач по авторам и по странам. Это оставляю
+      без всяких комментариев, но результаты достаточно забавны. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Действительно полезный ресурс, способный заинтересовать даже
+      тех программистов, которые уже вышли из студенческого возраста. 
+      Мне сложно подобрать слова, которыми еще можно будет воздать
+      должное этому ресурсу, поэтому если вы заинтересовались,
+      просто посмотрите его содержимое... задачи там можно смотреть
+      без регистрации.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/urls/print_07_11_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://acm.gui.uva.es/problemset/" target="_blank">http://acm.gui.uva.es/problems</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Задачник по программированию.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://neerc.ifmo.ru" target="_blank">http://neerc.ifmo.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт полуфинала чемпионата мира по программированию.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.acm.org/contest" target="_blank">http://www.acm.org/contest</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт чемпионата мира по программированию ACM.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_11_00.shtml">cpp3.virtualave.net, C++ 3rd: комментарии </a> (26.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Ресурсы на русском языке, посвященные C++, отличаются своим количеством... существует множество сайтов, домашних страничек объединенных общей тематикой программирования на C++. Но...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_11_00.shtml">Полный перебор </a> (11.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Зачастую, когда говорят о качестве решения некоторой задачи, для того что бы определить наихудший вариант, приводят пример "полного перебора". Сколько раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/12_12_01.shtml">Черный квадрат </a> (12.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, это такой ресурс, о котором в той или иной форме рассказал практически любой веб-обозреватель (прошу заметить, что я себя к...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/12_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/08_06_01.shtml">pregrad.net, заказ товаров из интернет-магазинов Европы и США </a> (08.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Некоторое время назад передо мной встала достаточно серьезная проблема --- явная нехватка литературы по некоторым, живо интересующим меня вопросам. Оказалось, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_05_01.shtml">www.researchindex.com, The NECI Scientific Literature Digital Library </a> (07.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+К сожалению, приходится признать, что для русскоязычного специалиста ощущается достаточно большая нехватка информации. Причем, если по достаточно общеизвестным, популярным или попросту...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/13_03_01.shtml">Programming Stone по-русски </a> (13.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Достаточно забавное название, как мне кажется. Собственно, "programming stone" это запись нескольких дней лекций Алана Картера, посвященных проблемам программирования "вообще". Я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/13_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_11_00.shtml">cpp3.virtualave.net, C++ 3rd: комментарии </a> (26.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Ресурсы на русском языке, посвященные C++, отличаются своим количеством... существует множество сайтов, домашних страничек объединенных общей тематикой программирования на C++. Но...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_11_00.shtml">acm.gui.uva.es, задачник по программированию </a> (07.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Наконец-то я вспомнил о действительно полезном ресурсе, который стоит описать. Вообще, полезность или бесполезность чего-либо, конечно же, нельзя оценить &quot;огульно&quot;, надо...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_11_00.shtml">Полный перебор </a> (11.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Зачастую, когда говорят о качестве решения некоторой задачи, для того что бы определить наихудший вариант, приводят пример "полного перебора". Сколько раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

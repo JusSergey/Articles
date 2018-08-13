@@ -1,0 +1,112 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 52<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/52.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"помогите поставить FreeBSD!"</font></b><br>
+Posted by n/a  on 15-Jul-01 at 11:56&nbsp;AM<br>
+<blockquote>Спасите!! Еще ничего ставить не начал, а уже впал в панику :)<BR>факты:<BR>1) у меня Windows2000 sp2 (на С: 8GB)<BR>2) залез на <a href="ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/4.3-RELEASE" target="_blank">ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/4.3-RELEASE</a> и скачал содержимое /bin, /tools & /floppies<BR>3) с помощью /tools/fdimage.exe записал на два флопаря /floppies/boot.glp и /floppies/mfsroot.flp, соответственно<BR>4) скопировал скачанную папку /bin в C:\freebsd\<BR>5) собссно, а чего дальше то делать? Если кто ставил freebsd на один раздел с win2000 - плиз расскажите как это у вас было. Если надо качать какие нибудь менеджеры типа partition magic - говорите..<P>спасибо огромное заранее. Кстати, не было времени оглянуться - я здесь часом не оффтопик? :)</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>Andrey L. Kalinin</b>, 11:47&nbsp;AM, 16-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>n/a</b>, 04:53&nbsp;PM, 16-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>alk</b>, 02:38&nbsp;PM, 17-Jul-01
+</ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>n/a</b>, 09:59&nbsp;AM, 18-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>Andrey L. Kalinin</b>, 12:34&nbsp;PM, 18-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>n/a</b>, 03:03&nbsp;PM, 18-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>Andrey L. Kalinin</b>, 03:11&nbsp;PM, 18-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>n/a</b>, 05:10&nbsp;PM, 18-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>n/a</b>, 07:41&nbsp;PM, 20-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>Andrey L. Kalinin</b>, 11:30&nbsp;AM, 22-Jul-01
+<ul>
+<li><b>RE: помогите поставить FreeBSD!</b>,<b>n/a</b>, 07:05&nbsp;PM, 27-Jul-01
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by Andrey L. Kalinin  on 16-Jul-01 at 11:47&nbsp;AM<br>
+<blockquote>
+&gt;5) собссно, а чего дальше то <BR>&gt;делать? Если кто ставил freebsd <BR>&gt;на один раздел с win2000 <BR>&gt;- плиз расскажите как это <BR>&gt;у вас было. Если надо <BR>&gt;качать какие нибудь менеджеры типа <BR>&gt;partition magic - говорите.. <P>Честно говоря, я никогда не ставил FreeBSD на один раздел с Windows 2000. Чисто теоретически, такое возможно. Практически, я думаю, можно найти себе значительно более приятное развлечение...<P>Лучше всего, все-таки, ставить на отдельный раздел. Как переразбить, дело вкуса, некоторые действительно пользуются partition magic'ом. Лично я в таких случаях особо не думаю, а просто переставляю все.<P>Как ставить FreeBSD подробно описано в его INSTALLATION. Для того, чтобы иметь возможность загрузки и Windows и FreeBSD, можно воспользоваться бут-менеджером Windows'а (потому что W2K без него все равно не работает, а ставить два бут-менеджера... зачем?) <P>Для этого можно воспользоваться либо dd из Unix'а (скопировать загрузочный блок и отдать на сьедение windows-бутменеджеру), либо найти программку под названием bootpart.
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by n/a  on 16-Jul-01 at 04:53&nbsp;PM<br>
+<blockquote>
+спасибо за ответ.<BR>я, конечно, первым делом полез читать handbook с оффсайта - но т.к. про вариант с w2k и, что более деликатно, с NTFS там ничего быстро не нашел, а терпения наследственно мало - начал скромно делать первые шаги. Да, забыл добавить, что юникс пока для меня пустой звук, равно как и "dd" :) Вот эту беду и хочу поправить.<BR> <BR>Вот что я (partition magic) сделал сегодня - resize'нул 8GB раздел до 7GB, в полученном 1GB создал раздел (кстати, какую файловую систему выбрать?). Т.к. pmagic меня уверил, что пресловутый 1024 цилиндр начинается не раньше 8GB, раздел размером 1GB (начиная с 7GB) показался вполне достаточным. Но... забутившись с дискеток fdisk splice (или как там его) не видит 1GB кусок, так что ставить, увы, некуда <img src="/dcforum//Images/angry.gif">
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by alk  on 17-Jul-01 at 02:38&nbsp;PM<br>
+<blockquote>
+&gt;спасибо за ответ. <BR>&gt;я, конечно, первым делом полез читать <BR>&gt;handbook с оффсайта - но <BR>&gt;т.к. про вариант с w2k <BR>&gt;и, что более деликатно, с <BR>&gt;NTFS там ничего быстро не <BR>&gt;нашел, а терпения наследственно мало <BR>&gt;- начал скромно делать первые <BR>&gt;шаги. <P>Тогда точно, ставить FreeBSD на один раздел с W2K лучше не надо. <P>&gt; Да, забыл добавить, что <BR>&gt;юникс пока для меня пустой <BR>&gt;звук, равно как и "dd" <BR>&gt;:) Вот эту беду и <BR>&gt;хочу поправить. <P>Ну тогда bootpart надо искать ;)<P>&gt;Вот что я (partition magic) сделал <BR>&gt;сегодня - resize'нул 8GB раздел <BR>&gt;до 7GB, в полученном 1GB <BR>&gt;создал раздел (кстати, какую файловую <BR>&gt;систему выбрать?). <P>ufs<P>&gt;Т.к. pmagic меня <BR>&gt;уверил, что пресловутый 1024 цилиндр <BR>&gt;начинается не раньше 8GB, раздел <BR>&gt;размером 1GB (начиная с 7GB) <BR>&gt;показался вполне достаточным. Но... забутившись <BR>&gt;с дискеток fdisk splice (или <BR>&gt;как там его) не видит <BR>&gt;1GB кусок, так что ставить, <BR>&gt;увы, некуда <img src="/dcforum//Images/angry.gif"> <P>Странно, вообще говоря.<BR>
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by n/a  on 18-Jul-01 at 09:59&nbsp;AM<br>
+<blockquote>
+Ы. Поставил, вроде. И даже загружаюсь в него. Одно но - приходится каждый раз вручную active partition менять, чтобы загружать w2k/freebsd.<BR>По твоему совету также скачал bootpart - пока не знаю чего делать. Как прописать freebsd в C:\boot.ini? Я уже перебрал мнооого вариантов...<P>TIA
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by Andrey L. Kalinin  on 18-Jul-01 at 12:34&nbsp;PM<br>
+<blockquote>
+&gt;Ы. Поставил, вроде. И даже загружаюсь <BR>&gt;в него. Одно но - <BR>&gt;приходится каждый раз вручную active <BR>&gt;partition менять, чтобы загружать w2k/freebsd. <BR>&gt;<BR>&gt;По твоему совету также скачал bootpart <BR>&gt;- пока не знаю чего <BR>&gt;делать. Как прописать freebsd в <BR>&gt;C:\boot.ini? Я уже перебрал мнооого <BR>&gt;вариантов... <P>А там же у bootpart'а есть инструкция. Он, как я помню, даже сам умел строчку в boot.ini прописывать <img src="/dcforum//Images/wink.gif"><P>Что-то в духе<P>c:\freebsd.img="FreeBSD"<P>или наоброт <img src="/dcforum//Images/wink.gif"> у меня тут под рукой Windows'а нет <img src="/dcforum//Images/wink.gif"><P>
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by n/a  on 18-Jul-01 at 03:03&nbsp;PM<br>
+<blockquote>
+bootpart действительно помог. Правда загрузки из меню я так и не добился.... только с дискетки. Придется довольствоваться этим. Уже успел хелловорлд скомпилить :) Кстати, почему . не входит по умолчанию в path? Каждый раз ./ добавлять нужно? В любом случае, я уже . добавил в path :)
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by Andrey L. Kalinin  on 18-Jul-01 at 03:11&nbsp;PM<br>
+<blockquote>
+&gt;bootpart действительно помог. Правда загрузки из <BR>&gt;меню я так и не <BR>&gt;добился.... только с дискетки. <P>То есть? Это как?! <P>&gt; Придется <BR>&gt;довольствоваться этим. Уже успел хелловорлд <BR>&gt;скомпилить :) Кстати, почему . <BR>&gt;не входит по умолчанию в <BR>&gt;path? Каждый раз ./ добавлять <BR>&gt;нужно? В любом случае, я <BR>&gt;уже . добавил в path <BR>&gt;:) <P>Ну логика достаточно простая: в PATH не рекомендуется заносить относительные пути просто потому, что в этой ситуации пользователь может запустить не ту программу, которую хочет. А зачастую это чревато потерей привилегий.<P>Ну например. Вводишь ты ls, а вместо нее запускается программа из текущего каталога. Которую, из-за недосмотра атрибутов каталога, туда мог положить злой хакер Вася... <P>А к "./" привыкнуть можно запросто.
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by n/a  on 18-Jul-01 at 05:10&nbsp;PM<br>
+<blockquote>
+&gt;То есть? Это как?! <BR>ну немного извратился :) запустил <BR>bootpart 3 bootfbsd.bin "FreeBSD 4.3"<BR>прога создала bootfbsd.bin и прописала его в C:\boot.ini. Но система из меню не загружалась (комп перезагружался). Ну я и скопировал bootfbsd.bin на флоппи - тогда заработало.<P>так, теперь осталось браузер найти, чтобы developer's handbook читать. Где-то слышал про lynx, залез в packages на фтп - там нету...<BR>
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by n/a  on 20-Jul-01 at 07:41&nbsp;PM<br>
+<blockquote>
+млин, что за петрушизм... скачал lynx-2.8.3.1.tgz, положил его в папку \packages\www\ диструбутива. Также скачал мегабайтный INDEX и положил в \packages\ <BR>Но теперь, когда загружаюсь в FreeBSD, набираю /stand/sysinstall и там выбираю install packages - INDEX файл находится и читается, но когда хочу установить lynx - package не находится. В чем проблема? Структуру каталогов я же не менял? <BR>грустно, что никак не могу начать творчество...<BR>кстати, клон /usr/share/games/number уже написал :) правда без квадропупоквинтиллионов - только до миллиарда :)
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by Andrey L. Kalinin  on 22-Jul-01 at 11:30&nbsp;AM<br>
+<blockquote>
+&gt;Но теперь, когда загружаюсь в FreeBSD, <BR>&gt;набираю /stand/sysinstall и там выбираю <BR>&gt;install packages - INDEX файл <BR>&gt;находится и читается, но когда <BR>&gt;хочу установить lynx - package <BR>&gt;не находится. В чем проблема? <BR>&gt;Структуру каталогов я же не <BR>&gt;менял? <P>А воспользоваться port'ами? То что в /usr/ports?<P>Там все достаточно просто. Заходишь в нужный каталог, говоришь make install, все нужное выкачивается и компилируется. Можно сначала выкачать, потом скомпилировать <img src="/dcforum//Images/wink.gif"><P>И вообще, а просто скачать lynx, сказать ему ./configure и make install? <img src="/dcforum//Images/wink.gif"><P>
+</blockquote>
+<hr>
+<b>"RE: помогите поставить FreeBSD!"</b><br>
+Posted by n/a  on 27-Jul-01 at 07:05&nbsp;PM<br>
+<blockquote>
+Сенксы немеряные за помощь. Кстати, здесь мне помогли больше всего (bootpart, ./configure и т.п.) - а я в нескольких форумах светился :))<P>но вот если не повезло, то это надолго <img src="/dcforum//Images/angry.gif"> <BR>вроде все скачал, установил, даже кернел перекомпильнуть успел :). Все подготавливаюсь - вот XEmacs скачал (emacs.org почему-то не работает) - и только начал читать туториал - обнаружил неприятность - META key у меня привязана к Esc. Как ее настроить на Alt?<P>TIA
+</blockquote>
+<hr>
+</font></body></html>

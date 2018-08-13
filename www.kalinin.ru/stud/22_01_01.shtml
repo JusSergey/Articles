@@ -1,0 +1,526 @@
+<html><head><title>ALK :: Студенческое :: Опыт, сын ошибок трудных...</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/stud/">студенческое</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/network/14_01_01.shtml">&lt;&lt;</a>&nbsp;22.01.01&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Опыт, сын ошибок трудных...
+</h1> 
+    <p align="justify">
+      Не умеют студенты программировать. Не все, конечно же, 
+      бывают и исключения, но "ан масс" --- не умеют. Можно
+      обвинять в этом самих студентов, заявляя что сейчас у
+      молодежи, конечно же, совсем другие идеалы и принципы
+      (раньше, как известно, и трава была зеленее, и бабы
+      моложе --- пардон, но это просто грустная шутка). Как 
+      это было в "Сказке о тройке":
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Нынешняя молодежь мало борется, мало уделяет
+      внимания борьбе, нет у нее стремления
+      бороться больше, бороться за то, чтобы борьба
+      стала по-настоящему главной, первоочередной задачей
+      всей борьбы, а ведь если она, наша
+      чудесная талантливая молодежь, и дальше будет так 
+      мало бороться, то в этой борьбе
+      у нее останется мало шансов стать настоящим борцом,
+      который борется за то, чтобы борьба...
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Так что этот аргумент надо отвергнуть как неконструктивный.
+      Большая часть подобных "качественных" утверждений обычно является
+      демагогией, от которой чрезвычайно мало толку. И, тем
+      не менее: редкий выпускник ВУЗа является
+      программистом, способным самостоятельно написать хоть
+      что-то, отвечающее реальным требованиям по качеству,
+      производительности и т.д. Связано это со многими проблемами,
+      основная из которых, на мой взгляд, заключается в том,
+      что программированию отводится очень мало времени
+      в учебном плане любого профильного ВУЗа. При этом
+      традиционно осуществляется подмена понятий: вместо
+      программирования преподается какой-нибудь странный 
+      курс под названием информатика, освещающий теоретические 
+      основы программирования.
+    </p>
+    <p align="justify">
+      Спору нет, теория программирования очень важна. Не надо
+      плеваться в меня и бросаться булыжниками --- 
+      формальное определение алгоритма, доказательства теорем
+      Шенона и т.п. очень интересны и полезны. Но по-своему!
+      Конечно же, настоящий профессионал должен понимать
+      откуда "растут ноги" и почему определение алгоритма
+      при помощи машин Тьюринга и рекурсивных функций
+      эквивалентны. Но это лишь край знаний. Большой, но
+      совершенно бесполезный без другого края --- реального опыта программирования.
+    </p>
+    <p align="justify">
+      Забавно --- многие студенты, когда начинают изучать 
+      алгоритмы сортировок, заявляют то, что это "сейчас уже
+      не надо" и что "в PHP, ASP, ABC и BCD [подставить сюда
+      любую аббревиатуру] все это есть". Сейчас
+      я все более и более склоняюсь к мысли, что 
+      они в чем-то правы. Но не в том, "что не надо", а в том,
+      что очень рано вдалбливать (а ведь именно так 
+      это выглядит со стороны) в людей то, что они в принципе
+      не могут понять. Нет, они все выучат. Нужный
+      процент студентов получит пятерки и четверки. Но практически
+      никто из них не будет понимать, что и зачем они выучили.
+    </p>
+    <p align="justify">
+      Немного отклоняясь от темы, хочется сказать по поводу
+      различных трех- и более буквенных сочетаний. Каждый
+      раз, когда я с легкостью прохожусь по какому-нибудь
+      устоявшемуся и популярному инструменту (читай: технологии)
+      находятся несколько обиженных, которым это очень не нравится.
+      Всегда мне приводятся какие-то странные доводы против
+      слов, мною не сказанных, и обвинения, скрытые или явные,
+      в собственном непонимании великих целей данного инструмента.
+      Сейчас мне хочется ответить на все подобные комментарии
+      читателей (а, поверьте, я отношусь к ним очень серьезно
+      и каждый из них пытаюсь обдумать), процитировав 
+      известную статью Ф. Брукса "Серебряной пули нет":
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Нет ни одного открытия ни в технологии, ни в методах
+      управления, одно только использование которого
+      обещало бы  в течение ближайшего десятелетия на порядок
+      повысить производительность, надежность, простоту
+      разработки программного обеспечения.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Это означает, что не существует таких технологий,
+      при помощи которого мы могли бы решать любые задачи.
+      Тем самым, логически вытекает, что программист
+      и системный аналитик должен знать значительно больше,
+      чем одна-две предложенных индустрией технологии. Дело в том,
+      что любая технология решает чрезвычайно узкий круг задач, для
+      которых она была предназначена. И попытки решения
+      одними и теми же средствами разных по классу задач
+      приводит к настолько уродливым конструкциям, которые
+      надолго не выходят из памяти после знакомства с ними. 
+      И самое страшное, что их создатели не могут осознать
+      этого по той простой причине, что не знакомы с иными методами.
+      Вот еще одна цитата в тему из книги Эдварда Йордона "Decline &amp;
+      Fall of the American Programmer" (я так думаю, что вскоре
+      я смогу ее прокомментировать в соответствующем разделе
+      моей домашней странички):
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      ...most programmers learn their trade by
+      patching up inadequate systems, instead of learning how
+      to build good ones.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Сама фраза принадлежит John Boddie. Таким образом,
+      в каждом конкретном случае надо выбирать те методы,
+      которые лучше всего подходят к решению задачи,
+      тщательно анализировать все плюсы и минусы подходов
+      и искать новые решения. При этом, наверняка, не стоит
+      руководствоваться одними лишь своими собственными знаниями.
+    </p>
+    <p align="justify">
+      Все это к тому, что алгоритмы сортировки, конечно же,
+      надо помнить каждому программисту, включая тех
+      из них, кто уже связал свою жизнь с PHP или Inprise C++ Builder.
+    </p>
+    <p align="justify">
+      Но нет иного способа понять это, кроме 
+      реальных просчетов в своих программах или
+      проектах. А они могут случится только в том
+      случае, если у студентов будет настоящая практика
+      программирования. С настоящими задачами (или
+      близкими к ним) и демонстрацией исходных
+      текстов работающих программ. 
+    </p>
+    <p align="justify">
+      Только откуда же этой практике взяться? Формально,
+      в нашем курсе есть порядка 13 лабораторных работ и пяти
+      заданий в курсовом проекте во время первого семестра и
+      8 лабораторных работ вместе с четырьмя заданиями курсового
+      проекта во втором семестре. Интересно, это много, или мало?
+    </p>
+    <p align="justify">
+      Ни то и ни другое. Если бы каждый... ладно, большинство...
+      или хотя бы половина студентов попыталась бы действительно
+      хорошо выполнить свои задания, то это сказалось
+      бы на их программистких качествах. Судите сами:
+      на студенческих олимпиадах по программированию
+      предлагается три задачи различной степени сложности
+      на пять часов и только один-два человека способны
+      довести решение одной задачи до конца! И это при том,
+      что они правильно поняли задание и смогли найти
+      "хорошее" решение. 
+    </p>
+    <p align="justify">
+      Есть такая глупая манера, искать виноватых. Почему задачи,
+      о решениях которых у каждого из студентов рано или
+      поздно появляется положительная отметка, не дают 
+      ожидаемого результата? Все просто --- преподаватели
+      физически не могут проверить столько решений
+      у студентов. Поэтому очень часто практические занятия
+      становятся просто бессмысленными и тем самым
+      сводят на нет любые теоретические познания о предмете,
+      оставляя лишь смутные воспоминания о сортировке
+      "пузырьком".
+    </p>
+    <p align="justify">
+      И, что самое обидное, даже эти скудные практические 
+      занятия подходят к своему концу и после
+      первого курса студенты проходят все что угодно,
+      но большинство из них никогда более не возвращается к 
+      "регулярному" программированию. В основном, все ограничивается
+      странными программами, которые делают что-то, имеющее
+      отношение к очередному курсовому проекту.
+    </p>
+    <p align="justify">
+      И когда счастливый студент заканчивает свое обучение,
+      чаще всего он не имеет никаких навыков программирования.
+      Это не только проблема отечественных курсов
+      по программированию, то же самое творится и в зарубежной
+      индустрии (еще одна цитата из книги Йордона):
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      There is ironic "catch-22" situation here: the
+      shortage everyone bemoans is a shortage of
+      trained, competent programmers and system analysts ---
+      but the only way industry can get the trained people
+      it needs is to hire the relatively useless
+      colledge graduates and educate them on the job.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Так что подобная ситуация нормальна и естественна. 
+      А вот можно ли ее изменить?
+    </p>
+    <p align="justify">
+      Мне кажется, что ответ на этот вопрос положительный.
+      Но для этого необходимо изменить структуру 
+      обучения, что, конечно же, практически
+      невозможно сделать. Нужны средства автоматического
+      или автоматизированного тестирования решений 
+      задач, примеры эталонных исходных текстов,
+      задания на внесение изменений в существующий
+      код и т.д. и т.п. Необходимо максимально
+      приблизить обстановку к "боевой" и только 
+      тогда можно будет говорить о количестве
+      выпускаемых программистов. И, самое важное,
+      нужно значительно большее количество практических
+      занятий.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      О чем душа болит... попытка в очередной
+      раз оправдать тему собственного диплома --- уж
+      очень хочется чтобы хоть какие-нибудь
+      из собственных идей нашли свое воплощение
+      в жизни и либо оправдали себя, либо нет. Я действительно уверен, что 
+      можно передать студентам опыт программирования,
+      но сколько же всего для этого надо сделать...
+    </p>
+    <p align="justify">
+      Кстати сказать, все известные мне исключения студентов-программистов
+      получали свои знания и практику вне ВУЗа. Это был дополнительный
+      интерес, попытки что-то написать "для себя" и т.д. И, что самое интересное,
+      студент по возможности не должен работать программистом до 4-5 курса. Потому
+      что в ином случае, его познания, скорее всего,  примут застывшие формы "сосуда, куда налили".
+      Опять же, предыдущее предложение имеет известные мне исключения.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/stud/print_22_01_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/01_02_01.shtml">Прорвались! </a> (01.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Свершилось. Теперь я краснодипломированный "математик минус инженер", рекомендованный к продолжению обучения в аспирантуре сразу же после окончания института и т.д. Точнее,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/19_11_00.shtml">Преподаватели </a> (19.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сегодня я буду брюзжать. Почему? Хочется... настроение такое. Кроме того, мне надоело рассказывать о молодых и неопытных студентах, поэтому теперь немножко...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/19_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/01_02_01.shtml">Прорвались! </a> (01.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Свершилось. Теперь я краснодипломированный "математик минус инженер", рекомендованный к продолжению обучения в аспирантуре сразу же после окончания института и т.д. Точнее,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/01_02_01.shtml">Прорвались! </a> (01.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Свершилось. Теперь я краснодипломированный "математик минус инженер", рекомендованный к продолжению обучения в аспирантуре сразу же после окончания института и т.д. Точнее,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/22_01_01.shtml">Опыт, сын ошибок трудных... </a> (22.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Не умеют студенты программировать. Не все, конечно же, бывают и исключения, но "ан масс" --- не умеют. Можно обвинять в этом...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/22_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/19_11_00.shtml">Преподаватели </a> (19.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сегодня я буду брюзжать. Почему? Хочется... настроение такое. Кроме того, мне надоело рассказывать о молодых и неопытных студентах, поэтому теперь немножко...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/19_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/20_10_00.shtml">Космические корабли бороздят большой театр </a> (20.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В бланке отчета по нашим лабораторным работам, которые заполняют студенты после их выполнения, кроме пунктов "задание" и невнятного "сценарий выполнения", существует...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/21_09_00.shtml">Автоматизация заполнения базы данных "по студентам", немного статистики </a> (21.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я уже провел две лабораторных работы и один семинар с первым курсом в этом семестре и, так как на лабораторных мне...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/21_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/13_09_00.shtml">Еще один способ подготовки копии конспекта лекций </a> (13.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вопрос о том, где же добыть лекции, мучает каждого студента перед сессией. Вообще говоря, я не знаю, может быть в других...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/13_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/07_09_00.shtml">Формальные оценки </a> (07.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Оценка знаний у студента, на мой взгляд, является самым спорным вопросом всего "учебного процесса". Вообще, выставление отметок превращается в некоторое странное...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/07_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/01_02_01.shtml">Прорвались! </a> (01.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Свершилось. Теперь я краснодипломированный "математик минус инженер", рекомендованный к продолжению обучения в аспирантуре сразу же после окончания института и т.д. Точнее,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

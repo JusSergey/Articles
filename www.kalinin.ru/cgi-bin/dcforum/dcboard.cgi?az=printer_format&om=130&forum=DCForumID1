@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 130<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/130.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"DNS"</font></b><br>
+Posted by Lebedev A. V.  on 27-Nov-03 at 04:57&nbsp;PM<br>
+<blockquote>Такая ситуация. Есть сервер с именем a.ru, он является primary DNS-сервером для зоны b.ru и secondary DNS-сервером для c.ru, а компьютер из зоны b.ru (например a.b.ru) в свою очередь является primary DNS-сервером для зоны с.ru.<BR>При регистрации зоны c.ru я указал два DNS сервера: a.ru и a.b.ru. После выключения сервера a.ru будет не видна зона b.ru, а в вместе с ней и сервер a.b.ru.<BR>Внимание вопрос!;) Повлияет ли это на видимось зоны c.ru? Если да, то зачем при регистрации зоны необходимо обязательно указывать два DNS имени DNS-серверов, а IP не достаточно? (Так обстоит дело по крайней мере на www.godaddy.com.)<BR>А если такая причина найдётся, то можно ли<BR>после регистрации зоны c.ru дать серверам a.b.ru и a.ru имена ns1.c.ru и ns2.c.ru, а после этого перепрописать эти имена на сайте, предоставляющем<BR>услуги по регистрации доменных имён (конкретно: www.godady.com)?<BR></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: DNS</b>,<b>TLM</b>, 09:17&nbsp;AM, 01-Dec-03
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: DNS"</b><br>
+Posted by TLM  on 01-Dec-03 at 09:17&nbsp;AM<br>
+<blockquote>
+Да, лучше всего - не использовать имена из других зон, а писать типа ns1.a.ru , ns2.a.ru, указав их IP-адреса. Я тоже с течением времени (у меня полтора десятка зон) понял, что зоны не должны друг от дружки зависеть - крепче сон по ночам <img src="/dcforum//Images/happy.gif">
+</blockquote>
+<hr>
+</font></body></html>

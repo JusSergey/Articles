@@ -1,0 +1,434 @@
+<html><head><title>ALK :: C&amp;C++ :: За что я не люблю C++ Builder</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/films/26_07_00_f.shtml">&lt;&lt;</a>&nbsp;26.07.00&nbsp;<a href="/programming/cpp/27_07_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>За что я не люблю C++ Builder
+</h1> 
+    <p align="justify">
+      Сначала оговорюсь, что в данной статье
+      я буду рассматривать C++ Builder именно
+      как "builder", т.е. программный инструмент класса
+      RAD (Rapid Application Development, быстрое создание
+      приложений) и, в общем-то, большая часть здесь написанного 
+      в одинаковой степени применимо ко всем
+      подобным средствам.
+    </p>
+    <p align="justify">
+      Итак, C++ Builder упрощает процесс создания программ
+      для ОС Windows с графическим интерфейсом пользователя.
+      При его помощи одинаково просто создать диалог с тремя кнопочками
+      "Yes", "No", "Cancel" или окно текстового WYSIWYG редактора
+      с возможностью выбора шрифтов, форматирования, работы
+      с файлами формата rtf. 
+      При этом C++ Builder автоматически создает исходный
+      текст для пользовательского интерфейса: создает новые классы,
+      объекты, вводит нужные переменные и функции. После всего этого
+      "рисование" пользовательского интерфейса превращается,
+      буквально, в удовольствие для эстетов: сюда добавим градиент,
+      здесь цвет изменим, тут шрифт поменяем, а сюда мы поместим картинку.
+    </p>
+    <p align="justify">
+      После того, как вся эта красота нарисована, начинается менее интересная
+      работа --- написание функциональной части. Тут C++ Builder ничем
+      помочь не может, все приходиться делать по старинке, забыв
+      про "манипулятор мышь" и касаясь исключительно клавиатуры.
+    </p>
+    <p align="justify">
+      Итог?.. как обычно: красота неписанная на экране.
+      Этих программ, которые рисовали эстествующие программисты теперь хоть
+      пруд пруди, ими можно любоваться, распечатывать картинки с экрана
+      и делать из них художественные галереи...
+    </p>
+    <p align="justify">
+      Что же тут плохого? Ничего, если не считать того, что при таком
+      подходе к программированию создание программного продукта
+      начинает идти не от его "внутренностей" (функционального
+      наполнения), а от пользовательского интерфейса и в итоге 
+      получается, если "наполнение" достаточно сложное (сложнее
+      передачи текста от одного элемента пользовательского интерфейса
+      другому), то оно становится не только системнозависимым, но
+      и компиляторозависимым, что уж совсем неприятно.
+    </p>
+    <p align="justify">
+      Кроме того, простота "рисования" пользовательского интерфейса,
+      а, точнее, ненаказуемость (например, объемным программированием)
+      использования различных сложных компонентов таит в себе
+      некоторые опасности. Связано это с тем, что построение
+      удобного пользовательского интерфейса это задача сама
+      по себе достаточно сложная и требующая особенного образования.
+      При этом каждый уважающий себя программист всегда уверен
+      в том, что уж он-то точно сможет сделать пользовательский
+      интерфейс максимально удобным и красивым.
+    </p>
+    <p align="justify">
+      Почему настолько разительно отличаются домашние страницы (включая
+      мою) и страницы профессиональных web-дизайнеров? Потому что 
+      последние имеют очень много узкоспециализированных
+      знаний о восприятии человеком информации на экране монитора
+      и, вследствие этого, могут разместить информацию не "красиво",
+      а так, как это будет удобным. То же самое и с пользовательским
+      интерфейсом --- вопрос о том, как должна выглядеть конкретная кнопка
+      и в каком месте она должна находиться не настолько прост, как кажется.
+      Вообще, дизайнер пользовательского интерфейса это совершенно
+      отдельная специальность, которая, к сожалению, у нас еще не распространена.
+    </p>
+    <p align="justify">
+      Тот факт, что функциональное наполнение становится зависимым
+      от используемой библиотеки пользовательского интерфейса, просто
+      смешон. Подставьте в предыдущее предложение вместо "функционального
+      наполнения" конкретный продукт, и вы поймете о чем я хочу сказать: "рассчет
+      химических реакций", "анализ текста" и т.д.
+    </p>
+    <p align="justify">
+      Кроме того, сама библиотека пользовательского интерфейса в C++ Builder
+      достаточно оригинальна. Это VCL (Visual Component Library), целиком и полностью
+      взятая из Delphi, т.е. написанная на Паскале. По Паскалевским исходникам
+      автоматически создаются заголовочные файлы, которые потом включаются
+      в файлы, написанные на C++. Надо сказать, что классы, которые
+      представляют из себя VCL-компоненты это не обычные C++ классы; для совместимости
+      с Delphi их пришлось несколько изменить (например, VCL-классы не могут
+      участвовать во множественном наследовании); т.е. в С++ Builder есть два
+      вида классов: обычные C++ классы и VCL-классы.
+    </p>
+    <p align="justify">
+      Кроме всего прочего, я считаю, что  C++ Builder еще и вреден. Потому что
+      очень много начинающих программистов используют его, рассхваливают
+      за то, что при его помощи все так просто делается и не подозревают
+      о том, что это, на самом деле, не правильно. Ведь область применения C++
+      Builder, в общем-то, достаточно хорошо определена --- это клиентские части
+      для каких-либо БД. В нем все есть для этого: быстрое создание интерфейса,
+      генераторы отчетов, средства сопряжения с таблиацми. Но все, что выходит за границы
+      этой области, извините, надо писать "как обычно".
+    </p>
+    <p align="justify">
+      Связано это с тем, что, на мой взгляд, создание программ, которые
+      в принципе не переносимы это просто издевательство над идеями C++. Понятно,
+      что написать программу, которая компилируется несколькими компиляторами
+      это в принципе сложно, но сделать так, что бы это было ко всему прочему и невозможно,
+      в высшей степени неприлично. Любая программа, на мой взгляд, уже должна
+      изначально (и это даже не вопрос для обсуждения) иметь очень четкую
+      грань между своим "содержанием" и "пользовательским интерфейсом", между которыми
+      должна быть некоторая прослойка (программный интерфейс) при помощи которой
+      "пользовательский интерфейс" общается с "содержанием". В таком виде можно
+      сделать хоть десяток пользовательских интерфейсов на различных платформах,
+      очень просто "прикрутить" COM или CORBA, написать соответствующий
+      этой же программе CGI скрипт и т.д. В общем, много преимуществ 
+      по сравнению с жестким внедрением библиотеки пользовательского интерфейса
+      внутрь программы против одного преимущества обратного подхода: отсутствие необходимости
+      думать перед тем, как начать программировать.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Надо сказать, что C++ Builder или Delphi такой
+      популярности как у нас, за границей не имеют. Там эту
+      же нишу прочно занял Visual Basic, что достаточно
+      точно говорит об области применения RAD-средств. 
+    <p align="justify">
+      C++ Builder буквально навязывает программисту свой
+      собственный стиль программирования, при котором,
+      даже при особом желании, перейти с C++ Builder
+      на что-то другое уже не предоставляется возможным.
+    </p>
+    <p align="justify">
+      Кроме того, быстрое создание интерфейса это еще 
+      не панацея от всех бед, а, скорее, еще одна
+      новая беда, в частности из-за того, что программисту
+      приходится выполнять не свойственную ему задачу
+      построения пользовательского интерфейса.
+    </p>
+    <p align="justify">
+      Все вышесказанное не затрагивает непосредственно компилятор
+      bcc, о котором, возможно, стоит поговорить отдельно.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_26_07_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.inprise.com/bcppbuilder/" target="_blank">http://www.inprise.com/bcppbui</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     C++ Builder на сайте Inprise.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.borland.ru/cbuilder/" target="_blank">http://www.borland.ru/cbuilder</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     C++ Builder на российском сайте Inprise.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.akzhan.midi.ru/devcorner/devcorner-home-rus.html" target="_blank">http://www.akzhan.midi.ru/devc</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Углок разработчика Акжана Абдулина. В частности, очень много ссылок по теме C++ Builder     и Delphi.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/27_07_00.shtml">Использование "умных" указателей </a> (27.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Принципы использования "умных" указателей известны каждому программисту на C++. Идея предельно проста: вместо того, что бы пользоваться объектами некоторого класса, указателями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/27_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/23_07_00_c.shtml">Новый язык программирования от Microsoft: C# </a> (23.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Честно говоря, когда я первый раз об этом услышал, я подумал что это чья-то дурацкая шутка. Но нет, действительно, фирма Microsoft...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/23_07_00_c.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/27_07_00.shtml">Использование "умных" указателей </a> (27.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Принципы использования "умных" указателей известны каждому программисту на C++. Идея предельно проста: вместо того, что бы пользоваться объектами некоторого класса, указателями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/27_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/26_07_00_f.shtml">XXL, 1996 </a> (26.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять я начну свой комментарий с того, что громко, с интонациями, зачитаю текст на обложке VideoCD. Смерть одного из членов...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/26_07_00_f.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/27_07_00.shtml">Использование "умных" указателей </a> (27.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Принципы использования "умных" указателей известны каждому программисту на C++. Идея предельно проста: вместо того, что бы пользоваться объектами некоторого класса, указателями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/27_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/26_07_00_f.shtml">XXL, 1996 </a> (26.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять я начну свой комментарий с того, что громко, с интонациями, зачитаю текст на обложке VideoCD. Смерть одного из членов...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/26_07_00_f.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

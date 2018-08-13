@@ -1,0 +1,373 @@
+<html><head><title>ALK :: Программное обеспечение :: Пакет шрифтов Cyr-RFX.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/soft/">по</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/09_09_00.shtml">&lt;&lt;</a>&nbsp;10.09.00&nbsp;<a href="/programming/alg/11_09_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Пакет шрифтов Cyr-RFX
+</h1> 
+    <p align="justify">
+      Руссификация X11 стала в последнее время достаточно простой. 
+      Для этого достаточно указать X-серверу то, что он находится
+      в России и попросить использовать нужные шрифты.
+    </p>
+    <p align="justify">
+      Для пользователей свободно-распространяемых Unix'ов традиционным
+      X-сервером является XFree86 (последняя версия 4.0). Кстати
+      сказать, недавно его перенесли при помощи пакета CygWin на 
+      платформу Windows. Собстственно, 
+      я совсем не хочу расписывать здесь процесс руссификации XFree86
+      (для последних версий заставить его понимать ввод русских букв
+      и переключать раскладки достаточно просто), но есть одна проблема,
+      которая до сих пор не была решена...
+    </p>
+    <p align="justify">
+      Шрифты. Не то что бы их совсем не было, просто те, которые
+      были являлись шрифтами совсем уж неудовлетворительного
+      качества. Самый популярный пакет, Cronyx, выглядит совсем ужасно.
+      Кроме того, по начертаниям шрифты семейства Cronyx не совпадают
+      со стандартными шрифтами XFree86, что запросто приводило к тому,
+      что русский текст и текст английский выглядели по разному.
+    </p>	
+    <p align="justify">
+      Эта проблема решалась по разному. Во-первых, XFree поддерживает
+      шрифты Type1, среди которых появились в последнее время
+      свободные кириллические варианты. Во-вторых, где-то с год назад
+      появилась возможность использовать с XFree шрифты формата TrueType (распространенные
+      среди пользователей Windows). Таким образом, очень часто можно
+      встретить пользователя XFree86 со своим тщательно
+      подобранным каталогом шрифтов. 
+    </p>
+    <p align="justify">
+      Тем не менее, единого пакета с шрифтами не было. Максимум, что 
+      предлагалось сделать, так это поставить шрифты Cronyx и попытаться
+      с ними "жить"... и ведь некоторые жили. В особенности дико
+      смотрелись web-страницы, на которых творилось сущее безобразие
+      в Cronyx-шрифтах... 
+    </p>
+    <p align="justify">
+      Тем не менее, с радостью хочу сообщить о том, что 
+      появился очень достойный пакет шрифтов для X11, используя
+      который можно безболезненно (и очень быстро) добавить
+      в XFree86 недостающие шрифты в различных кодировках (KOI8, CP1251, CP866 и еще 
+      несколько) аналогичные по начертаниям стандартным. Это означает то,
+      что русские буквы теперь ничем не будут отличаться от английских.
+    </p>
+    <p align="justify">
+      Называется этот пакет Cyr-RFX. Вот цитата с его домашней странички:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Проект CYR-RFX начинался как создание набора кириллических (в основном 
+      русских и украинских) шрифтов для X-Window ("CYR-RFX" расшифровывается 
+      как "CYRillic Raster Fonts for X"). Сейчас он включает несколько 
+      кириллических кодировок и две латинские (обе с символом Евро). 
+    </p>
+    <p align="justify">
+      Эти шрифты являются модифицированными версиями стандартных 
+      шрифтов X-Window из директорий misc/ и 75dpi/. 
+    </p>
+    <p align="justify">
+      Кириллизованы все iso8859-1 шрифты из misc/ и наиболее
+      используемые из 75dpi/: lu (LucidaSans), lut (LucidaSansTypewriter), 
+      tim (Times), helv (Helvetica) и cour (Courier). 
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Я сегодня установил их себе на "рабочую" машину и остался очень
+      доволен результатом. В особенности меня обрадовал
+      значительно улучшившийся вид моей домашней странички.
+    </p>
+    <p align="justify">
+      Так что я выражаю Дмитрию Болховитянову, автору этого пакета шрифтов,
+      свою глубочайшую признательность за проделанную им работу. Благодаря
+      ему мой "десктоп" (а, точнее, браузер) стал выглядеть несколько получше.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Очень полезный пакет. Я так думаю, что если вы пользуетесь X11, то имеет
+      смысл поставить некоторые шрифты из него. Тем более, что в него входят
+      шрифты в других кодировках, кроме KOI8. Кстати сказать, никто не мешает
+      использовать LANG=ru_RU.WINDOWS-1251 (или как там пишется эта кодировка?),
+      только шрифтов раньше не было. Теперь есть, поэтому скоро можно будет  говорить
+      о равноправности 1251 и КОИ-8 в Unix'е. Тем более, что 1251 несколько логичнее,
+      чем КОИ8, ведь у их создателей были разные цели: КОИ-8 сделана таким образом, что можно
+      перевести "русский" символ в соответствующий ему английский просто обнулив восьмой бит. То
+      есть используя КОИ-8 русский текст будет хоть как-то читаться даже на терминалах, которые
+      до сих пор не поддерживают более 128 символов ASCII. А кодировка 1251 отличается
+      тем, что в ней порядок букв лексикографический и перевести "маленькую" букву в "большую"
+      можно просто прибавив ее значению некоторую константу. То есть все операции с текстом сразу
+      же становятся много проще.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/soft/print_10_09_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.inp.nsk.su/~bolkhov/" target="_blank">http://www.inp.nsk.su/~bolkhov</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Домашняя страничка Дмитрия Болховитянова, автора пакета Cyr-RFX. На ней можно найти     последнюю версию этих шрифтов.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/22_09_00.shtml">Командный интерпретатор bash </a> (22.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Текст ниже предназначен для тех людей, которые по принципиальным соображениям не пользуются командной строкой, мотивируя это тем, что им там работать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/22_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/06_09_00.shtml">Emacs </a> (06.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Emacs является культовой программой для редактирования текстов. Я думаю, что у людей, которые впервые о нем слышат, должно вызвать удивление номер...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/06_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_09_00.shtml">Рекурсия, часть II </a> (11.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Собственно, в своей я рассказал немного не о том, о чем хотел. Поэтому сегодня придется дополнять ;) Кроме того, что рекурсия...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/09_09_00.shtml">Мат </a> (09.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Удивительно, но факт: некоторые сочетания букв русского алфавита объявлены "вне закона". Скажите мне пожалуйста, почему т.н. "матерные" слова и выражения вдруг...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/09_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/01_12_01.shtml">Игры </a> (01.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я очень давно не играл в компьютерные игры (за редким исключением --- например, дорвавшись до тетриса) и когда наконец-то собрал себе...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/01_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/22_09_00.shtml">Командный интерпретатор bash </a> (22.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Текст ниже предназначен для тех людей, которые по принципиальным соображениям не пользуются командной строкой, мотивируя это тем, что им там работать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/22_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/06_09_00.shtml">Emacs </a> (06.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Emacs является культовой программой для редактирования текстов. Я думаю, что у людей, которые впервые о нем слышат, должно вызвать удивление номер...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/06_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_09_00.shtml">Рекурсия, часть II </a> (11.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Собственно, в своей я рассказал немного не о том, о чем хотел. Поэтому сегодня придется дополнять ;) Кроме того, что рекурсия...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/09_09_00.shtml">Мат </a> (09.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Удивительно, но факт: некоторые сочетания букв русского алфавита объявлены "вне закона". Скажите мне пожалуйста, почему т.н. "матерные" слова и выражения вдруг...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/09_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

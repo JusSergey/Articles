@@ -1,0 +1,15 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 99<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/99.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"ASP & XML"</font></b><br>
+Posted by SunDrop  on 30-Aug-02 at 11:41&nbsp;AM<br>
+<blockquote>Как мне средствами asp и xml обработать ввод пользователя <BR>А именно... <BR>Есть документ xsl, подгружаемый к asp странице<BR>В xsl документе я добавил строчку: <P>&lt;select name="pay_id"&gt;   <BR> &lt;option&gt; <BR>   ex1 <BR> &lt;/option&gt; <BR> &lt;option&gt; <BR>   ex2 <BR> &lt;/option&gt; <BR>&lt;/select&gt;  <P>После чего на главной asp странице идет "выполнение" или как правильно сказать загрузка (я не знаю как это назвать, но не важно) xsl файла с добавленной строчкой!!! <BR>На этой-же asp странице есть ссылка, которая в зависимости от выбора ex1 или ex2 должна кидать пользователя либо на одну, либо на другую страницу!!! <BR>Как определить что же выбрал пользователь</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+</font></body></html>

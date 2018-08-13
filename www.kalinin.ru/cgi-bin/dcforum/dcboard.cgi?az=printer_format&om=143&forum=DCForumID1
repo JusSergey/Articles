@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 143<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/143.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"С   Builder и файлы.Помогите новичку."</font></b><br>
+Posted by Dedal  on 15-Aug-04 at 11:49&nbsp;AM<br>
+<blockquote>Суть в следующем:<BR>Есть структура с полями AnsiString(чтобы легче было текст на экране отображать)<BR>Создаю файл, сохраняю. При этом сначала записываю длину строки(для экономии места, а затем и саму строку. Делаю это для кономии места на диске, в расчёте на большое количество записей. Чтобы не создавать поля постоянноый длины и не кидать в файл лишние (пустые) данные. <BR>При чтении иногда в конце строк AnsiString этой самой структуры иногда поялвется мусор, типа Y@!M=<BR>В чём я ошибся и как мне это исправить?</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: С   Builder и файлы.Помогите новичку.</b>,<b>alk</b>, 12:56&nbsp;PM, 12-Sep-04
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: С   Builder и файлы.Помогите новичку."</b><br>
+Posted by alk  on 12-Sep-04 at 12:56&nbsp;PM<br>
+<blockquote>
+На этот вопрос невозможно ответить без программного кода, реализующего операции записи и чтения. 
+</blockquote>
+<hr>
+</font></body></html>

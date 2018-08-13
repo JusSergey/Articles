@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<TITLE>
+
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>DCForum Login Window</b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>
+         <font size="2">
+         <b>New User?</b> <a href="/cgi-bin/dcforum/dcboard.cgi?az=user_register">Click 
+         here to register and create an account</a>.<p></b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <form method="post">
+   <input type="hidden" name="cmd" value="login">
+   
+            <input type="hidden" name="az" value="admin_board_manager">
+            
+            <input type="hidden" name="forum" value="DCForumID1">
+            
+            <input type="hidden" name="selected" value="76">
+            
+            <input type="hidden" name="command" value="admin_archive_threads">
+            
+   <table border="0" align="center"><tr bgcolor="#EAE8E0">
+    <th align="right">
+    <font size="-1" color="black" face="arial,sans-serif">
+      Username:</font></th>
+    <td><input type="text" name="Username" width="40"></td></tr>
+    <tr bgcolor="#EAE8E0">
+    <th align="right">
+    <font size="-1" color="black" face="arial,sans-serif">
+   Password:</font></th>
+    <td><input type="password" name="Password" width="40"></td></tr>
+  <tr bgcolor="#EAE8E0">
+    <td>
+    &nbsp;
+    </td>
+    <td align="left">
+      <input type="submit" name="login" value="Login">
+    </td></tr>
+  </table>
+  </form>
+
+
+<!-- Required Marker-->
+
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

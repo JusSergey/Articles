@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 144<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/144.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"allocator"</font></b><br>
+Posted by ilias  on 09-Sep-04 at 08:29&nbsp;AM<br>
+<blockquote>В C++ есть чудная вещь - распределители памяти (allocators), но в Страуструпе это описано весьма скудно, где взять больше информации (кроме исходников)? У кого-нибудь есть Стандарт C++?</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: allocator</b>,<b>alk</b>, 01:01&nbsp;PM, 12-Sep-04
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: allocator"</b><br>
+Posted by alk  on 12-Sep-04 at 01:01&nbsp;PM<br>
+<blockquote>
+Стандарт продается за деньги, но если чуть-чуть поискать в интернете файл с названием ansi_iso_iec_14882_1998.pdf, то можно получить и бесплатно <img src="/dcforum//Images/happy.gif">
+</blockquote>
+<hr>
+</font></body></html>

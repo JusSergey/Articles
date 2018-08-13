@@ -1,0 +1,683 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=help"><img 
+            src="/dcforum//Images/help.gif" alt="Click here to see help" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=help"><font 
+               size="-2" face="arial,sans-serif" color="black">Help</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1"><img 
+            src="/dcforum//Images/post.gif" alt="Click here to post new thread" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1"><font 
+               size="-2" face="arial,sans-serif" color="black">Post</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b></b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+      <TABLE BORDER="0" WIDTH="70%" cellspacing="1" cellpadding="3">
+      <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" colspan="2" BGCOLOR="#EAE8E0">
+      <font face="arial,sans-serif" color="black" size="1">
+         <img src="/dcforum//Images/expand_threads.gif" align="bottom" border="0"><a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=expand_threads"><font 
+               face="arial,sans-serif" color="black" size="1">Expand Threads</font></a>
+      </font></td>
+      <TD COLSPAN="3" ALIGN="RIGHT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <font face="arial,sans-serif" color="black" size="-1">
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=0&archive=">1</A> | 2 | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=60&archive=">3</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=90&archive=">4</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=120&archive=">5</A>  | </FONT></TD></TR>
+      <TR><TH COLSPAN="5" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+         <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font face="arial,sans-serif"
+         color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> <font face="arial,sans-serif"
+         color="black" size="-1">Основной форум
+          (Public)</FONT>
+         </TH></TR>
+   <a name="TOP">&nbsp;</a>
+   
+      <TR BGCOLOR="#E3DAA5"><TD ALIGN="LEFT" colspan="2"><font 
+         SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Sort Topics by..... <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field=1"><font 
+            SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  ID</font></a> |
+            <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field=5"><font 
+            SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  Topic</font></a> |
+            <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field=4"><font 
+            SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  Author</font></a> |
+            <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field="><font 
+            <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+               Date</font></a> 
+                     </font></TD>
+            <TD ALIGN="LEFT" COLSPAN="3">
+            <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  Discussion&nbsp;Information</font>
+               </TD></TR>
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/143.html"><b>С   Builder и файлы.Помогите новичку.</b></a>  
+                  <br>Суть в следующем: Есть структура с полями AnsiString(чтобы л%</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Dedal</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">12-Sep-04 12:56&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/139.html"><b>Извлечение прототипов функций из DLL</b></a>  
+                  <br>Мне понадобилось написать программу, которая будет исп</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>ilias</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">26-Jun-04 01:38&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/138.html"><b>О студентах и програмировании</b></a>  
+                  <br>Был бы очень признателен, если бы кто-нибудь выложил зде</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Иван</b><br>
+           <b>3
+</b> messages<br>
+           0
+           <font size="1">20-May-04 09:44&nbsp;AM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/30.html"><b>О студентах. И о программировании.</b></a>  
+                  <br>Добрый день... Вообще-то я здесь не случайно -- сам студен%</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Sergey V. Mikhanov</b><br>
+           <b>11
+</b> messages<br>
+           0
+           <font size="1">11-May-04 03:34&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/90.html"><b>запустить DOS-овскую программу из-под Windows</b></a>  
+                  <br>Очень хочется запустить DOS-овскую программу из-под Windows, и %</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>fedor</b><br>
+           <b>5
+</b> messages<br>
+           0
+           <font size="1">26-Mar-04 11:14&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/134.html"><b>Большое зло</b></a>  
+                  <br>Андрей, а почему ты считаешь переопределение операторо</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Ilias</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">19-Mar-04 02:35&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/133.html"><b>СУБЛИМИРОВАННЫЕ ПРОДУКТЫ!</b></a>  
+                  <br>вся информация на сайте: http://gala-typ.nm.ru доставка по Москве</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Алексей</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">10-Jan-04 06:29&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/125.html"><b>помогите</b></a>  
+                  <br>помогите решить задачу определить в какой четверти на</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>plotnikov vitali</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">25-Dec-03 01:07&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/122.html"><b>Глупый вопрос про винду</b></a>  
+                  <br>Помогите, кто-нибудь. При попытке добавить новый комп%D</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Lebedev A. V.</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">25-Dec-03 12:56&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/94.html"><b>научный поисковый сайт</b></a>  
+                  <br>Всем привет! Может кто-нибудь знает хороший научный п%</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Denis</b><br>
+           <b>4
+</b> messages<br>
+           0
+           <font size="1">25-Dec-03 12:47&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/116.html"><b>Конвертация float в char *</b></a>  
+                  <br>Други, подскажите, пожалуйста, хотя-бы примерно, каким</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Alexei</b><br>
+           <b>3
+</b> messages<br>
+           0
+           <font size="1">19-Dec-03 04:26&nbsp;AM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/132.html"><b>emacs?</b></a>  
+                  <br>Скачал впервые emacs 21, и удивился. Традиционные key bindings ^H (уби</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>rihad</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">06-Dec-03 09:22&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/130.html"><b>DNS</b></a>  
+                  <br>Такая ситуация. Есть сервер с именем a.ru, он является primary DNS-%</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Lebedev A. V.</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">01-Dec-03 09:17&nbsp;AM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/129.html"><b>Руской раскладка в X-Win32</b></a>  
+                  <br>У кого-нибудь получалось работать удалённо под FreeBSD с X с%</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Lebedev A. V.</b><br>
+           <b>2
+</b> messages<br>
+           0
+           <font size="1">24-Nov-03 12:18&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/128.html"><b>Please, Help!!!)))</b></a>  
+                  <br>Здравствуйте, Андрей! Не могли бы вы помочь мне решить з</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>~Fess~</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">10-Nov-03 07:48&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/119.html"><b>Жаль, что Калинин.ру умер</b></a>  
+                  <br>Андрей! Вас всегда было так интересно читать. Нельзя ж%</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Клирон</b><br>
+           <b>2
+</b> messages<br>
+           0
+           <font size="1">16-Aug-03 04:01&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/121.html"><b>переделать SysTray</b></a>  
+                  <br>Люди, подскажите, кто знает, как выкинуть иконку устан%C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Brother</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">15-Aug-03 10:39&nbsp;AM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/120.html"><b>Руссификация XEmacs</b></a>  
+                  <br>Андрей, вы вроде пользуетесь этой программой каждой де%C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Иван Коростелёв</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">22-Jul-03 12:16&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/115.html"><b>эталонная программа для Windows</b></a>  
+                  <br>Андрей, в своей статье &quot;Postfix изнутри&quot; ты рассматриваешь pos</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>duman</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">19-Jun-03 06:51&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/108.html"><b>VCL</b></a>  
+                  <br>Кто знает, как в Borland C++ Builder отключить VCL? Я хочу писать &quot;нор</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Ilias</b><br>
+           <b>2
+</b> messages<br>
+           0
+           <font size="1">05-May-03 08:39&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/114.html"><b>О физическом расположении полей в структуре.</b></a>  
+                  <br>Привет. У тебя в последней (на данный момент) статье ест%D</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Алексей В. Лебедев</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">15-Mar-03 02:21&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/113.html"><b>Дополнение к статьям.</b></a>  
+                  <br>Спасибо за Ваши статьи. В основном нравятся техническ%C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>MX_Air</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">14-Mar-03 01:24&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/112.html"><b>Simula под Windows</b></a>  
+                  <br>Народ, Кто программирует на Simule подскажите где её дост%C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Older</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">04-Mar-03 05:10&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/111.html"><b>Ух, ты</b></a>  
+                  <br>Открыл для себя Ваш сайт, сижу - зачитываюсь просто...</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Andrew Kalinov</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">20-Feb-03 02:05&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/100.html"><b>И почему я..</b></a>  
+                  <br>не программист, а то бы тоже что-нибудь спросить можно б%D</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Fioletta</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">09-Feb-03 02:32&nbsp;AM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/110.html"><b>DHTML   php или что-то еще на стороне сервера</b></a>  
+                  <br>Есть задача: чтобы при нажатии на ссылку менялась часть</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Stirlitz</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">09-Feb-03 02:20&nbsp;AM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/109.html"><b>Watcom</b></a>  
+                  <br>OpenWatcom - это замечательная новость для поклонников этого к%C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>John Smith</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">24-Jan-03 10:43&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/91.html"><b>Programmer vs. Computer Scientist</b></a>  
+                  <br>Привет, Вот ты считаешь себя программистом, и вроде у%D</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Регула Джо</b><br>
+           <b>3
+</b> messages<br>
+           0
+           <font size="1">06-Jan-03 06:40&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/106.html"><b>СППО и Кузнецова...</b></a>  
+                  <br>Андрей Леонидович! у нас СППО ведёт госпожа Кузнецова. В</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Студенты 8-го фака</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">04-Jan-03 00:26&nbsp;AM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/105.html"><b>Prosto tak.</b></a>  
+                  <br>Большое спасибо за твой сайт и за заметки... Заканчиваю 5</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Milana</b><br>
+           <b>0
+</b> messages<br>
+           0
+           <font size="1">02-Jan-03 03:51&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+   <TR><TD COLSPAN="5" BGCOLOR="#E3DAA5" ALIGN="CENTER">
+      <font size="-1">&nbsp;</font></TD></TR>
+   <TR><TD COLSPAN="5" ALIGN="RIGHT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=0&archive=">1</A> | 2 | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=60&archive=">3</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=90&archive=">4</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=120&archive=">5</A>  | 
+   </FONT>
+   </TD></TR></TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

@@ -1,0 +1,323 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="http://www.kalinin.ru/dcforum//DCForumID1/7.html"><img
+            src="/dcforum//Images/goback.gif" alt="Click here to goback to the previous page" border="0"></a><br> <a href="http://www.kalinin.ru/dcforum//DCForumID1/7.html"><font 
+               size="-2" face="arial,sans-serif" color="black">Go back</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><img
+            src="/dcforum//Images/lobby.gif" alt="Click here to goto the Lobby" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=lobby"><font 
+               size="-2" face="arial,sans-serif" color="black">Lobby</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>Compose your message</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+<p>
+         <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+         <TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         Original Message
+         </FONT></TH></tr>
+         <TR BGCOLOR="#EAE8E0"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <b>"RE: О brainbench "</b><br>Posted by Andrey L. Kalinin on 29-Oct-00 at 09:23&nbsp;AM
+         </FONT></Td></tr>
+         <TR BGCOLOR="#FBF9F1"><Td ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Вы, Андрюша, похоже, из тех людей, <BR>&gt;которых бывает по два человека <BR>&gt;на выпускной поток в школе. <BR>&gt;Вас наверняка приглашали не в <BR>&gt;один институт. Смелый, до сих <BR>&gt;пор самоутверждающийся мальчиш. <P>Да нет, Вы ошибаетесь. Никуда меня особенно не приглашали, слава богу; в школе вроде тоже ничем особенным не выделялся. <P>Но мне понравилось слово "мальчиш" <img src="/dcforum//Images/happy.gif"> Потому что я догадываюсь, зачем и когда оно употребляется... <P>Начет самоутверждения... Возможно. Вполне естественно, во всяком случае. <P>&gt; Это прекрасно, <BR>&gt;что вы от души рассказываете <BR>&gt;всему миру свое мнение о <BR>&gt;таком широком спектре жизненных вещей. <BR>&gt;Только во многом с вами <BR>&gt;можно не согласиться. <P>Это же хорошо? <P>&gt;Я не <BR>&gt;буду рассуждать о свободе. Вряд <BR>&gt;ли у меня это получится <BR>&gt;лаконично. Я лучше скажу о <BR>&gt;brainbench. <BR>&gt;Разве плохо, что человек, пробующий свои <BR>&gt;силы в той или иной <BR>&gt;области, имеет возможность испытать себя? <P>Тестированием на BrainBecnh? <img src="/dcforum//Images/happy.gif"> Не издевайтесь надо мной. "Испытывать себя" можно и без BrainBench'а, причем значительно более эффективно. Возвращаясь к тому же программированию на C  , "испытать себя" можно только одним способом: написав на нем что-то достаточно большое. <P>&gt;Определить пробелы в своем образовании. <P>Через BrainBench это невозможно. Просто потому, вопросы там не те, которыми можно это сделать...<P>&gt;Ведь для работы не требуется знание <BR>&gt;наизусть спецификаций на тот или <BR>&gt;иной продукт, гораздо ценнее умение <BR>&gt;решать возникающие задачи быстро и <BR>&gt;по-возможности оптимально. Так что тут <BR>&gt;может пригодиться даже способность найти <BR>&gt;в интернете ответы на вопросы <BR>&gt;brainbench. <P>Это все косвенные оценки, которые лучше выводить не из полученных сертификатов, а из личного общения с человеком. И из реально выполненной работы. <P>&gt;Конечно, не сертификат ценен, а возможность <BR>&gt;проверить себя. <P>"Проверить себя" через BrainBench просто невозможно...<P>&gt;Ну а наличие сертификата свидетельствует хотя <BR>&gt;бы о том, что человек <BR>&gt;действительно интересуется специальностью, неравнодушен к <BR>&gt;ней. <P>Тоже неверно. Существует громадное количество людей, которые набрали эти сертификаты просто из-за того, что это "халява".<P>&gt;Я не встречала таких снобов, которые <BR>&gt;морщили бы нос при упоминании <BR>&gt;TekMetrics. Напротив, вполне достойные люди <BR>&gt;учитывают это при приеме специалистов <BR>&gt;к себе на работу. <P>Ой-ой, для того что бы общаться с Вами на эту тему дальше, придется перейти на личности неизвестных мне людей, что совсем нехорошо. Поэтому это я пропущу... <P>&gt; Может <BR>&gt;быть, им просто еще не <BR>&gt;попадались те недобросовестные, которые тестируются <BR>&gt;нечестно... <BR>&gt;В общем, Андрюша, необъективны вы, мальчишески <BR>&gt;однобоки. <P>С этого надо было начинать. Всегда пожалуйста, в общем.<P>&gt;И еще, раз уж вы занялись <BR>&gt;таким важным делом, как рецензирование <BR>&gt;всего вокруг, то не мешало <BR>&gt;бы вам подучить родной язык. <P>Вы не правы. В том смысле, что язык, конечно же, подучить было бы неплохо (и я там где-то на эту тему распространялся), а вот "важное дело" у меня совсем другое...<P>&gt;Удачи! <P>Аналогично.<P>Теперь по поводу Вашего ответа... Вы знаете, иногда бывает такое, когда человеку сказать, в общем-то, нечего, но очень хочется. Эмоции переполняют или еще что-то... поэтому беседа становится очень странной. Приводятся мнения неизвестных людей, происходят попытки уличить собеседника в безграмотности (аргумент просто убийственный) или мальчишестве. Похоже на тот текст, на который я отвечал? <P>В качестве последнего вопроса... можно поинтересоваться, сколько у Вас, или у Ваших знакомых, сертификатов от BrainBench?
+         </blockquote>
+         </FONT></Td></tr><TR BGCOLOR="#E3DAA5">
+         <TH ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+         &nbsp;
+         </FONT></TH></tr>
+         </table>
+   <center>
+   <form ACTION="/cgi-bin/dcforum/dcboard.cgi" method="POST">
+   <input type=hidden name="om" value="7">
+   <input type=hidden name="forum" value="DCForumID1">
+   <input type=hidden name="omm" value="1">
+   
+         <input type="hidden" name="az" value="a_mesg">
+      
+   <TABLE CELLPADDING="3" cellspacing="2" BORDER="0" WIDTH="70%">
+   <TR><Td ALIGN="LEFT" valign="top" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   
+         <li><font color="#FF0000">
+         Image Links Enabled - just type the URL (e.g., http://www.dcscripts.com/image.gif)
+         </font>
+         
+      <li><font color="#FF0000">
+      Emotion Icons</font>
+      <a href="javascript:makeRemote('/cgi-bin/dcforum/dcboard.cgi?az=emotion_icon_short_cuts')"><FONT 
+      SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Emotion icon short cuts</FONT></a>
+   </TD>
+   </tr>
+   <TR BGCOLOR="#E3DAA5"><TH ALIGN="LEFT" COLSPAN="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="#83350F">
+      Your Message
+      </FONT></TH></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Name<font color="black">*</font>:
+   </FONT>
+   </TH>
+   <TD>
+         <INPUT TYPE="TEXT" NAME="name" value="" SIZE=50>
+   </TD></TR>
+         <TR BGCOLOR="#EAE8E0">
+         <TH ALIGN="RIGHT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         EMail:
+         </FONT></TH>
+         <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="TEXT" NAME="email" value="" SIZE=50>
+         </TD></TR>
+   <TR BGCOLOR="#EAE8E0">
+   <TH ALIGN="RIGHT">
+   <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+   Subject<font color="black">*</font>:
+   </FONT></TH>
+   <TD BGCOLOR="#EAE8E0">
+            <INPUT TYPE="text" NAME="subject" VALUE="RE: О brainbench " SIZE=50>
+      </TD></TR><TR BGCOLOR="#EAE8E0">
+      <TH ALIGN="RIGHT" VALIGN="TOP"><FONT SIZE="-1" 
+         FACE="arial,sans-serif" COLOR="black">
+         Message<font color="black">*</font>:</FONT>
+         </TH><TD>
+         <TEXTAREA NAME="body" ROWS="15"
+         COLS="50" WRAP="virtual">>>Вы, Андрюша, похоже, из тех людей, 
+>>которых бывает по два человека 
+>>на выпускной поток в школе. 
+>>Вас наверняка приглашали не в 
+>>один институт. Смелый, до сих 
+>>пор самоутверждающийся мальчиш. 
+>
+>Да нет, Вы ошибаетесь. Никуда меня 
+>особенно не приглашали, слава богу; 
+>в школе вроде тоже ничем 
+>особенным не выделялся. 
+>
+>Но мне понравилось слово "мальчиш" :-) 
+>Потому что я догадываюсь, зачем 
+>и когда оно употребляется... 
+>
+>Начет самоутверждения... Возможно. Вполне естественно, во 
+>всяком случае. 
+>
+>> Это прекрасно, 
+>>что вы от души рассказываете 
+>>всему миру свое мнение о 
+>>таком широком спектре жизненных вещей. 
+>>Только во многом с вами 
+>>можно не согласиться. 
+>
+>Это же хорошо? 
+>
+>>Я не 
+>>буду рассуждать о свободе. Вряд 
+>>ли у меня это получится 
+>>лаконично. Я лучше скажу о 
+>>brainbench. 
+>>Разве плохо, что человек, пробующий свои 
+>>силы в той или иной 
+>>области, имеет возможность испытать себя? 
+>
+>Тестированием на BrainBecnh? :-) Не издевайтесь 
+>надо мной. "Испытывать себя" можно 
+>и без BrainBench'а, причем значительно 
+>более эффективно. Возвращаясь к тому 
+>же программированию на C  
+>, "испытать себя" можно только 
+>одним способом: написав на нем 
+>что-то достаточно большое. 
+>
+>>Определить пробелы в своем образовании. 
+>
+>Через BrainBench это невозможно. Просто потому, 
+>вопросы там не те, которыми 
+>можно это сделать... 
+>
+>>Ведь для работы не требуется знание 
+>>наизусть спецификаций на тот или 
+>>иной продукт, гораздо ценнее умение 
+>>решать возникающие задачи быстро и 
+>>по-возможности оптимально. Так что тут 
+>>может пригодиться даже способность найти 
+>>в интернете ответы на вопросы 
+>>brainbench. 
+>
+>Это все косвенные оценки, которые лучше 
+>выводить не из полученных сертификатов, 
+>а из личного общения с 
+>человеком. И из реально выполненной 
+>работы. 
+>
+>>Конечно, не сертификат ценен, а возможность 
+>>проверить себя. 
+>
+>"Проверить себя" через BrainBench просто невозможно... 
+>
+>
+>>Ну а наличие сертификата свидетельствует хотя 
+>>бы о том, что человек 
+>>действительно интересуется специальностью, неравнодушен к 
+>>ней. 
+>
+>Тоже неверно. Существует громадное количество людей, 
+>которые набрали эти сертификаты просто 
+>из-за того, что это "халява". 
+>
+>
+>>Я не встречала таких снобов, которые 
+>>морщили бы нос при упоминании 
+>>TekMetrics. Напротив, вполне достойные люди 
+>>учитывают это при приеме специалистов 
+>>к себе на работу. 
+>
+>Ой-ой, для того что бы общаться 
+>с Вами на эту тему 
+>дальше, придется перейти на личности 
+>неизвестных мне людей, что совсем 
+>нехорошо. Поэтому это я пропущу... 
+>
+>
+>> Может 
+>>быть, им просто еще не 
+>>попадались те недобросовестные, которые тестируются 
+>>нечестно... 
+>>В общем, Андрюша, необъективны вы, мальчишески 
+>>однобоки. 
+>
+>С этого надо было начинать. Всегда 
+>пожалуйста, в общем. 
+>
+>>И еще, раз уж вы занялись 
+>>таким важным делом, как рецензирование 
+>>всего вокруг, то не мешало 
+>>бы вам подучить родной язык. 
+>
+>Вы не правы. В том смысле, 
+>что язык, конечно же, подучить 
+>было бы неплохо (и я 
+>там где-то на эту тему 
+>распространялся), а вот "важное дело" 
+>у меня совсем другое... 
+>
+>>Удачи! 
+>
+>Аналогично. 
+>
+>Теперь по поводу Вашего ответа... Вы 
+>знаете, иногда бывает такое, когда 
+>человеку сказать, в общем-то, нечего, 
+>но очень хочется. Эмоции переполняют 
+>или еще что-то... поэтому беседа 
+>становится очень странной. Приводятся мнения 
+>неизвестных людей, происходят попытки уличить 
+>собеседника в безграмотности (аргумент просто 
+>убийственный) или мальчишестве. Похоже на 
+>тот текст, на который я 
+>отвечал? 
+>
+>В качестве последнего вопроса... можно поинтересоваться, 
+>сколько у Вас, или у 
+>Ваших знакомых, сертификатов от BrainBench? 
+>
+
+
+</TEXTAREA>
+   </TD></TR>
+   <TR><TH ALIGN="RIGHT" BGCOLOR="#EAE8E0">
+   &nbsp;</TH>
+   <TD BGCOLOR="#EAE8E0" ALIGN="LEFT">
+   <INPUT TYPE="SUBMIT" NAME="preview" VALUE="Preview">
+      <INPUT TYPE="SUBMIT" NAME="post" VALUE="Post Message">
+   <INPUT TYPE="RESET" VALUE="Reset">
+   </TD></TR></TABLE>
+   </form>
+   </center>
+  
+
+<!-- Required Marker-->
+
+   <table border="0" width="70%"><tr><td bgcolor="#E3DAA5">
+	&nbsp;</td></tr></table>
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

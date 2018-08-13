@@ -1,0 +1,585 @@
+<html><head><title>ALK :: C&amp;C++ :: Комментарии.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/tourism/story/29_08_00.shtml">&lt;&lt;</a>&nbsp;30.08.00&nbsp;<a href="/etc/31_08_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Комментарии
+</h1> 
+    <p align="justify">
+      Плохое комментирование исходных текстов является одним
+      из самых тяжелых заболеваний программ. Причем программисты
+      зачастую путают "хорошее" комментирование и "многословное".
+      Согласитесь, комментарии вида:
+    </p>
+<pre>
+i = 10; // Присваиваем значение 10 переменной i.
+</pre>
+    <p class="table">
+      выглядят диковато. Тем не менее, их очень просто расставлять
+      и, поэтому, этим часто злоупотребляют. На мой взгляд,
+      хороший комментарий не должен находится внутри основного текста
+      подпрограммы. Комментарий должен располагаться перед заголовком
+      функции; пояснять что и как делает подпрограмма, какие
+      условия накладываются на входные данные и что от нее можно ожидать;
+      визуально отделять тела функций друг от друга. Потому что 
+      при просмотре текста программы зачастую незаметно, где заканчивается
+      одна и начинается другая подпрограмма. Лично я оформляю такие комментарии
+      подобным образом:
+    </p>
+<pre>
+/**********************************************
+ * function
+ */
+void function()
+{ 
+}
+</pre>
+    <p align="justify">
+      В примере я сократил количество "звездочек" в первой строке комментария, но их там 79 штук. Такая ширина
+      строки влезает на лист при его распечатке. Мой редактор (XEmacs) выделяет
+      комментарий другим цветом и, при возможности, использует курсив для отображения.
+      Такой цвет очень хорошо показывает начало функции.
+    </p>
+    <p align="justify">
+      Я использую этот комментарий в любом случае, даже если из названия подпрограммы
+      понятно, что она делает --- продублировать ее название не тяжелый труд. Единственное,
+      из моего опыта следует, что не надо переводить название функции на русский язык; если
+      уж писать комментарий, то он должен что-то добавлять к имеющейся информации. А так видно,
+      что комментарий выполняет декоративную роль.
+    </p>
+    <p align="justify">
+      Чем короче функция, тем лучше. Законченный кусочек программы, который и оформлен в виде
+      независимого кода, значительно легче воспринимается, чем если бы он был бы внутри
+      другой функции. Кроме того, всегда есть такая возможность, что этот коротенький
+      кусочек потребуется в другом месте, а когда это требуется программисты обычно
+      поступают методом cut&amp;paste, результаты которого очень трудно поддаются изменениям.
+    </p>
+    <p align="justify">
+      Я считаю, что комментарии внутри тела функции должны быть только в тех местах,
+      на которые обязательно надо обратить внимание. Это не значит, что надо
+      расписывать алгоритм, реализуемый функцией, по строкам функции. Не надо
+      считать того, кто будет читать ваш текст за идиота, который не сможет
+      самостоятельно сопоставить ваши действия с имеющимся алгоритмом. Алгоритм должен
+      описываться перед заголовком в том самом большом комментарии, или должна быть дана
+      ссылка на книгу, в которой этот алгоритм расписан. 
+    </p>
+    <p align="justify">
+      Комментарии внутри тела подпрограммы могут появляться только в том случае, 
+      если ее тело все-таки стало длинным. Такое случается, когда, например, пишется
+      подпрограмма для разбора выражений, там от этого никуда особено не уйдешь. Комментарии
+      внутри таких подпрограмм, поясняющие действие какого-либо блока, не должны состоять
+      из одной строки, а обязательно занимать несколько строчек для того, что бы
+      на них обращали внимание. У меня это обычно выглядит следующим образом:
+    </p>
+<pre>
+{
+  /*
+   * Комментарий.
+   */
+}
+</pre>
+    <p align="justify">
+      Тогда он смотрится не как обычный текст, а именно как нужное пояснение.
+    </p>
+    <p align="justify">
+      Остальной текст, который я призываю не комментировать, 
+      должен быть понятным. Названия переменных должны отображать
+      их сущность и, по возможности, быть выполнены в едином стиле.
+      Не надо считать, что короткое имя лучше чем длинное; если
+      из названия короткого не следует сразу его смысл,
+      то это имя следует изменить на более длинное. Кроме того,
+      для C++ я обычно использую области видимости для
+      создания более понятных имен. Например, <code>dictionary::Creator</code>
+      и <code>index::Creator</code>: внутри области видимости можно
+      использовать просто <code>Creator</code> (что тоже достаточно удобно,
+      потому что в коде, который имеет отношение к словарю и так ясно, какой
+      <code>Creator</code> может быть без префикса), а снаружи используется
+      нужный префикс, по которому смысл имени становится понятным.
+    </p>
+    <p align="justify">
+      Кроме того, должны быть очень подробно прокомментированы интерфейсы.
+      В последнее время стал замечать, что в моих программах
+      иерархии классов фактически вырождаются. То есть у меня
+      достаточно редки дети "в третьем колене" и ниже. Ален Голуб
+      в своих "правилах" совершенно резонно заметил, что 
+      иерархии классов должны быть широкими, а не глубокими.
+      Все дело в подходе: вы описываете интерфейс, которому
+      должны удовлетворять объекты, а после этого реализуете
+      конкретные виды этих объектов. Обычно все, что видит пользователь ---
+      это только определение базового класса такой "широкой" иерархии классов,
+      поэтому оно должно быть максимально понятно для него. Кстати,
+      именно для возврата объектов, удовлетворяющих определенным
+      интерфейсам, я и использую "умные" указатели.
+    </p>
+    <p align="justify">
+      Еще хорошо бы снабдить каждый заголовочный файл кратким комментарием,
+      поясняющим то, что в нем находится. Файлы реализации обычно смотрятся потом,
+      когда по заголовочным файлам становится понятно, что и где находится,
+      поэтому там такие комментарии возникают по мере необходимости.
+    </p>
+    <p align="justify">
+      Таким образом, комментарии не должны затрагивать конкретно исходный
+      текст программы, они все являются декларативными и должны давать
+      возможность читателю понять суть работы программы не вдаваясь
+      в детали. Все необходимые детали становятся понятными при внимательном
+      изучении кода, поэтому комментарии рядом с кодом будут только отвлекать.
+    </p>
+    <p align="justify">
+      Следовательно, надо предоставить читателю
+      возможность отвлеченного ознакомления с кодом. Я под
+      этим подразумеваю, возможность удобного листания комментариев
+      или распечаток программной документации. Подобную возможность
+      обеспечивают программы автоматизации создания программной документации.
+      Таких программ достаточно много, для Java, например, существует JavaDoc, 
+      для C++ --- doc++ и doxygen. Все они позволяют сделать по специального
+      вида комментариям качественную документацию с большим количеством
+      перекрестных ссылок и индексов.
+    </p>
+    <p align="justify">
+      Вообще, тут мне хотелось бы немного отклониться от основной темы
+      и пофилософствовать. Хороший комментарий сам по себе не появляется.
+      Он является плодом тщательнейшей проработки алгоритма подпрограммы,
+      анализа ситуации и прочее. Поэтому когда становится тяжело комментировать
+      то, что вы хотите сделать, то это означает, скорее всего, то,
+      что вы сами еще плохо сознаете, что хотите сделать. Из этого
+      логичным образом вытекает то, что комментарии должны быть готовы
+      до того, как вы начали программировать. 
+    </p>
+    <p align="justify">
+      Это предполагает, что вы сначала пишите документацию, а потом
+      по ней строите исходный текст. Такой подход (в моем вольном изложении)
+      называется "литературным программированием" и автор данной
+      концепции сам Дональд Кнут (тот самый, который написал
+      "Искусство программирования" и сделал TeX). У него
+      даже есть программа, которая автоматизирует этот процесс,
+      она называется Web. Изначально она была разработана для 
+      Pascal'я (и на ней написан TeX --- очень рекомендую
+      посмотреть исходники), но потом появились варианты для
+      других языков. Например, СWeb --- это Web для языка C.
+    </p>
+    <p align="justify">
+      Используя Web вы описываете работу вашей программы, сначала
+      самым общим образом. Затем описываете какие-то более специфические
+      вещи и т.д. Кусочки кода появляются на самых глубоких уровнях
+      вложенности этих описаний, что позволяет говорить о том,
+      что и читатель, и вы, дойдете до реализации только после того,
+      как поймете действие программы. Сам Web состоит из двух программ:
+      для создания программной документации (получаются очень красивые
+      отчеты) и создания исходного текста на целевом языке программирования.
+      Кстати сказать, TeX написан на Web'е, а документацию Web делает 
+      с использованием TeX'а... как вы думаете, что из них раньше появилось?
+    </p>
+    <p align="justify">
+      Web в основном применятся программистами, которые пишут сложные
+      в алгоритмическом отношении программы. Сам факт присутствия
+      документации, полученной из Web-исходника, упрощает
+      ручное доказательство программ (если такое проводится).
+      Тем не менее, общий подход к программированию должен быть
+      именно такой: сначала думать, потом делать. При этом
+      не надо мерять работу программиста по количеству
+      строк им написанных. 
+    </p>
+    <p align="justify">
+      Несмотря на то, что использование Web'а для 
+      большинства "совсем" прикладных задач несколько
+      неразумно (хотя вполне возможно, кто мешает хорошо программировать?),
+      существуют более простые реализации той же идеи.
+    </p>
+    <p align="justify">
+      Я рассмотрю <a href="http://www.doxygen.org">doxygen</a> в качестве
+      примера.
+    </p>
+ <pre>
+/**
+ * \bref Краткое описание.
+ * 
+ * Этот класс служит для демонстрации
+ * возможностей автодокументации.
+ */
+class AutoDoc
+{
+public:
+    int foo() const; //!&lt; Просто функция. Возвращает ноль. 
+   
+    /**
+     * \brief Другая просто функция.
+     *
+     * Назначение непонятно: возвращает ноль. foo() ---
+     * более безопасная реализация возврата нуля.
+     *
+     * \param ignored --- игнорируется.
+     *
+     * \warning может отформатировать жесткий диск.
+     *
+     * \note форматирование происходит только по пятницам.
+     *
+     * \see foo().
+     */
+    int bar(int ignored); 
+};
+</pre>
+    <p align="justify">
+      Комментарии для doxygen записываются в специальном формате. Они начинаются
+      с "/**", "/*!" или "//!&lt;". Весь подобный текст 
+      doxygen будет использовать в создаваемой документации. Он автоматически
+      распознает имена функций или классов и генерирует ссылки на них
+      в документации (если они присутствуют в исходном тексте).
+      Внутри комментариев существует возможность использовать
+      различные стилевые команды (пример достаточно наглядно
+      демонстирирует некоторые из них), которые позволяют
+      более тщательным образом структурировать документацию.
+    </p>
+    <p align="justify">
+      doxygen создает документацию в форматах:
+    </p>
+    <ul>
+      <li>html;</li>
+      <li>LaTeX;</li>
+      <li>RTF;</li>
+      <li>man.</li>
+    </ul>
+    <p align="justify">
+      Кроме того, из документации в этих форматах, можно
+      (используя сторонние утилиты) получить документацию в
+      виде MS HTML Help (наподобие MSDN), PDF (через LaTeX).
+    </p>
+    <p align="justify">
+      В общем использовать его просто, а результат получается
+      очень хороший.
+    </p>
+    <p align="justify">
+      Кроме того (раз уж зашла об этом речь), существует такая
+      программа, называется pcGRASP, которая позволяет
+      "разрисовать" исходный текст. В чем это заключается: 
+      все видели красивые и очень бесполезные блок-схемы. pcGRASP
+      делает кое-что в этом духе: к исходному тексту он добавляет
+      в левое поле разные линии (характеризующие уровень вложенности),
+      ромбики (соответствующие операторам выбора), стрелочки (при
+      переходе с одного уровня вложенности на другой, например,
+      <code>return</code>) и т.д. В принципе, можно использовать
+      для редактирования программ, но мне не понравилось. Самое
+      приятное, так это распечатки, полученные таким образом. Учитывая
+      то, что indent (отступы) pcGRASP делает сам (не ориентируясь на то,
+      как оно было), это делает подобные распечатки исключительно ценными.
+      Например, один раз подобная распечатка позволила мне выявить глупейшую
+      ошибку вида:
+    </p>
+<pre>
+if(cond1)
+  if(cond2)
+  { }
+else
+ { }
+</pre>
+    <p align="justify">
+      Условие <code>if(cond2)</code> я добавил не подумав и <code>else</code>
+      стал относится к нему. Просматривая программу в редакторе (который честно
+      сделал нужные отступы у строк с внутренним if'ом, но не тронул <code>else</code>,
+      потому что я об этом его не просил), я этого не видел. Тем не менее,
+      я ее заметил сразу же, как открыл распечатку, когда ехал с работы домой. При
+      этом в тестировании я тогда еще не добрался до тех ситуаций, когда эта ошибка дала бы мне знать о ней.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Комментарии надо писать так, что бы потом самому было бы приятно
+      их читать. Никакого распускания соплей в исходном тексте --- тот, кто 
+      будет читать его, прекрасно знает что делает операция присваивания и нечего
+      ему это объяснять. 
+    </p>
+    <p align="justify">
+      Красиво оформленная программная документация является большим плюсом, по
+      крайней мере потому, что люди, принимающие исходный текст, будут рады увидеть
+      текст с гиперссылками. Тем более, что не составляет труда  подготовить 
+      исходный текст к обработке утилитой наподобие doxygen.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_30_08_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Бъерн Страуструп</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Язык программирования C++, 3 издание. 
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/27_08_00.shtml">/comment/books/27_08_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     C и C++. Правила программирования.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.doxygen.org" target="_blank">http://www.doxygen.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт программы doxygen.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/12_09_00.shtml">volatile </a> (12.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять я публикую здесь текст из конференции SU.C_CPP. Впору заводить для этого отдельный раздел ;) Автор этого письма, Александр Кротов,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/12_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/23_08_00.shtml">Свойства </a> (23.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я уже говорил о и хотя эта заметка не будет посвящена ему, тем не менее я о нем вспомню. Когда только...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/23_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/31_08_00.shtml">Автомобиль в городе </a> (31.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я думаю, все помнят фразу "автомобиль не роскошь, а средство передвижения"? Она давно стала нарицательной и поэтому потеряла весь свой первоначальный...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/31_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/story/29_08_00.shtml">Камень </a> (29.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вот так всегда. Эти великие хергиани крючки лупят, а ты мешки подноси. Ты туда-сюда обратно, а им там приятно. Чужие сапоги...<nobr>&nbsp;&nbsp;&nbsp;<a href="/tourism/story/29_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/31_08_00.shtml">Автомобиль в городе </a> (31.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я думаю, все помнят фразу "автомобиль не роскошь, а средство передвижения"? Она давно стала нарицательной и поэтому потеряла весь свой первоначальный...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/31_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/story/29_08_00.shtml">Камень </a> (29.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вот так всегда. Эти великие хергиани крючки лупят, а ты мешки подноси. Ты туда-сюда обратно, а им там приятно. Чужие сапоги...<nobr>&nbsp;&nbsp;&nbsp;<a href="/tourism/story/29_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

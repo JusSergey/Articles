@@ -1,0 +1,85 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 146<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/146.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Winodws API"</font></b><br>
+Posted by Тарас  on 03-Oct-04 at 11:59&nbsp;AM<br>
+<blockquote>Суть в следующем:<BR>Оконная процедура создаёт окна: "редакторы" и кнопку<P>HWND wedit<2>,iedit<2>, button;<BR>int i;<P>case WM_CREATE:<BR>for(i=0...<BR>{<BR>wedit<i>=CreateWindow("EDIT",...<BR>iedit<i>=CreateWindow("EDIT",...<BR>...<BR>}<BR>button=CreateWindow("BUTTON",...<BR>return 0;<P>Все они выводятся на экран и даже делают то, что я прописал в их процедурах через SetWindowLong().<BR>Далее мне нужно достать текст из "редакторов".<BR>Делаю я это так:<P>case WM_COMMAND: ...<P>char txt<15>;<BR>int a<2>,b<2>;<BR>for(i=0;i&lt;2;i  )<BR>	 {<BR>	 GetWindowText(wedit<i>,txt,3);<BR>(txt=="1")?a<i>=1:a<i>=-1;<BR>...<BR>	 GetWindowText(iedit<i>,txt,2);<BR>(txt=="1")?b<i>=1:b<i>=0;<BR>	 ...<BR>	 }<BR>А вот тут то и начинается самое интересное. Оба значения а становятся равны -1, b - 0 (соответственно). Более того, если я пытабсь просто вывести на экран буфер txt через MessageBox(...), то вместо предполагаемого txt пустая строка. При это GetWindowText считывает с кнопки текст вполне номрально (проверял MessageBox'ом). Пытался реализовать "редакторы" не через массивы ( a<2>), а как отдельные переменные (a1,a1). Даже при одном окне-"редакторе" на главном окне, результат - та же пустая строка. <P>Извечный русский вопрос "Что Делать???"</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Winodws API</b>,<b>Proteus</b>, 02:34&nbsp;AM, 20-Nov-04
+<ul>
+<li><b>RE: Winodws API</b>,<b>Тарас</b>, 05:21&nbsp;PM, 22-Nov-04
+<ul>
+<li><b>RE: Winodws API</b>,<b>alk</b>, 05:44&nbsp;PM, 22-Nov-04
+<ul>
+<li><b>RE: Winodws API</b>,<b>Тарас</b>, 05:14&nbsp;PM, 23-Nov-04
+<ul>
+<li><b>Sockets</b>,<b>Тарас</b>, 10:30&nbsp;PM, 24-Nov-04
+<li><b>RE: Winodws API</b>,<b>Proteus</b>, 03:11&nbsp;PM, 25-Nov-04
+<ul>
+<li><b>Proteus</b>,<b>Тарас</b>, 08:44&nbsp;PM, 26-Nov-04
+<ul>
+<li><b>RE: Proteus</b>,<b>Proteus</b>, 01:34&nbsp;PM, 05-Dec-04
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Winodws API"</b><br>
+Posted by Proteus  on 20-Nov-04 at 02:34&nbsp;AM<br>
+<blockquote>
+В винде ты не плохо разбираешься, но :<BR>GetWindowText(wedit,txt,3);<BR>3 хорошо бы поменять на sizeof(txt), но это тока ради приличия...<P>И самое главное!!!<BR>(txt=="1")?a=1:a=-1;<BR>(txt=="1") поменяй на (!strcmp(txt,"1")) или на<BR>(txt<0>=='1' && !txt<1>)<P>Если ты выбрал первый вариант то добавь в начале #include&lt;string.h&gt;
+</blockquote>
+<hr>
+<b>"RE: Winodws API"</b><br>
+Posted by Тарас  on 22-Nov-04 at 05:21&nbsp;PM<br>
+<blockquote>
+Приятно осозновать, что на тебя вобщем-то обращают внимание. Проблему эту же я решил 2 часа спустя.<BR>Но отвечать не стал. Просто посмотреть на местную аудиторию.<BR>А теперь задачка посложнее:<BR>Написать программу, которая скачивает из ИНЕТА курсы валютных котировок хотябы на текущий день (но лучше по указываемой в программе дате).<BR>Я начал тут сокеты изучать. Туго идёт. Подскажите ресурсы или пример кода.<BR>Заранее благодарен:)
+</blockquote>
+<hr>
+<b>"RE: Winodws API"</b><br>
+Posted by alk  on 22-Nov-04 at 05:44&nbsp;PM<br>
+<blockquote>
+&gt;Приятно осозновать, что на тебя вобщем-то <BR>&gt;обращают внимание. Проблему эту же <BR>&gt;я решил 2 часа спустя. <BR>&gt;<BR>&gt;Но отвечать не стал. Просто посмотреть <BR>&gt;на местную аудиторию. <BR>&gt;А теперь задачка посложнее: <BR>&gt;Написать программу, которая скачивает из ИНЕТА <BR>&gt;курсы валютных котировок хотябы на <BR>&gt;текущий день (но лучше по <BR>&gt;указываемой в программе дате). <BR>&gt;Я начал тут сокеты изучать. Туго <BR>&gt;идёт. Подскажите ресурсы или пример <BR>&gt;кода. <BR>&gt;Заранее благодарен:) <P>Простой путь будет следующим: натравить wget на нужный сайт и распарсить perl'ом полученный html.<P>А так, использовать сокеты только для того, чтобы выкачать один url, достаточно просто и примеров в интернете много. Вот, например, первое попавшееся для winsocket'ов из googl'а --- <a href="http://www.adp-gmbh.ch/win/misc/sockets.html" target="_blank">http://www.adp-gmbh.ch/win/misc/sockets.html</a>
+</blockquote>
+<hr>
+<b>"RE: Winodws API"</b><br>
+Posted by Тарас  on 23-Nov-04 at 05:14&nbsp;PM<br>
+<blockquote>
+Спасибо за код - работает:) Только под WIN API тормозит сильно, но это я сам доработаю.<BR>Глупый вопрос - а что такое WGET?<BR>Ещё пытался до этого сам подключит сокет клиента к сети из дома чарез dial-up, но прога выдавала ошибку соединения а WSAGetLastError показывал WSAECONNREFUSED (10061). При этом скачанный код работает (хоть и с тормозами).<BR>Второй глупый вопрос: где я мог ошибиться?<BR>Жду продолжения обсуждения:)<BR>
+</blockquote>
+<hr>
+<b>"Sockets"</b><br>
+Posted by Тарас  on 24-Nov-04 at 10:30&nbsp;PM<br>
+<blockquote>
+Увлекательная это штука  -программирование.<BR>Когда свой клиент создал, загрузил по примеру стр с mail.ru - работает.<BR>На rbc.ru не хочет создавать coоkies.<BR>На provodka.ru не поддерживает метод GET/HTTP/1.1<BR>Где бы документацию найти на эти самые методы, запросы клиента и т.п.?<BR>
+</blockquote>
+<hr>
+<b>"RE: Winodws API"</b><br>
+Posted by Proteus  on 25-Nov-04 at 03:11&nbsp;PM<br>
+<blockquote>
+Если ты первый раз это делаешь. То может быть WSA запустить забыл. Без него под виндой ни один сокет не заработает.<P>В вот тебе ресурс про сокеты www.sockets.com <BR>там море сокетов )))
+</blockquote>
+<hr>
+<b>"Proteus"</b><br>
+Posted by Тарас  on 26-Nov-04 at 08:44&nbsp;PM<br>
+<blockquote>
+Нет. Не забыл. Просто я, как самый умный в host обозначал через "hpp://" (привычка от пользования старой версии эксплорера:)) Сейчас всё работает дома через dial-up. Но показывать прогу надо в универе, а там - локальная сеть с proxy сервером. Какие-нибудь доки по теме proxy и клиентов в этой же области подайте please:) Или хоть что-то похожее. Буду благодарен бесконечно.
+</blockquote>
+<hr>
+<b>"RE: Proteus"</b><br>
+Posted by Proteus  on 05-Dec-04 at 01:34&nbsp;PM<br>
+<blockquote>
+Ну прокси они разные бывают. И вряд ли где-то ты найдёшь документ который всё сразу тебе опишет (тем более на русском).<P>
+</blockquote>
+<hr>
+</font></body></html>

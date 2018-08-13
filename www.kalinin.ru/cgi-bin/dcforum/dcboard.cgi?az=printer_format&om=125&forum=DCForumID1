@@ -1,0 +1,24 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 125<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/125.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"помогите"</font></b><br>
+Posted by plotnikov vitali  on 06-Oct-03 at 09:58&nbsp;AM<br>
+<blockquote>помогите решить задачу<BR>определить в какой четверти находится<BR>точка с координатами X и Y и вывести<BR>на печать номер четверти.<BR>заранее благодаре.</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: помогите</b>,<b>anonymous</b>, 06:39&nbsp;PM, 06-Oct-03
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: помогите"</b><br>
+Posted by anonymous  on 06-Oct-03 at 06:39&nbsp;PM<br>
+<blockquote>
+#include &lt;stdio.h&gt;<P>int main()<BR>{<BR>  int x, y;<BR>  scanf("%i%i", &x, &y);<BR>  if (x &gt; 0)<BR>    if (y &gt; 0) printf("1\n");<BR>    else print("4\n");<BR>  else<BR>    if (y &gt; 0) printf("2\n");<BR>    else print("3\n");<BR>}<BR>
+</blockquote>
+<hr>
+</font></body></html>

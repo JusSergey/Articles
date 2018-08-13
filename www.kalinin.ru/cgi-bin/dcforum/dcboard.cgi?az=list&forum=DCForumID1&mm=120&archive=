@@ -1,0 +1,275 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage 
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+         <TABLE BORDER="0" cellspacing="0" cellpadding="0">
+         <TR>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=help"><img 
+            src="/dcforum//Images/help.gif" alt="Click here to see help" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=help"><font 
+               size="-2" face="arial,sans-serif" color="black">Help</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><img 
+            src="/dcforum//Images/search.gif" alt="Click here to Search the Forum" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=search_form"><font 
+               size="-2" face="arial,sans-serif" color="black">Search</font></a> 
+         </td>
+         <td align="center" width="50" BGCOLOR="#FBF9F1">
+             <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1"><img 
+            src="/dcforum//Images/post.gif" alt="Click here to post new thread" border="0"></a><br> <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1"><font 
+               size="-2" face="arial,sans-serif" color="black">Post</font></a> 
+         </td>
+         </TR></TABLE>
+      
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b></b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+      <TABLE BORDER="0" WIDTH="70%" cellspacing="1" cellpadding="3">
+      <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" colspan="2" BGCOLOR="#EAE8E0">
+      <font face="arial,sans-serif" color="black" size="1">
+         <img src="/dcforum//Images/expand_threads.gif" align="bottom" border="0"><a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=expand_threads"><font 
+               face="arial,sans-serif" color="black" size="1">Expand Threads</font></a>
+      </font></td>
+      <TD COLSPAN="3" ALIGN="RIGHT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <font face="arial,sans-serif" color="black" size="-1">
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=0&archive=">1</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=30&archive=">2</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=60&archive=">3</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=90&archive=">4</A> | 5  | </FONT></TD></TR>
+      <TR><TH COLSPAN="5" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+         <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font face="arial,sans-serif"
+         color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> <font face="arial,sans-serif"
+         color="black" size="-1">Основной форум
+          (Public)</FONT>
+         </TH></TR>
+   <a name="TOP">&nbsp;</a>
+   
+      <TR BGCOLOR="#E3DAA5"><TD ALIGN="LEFT" colspan="2"><font 
+         SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Sort Topics by..... <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field=1"><font 
+            SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  ID</font></a> |
+            <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field=5"><font 
+            SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  Topic</font></a> |
+            <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field=4"><font 
+            SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  Author</font></a> |
+            <a 
+            href="/cgi-bin/dcforum/dcboard.cgi?az=set_sort_index&field="><font 
+            <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+               Date</font></a> 
+                     </font></TD>
+            <TD ALIGN="LEFT" COLSPAN="3">
+            <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+                  Discussion&nbsp;Information</font>
+               </TD></TR>
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/7.html"><b>О brainbench </b></a>  
+                  <br>Вы, Андрюша, похоже, из тех людей, которых бывает по два</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Irina</b><br>
+           <b>6
+</b> messages<br>
+           0
+           <font size="1">05-Nov-00 05:13&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/8.html"><b>по поводу</b></a>  
+                  <br>Привет уважаемому автору. Времени немного у меня, пос%C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Korney</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">30-Oct-00 02:10&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/5.html"><b>стиль сайта</b></a>  
+                  <br>Не очень ли мрачновато получилось? А встретить письма С%</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Anton Sergeev</b><br>
+           <b>8
+</b> messages<br>
+           0
+           <font size="1">28-Oct-00 04:32&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/4.html"><b>Статьи(вопросы и пожелания)</b></a>  
+                  <br>Приветик! Сначала хочу спросить почему, что у тебя чт%C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Denis(McPooh)</b><br>
+           <b>1
+</b> messages<br>
+           0
+           <font size="1">05-Sep-00 09:57&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#FBF9F1">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/3.html"><b>Эгоизм</b></a>  
+                  <br>Ну, пройдусь по статье (на мой взгляд самая интересная %C</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Ирина</b><br>
+           <b>5
+</b> messages<br>
+           0
+           <font size="1">25-Aug-00 11:22&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+           <TR><TD ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#EAE8E0">
+           <img src="/dcforum//Images/file.gif"></TD><TD ALIGN="LEFT" 
+         WIDTH="100%" VALIGN="TOP" BGCOLOR="#EAE8E0">
+                    <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+                    <a href="/dcforum//DCForumID1/1.html"><b>Проверка</b></a>  
+                  <br>Проверка того, как работает этот форум.</FONT></TD>
+
+         <TD ALIGN="Left" VALIGN="TOP" COLSPAN="3" BGCOLOR="#EAE8E0">
+           <FONT SIZE="-1" COLOR="black" FACE="arial,sans-serif">
+           <b>Andrey L. Kalinin</b><br>
+           <b>8
+</b> messages<br>
+           0
+           <font size="1">26-Jul-00 06:50&nbsp;PM</font></FONT>
+        </TD>
+        </TR>
+        
+   <TR><TD COLSPAN="5" BGCOLOR="#E3DAA5" ALIGN="CENTER">
+      <font size="-1">&nbsp;</font></TD></TR>
+   <TR><TD COLSPAN="5" ALIGN="RIGHT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=0&archive=">1</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=30&archive=">2</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=60&archive=">3</A> | <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&mm=90&archive=">4</A> | 5  | 
+   </FONT>
+   </TD></TR></TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

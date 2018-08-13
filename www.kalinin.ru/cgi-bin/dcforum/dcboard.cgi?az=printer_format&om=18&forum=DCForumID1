@@ -1,0 +1,31 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 18<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/18.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Про Apache ,IIS и Servlets"</font></b><br>
+Posted by Mishael  on 06-Dec-00 at 05:54&nbsp;PM<br>
+<blockquote>1)Может кто подскажет как заставить Apache <BR>выполнять Java Servlets и JSP.<BR>Какой промежуточный софт нужен и где его взять.<BR>2) Тоже самое но для IIS 4<P>У меня Apache 1.3.14(Win32).<BR>         <BR>Спасибо.<P></blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Про Apache ,IIS и Servlets</b>,<b>Andrey L. Kalinin</b>, 05:09&nbsp;PM, 09-Dec-00
+<li><b>RE: Про Apache ,IIS и Servlets</b>,<b>om</b>, 09:12&nbsp;PM, 12-Dec-00
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Про Apache ,IIS и Servlets"</b><br>
+Posted by Andrey L. Kalinin  on 09-Dec-00 at 05:09&nbsp;PM<br>
+<blockquote>
+&gt;1)Может кто подскажет как заставить Apache <BR>&gt;<BR>&gt;выполнять Java Servlets и JSP. <BR>&gt;Какой промежуточный софт нужен и где <BR>&gt;его взять. <P>Посмотри на <a href="http://java.apache.org" target="_blank">http://java.apache.org</a>/<P><BR>&gt;2) Тоже самое но для IIS 4 <P>Понятия не имею, если честно.<P><BR>
+</blockquote>
+<hr>
+<b>"RE: Про Apache ,IIS и Servlets"</b><br>
+Posted by om  on 12-Dec-00 at 09:12&nbsp;PM<br>
+<blockquote>
+посмотри<BR><a href="http://java.apache.org/jserv/install/howto.win32_install.html" target="_blank">http://java.apache.org/jserv/install/howto.win32_install.html</a><P>и вокруг ссылочки;)
+</blockquote>
+<hr>
+</font></body></html>

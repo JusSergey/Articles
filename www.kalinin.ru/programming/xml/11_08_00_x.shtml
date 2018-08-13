@@ -1,0 +1,406 @@
+<html><head><title>ALK :: XML :: XSL</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/xml/">xml</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/cpp/10_08_00.shtml">&lt;&lt;</a>&nbsp;11.08.00&nbsp;<a href="/comment/books/11_08_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Преобразование XML при помощи XSL
+</h1> 
+    <p align="justify">
+      Одна из самых частых операций, которую требуется произвести
+      с XML-документом, это показать его. Хочется предупредить сразу, что на этот
+      раз я опять не буду рассматривать ни синтаксис XML-документов,
+      ни примеров использования; этих материалов (в основном, правда,
+      на английском языке) в интернете лежит предостаточно. Я просто 
+      попытаюсь рассказать о том, что это такое "вообще" и как это
+      можно использовать.
+    </p>
+    <p align="justify">
+      Итак, задача заключается в изображении некоторого XML-документа, т.е.
+      данных с выделенной в них структурой. На текущий момент можно сказать,
+      что неприхотливее формата данных для отображения, чем HTML, не существует ---
+      маленький размер, при желании разметку можно свести к минимуму и объем
+      документа будет не очень сильно отличаться от количества байт полезной
+      информации в нем, простота обработки, большое количество уже существующих 
+      браузеров на различных плафтормах. Таким
+      образом, напрашивается достаточно простое решение --- преобразовать
+      XML-документ в соответствующее ему HTML-представление. Понятно,
+      что при этом потеряется информация о структуре, но, зато, такой
+      документ можно просмотреть любым браузером, т.е. донести-таки
+      информацию до человека.
+    </p>
+    <p align="justify">
+      XSL является механизмом, который решает, в принципе, более
+      широкую проблему. Он позволяет преобразовать XML-документ с одной
+      структурой в XML-документ с другой структурой, в частности, в HTML.
+    </p>
+    <p align="justify">
+      XSL-документ представляет из себя, как вы сами понимаете, разновидность
+      XML-документа, который используется для представления правил, по
+      которым будет происходить преобразование. Правила основаны
+      на совпадении шаблонов, т.е., например, "если встретился
+      элемент A, то вставить указанный кусочек HTML-кода и продолжить
+      поиск совпадений шаблонов дальше". Все очень похоже
+      на функциональный или логический язык программирования: есть
+      рекурсивная и процедурная семантика; например, кроме рекурсивных
+      применений шаблонов существует возможность органзации 
+      циклов ("для всех элементов A вставить такой HTML-код").
+    </p>
+    <p align="justify">
+      Работает все это достаточно просто: для того, что бы
+      преобразовать XML-документ по XSL-таблице нужно взять XSL-процессор,
+      дать ему на вход два файла и на выходе получится результат. Это 
+      первый вариант визуализации данных --- как только потребовалось
+      просмотреть XML-документ, преобразовать его в HTML и просмотреть
+      браузером.
+    </p>
+    <p align="justify">
+      Второй вариант заключается в том, что сам браузер при открытии
+      документа пытался бы выполнить соответствующее преобразование.
+      В принципе, все хорошо, но это сейчас более-менее полно
+      поддерживает только MS Internet Explorer 5.5 (с установленным
+      MS XML SDK, который до сих пор имеет статус "бета"). Кое-какие намеки есть в Netscape, но 
+      все остальные браузеры чуть проще (которые показывают только HTML-документы),
+      работать с XSL не смогут --- как следствие теряется одно из самых важных
+      преимуществ HTML-представления, переносимость текста между разными платформами.
+      Кроме
+      того XSL-преобразование происходит на стороне клиента (я имею
+      в виду, если XML-документ выложен на сайте в интернете),
+      что тоже не особенно хорошо... в том смысле, что это неуважение
+      к читателю: требовать что бы он использовал IE последней версии (под FreeBSD, например)
+      и что бы его компьютер еще выполнял какое-нибудь хитрое преобразование (понятно,
+      что ресурсов оно отнимет мало, но отображение HTML-документа отнимет
+      еще меньше ресурсов, а результат будет тем же). Надеюсь, ясно, что
+      мое мнение заключается в том, что сейчас еще рано публиковать XML-документы
+      в интеренте "просто так" --- есть HTML, значит его и надо
+      отдавать пользователю.
+    </p>
+    <p align="justify">
+      Третий вариант --- использование системы наподобие <a href="http://xml.apache.org/cocoon">Cocoon</a>, которая 
+      занимается тем, что, работая на web-сервере, делает требуемое преобразование XML-документа
+      до того как отдать его пользователю. В принципе, стоит отметить, что это достаточно разумный
+      подход. Понятно, что технически размещение подобной системы на web-сервере ничем не отличается
+      от установки SSI или PHP3 процессоров. При этом ресурсы у пользователя не 
+      отбираются и, что самое главное, не требуется иметь браузер с возможностью выполнения
+      XSL-преобразования. Ну и, наконец, появляется возможность публиковать XML-документы
+      в том виде, в котором они поступили от авторов, просто выкладывая нужные файлы на сервер. Кроме
+      всех этих прелестей, Cocoon предоставляет такую забавную возможность, как
+      выбор XSL-преобразования для одного и того же документа по некоторым условиям. Одно
+      из самых приятных условий --- идентификатор браузера, которым пользуется читатель; то есть
+      появляется возможность "на лету" создавать страницы, оптимизированные для просмотра
+      в конкретном браузере (например, для графических браузеров и для текстового lynx, или
+      для IE и NN). Конечно, в последнем случае опять встает проблема, если между
+      web-сервером и пользователями с разными браузерами находится proxy-сервер, но
+      это уже совсем другой вопрос.
+    </p>
+    <p align="justify">
+      Как вы, надеюсь, поняли, лично я считаю, что самые лучшие варианты для публикации
+      XML-документов --- использование XSL-преобразования до того как выложить
+      файлы на сервер или установка XSL-процессора, который выполняет такое преобразование
+      "на лету". Собственно, в этом и заключается моя маленькая мечта --- перевести
+      свою домашнюю страничку в XML и выполнять соответствующее преобразование... так оно
+      и будет когда-нибудь, а пока что я постоянно забываю исправить некоторые недочеты
+      в уже имеющейся  XSL-таблице, поэтому пополняю свою страничку по старому.
+    </p>
+    <p align="justify">
+      Конечно же, существуют варианты, когда информацию просто невозможно
+      наглядно отобразить при помощи HTML, например, химические или математические формулы.
+      В таких случаях, кроме использования специализированных браузеров,
+      может помочь опять же XSL и инструмент наподобие <a href="http://xml.apache.org/fop">FOP</a>
+      который позволяет на основании XSL генерировать файлы в PDF. Некоторые издательские
+      системы умеют работать с данными, представленными в SGML или XML... так что XSL достаточно удобен
+      и популярен.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      XSL позволяет сделать из одного XML-документа другой,
+      в частности, HTML. Этот механизм можно использовать
+      для визуализации данных, содержащихся в XML.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/xml/print_11_08_00_x.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.w3.org/xml" target="_blank">http://www.w3.org/xml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Раздел на сайте W3C, посвященный XML.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.w3.org/xsl" target="_blank">http://www.w3.org/xsl</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Раздел на сайте W3C, посвященный XSL.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.bim.f2s.com" target="_blank">http://www.bim.f2s.com</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Некоторая информация (более формальная, чем изложена выше) про XML и XSL. К сожалению,     этот сайт выполнен как раз в манере "второго варианта", т.е. требует     наличия браузера с возможностью XSL-преобразования, т.е. IE 5.x.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://xml.apache.org" target="_blank">http://xml.apache.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Apache XML Project --- FOP и Cocoon входят в этот проект.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.xmlsoftware.com" target="_blank">http://www.xmlsoftware.com</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     XMLSoftware --- набор ссылок на программное обеспечение для работы с XML.     В частности, на XSL-процессоры.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.citforum.ru/internet/xml.shtml" target="_blank">http://www.citforum.ru/interne</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Раздел, посвященный XML, на сервере Центра Информационных Технологий.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/27_09_00.shtml">Средства для разбора XML-файлов </a> (27.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+С момента последнего обновления в этом разделе прошло уже больше месяца... но ведь никто же никому ничего не обещал? ;) Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/27_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/02_08_00.shtml">Зачем же все-таки нужен XML </a> (02.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+XML сейчас является очень модным словом --- обычно вместе с его упоминанием встречаются слова "метаязык", "перспективная технология" и прочее. Вообще, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/02_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/11_08_00.shtml">Алгоритмы: построение и анализ </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эту книгу ждали, по-моему, пару лет. При этом ее никто не рекламировал, не предлагал заказать в интернет-магазине до выхода как новое...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/11_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/10_08_00.shtml">Оператор безусловного перехода goto </a> (10.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Так уж сложилось, что именно присутствие или отсутствие этого оператора в яызке программирования всегда вызывает жаркие дебаты среди сторонников "хорошего стиля"...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/10_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/18_11_00.shtml">HTML must die </a> (18.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Язык гипертекстовой разметки документов (HTML) используется сейчас повсеместно. Задачи, которые ставились перед создателями этого языка заключались в необходимости создания универсального формата...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/18_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/27_09_00.shtml">Средства для разбора XML-файлов </a> (27.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+С момента последнего обновления в этом разделе прошло уже больше месяца... но ведь никто же никому ничего не обещал? ;) Тем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/27_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/11_08_00_x.shtml">Преобразование XML при помощи XSL </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Одна из самых частых операций, которую требуется произвести с XML-документом, это показать его. Хочется предупредить сразу, что на этот раз я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/11_08_00_x.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/02_08_00.shtml">Зачем же все-таки нужен XML </a> (02.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+XML сейчас является очень модным словом --- обычно вместе с его упоминанием встречаются слова "метаязык", "перспективная технология" и прочее. Вообще, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/02_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/11_08_00.shtml">Алгоритмы: построение и анализ </a> (11.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эту книгу ждали, по-моему, пару лет. При этом ее никто не рекламировал, не предлагал заказать в интернет-магазине до выхода как новое...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/11_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/10_08_00.shtml">Оператор безусловного перехода goto </a> (10.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Так уж сложилось, что именно присутствие или отсутствие этого оператора в яызке программирования всегда вызывает жаркие дебаты среди сторонников "хорошего стиля"...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/10_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

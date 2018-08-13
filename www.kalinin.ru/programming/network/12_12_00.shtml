@@ -1,0 +1,436 @@
+<html><head><title>ALK :: Сети :: Событийная модель в WinSock.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/network/">сети</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/internet/11_12_00.shtml">&lt;&lt;</a>&nbsp;12.12.00&nbsp;<a href="/comment/films/13_12_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Событийная модель в WinSock
+</h1><table width="60%" cellspacing="0" cellpadding="0" align="center" border="0">
+<tr><td>
+<h2>Автор</h2>
+<font size="-1">
+
+    <p align="justify">
+      Автором этого текста является Gregory 
+      Liokumovich (<a href="mailto:liokumovich@mail.ru">liokumovich@mail.ru</a>).
+      Он любезно прислал мне этот текст, связанный с программированием сетей при
+      помощи интерфейса WinSock, чему я лично очень рад: прежде всего потому,
+      что сам имею очень мало опыта использования WinSock, а не упоминать
+      о нем в разделе сетевого программирования совсем нехорошо. 
+    </p>
+    <p align="justify">
+      Пользуясь случаем, хочу еще раз поблагодарить
+      Григория за этот текст. Если я правильно понимаю, то он родился после
+      предыдущей заметки, где рассказывалось о неблокирующем <code>connect</code>.
+      Я обойдусь сейчас без комментариев к изложенной ниже точке зрения, но в ближайшее
+      время хочу так же конструктивно рассказать о том, каким я себе
+      представляю скелет сетевой программы.
+    </p>
+</font>
+</td></tr></table>
+
+
+ 
+    <p align="justify">
+      Сразу оговорюсь, что поскольку я занимаюсь программированием под 
+      Windows, то и говорить буду про реализацию сокетов под эту 
+      платформу. WinSock позволяет работать с сокетами в рамках трех 
+      подходов, против двух классических. А именно, обычная 
+      блокирующая передача данных, неблокирующая передача 
+      данных, событийно ориентированная передача данных. Лично я 
+      предпочитаю третий, и ниже попытаюсь основные изложить причины. 
+    </p>
+    <h2>Немного вводной информации</h2>
+    <p align="justify">
+      Основные функции:
+    </p>
+    <ul>
+      <li><code>WSACreateEvent()</code> --- создать новое событие;</li>
+      <li><code>WSACloseEvent()</code> --- удалить событие;</li>
+      <li><code>WSAEventSelect()</code> --- связать событие с сокетом и 
+	его внутренним событием (пришли новые данные, готов к передаче и т.д.);
+      </li>
+      <li>
+	<code>WSAWaitForMultipleEvents()</code> --- ожидание событий.
+      </li>
+    </ul>
+    <p align="justify">
+      Таким образом, алгоритм примерно такой: создаем сокет, создаем для 
+      него событие, связываем, далее ожидаем от него событий и реагируем 
+      на них. После того, как известно, что сокет готов к приему (передаче) 
+      данных, я предпочитаю использовать блокирующие операции 
+      чтения (отправки) данных. При этом, если например не 
+      все данные будут прочитаны из буфера, соответствующее событие 
+      будет автоматически активировано снова.
+    </p>
+    <p align="justify">
+      Что интересно тип WSAEVENT является просто переопределением типа  HANDLE 
+      со всеми вытекающими отсюда возможностями.
+    </p>
+    <h2>Причина первая, эстетическая</h2>
+    <p align="justify">
+      Общеизвестный факт, что все ПО развивается в сторону 
+      унификации интерфейса, это позволяет значительно упростить 
+      и ускорить его использование для пользователя. Вполне 
+      логично, что унификация программного API приводит к более 
+      эффективному и грамотному его использованию программистами, 
+      которые выступают в роли потребителей API. Так вот, с этой 
+      точки зрения событийный подход с известной всем windows программистам 
+      функцией <code>WaitForMultipleObject</code> (пусть даже с каким-то 
+      префиксом) явно упрощает использование сокетов.     
+    </p>
+    <p align="justify">
+      Кроме того, лично мне следующий фрагмент кода
+    </p>
+<pre>
+res = WSAWaitForMultipleObject(5,  Events, FALSE, WSA_INFINITE, FALSE);
+if (res == WSA_WAIT_FAILED)    
+{
+    // . . .
+}
+index = res;
+WSAEnumNetworkEvents(sockets[index],  Events[index], &amp;info)
+if (info. lNetworkEvents &amp; FD_READ)
+{
+    // принимаем новые данные
+}
+</pre>
+    <p class="table">
+      кажется намного более понятным и приятным чем этот
+    </p>
+<pre>
+int res = select(0, &amp;read, &amp;write, &amp;error, NULL)
+if (res == SOCKET_ERROR)
+{
+    // . . .
+}
+for(int i = 0; i &lt; socket.size(); i++) 
+{
+     if (FD_ISSET(socket[i], &amp;read) )
+        // принимаем данные
+}
+</pre>
+    <p align="justify">
+      Как видно и вышенаписанного в событийном подходе мы 
+      исходим от события, мы знаем для какого сокета есть новости. 
+      Во втором же случае, мы не знаем, что произошло и вынуждены 
+      перебирать все варианты. В первом случае мы оперируем 
+      массивами и событиями, во втором же случае неочевидными 
+      структурами и макросами.
+    </p>
+    <h2>Причина вторая, элегантная</h2>
+    <p align="justify">
+      Используя <code>select</code> или <code>WSAWaitForMultipleEvents</code>  
+      мы в любом случае не можем удалять или добавлять соединения во время 
+      работы данных функций, так как это приведет к сбою. А это наверняка придется делать. 
+    </p>
+    <p align="justify">
+      Если в программе, только один поток то проблемы нет, но не 
+      надо забывать что обе эти функции поддерживают не более 64  сокетов. 
+      А если надо больше? писать <code>select</code> за <code>select</code>'ом и
+      ставить выход по 
+      таймауту --- это очень некрасиво, но (что намного более важно) мы тут же 
+      теряем скорости реакции или скатываемся до элементарного опроса
+      готов/не готов. А если надо поддерживать 500 соединений? 
+      Время  реакции будет ужасным. В связи с этим хочу также 
+      отметить, что, по-моему, <code>WSAWaitForMultipleEvents</code> работает быстрее, 
+      чем <code>select</code> в режиме опроса, но это субъективное мнение --- цифрами 
+      подтвердить не могу. 
+    </p>
+    <p align="justify">
+      Так вот, единственный разумный выход из описанной ситуации который мне 
+      видится --- это многопоточность. Каждый поток работает со своими соединениями
+      и все замечательно. Но тут возникает (как это всегда бывает 
+      с потоками) проблемы взаимной синхронизации. 
+    </p>
+    <p align="justify">
+      Предположим поток 1 хочет добавить сокет в обработчик потока 2. В это 
+      время поток 2, выполняет <code>select</code> (или <code>WSAWaitForMultipleEvents</code>). 
+      Что прикажете делать? Что делать в случае <code>select</code> я, честно говоря, даже не знаю. 
+      При использовании событий я нашел, по-моему, неплохой и достаточно красивый 
+      выход. Создается одно пустое событие, которое не привязано к конкретному сокету. 
+      Это событие добавляется к остальным, которых дожидается <code>WSAWaitForMultipleEvents</code> 
+      (при этом число сокетов на поток уменьшается до 63). И вот в тот самый 
+      момент, когда мне надо вывести Поток два из "комотозного" состояния, я просто 
+      активирую это событие и все. То есть я использую события от сокета вместе и наравне 
+      с другими событиями. И отсюда вытекает еще одна более принципиальная причина.
+    </p>
+    <h2>Причина третья, принципиальная</h2>
+    <p align="justify">
+      Если задуматься  на тему что такое поступление новых данных 
+      в сокет или, например, что такое закрытие сокета с другой 
+      стороны. Можно придти к простому выводу --- это события. 
+      Такие же события, как наступления времени Х или любое 
+      другое событие в программе. Более того,  абсолютнозаконна 
+      постановка вопроса: "ждем пока произойдет какое-нибудь 
+      событие или пока придут данные от сокета". Поэтому это 
+      правильно и логично, что и работа с сокетами 
+      должна строится на событиях.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Вполне возможно, что для кого-то все вышесказанное не 
+      является причиной, а опущенные здесь нюансы более весомы, но 
+      лично я считаю, что использование событийной модели удобно, 
+      элегантно, а иногда и просто спасительно.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/network/print_12_12_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/13_12_00.shtml">Быстрый и мертвый / The Quick and the Dead, 1995 </a> (13.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На этот раз я впервые рассказываю о фильме, который я посмотрел &quot;по телевизору&quot;: он был на канале &quot;Боевик&quot; от НТВ+. Собственно,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/13_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/12_12_00.shtml">Событийная модель в WinSock </a> (12.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Автором этого текста является Gregory Liokumovich ( ). Он любезно прислал мне этот текст, связанный с программированием сетей при помощи интерфейса...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/12_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/13_12_00.shtml">Быстрый и мертвый / The Quick and the Dead, 1995 </a> (13.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+На этот раз я впервые рассказываю о фильме, который я посмотрел &quot;по телевизору&quot;: он был на канале &quot;Боевик&quot; от НТВ+. Собственно,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/13_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

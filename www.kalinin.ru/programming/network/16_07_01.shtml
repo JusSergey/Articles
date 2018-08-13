@@ -1,0 +1,979 @@
+<html><head><title>ALK :: Сети :: События ядра в FreeBSD.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/network/">сети</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/13_07_01.shtml">&lt;&lt;</a>&nbsp;16.07.01&nbsp;<a href="/comment/internet/29_07_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>  События ядра в FreeBSD.
+</h1> 
+  <p align="justify">
+    Обработка большого количества сетевых соединений всегда
+    затруднительна. Мало того, не существует стандартных решений,
+    подходящих для проблем любого вида, в которых возникает большое
+    количество соединений. В этой статье пойдет речь о новом
+    программном интерфейсе, появившемся в FreeBSD, на примере
+    организации web-сервера при условии, что один компьютер все еще в
+    состоянии обработать поступающие к нему запросы.
+  </p>
+<h3>Введение в проблему</h3>
+  <p align="justify">
+    Для большинства сайтов в русском интернете не встает вопрос
+    производительности. Сайт какой-либо чулочной фабрики вряд ли будет 
+    сильно посещаемым, поэтому его создают только как дань моде и
+    ничего больше. Тем не менее, наиболее популярные ресурсы постоянно 
+    сталкиваются с проблемой большего количества посетителей, чем они могут 
+    обслужить. 
+  </p>
+  <p align="justify">
+    Если для  маленьких сайтов можно выделить некоторые стандартные
+    решения, такие как PHP или ASP, то большие сайты вынуждены
+    разрабатывать подобные решения самостоятельно. В этой статье будет 
+    рассмотрен достаточно частный случай обработки запросов ---
+    раздача статической части сайта (к примеру, картинок) посетителям.
+  </p>
+    <p align="justify">
+      Кстати, на самом деле редко можно встретить сайт, который не изменяется во
+      времени, следовательно говорить о статичности можно только с оговоркой о
+      времени, в течение которого эта статичность соблюдается. Практически любой
+      сайт в интернете можно представить в виде фиксированного и неизменного в
+      течение некоторого промежутка времени набора страниц, 
+      который отдается посетителю. Исключениями являются несколько сильно нагруженных сайтов, вид
+      страниц которых зависит не от времени, когда пришел посетитель (к примеру,
+      новости на заглавной странице), а от личных предпочтений посетителя (как
+      это сделано в проекте "Мой Яндекс"), там действительно требуется чтобы
+      каждая страница создавалась бы по запросу посетителя. В остальных случаях
+      важно кеширование данных, временное представление их в статическом виде,
+      для того, чтобы серверам не требовалось бы производить лишние вычисления
+      при создании одной и той же страницы.
+    </p>
+    <p align="justify">
+      Другим ярким примером статических данных являются картинки. Мало того,
+      картинки, в отличие от текста, не требуют для себя никаких действий по
+      перекодировке "на лету" для посетителя (как это делает web-сервер "Русский
+      Apache"), поэтому обработка запросов посетителей web-сайтов на картинки,
+      составляющие часть содержимого страниц, значительно проще, чем обработка
+      запросов на текст тех же самых страниц. При этом важно понять, что web-сервер с
+      большим количеством возможностей, таких как виртуальные сервера,
+      исполнение cgi-скриптов, перекодировка страниц, подключение различных
+      модулей и т.д. не может эффективно обрабатывать запросы на те же самые
+      картинки, причем именно в следствие слишком большого количества
+      неиспользуемых возможностей. В то же время, web-сервер, который способен
+      без обработки отдавать некоторую часть содержимого, очень прост в
+      реализации. Именно о способах реализации подобных web-серверов и пойдет
+      речь далее в статье. Понятно, что практически все, написанное
+      ниже, справедливо для любых сетевых приложений, картинки выбраны 
+      только в качестве примера.
+    </p>
+    <p align="justify">
+      Надо понимать, что внутреннее устройство web-сервера (программы) должно
+      предполагать, что несколько запросов могут поступить одновременно. То
+      есть, на сайт может обратиться посетитель из офиса какой-нибудь крупной
+      компании в Москве с хорошим подключением к интернету и посетитель,
+      подключившийся к сети по модему со скоростью, к примеру, 19200, провайдер
+      которого очень сильно экономит на своих каналах. Посетитель с хорошим
+      соединением не должен ждать, пока web-сервер обслужит посетителя с плохим
+      соединением, как, впрочем, и наоборот. Таким образом, web-сервер должен
+      "помнить" о по крайней мере о том, какой посетитель какой документ запросил и сколько байт
+      этого документа он уже получил.  
+    </p>
+    <p align="justify">
+      При использовании стека протоколов TCP/IP посетитель идентифицируется
+      web-сервером по своему ip-адресу, порту на клиентской машине и
+      ip-адрему с портом на
+      серверной машине (у сервера может быть несколько ip-адресов). Обычно, на серверной машине выделяется по одному порту
+      на каждого из посетителей сайта в текущий момент, следовательно работать с
+      ними можно пользуясь номерами портов и используемым
+      ip-адресом. Вся эта информация скрывается внутри сокетов,
+      которыми можно оперировать как обычными файлами.
+    </p>
+    <p align="justify">
+      Можно создавать для каждого посетителя сайта отдельный процесс с копией
+      web-сервера. Если это делать каждый раз по приходу посетителя и потом
+      процесс уничтожать, то такой подход становится чрезвычайно расточительным,
+      в связи с тем, что вызов для создания процессов, <code>fork()</code>,
+      является очень дорогостоящим: происходит создание копии
+      процесса-родителя (который вызвал <code>fork()</code>), что приводит к
+      перемещениям больших объемов данных из одного места оперативной памяти в
+      другое. Можно сразу же создать некоторое количество web-серверов в
+      отдельных процессах и передавать им управление при поступлении новых
+      запросов. Этот способ значительно лучше, тем не менее он хорошо подходит
+      для процессов, в которых время обработки запросов само по себе
+      значительно, а в данный момент мы рассматриваем обработку статических
+      данных, когда большую часть затраченного времени составляет именно работа с
+      сетью. 
+    </p>
+    <p align="justify">
+      Следующий вариант состоит в создании нескольких потоков управления внутри
+      одного процесса. Это так же не является хорошей идеей в случае обработки
+      статических данных, потому что очень много процессорного времени будет
+      теряться на переключение процессора с одного потока на другой, в то время
+      как каждый из этих потоков будет занят лишь ожиданием готовности клиента и
+      операционной системы к приему или передаче данных. В случае большого
+      количества одновременных запросов это будет очень медленно. 
+    </p>
+<h3>Недостатки select() и poll()</h3>
+    <p align="justify">
+      Остается действовать в пределах одного процесса и организовывать цикл
+      обработки сообщений от сетевого окружения операционной системы. Чаще всего
+      используются системные вызовы <code>poll()</code> или
+      <code>select()</code>. Они во многом похожи, поэтому я только рассмотрю
+      <code>select()</code> в качестве примера, тем более что
+      <code>poll()</code> медленнее, чем <code>select()</code>
+      (передается больше параметров).
+    </p>
+    <p align="justify">
+      Обычно организуется бесконечный цикл вида:
+    </p>
+<pre>
+fd_set rfds, wfds;
+struct timeval tv;
+tv.tv_sec = 0; tv.tv_usec = 500;
+
+for( ; ; )
+{
+   FD_ZERO(&amp;rfds); 
+   FD_ZERO(&amp;wfds);
+
+   int max_fd = -1;
+</pre>
+    <p align="justify">
+      Необходимо поместить в <code>rfds</code> те файловые дескрипторы, из
+      которых требуется прочитать данные, а в <code>wfds</code> --- те, в
+      которые требуется записать данные. При этом <code>max_fd</code> ---
+      максимальный  файловый дескриптор, помещенный в эти множества.
+      Сам вызов <code>select()</code> выглядит примерно таким образом:
+    </p>
+<pre>
+   select(max_fd + 1, &amp;rfds, &amp;wfds, NULL, &amp;tv);
+</pre>
+    <p align="justify">
+      <code>select()</code> ждет максимум столько времени, сколько указано в
+      <code>tv</code>, после чего возвращает модифицированные множества
+      <code>rfds</code> и <code>wfds</code> (и еще одно множество, вместо которого в данном
+      случае передан <code>NULL</code>), которые теперь содержат в себе только
+      файловые дескрипторы, готовые для чтения или записи
+      соответственно. Таким образом, часть цикла после <code>select()</code>
+      выглядит как проверка соответствующих дескрипторов на принадлежность
+      множествам, примерно вот так:
+    </p>
+<pre>
+    for( ... )
+      if(FD_ISSET(fd, &amp;rfds)) { ... }
+
+    for( ... )
+      if(FD_ISSET(fd, &amp;wfds)) { ... }
+
+    /*
+     * ...
+     */
+}
+</pre>
+    <p align="justify">
+      При этом <code>fd</code> это переменная, принимающая значения
+      каждого из дескрипторов, которыми были инициализированы множества
+      <code>rfds</code> и <code>wfds</code>. 
+    </p>
+    <p align="justify">
+      Необходимо обратить внимание на то, что конкретно происходит каждый раз,
+      когда выполняется внутренность цикла. Во-первых, инициализация
+      множеств. <code>fd_set</code> является битовым массивом, где
+      индексом служит
+      числовое значение файлового дескриптора. Эти массивы копируются из
+      адресного пространства процесса в адресное пространство ядра
+      при вызове <code>select()</code> и
+      потом копируются обратно при
+      возврате. Надо отметить, что подобные операции достаточно длительны и для их
+       сокращения, в <code>select()</code> передается максимальный
+      дескриптор --- на самом деле копируется часть массивов от нулевого до
+      максимального дескриптора.
+    </p>
+  <p align="justify">
+    Кстати сказать, принципиальное отличие <code>poll()</code> от
+    <code>select()</code> лишь в том, как передаются аргументы. В
+    случае <code>poll()</code> это массив структур, а не битовый
+    массив (множество).
+  </p>
+    <p align="justify">
+      Понятно, что при большом количестве соединений количество открытых
+      дескрипторов увеличивается и, тем самым, копируется все большее и большее
+      количество данных из процесса в ядро и обратно. При этом, внутри ядра
+      точно так же производятся какие-то действия для преобразования битовых
+      массивов в свои внутренние структуры (и последующего их удаления, когда
+      приходит время возврата результатов вызывающему
+      процессу). Собственно, <code>poll()</code> будет медленнее при
+      большом количестве открытых дескрипторов, потому что размер
+      копируемых данных на порядок больше, чем в случае
+      <code>select()</code>.
+    </p>
+    <p align="justify">
+      Затем следует "пробежка" по множествам с целью поиска "готовых"
+      дескрипторов. Опять же, в случае большого количества соединений эта
+      операция достаточно длительна.
+    </p>
+    <p align="justify">
+      Если на каждую запись или чтение выполняется какая-то своя длительная
+      операция, со своими внутренними циклами, ветвлениями и прочим, то все это
+      не особенно важно. Но если обработка полученных дескрипторов сводится к
+      копированию данных из внутренних буферов в дескрипторы и обратно, то
+      выполнение бесконечного цикла обработки <code>select()</code>, копирования
+      данных при вызове, а так же пробежка по битовым массивам при помощи
+      макросов <code>FD_ISSET()</code> становится, по сути, единственными
+      действиями, которые выполняет web-сервер. На самом деле, именно эти
+      операции ограничивают его производительность в случае обработки запросов
+      на "простое, не изменяемое во времени содержимое", например, картинки.
+    </p>
+    <p align="justify">
+      Понятно, что проблема опять же в количестве открытых соединений (как и в
+      случае обработки динамического содержимого), но тут можно произвести
+      некоторую оптимизацию, например при помощи такой возможности HTTP, как
+      keep-alive. Эта возможность позволяет обрабатывать несколько HTTP-запросов
+      в пределах одного TCP-соединения (в то время как обычные запросы разрывают
+      соединение). Очень полезная возможность, так как обычно на одной странице
+      находится несколько картинок, которые необходимо выкачать посетителю
+      web-сайта и если на каждую из них каждый посетитель установит несколько
+      соединений с сервером, то количество дескрипторов в цикле выше возрастет, в
+      то же время, если на все картинки посетитель установит только одно
+      соединение, то количество соединений упадет (в идеале) во столько раз,
+      сколько в среднем располагается картинок на страницах сайта. И при этом не
+      стоит забывать, что сократится количество данных внутри ядра, отвечающих
+      за передачу информации через стек протоколов TCP/IP, а так же
+      уменьшится объем передаваемой служебной информации TCP/IP.
+    </p>
+    <p align="justify">
+      Тем не менее, это все равно не выход. Точнее, не принципиальный выход: все
+      равно, в принципе, возможен механизм, исключающий лишние циклы и лишние
+      копирования, так как внутри ядра информация о дескрипторах доступна в
+      значительно более простом виде, чем подобные множества.
+    </p>
+    <p align="justify">
+      Напрашивается решение в виде внесения web-сервера внутрь ядра операционной
+      системы. Этот подход реализован в khttpd или tux для Linux. На мой взгляд, решение
+      совершенно некрасивое и, кроме того, неудобное, потому что, к примеру,
+      перезапустить подобный сервер можно только рестартом ядра (или при
+      перезагрузке компьютера). Кроме того, писать подобное
+      программное обеспечение самостоятельно (потому что такие задачи возникают
+      постоянно и для их решения обычно берется за основу какой-нибудь
+      существующий простой и
+      быстрый web-сервер) затруднительно в силу неудобства отладки. И, наконец,
+      последний довод: любое изменение ядра операционной системы, которое нужно
+      только одному пользователю этой операционной системы, никогда не войдет в
+      официальную и поддерживаемую версию операционной системы. А это чревато
+      тем, что пользователь так и останется со старой операционной системой еще
+      долгое время или будет изменять ядро в каждой новой версии.
+    </p>
+<h3>Краткое описание механизма kqueue</h3>
+    <p align="justify">
+      Другое решение заключается в предоставлении программного интерфейса
+      оповещения процесса о событиях иного
+      вида, чем описанный выше. Именно этот путь был реализован в FreeBSD
+      при помощи введения нового механизма оповещения процесса о событиях, произошедших
+      в ядре операционной системы, называемого kqueue. Идея состоит в том, что процесс в
+      какой-то момент времени оповещает ядро о том, события какого вида и для
+      каких объектов он хотел бы отслеживать, после чего посредством
+      специального вызова получает список объектов, удовлетворяющих этому
+      требованию. 
+    </p>
+    <p align="justify">
+      Такое решение позволяет избавиться от постоянного создания битовых
+      массивов перед вызовом функции, проверяющей события, и избавляет от лишних
+      проверок после вызова. Кроме того, несколько упрощается работа внутри
+      ядра. 
+    </p>
+    <p align="justify">
+      Кроме того, механизм kqueue позволяет отслеживать значительно большое
+      количество событий в операционной системе, чем <code>select()</code> или
+      <code>poll()</code> и является расширяемым таким образом, что в будущем,
+      вполне вероятно, будет возможно получение напрямую событий от драйверов
+      устройств. 
+    </p>
+    <p align="justify">
+      Использовать kqueue не сложнее, чем <code>select()</code>. Сама очередь
+      событий создается при помощи вызова <code>kqueue()</code>:
+    </p>
+<pre>
+int kq;
+
+...
+
+kq = kqueue();
+</pre>
+    <p align="justify">
+      Полученный идентификатор является обычным дескриптором. Зарегистрировать
+      событие и получить список совершившихся событий можно следующим образом:
+    </p>
+<pre>
+kevent kq_change_list[NCHANGE];
+int    kq_chlist_used = 0;
+kevent kq_events[NEVENTS];
+int    n, i;
+
+
+...
+
+EV_SET(kq_change_list + kq_chlist_used, fd, EVFILT_READ, EV_ADD, 0, 0, 0);
+kq_chlist_used++;
+...
+
+n = kevent(kq, kq_change_list, kq_chlist, kq_events, NEVENTS, &amp;tv);
+
+if(n &lt;= 0) { /* Ошибка */ }
+
+for(i = 0; i &lt; n; i++)
+{
+   if(kq_events[i].flags &amp; EV_ERROR) { /* Ошибка */ }
+
+   switch(kq_events[i].filter)
+   {
+      case EVFILT_READ:  /* чтение из дескриптора kq_events[i].ident */
+      case EVFILT_WRITE: /* запись в дескриптор kq_events[i].ident */
+
+      ...
+
+   }
+}
+
+kq_chlist_used = 0;
+</pre>
+    <p align="justify">
+      По сравнению с <code>select()</code>, можно видеть, что исчезла
+      обязательная инициализация массивов в начале цикла (предварительный EV_SET
+      перед <code>kevent()</code> приведен только в качестве примера установки
+      события, событие регистрируется только один раз, а не при каждой итерации
+      цикла) и исчезла "пробежка" по всем интересующим дескрипторам, так как в
+      <code>kq_events</code> не будет содержаться лишних дескрипторов.
+    </p>
+    <p align="justify">
+      Механизм kqueue специфичен для FreeBSD и в других операционных системах
+      его нет, хотя в некоторых коммерческих представителях семейства Unix есть
+      аналогичные решения (точнее, решающие похожие задачи). Тем не менее, так
+      как изначально задача стояла как обработка большого числа запросов на
+      статическую информацию, для ее решения вполне возможно выделить отдельный
+      сервер, на котором была бы установлена операционная система FreeBSD и
+      работал бы web-сервер на основе kqueue. 
+    </p>
+    <p align="justify">
+      На сегодняшний день только у одного публично доступного web-сервера thttpd
+      есть поддержка kqueue. Кроме того, мне известна модификация web-сервера
+      mathpod для kqueue. 
+    </p>
+    <p align="justify">
+      Загрузка процессора при смене <code>select()</code> на kqueue уменьшается
+      на порядок. Это очень хороший результат, хотя стоит помнить о том, что
+      зависимость загрузки процессора от количества обрабатываемых соединений не
+      является линейной. Впрочем, численное сравнение этих методов не является
+      целью данной статьи, интересующиеся могут воспользоваться ссылками в конце
+      для более подробного сравнения использования
+      <code>select()</code>/<code>poll()</code> и kqueue.
+    </p>
+  <h3>Подведение итогов</h3>   
+    <p align="justify">
+      Итак, при обработке запросов на неизменяемую часть содержимого web-сайта,
+      необходимо использовать иной web-сервер, чем тот, который обрабатывает
+      тексты и генерирует страницы сайта. Если физический сервер один, то
+      логично разделить обработку запросов на страницы сайта и картинки (к
+      примеру) по портам. Например, Apache на 80 порту для текстов и thttpd или
+      mathpod на 8080 порту для картинок. Если же нагрузка настолько велика, что
+      основной web-сервер "мешается" web-серверу для картинок, то под обработку
+      подобных запросов придется выделить отдельный физический сервер (таким
+      образом, разделение запросов будет происходить по доменным именам или
+      ip-адресам). 
+    </p>
+    <p align="justify">
+      Список маленьких web-серверов, а так же их сравнительные характеристики,
+      можно найти на официальной страничке web-сервера thttpd (ссылка в конце
+      статьи). Для демонстрации сравнительных характеристик приведу сокращенную
+      версию этой таблицы (данные на 1998 год, но интересны не абсолютные, а
+      относительные единицы измерения):
+    </p>
+<TABLE BORDER=2>
+<TR>
+    <TH ALIGN="center" COLSPAN=3>Web-сервер</TH>
+    <TH ALIGN="center">Модель</TH>
+    <TH ALIGN="center" COLSPAN=2>Размер</TH>
+    <TH ALIGN="center" COLSPAN=2>Запросы в секунду</TH>
+    <TH ALIGN="center" COLSPAN=1>Посетители</A></TH>
+</TR><TR>
+    <TH ALIGN="center">Название</TH>
+    <TH ALIGN="center">Версия</TH>
+    <TH ALIGN="center">Дата</TH>
+
+    <TH ALIGN="center"></TH>
+
+
+
+
+
+
+    <TH ALIGN="center">Строки</TH>
+    <TH ALIGN="center">Исполняемый файл</TH>
+    <TH ALIGN="center">Маленькие файлы</TH>
+    <TH ALIGN="center">CGI</TH>
+    <TH ALIGN="center">Большие файлы</TH>
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.acme.com/software/thttpd/">thttpd</A></TH>
+    <TD ALIGN="center">2.03</TD>
+    <TD ALIGN="center">11jul98</TD>
+
+    <TD ALIGN="center">select</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">7,229</TD>
+    <TD ALIGN="right">49,584</TD>
+    <TD ALIGN="right" BGCOLOR="#99ff99">720</TD>
+    <TD ALIGN="right" BGCOLOR="#99ff99">100</TD>
+    <TD ALIGN="right" BGCOLOR="#99ff99">1000+</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.apache.org">Apache</A></TH>
+    <TD ALIGN="center">1.3.0</TD>
+    <TD ALIGN="center">05jun98</TD>
+
+    <TD ALIGN="center">pre-fork</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">73,381</TD>
+    <TD ALIGN="right">397,152</TD>
+    <TD ALIGN="right">250</TD>
+    <TD ALIGN="right">90</TD>
+    <TD ALIGN="right">150</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://mathop.diva.nl/">mathopd</A></TH>
+    <TD ALIGN="center">1.2b9</TD>
+    <TD ALIGN="center">23may98</TD>
+
+    <TD ALIGN="center">select</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">3,658</TD>
+    <TD ALIGN="right">49,088</TD>
+    <TD ALIGN="right" BGCOLOR="#99ff99">770</TD>
+    <TD ALIGN="right">75</TD>
+    <TD ALIGN="right">500</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.roxen.com/">Roxen</A></TH>
+    <TD ALIGN="center">1.2.29</TD>
+    <TD ALIGN="center">10jun98</TD>
+
+    <TD ALIGN="center">threads</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">247,789</TD>
+    <TD ALIGN="right">502,284</TD>
+    <TD ALIGN="right">170</TD>
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Roxen-CGI">11</A></TD>
+    <TD ALIGN="right">50</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.boa.org/">Boa</A></TH>
+    <TD ALIGN="center">0.92</TD>
+    <TD ALIGN="center">23dec96</TD>
+
+    <TD ALIGN="center">select</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">4,103</TD>
+    <TD ALIGN="right">75,788</TD>
+    <TD ALIGN="right">475</TD>
+    <TD ALIGN="right" BGCOLOR="#99ff99">115</TD>
+    <TD ALIGN="right">50</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.w3.org/Jigsaw/">Jigsaw</A></TH>
+    <TD ALIGN="center">2.0beta1</TD>
+    <TD ALIGN="center">08apr98</TD>
+
+    <TD ALIGN="center">Java threads</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">95,744</TD>
+    <TD ALIGN="right">1,841,601</TD>
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Jigsaw-mystery">45</A></TD>
+    <TD ALIGN="right">n/a</TD>
+    <TD ALIGN="right" BGCOLOR="#cc9999">25</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.acme.com/java/software/Acme.Serve.Serve.html">Acme.Serve</A></TH>
+    <TD ALIGN="center">-</TD>
+    <TD ALIGN="center">18may98</TD>
+
+    <TD ALIGN="center">Java threads</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">4,718</TD>
+    <TD ALIGN="right">79,943</TD>
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Acme-small">45</A></TD>
+    <TD ALIGN="right">n/a</TD>
+    <TD ALIGN="right" BGCOLOR="#cc9999">25</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.w3.org/hypertext/WWW/Daemon/Status.html">CERN</A></TH>
+    <TD ALIGN="center">3.0A</TD>
+    <TD ALIGN="center">15jul96</TD>
+
+    <TD ALIGN="center">fork</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">56,028</TD>
+    <TD ALIGN="right">561,696</TD>
+    <TD ALIGN="right">115</TD>
+    <TD ALIGN="right">65</TD>
+    <TD ALIGN="right">300</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://hoohoo.ncsa.uiuc.edu/">NCSA</A></TH>
+    <TD ALIGN="center">1.5.2a-export</TD>
+    <TD ALIGN="center">12oct96</TD>
+
+    <TD ALIGN="center">pre-fork</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">23,726</TD>
+    <TD ALIGN="right">196,040</TD>
+    <TD ALIGN="right">260</TD>
+    <TD ALIGN="right">70</TD>
+    <TD ALIGN="right">350</TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://home.netscape.com/">Netscape FastTrack</A></TH>
+    <TD ALIGN="center">3.01-export-us</TD>
+    <TD ALIGN="center">02oct97</TD>
+
+    <TD ALIGN="center">threads</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">n/a</TD>
+    <TD ALIGN="right">1,896,016</TD>
+    <!-- <TD ALIGN="right" BGCOLOR="#99ff99">850</TD> -->
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-license">-</A></TD>
+    <!-- <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-CGI">5</A></TD> -->
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-license">-</A></TD>
+    <!-- <TD ALIGN="right">350</TD> -->
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-license">-</A></TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://home.netscape.com/">Netscape Enterprise</A></TH>
+    <TD ALIGN="center">3.5.1-export-us</TD>
+    <TD ALIGN="center">02feb98</TD>
+
+    <TD ALIGN="center">threads</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">n/a</TD>
+    <TD ALIGN="right">1,977,568</TD>
+    <!-- <TD ALIGN="right" BGCOLOR="#99ff99">750</TD> -->
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-license">-</A></TD>
+    <!-- <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-CGI">4.5</A></TD> -->
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-license">-</A></TD>
+    <!-- <TD ALIGN="right">250</TD> -->
+    <TD ALIGN="right" BGCOLOR="#cc9999"><A HREF="#Netscape-license">-</A></TD>
+
+</TR><TR>
+    <TH ALIGN="center"><A HREF="http://www.zeus.co.uk/">Zeus</A></TH>
+    <TD ALIGN="center">3.1.4</TD>
+    <TD ALIGN="center">10jul98</TD>
+
+    <TD ALIGN="center">select</TD>
+
+
+
+
+
+
+    <TD ALIGN="right">n/a</TD>
+    <TD ALIGN="right">1,367,976</TD>
+    <TD ALIGN="right" BGCOLOR="#99ff99">1050</TD>
+    <TD ALIGN="right">70</A></TD>
+    <TD ALIGN="right">500</TD>
+
+</TR>
+</TABLE>
+    <p align="justify">
+      Полную версию этой таблицы можно найти
+      <a  href="http://www.acme.com/software/thttpd/benchmarks.html">здесь</a>.
+    Еще раз напоминаю,
+      что данные на 1998 год и, следовательно, thttpd тестировался без
+      kqueue. Кроме того, все подобные тесты проводятся "в вакууме", то есть с
+      одного-двух ip-адресов в локальной сети и, следовательно, нагрузки на
+      реализацию стека протоколов TCP/IP не такие большие, как в реальной
+      жизни. Таким образом, в 1998 реальные цифры были меньше, чем приведенные в
+      таблице и отличаться они могли в несколько раз при росте количества
+      одновременных соединений (для маленького количества соединений цифры
+      отличались бы не сильно). 
+    </p>
+    <p align="justify">
+      Еще одно интересное место в этой таблице, на которое хочется обратить
+      внимание --- производительность web-серверов, написанных на Java. Это
+      место я оставлю без комментариев.
+    </p>
+    <p align="justify">
+      На мой взгляд, для сервера раздачи картинок лучше всего подходят: 
+    </p>
+    <ul>
+      <li>thttpd, так как в нем есть поддержка kqueue изначально.</li>
+      <li>mathpod, потому что в нем есть нормальная реализация HTTP keep-alive. В
+	случае замены <code>select()</code> на kqueue становится более
+	предпочтительным, чем thttpd. Кроме того, он проще чем thttpd (в два
+	раза меньше строчек исходного кода), что тоже является несомненным
+	плюсом. Если из него изъять кучу ненужных возможностей, таких как
+	поддержка виртуальных серверов, то лучше варианта не найти.
+      </li>
+    </ul>
+
+<h2>Резюме</h2>
+  <p align="justify">
+    Реальное применение kqueue на загруженном веб-сервере помогло
+    увеличить его производительность как минимум в два раза (учитывая
+    то, что он не только отдает картинки, но и предварительно их
+    обсчитывает). Точное увеличение при замене его на сервере,
+    отдающего уже сжатые картинки, неизвестно, потому что даже в
+    локальной сети не удалось нагрузить компьютер на все 100%.
+    Так что --- рекомендую.
+  </p>
+<h2>PS</h2>
+  <p align="justify">
+    В свое время Gregory Liokumovich рассказывал о <a href="12_12_00.shtml">событийной модели в 
+    WinSock</a>, которая очень похожа, как я себе это понимаю, на
+    kqueue. С другой стороны, я не знаком с внутренним устройством
+    Windows так, чтобы утверждать насколько велика разница в
+    производительности при использовании <code>select()</code> или
+    <code>WSAWaitForMultipleEvents()</code>. Gregory
+    использовал в качестве примера многопоточную модель TCP-сервера,
+    так что там вообще сложно говорить о необходимости в высокой
+    производительности непосредственно TCP.
+  </p>
+
+<br>
+<p align="right"><a target="_blank" href="/programming/network/print_16_07_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">kqueue(2)</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Страница оперативной документации FreeBSD kqueue(2).
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://people.freebsd.org/~jlemon/kqueue.pdf" target="_blank">http://people.freebsd.org/~jle</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ "Kqueue: A generic andscalable event notification facility", статья автора kqueue Джонотана Лемона. 
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.monkeys.com/freeware/kqueue-echo.c" target="_blank">http://www.monkeys.com/freewar</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ пример использования kqueue в реализации сервера echo.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/29_07_01.shtml">Новые технологии в рекламе </a> (29.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как хорошо, что основной операционной системой, которой я пользуюсь, является малораспространенная среди российских интернетошатающихся FreeBSD. Как хорошо, что браузеры, которые я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/29_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/13_07_01.shtml">Круглая дата </a> (13.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Тихо-тихо и незаметно прошла историческая дата: 11 июля 2000 года я написал первую заметку и выложил ее на свою домашнюю страничку....<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/13_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/16_07_01.shtml">События ядра в FreeBSD. </a> (16.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Обработка большого количества сетевых соединений всегда затруднительна. Мало того, не существует стандартных решений, подходящих для проблем любого вида, в которых возникает...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/16_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/14_01_01.shtml">Обзор CORBA </a> (14.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+CORBA (расшифровывается как Common Object Request Broker) это технология, которая позволяет рассматривать компоненты распределенной системы как объекты, отвечающие некоторым определенным интерфейсам....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/14_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/19_12_00.shtml">&quot;Тонкий&quot; клиент </a> (19.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В предыдущей заметке Gregory Liokumovich рассказывал о применении событийной модели WinSock для программирования сетевых приложений. На самом деле, как мне кажется,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/19_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/12_12_00.shtml">Событийная модель в WinSock </a> (12.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Автором этого текста является Gregory Liokumovich ( ). Он любезно прислал мне этот текст, связанный с программированием сетей при помощи интерфейса...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/12_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/29_10_00.shtml">lingering close </a> (29.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа выкачивает один файл с удаленного сервера с использованием протокола TCP, а после этого сразу же "отваливается", то проблем, скорее...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/29_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/29_07_01.shtml">Новые технологии в рекламе </a> (29.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как хорошо, что основной операционной системой, которой я пользуюсь, является малораспространенная среди российских интернетошатающихся FreeBSD. Как хорошо, что браузеры, которые я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/29_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/13_07_01.shtml">Круглая дата </a> (13.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Тихо-тихо и незаметно прошла историческая дата: 11 июля 2000 года я написал первую заметку и выложил ее на свою домашнюю страничку....<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/13_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

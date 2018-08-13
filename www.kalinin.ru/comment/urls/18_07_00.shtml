@@ -1,0 +1,446 @@
+<html><head><title>ALK :: Web-ресурсы :: www.gnu.org, сайт фонда свободно распространяемого программного обеспечения.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/urls/">web-ресурсы</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/cpp/17_07_00.shtml">&lt;&lt;</a>&nbsp;18.07.00&nbsp;<a href="/comment/urls/19_07_00_u.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>www.gnu.org, Free Software Foundation
+</h1> 
+    <p align="justify">
+      Собственно, у меня был достаточно большой выбор, каким сайтом начать
+      этот раздел. Самый выигрышный вариант --- взять какую-нибудь
+      чужую страницу, быстро сделанную с использованием
+      FrontPage и посмеяться над глупо расставленными тегами,
+      оригинальными цветами (зеленым по желтому), речевыми
+      ошибками (различные "извЕните" и т.п.), пафосом автора и т.п.
+      Несомненно, когда-нибудь и я расскажу о какой-нибудь страничке,
+      которая чуть было не довела меня до истерики, но, вообще-то,
+      это все "выпендреж". Можно было бы выбрать что-нибудь очень сильно
+      посещаемое, какой-нибудь каталог 
+      ресурсов или, того же <a href="http://www.exler.ru">www.exler.ru</a> (единственный сайт, на котором
+      я регулярно читаю web-обзоры),
+      после чего тихо гордиться в своем углу ("самого Экслера обозрил"), тоже
+      неплохо. Можно было бы случайно найти что-то неизвестное, и, с тихим
+      укором в тоне, рассказать о том, как плохо живется очень интересным людям
+      и как их странички никто не посещает. В общем, много вариантов, и я, конечно же, перечислил
+      не все из них. Нет, все они, конечно же, будут когда-то реализованы (включая
+      обзор Экслера, никуда он не денется ;) ), но не сейчас.
+    </p>
+<table align="right" border="0" cellspacing="0" cellpadding="5" width="200">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Иллюстрация</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><img src="/images/18_07_00_1.jpg" width="200" height="156" border="0" alt="Внешний вид." /></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Внешний вид.
+</font>
+</td></tr>
+</table>
+    <p align="justify">
+      Идея взять <a href="http://www.gnu.org">www.gnu.org</a> пришла сразу, как только
+      я перестал страдать и занялся делом, а для этого дела мне понадобился адрес
+      одной программы, распространяемой по GNU-лицензии. Почему именно этот сайт? 
+      Надеюсь это станет понятно из того, что написано ниже.
+    </p>
+    <p align="justify">
+      GNU --- это аббревиатура. Мало кто верит в первый раз ее расшифровке: GNU = Gnu is Not Unix.
+      Вот такое забавное применение рекурсии ;) С самого начала название GNU
+      было придумано Ричардом Столлменом для своей операционной системы, которую
+      он начал создавать (именно из-за этого в названии присутствует слово Unix). 
+      Принципиальное отличие от существующих ОС в то время у нее заключалось не в том,
+      как устроено ядро или файловая система, а в лицензии. В общем-то, лицензия GNU
+      (GNU Public License, GPL) на протяжении всего текста уверяла в том, 
+      что она никоим образом не стесняет права пользователя на программный продукт.
+      Мало того, GPL обязывает автора предоставить исходные тексты вместе с программой
+      для того, что бы пользователь мог каким угодно образом по своему усмотрению
+      использовать те или иные компоненты системы, изменять ее или добавлять в нее
+      новую функциональность. Пользователь вправе продавать программную систему
+      за ту сумму, за которую он сможет это сделать (единственное, он так же
+      обязан не изменять лицензию и предоставить полные исходные тексты системы).
+    </p>
+    <p align="justify">
+      Операционная система GNU так и не появилась. Все дело в том, что оказалось
+      невозможным создать операционную систему с такой лицензией, используя существующие
+      инструменты. В частности, из-за того, что не было компилятора,
+      который можно было бы с ней использовать.
+    </p>
+    <p align="justify">
+      Надо сказать, что энтузиазм Столлмена, а, главное, его упорство, лично
+      мне поразительно. Для того, что бы все-таки написать операционную систему,
+      он начал два проекта: <a href="http://gcc.gnu.org">gcc</a>, т.е.
+      GNU C Compiler (ныне GNU Compiler Collection, семейство GNU компиляторов) и 
+      <a href="http://www.emacs.org">emacs</a>, т.е. текстовый редактор с очень
+      сильной поддержкой макросов. Оба этих проекта были настолько сложны по своей сути,
+      но, тем не менее, они приобрели очень большую популярность и смогли все-таки развиться.
+      Сегодня g++ (компилятор C++) из gcc является одним из самых лучших C++ компиляторов,
+      а emacs --- один из самых (если не самый) популярный текстовый редактор (имеется в виду,
+      для программистов). Популярность этих проектов принесла популярность и GNU лицензии,
+      под которой начало выпускаться другое программное обеспечение. Собственно, некоторый
+      список (конечно же, не полный) на текущий момент можно
+      посмотреть <a href="http://www.gnu.org/software/software.html">здесь</a>. Что только в него
+      не входит... и операционная система (Linux, Linux Is Not UniX), и различные
+      библиотеки, и игры, и программы пользовательского интерфейса и очень много чего другого.
+    </p>
+    <p align="justify">
+      Это все история. На самом деле, понятно, что GNU лицензия лишь одна из форм
+      свободно распространяемого программного обеспечения. Существует еще BSD-лицензия,
+      существует просто фраза автора "делайте все что хотите" и прочее. Интересно 
+      другое. Отношение
+      к свободному ПО разное: некоторые считают, что это просто хобби некоторых программистов,
+      и серьезно к нему относится нельзя; другие буквально помешаны на свободности программы и считают
+      вершиной наглости автора не предоставление исходных текстов. 
+    </p>
+    <p align="justify">
+      На мой взгляд, open source это, скорее, философия. То есть, подход к тому, что
+      за использование программы нельзя требовать денег и то, что программа должна
+      обязательно поставляться в исходных текстах, это очень серьезная мысль. 
+      Можно брать деньги за поддержку ПО, за его установку, за все услуги, которые
+      связаны с его использованием и могут быть оказаны пользователю, но не за то,
+      что он использует программу в каких-то своих целях, пускай и коммерческих.
+      На вопрос "почему" ответить будет крайне сложно. В принципе, у Столлмена
+      есть несколько текстов на эту тему, например, "Why Software Should Be Free" в 
+      <a href="http://www.gnu.org/philosophy/shouldbefree.html">английском</a> или
+      в <a href="http://www.gnu.org/philosophy/shouldbefree.ru.html">русском</a> вариантах,
+      но, я думаю, понять их без принятия этой идеи нельзя никак. 
+    </p>
+    <p align="justify">
+      При этом, возможна и коммерческая сторона open source или GPL проектов. Например,
+      компания Red Hat занимается поддержкой и распространением своего дистрибутива
+      Linux и ведет некоторые проекты, которые так же выпускаются под лицензией GPL. 
+      Сама Free Software Foundation существует за счет взносов частных лиц и организаций
+      и за счет распространения своей продукции на компакт-дисках.
+    </p>
+    <p align="justify">
+      По своему качеству свободное ПО не уступает коммерческому и успешно с ним
+      соперничает; в частности, g++ (о котором я говорил выше) 
+      как компилятор программ на C++ действительно
+      лучше очень многих коммерческих компиляторов (включая MS Visual C++
+      и Borland C++). 
+    </p>
+    <p align="justify">
+      В заключение, хотелось бы сказать, что на мой взгляд (я не юрист)
+      GPL юридической силы не имеет. То есть, ее соблюдение
+      является жестом согласия с принципами GPL со стороны
+      пользователя и еще больше продвигает соответствующую
+      философию в массы. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Несомненно, программное обеспечение с открытым исходным
+      текстом это очень глубокое явление. Его можно, пожалуй,
+      сравнить с движинием хиппи, за тем исключением что open
+      source вполне конструктивно; поэтому оно живет и, скорее всего, будет жить впредь усилиями многих
+      энтузиастов своего дела. В принципе, уже сейчас можно
+      совершенно спокойно отказаться от использования
+      "платного" программного обеспечения, не потеряв при
+      этом практически ничего в удобстве использования.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/urls/print_18_07_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.gnu.org" target="_blank">http://www.gnu.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Официальный сайт Фонда Свободно Распространяемого Программного Обеспечения.		  
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.gnu.org/philosophy/philosophy.html" target="_blank">http://www.gnu.org/philosophy/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Философия программного обеспечения с открытым исходным текстом.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.gnu.org/philosophy/license-list.html" target="_blank">http://www.gnu.org/philosophy/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Различные виды лицензий программного обеспечения.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.gnu.org.ru/" target="_blank">http://www.gnu.org.ru/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Перевод некоторых документов с официального сайта.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.gnu.org.ru/gpl.html" target="_blank">http://www.gnu.org.ru/gpl.html</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Перевод GPL на русский язык.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/22_07_00.shtml">www.redactor.ru, тексты в Интернете: опыт критического анализа </a> (22.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вот, наконец-то, сайт, в котором пересеклось забавное и поучительное. Правда, забавное оно тоже как-то странно: начинаешь немного "забавляться", как вдруг вспоминаешь:...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/22_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/19_07_00_u.shtml">www.horror.ru, Новая трава --- вестник смены эпохи </a> (19.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Этот сайт уже не актуален, но, все равно, очень забавен. Посвящен он очень интересному, уже историческому факту массового умопомрачения средней тяжести:...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/19_07_00_u.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/19_07_00_u.shtml">www.horror.ru, Новая трава --- вестник смены эпохи </a> (19.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Этот сайт уже не актуален, но, все равно, очень забавен. Посвящен он очень интересному, уже историческому факту массового умопомрачения средней тяжести:...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/19_07_00_u.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/17_07_00.shtml">Правило "право-лево" </a> (17.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Этот текст не мой. Авторство принадлежит Alexander V. Naumochkin (к сожалению, знаю только адрес в сети FIDO, 2:5020/59), на мой взгляд,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/17_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/12_12_01.shtml">Черный квадрат </a> (12.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, это такой ресурс, о котором в той или иной форме рассказал практически любой веб-обозреватель (прошу заметить, что я себя к...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/12_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/08_06_01.shtml">pregrad.net, заказ товаров из интернет-магазинов Европы и США </a> (08.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Некоторое время назад передо мной встала достаточно серьезная проблема --- явная нехватка литературы по некоторым, живо интересующим меня вопросам. Оказалось, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_05_01.shtml">www.researchindex.com, The NECI Scientific Literature Digital Library </a> (07.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+К сожалению, приходится признать, что для русскоязычного специалиста ощущается достаточно большая нехватка информации. Причем, если по достаточно общеизвестным, популярным или попросту...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/13_03_01.shtml">Programming Stone по-русски </a> (13.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Достаточно забавное название, как мне кажется. Собственно, "programming stone" это запись нескольких дней лекций Алана Картера, посвященных проблемам программирования "вообще". Я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/13_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_11_00.shtml">cpp3.virtualave.net, C++ 3rd: комментарии </a> (26.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Ресурсы на русском языке, посвященные C++, отличаются своим количеством... существует множество сайтов, домашних страничек объединенных общей тематикой программирования на C++. Но...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_11_00.shtml">acm.gui.uva.es, задачник по программированию </a> (07.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Наконец-то я вспомнил о действительно полезном ресурсе, который стоит описать. Вообще, полезность или бесполезность чего-либо, конечно же, нельзя оценить &quot;огульно&quot;, надо...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/19_07_00_u.shtml">www.horror.ru, Новая трава --- вестник смены эпохи </a> (19.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Этот сайт уже не актуален, но, все равно, очень забавен. Посвящен он очень интересному, уже историческому факту массового умопомрачения средней тяжести:...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/19_07_00_u.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/17_07_00.shtml">Правило "право-лево" </a> (17.07.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Этот текст не мой. Авторство принадлежит Alexander V. Naumochkin (к сожалению, знаю только адрес в сети FIDO, 2:5020/59), на мой взгляд,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/17_07_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

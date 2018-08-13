@@ -1,0 +1,498 @@
+<html><head><title>ALK :: Отвлеченно :: Традиционное управление.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/abstract/">отвлеченно</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/stud/01_02_01.shtml">&lt;&lt;</a>&nbsp;06.02.01&nbsp;<a href="/etc/12_02_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Традиционное управление
+</h1> 
+    </p>
+      Йордон пишет о том, что основная проблема
+      создания программных систем заключается не
+      в программировании или проектировании, а в 
+      управлении и он прав.
+    </p>
+    <p align="justify">
+      Начнем с того, что программирование можно
+      рассматривать как некоторое искусство создания
+      красивых программ или реализации алгоритмов,
+      а можно --- как производство программного обеспечения.
+      Обе эти точки зрения не исключают друг друга,
+      но дают разные подходы за счет различных целей
+      и средств их достижения. Если в первом
+      случае интересно КАК реализована программа и,
+      по сути, зачастую этот фактор становится
+      определяющим (при таком подходе нередко
+      приходится переписывать заново чуть-ли не весь
+      программный комплекс только из-за того,
+      что его реализация "сковывает" движения),
+      то во втором важен конечный результат,
+      определяемый сроком и количеством.
+    </p>
+    <p align="justify">
+      В принципе, это хорошо, когда есть некоторый
+      срок, к которому необходимо что-то сделать. Другое
+      дело, что любое производство требует управляющего,
+      надзирателя. Этот человек занимается тем, что
+      организовывает процесс программирования таким образом,
+      чтобы максимально эффективно достичь желаемой цели.
+    </p>
+    <p align="justify">
+      Проблема заключается в том, что никому доподлинно
+      неизвестно, как надо управлять программистами, чтобы
+      те были способны создать конечный продукт. 
+    </p>
+    <p align="justify">
+      Можно в качестве примера привести рабочих, которые
+      что-то выпиливают на своих станках. Обычно количество
+      произведенной ими продукции находится в прямой
+      зависимости от того, сколько времени они
+      проведут за станком. Очень просто делить рабочих
+      на опытных и нет, выводя для них соответствующие
+      коэффициенты производства и т.д. Поэтому
+      организовать труд цеха по созданию матрешек,
+      в принципе, не сложно: для этого достаточно
+      обеспечить необходимый контроль за производством,
+      по результатам которого раздавать благодарности
+      или взыскания. И самое, конечно же, важное,
+      это трудовая дисциплина, неотъемлимой частью
+      которой является точный приход на работу и продолжительность
+      рабочего дня.
+    </p>
+    <p align="justify">
+      Рабочий за станком является частью производственного
+      процесса; но его главное свойство заключается в
+      заменяемости. Можно, не меняя станка, поменять рабочего
+      за ним и работа в целом от этого не ухудшится. 
+    </p>
+    <p align="justify">
+      Таким образом, схема управления рабочими достаточно проста
+      и эффективна: следить за временем работы и за процессом
+      ее выполнения. Тогда можно сказать, что количество
+      работы будет близким к расчетным величинам, от чего
+      управление становится несколько более простым: весь
+      завод, вместе с людьми, можно рассматривать как
+      большой черный ящик, в который с одной стороны текут
+      материалы, с другой стороны --- рабочая сила, а вытекает
+      готовая продукция. Все процессы внутри можно
+      описать простыми законами: столько-то
+      материалов в месяц будут загублены, текучка
+      кадров составит N процентов, бой тары --- M единиц
+      на километр. 
+    </p>
+    <p align="justify">
+      Именно этот факт позволяет моделировать 
+      процессы при помощи различных автоматических средств 
+      (тот же ithink): можно задать несколько параметров
+      системы, меняя которые можно изучить
+      поведение системы в целом при различных условиях.
+    </p>
+    <p align="justify">
+      Я не хочу говорить о таком моделировании --- я никогда
+      им не пользовался и не видел в жизни реальных примеров
+      использования (а с некоторых пор я стал очень осторожен
+      и всегда ищу то, что называется "success story" от
+      реальных людей), но хочется отметить, что сам факт
+      такого моделирования говорит о популярности представления
+      заводов и цехов таким образом. Тем самым управление
+      максимально упрощается: менеджера не волнуют проблемы
+      токаря Васи и он готов заменить его на безработного токаря
+      Петю с улицы, если Вася не будет выполнять своих обязанностей. 
+      Кстати сказать, социальная поддержка за рубежом строится
+      исходя из этих же соображений, просто за счет добавления еще
+      одной службы, которая будет следить за тем, чтобы рабочим (в частности,
+      Васе) было бы приятно работать. 
+    </p>
+    <p align="justify">
+      Такая методика управления существует очень давно и менеджеры
+      всегда пытаются применить ее к руководству программистами. 
+      Обычно это не получается.
+    </p>
+    <p align="justify">
+      Во-первых, программист не является рабочим у станка. Точнее,
+      нельзя просто взять и извлечь программиста
+      из проекта, а потом посадить вместо него другого,
+      программист заменяем только вместе с написанным им кодом.
+      Как мне недавно заметили, все существующие методологии,
+      нотации, технологии и правила в программировании служат как раз
+      для того, чтобы дать возможность такой замены. "Программист на PHP"
+      с легкостью заменяется другим таким же "программистом"
+      просто по той причине, что PHP является отработанной технологией
+      создания веб-сайтов, предоставляющей в распоряжение пользователя
+      стандартный набор инструментов. Если один программист умеет ими пользоваться,
+      то другой, с теми же знаниями, в большинстве случаев сможет поддерживать
+      проект и расширять его возможности.
+    </p>
+    <p align="justify">
+      Различные корпоративные стандарты на программный код, которые встречаются
+      в некоторых софтверных компаниях, служат той же цели. 
+      Мне приходилось их видеть: описывается то, как должны
+      выглядеть все языковые конструкции внутри программ,
+      указывается процент комментариев от текста программы,
+      стиль документации. Все это позволяет, чисто теоретически,
+      перекидывать программный код от одного программиста к другому.
+    </p>
+    <p align="justify">
+      Тем не менее, никакой корпоративный стандарт и технология
+      не справится в общем случае с разным мышлением у программистов. 
+      Единственное, как показывает практика, разное мышление не так
+      уж часто встречается.
+    </p>
+    <p align="justify">
+      Во-вторых, опять же, в большинстве случаев нельзя
+      померять количество произведенного конечного продукта
+      исходя из потраченного программистами времени. Т.е.,
+      если действует правило "приходить в 10, работать 9 часов
+      с обеденным перерывом в 1 час", то никто не будет 
+      гарантировать, что за год работы в таком режиме
+      программисты смогут сделать что-либо сложнее чем
+      "Hello, world!" Мало того, оценить количество 
+      произведенного программистом программного
+      кода относительно поставленной цели можно только
+      изучив этот программный код. Таким образом, реальное
+      положение своего "куска" программы знает только
+      тот программист, который им занимается. Опустив
+      те случаи, когда он ошибается, степень информированности
+      менеджера о состоянии проекта зависит лишь от доверия 
+      программистов к менеджеру и, следовательно, честности программистов. 
+    </p>
+    <p align="justify">
+      Менеджер, который всегда управлял заводом, будет исходить
+      из того, что производственный процесс похож
+      на черный ящик. Поэтому его волнуют только внешние проявления
+      этого процесса, которые он может померять, как то: время прихода
+      и ухода программистов, соответствие программного кода
+      корпоративным стандартам, количество произведенных 
+      бумажек с красивыми диаграмками (IDEF, UML, ...) Ну и, конечно же,
+      планирование времени...
+    </p>
+    <p align="justify">
+      Опять же, проблема заключается в том, что программисты, которые
+      должны прийти в 10 часов и отработать 9, всегда уйдут в 19 часов. 
+      Чтобы при этом не случилось. Дело в том, что они тоже будут
+      мерять свой труд по затраченному времени, бережно относясь
+      к выходным и обеденному перерыву. Если же проект выходит
+      за рамки сроков (а он выйдет, куда же он денется), программисты
+      удивленно пожмут плечами перед менеджером, потому что все от
+      них требуемое они сделали. 
+    </p>
+    <p align="justify">
+      Нет, наверное оба этих моих возражения в некоторых случаях не 
+      существенны. Например, программисты не могут быть одинаково
+      хорошими --- зато они могут быть одинаково плохими. Замена же
+      одного плохого программиста на другого действительно возможна
+      (просто потому, что ничего не меняет, все и так плохо). А
+      при действии правила "от столба и до обеда" проявляются
+      законы эволюции, в результате чего в проекте
+      остаются только те, кто принимает подобный стиль работы.
+      После подобного эволюционирования уже программисты прикидываются
+      черным ящиком, чтобы менеджеру было бы удобнее им управлять.
+    </p>
+    <p align="justify">
+      Но это неправильно. Просто потому что, несмотря на существование
+      плохих или просто необученных программистов (которых большинство),
+      и которые, может быть, иначе просто не могут работать (хотя мне это
+      очень сомнительно), в проекте
+      должны обязательно присутствовать лидеры, которые могут не придерживаться
+      корпоративных стандартов, приходить в 5 вечера и работать столько,
+      сколько работается, включая или исключая обеденный перерыв,
+      нарушать все принятые методологии и т.д. и т.п. Именно они
+      задают общий стиль работы и способны оценить выполнение
+      проекта. Эти люди никак не будут вписываться в общие правила 
+      управления и, в тоже самое время, сложный проект без подобных
+      лидеров никогда не будет успешно завершен или развит.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Существуют некоторые общие ошибки, которые постоянно допускаются
+      различными менеджерами. Результат практически всегда одинаков:
+      "традиционное управление" обычно приводит к полной несостоятельности
+      менеджера в оценке проекта. 
+    </p>
+    <p align="justify">
+      Я не могу привести рецептов управления (почему это несколько другой
+      вопрос, который достоин отдельного обсуждения), но можно доподлинно
+      сказать, что эта ошибка является одной из самых неприятных. Опыт
+      показывает, что чаще всего подобная ошибка является признаком
+      того, что компания скатывается в какое-то управленческое болото. 
+      Не фатальный признак, но показательный.
+    </p>
+<h2>PS</h2>
+    <p align="justify">
+      Традиционный, для подобных статей, посткриптум. Тема не исчерпана и обязательно
+      будет продолжена.
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/programming/abstract/print_06_02_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_08_00.shtml">/comment/books/05_08_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Мифический человеко-месяц или как создаются программные системы.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://progstone.nm.ru" target="_blank">http://progstone.nm.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Programming Stone на русском языке.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/15_02_02.shtml">Как стать программистом: часть первая, нравоучительная </a> (15.02.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не знаю почему, но где-то в среднем пару раз в месяц ко мне обращаются с подобным вопросом --- как стать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/15_02_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/27_03_01.shtml">Ответственность, доверие и качество </a> (27.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существует такая черта человеческого характера под названием "ответственность". Вообще говоря, очень полезная черта: если она есть у человека, то он может...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/27_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_02_01.shtml">Авторское право </a> (12.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Авторское право... до чего же, однако, скользкий термин. Самое смешное, каждый автор и каждый нарушитель авторского права трактуют его по-своему и...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/01_02_01.shtml">Прорвались! </a> (01.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Свершилось. Теперь я краснодипломированный "математик минус инженер", рекомендованный к продолжению обучения в аспирантуре сразу же после окончания института и т.д. Точнее,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/08_02_03.shtml">Postfix изнутри </a> (08.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка пишется после громадного перерыва и поэтому, наверняка, будет отличаться от всего остального. Что же, год назад я закончил нравоучениями...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/08_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/04_03_02.shtml">Как стать программистом: часть вторая, книги и интернет-ресурсы </a> (04.03.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вторую часть статьи я публикую значительно позже, чем рассчитывал: просто не получилось выкроить немного времени на последнюю проверку текста перед публикацией....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/04_03_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/15_02_02.shtml">Как стать программистом: часть первая, нравоучительная </a> (15.02.02)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не знаю почему, но где-то в среднем пару раз в месяц ко мне обращаются с подобным вопросом --- как стать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/15_02_02.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/27_03_01.shtml">Ответственность, доверие и качество </a> (27.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существует такая черта человеческого характера под названием "ответственность". Вообще говоря, очень полезная черта: если она есть у человека, то он может...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/27_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/06_02_01.shtml">Традиционное управление </a> (06.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Йордон пишет о том, что основная проблема создания программных систем заключается не в программировании или проектировании, а в управлении и он...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/abstract/06_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/abstract/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/12_02_01.shtml">Авторское право </a> (12.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Авторское право... до чего же, однако, скользкий термин. Самое смешное, каждый автор и каждый нарушитель авторского права трактуют его по-своему и...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/12_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/01_02_01.shtml">Прорвались! </a> (01.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Свершилось. Теперь я краснодипломированный "математик минус инженер", рекомендованный к продолжению обучения в аспирантуре сразу же после окончания института и т.д. Точнее,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,486 @@
+<html><head><title>ALK :: C&amp;C++ :: Свойства.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/cpp/">c и c++</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/books/22_08_00.shtml">&lt;&lt;</a>&nbsp;23.08.00&nbsp;<a href="/comment/films/24_08_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Свойства
+</h1> 
+    <p align="justify">
+      Я уже говорил о <a href="26_07_00.shtml">C++ Builder</a> и хотя
+      эта заметка не будет посвящена ему, тем не менее я о нем вспомню.
+    </p>
+    <p align="justify">
+      Когда только появилась Delphi (первой версии) и ее мало кто видел,
+      а еще меньше людей пробовали использовать, то в основном сведения
+      об этом продукте фирмы Borland были похожи на сплетни. Я тогда
+      был еще очень доверчив и мало чего знал, но от этого периода я отчетливо
+      помню такое высказывание:  "Delphi расширяет 
+      концепции объектно-ориентированного программирования за счет использования
+      свойств". Перефразировав фразу из "Понедельник начинается в субботу"
+      можно сказать, что я тогда был молод и верил во все, кроме существования бога ;)
+    </p>
+    <p align="justify">
+      С тех пор я работал с C++ Builder и представляю себе, что такое его свойства.
+      Кроме того, я теперь хоть как-то знаком с объектно-ориентированным анализом
+      и проектированием, что бы понимать --- наличие в языке той или иной конструкции
+      никак не влияет на используемые подходы. Мало того, префикс "ОО" обозначает не использование
+      ключевых слов <code>class</code> или <code>property</code> в программах, а именно
+      подход к решению задачи в целом (в смысле ее архитектурного решения). С этой
+      точки зрения, будут использоваться свойства или методы <code>set</code> и <code>get</code>,
+      совершенно без разницы --- главное разграничить доступ.
+    </p>
+    <p align="justify">
+      Тем не менее, свойства позволяют использовать следующую конструкцию: описать функции для
+      чтения и записи значения и связать их одним именем. Если обратиться к этому имени, то
+      в разных контекстах будет использоваться соответственно либо функция для чтения значения,
+      либо функция для его установки. 
+    </p>
+    <p align="justify">
+      В свое время я участвовал в споре, смысл которого сводился к следующему: свойства
+      очень удобны и наглядны, поэтому их надо ввести в стандарт языка. Я тогда утверждал,
+      что нагромождение лишнего приведет к тому, что C++ станет вообще непонятным языком. Кроме
+      того, я тогда сказал, что, скорее всего, свойства в таком виде реализуются и уже
+      существующим набором средств. 
+    </p>
+    <p align="justify">
+      Но перед тем, как я перейду к описанию реализации, я хотел бы высказаться по поводу
+      удобства использования. Прямо скажем, программисты --- люди. Очень разные. Одним нравится
+      одно, другое это ненавидят... в частности, возможность переопределения операций
+      в C++ часто подвергается нападкам, при этом одним из основных аргументов
+      (в принципе, не лишенный смысла) является то, что при виде такого выражения:
+    </p>
+<pre>
+a = b;
+</pre>
+    <p class="table">
+      нельзя сразу же сказать, что произойдет. Потому что на оператор присваивания можно
+      "повесить" все что угодно. Самый распространенный пример "неправильного" (в смысле,
+      изменение исходных целей) использования операций являются потоки ввода-вывода, в которых
+      операторы побитового сдвига выполняют роль <code>printf</code>.  Примерно тоже нарекание
+      можно отнести и к использованию свойств.
+    </p>
+    <p align="justify">
+      Тем не менее, перейду к описанию примера. Итак, нужно оформить такой объект,
+      при помощи которого можно было бы делать примерно следующее:
+    </p>
+<pre>
+class Test
+{
+protected:
+  int p_a;
+
+  int&amp; setA(const int&amp; x);
+  int getA();
+public:
+  /* ... */ a;
+};
+
+// ...
+
+Test t;
+t.a = 10;     // Вызов Test::setA()
+int r = t.a;  // Вызов Test::getA()
+</pre>
+    <p align="justify">
+      Естественный способ --- использовать шаблоны. Например, вот так:
+    </p>
+<pre>
+template&lt;class A, class T,
+  T&amp; (A::*setter)(const T&amp;),
+  T (A::*getter)()
+  &gt;
+class property
+{
+  // ...
+};
+</pre>
+    <p class="table">
+      Параметр <code>A</code> --- класс, к которому принадлежат функции установки и чтения
+      значения свойств (они передаются через аргументы шаблона <code>setter</code> и <code>getter</code>).
+      Параметр <code>T</code> --- тип самого свойства (например, <code>int</code> для предыдущего примера).
+    </p>
+    <p align="justify">
+      На запись, которая используется для описания указателей на функции, стоит обратить
+      внимание --- я знаю, что многие программисты на C++ и не догадываются о том, что
+      можно получить и использовать адрес функции-члена класса. Строго говоря, функция-член
+      ничем не отличается от обычной, за исключением того, что ей требуется один
+      неявный аргумент, который передается ей для определения того объекта класса,
+      для которого она применятеся (это указатель <code>this</code>). Таким образом,
+      получение адреса для нее происходит аналогично, а вот использование указателя
+      требует указать, какой конкретно объект используется. Запись <code>A::*foo</code>
+      говорит о том, что это указатель на член класса <code>A</code> и для его
+      использования потребуется объект этого класса.
+    </p>
+    <p align="justify">
+      Теперь непосредственно весь класс целиком:
+    </p>
+<pre>
+template&lt;class A, class T,
+  T&amp; (A::*setter)(const T&amp;),
+  T (A::*getter)()
+  &gt;
+class property
+{
+protected:
+  A * ptr;
+public:
+  property(A* p) : ptr(p) { }
+
+  const T&amp; operator= (const T&amp; set) const
+  {
+    assert(setter != 0);
+    return (ptr->*setter)(set);
+  }
+  operator T() const
+  {
+    assert(getter != 0);
+    return (ptr->*getter)();
+  }
+};
+</pre>
+    <p align="justify">
+      Я внес тела функций внутрь класса для краткости (на самом деле,
+      общая рекомендация никогда не захламлять определения классов
+      реализациями функций --- если нужен <code>inline</code>, то лучше
+      его явно указать у тела подпрограммы, чем делать невозможным для
+      чтения исходный текст. Мне приходилось видеть исходные тексты,
+      в которых определения классов занимали по тысяче строк из-за
+      того, что все методы были описаны внутри класса (как в Java). Это
+      очень неудобно читать.
+    </p>
+    <p align="justify">
+      Я думаю, что идея предельно ясна. Использование указателей на функцию-член
+      заключается как раз в строках вида:
+    </p>
+<pre>
+(ptr->*f)();
+</pre>
+    <p align="justify">
+      Указатель внутри свойства --- это, конечно же, нехорошо. 
+      Тем не менее, без него не обойтись --- указатель на объект
+      нельзя будет передать в объявлении класса, только
+      при создании объекта. Т.е., в параметры шаблона его никак не затолкать.
+    </p>
+    <p align="justify">
+      Использовать класс <code>property</code> надо следующим образом:
+    </p>
+<pre>
+class Test
+{
+  // ...
+  property&lt;Test, int, &amp;Test::setA, &amp;Test::getA&gt; a;
+
+  Test() : a(this) { }
+};
+</pre>
+    <p align="justify">
+      Компиляторы g++, msvc и bcc32 последних версий спокойно восприняли такое издевательство
+      над собой. Тем не менее, более старые варианты этих же компиляторов
+      могут ругаться на то, что используется незаконченный класс в параметрах шаблона,
+      не понимать того, что берется адрес функций и т.д. Често говоря, мне
+      кажется что стандарту это не противоречит. Но я не уверен в этом до конца --- тем
+      более, что использовать это я не собираюсь.
+    </p>
+    <p align="justify">
+      Тут я подошел к главному --- зачем все это нужно. А вообще не нужно ;) Я очень
+      плохо себе представляю программиста, который решится на использование
+      подобного шаблона --- это же просто нонсенс. Опять же, я не вижу
+      никаких преимуществ по сравнению с обычным вызовом нужных функций и вижу
+      один недостаток --- лишний указатель. Так что всю эту статью
+      стоит рассматривать только как попытку продемонстрировать то, что можно получить при
+      использовании шаблонов.
+    </p>
+    <p align="justify">
+      На самом деле, теоретики "расширения концепций" очень часто забывают то, за
+      что иногда действительно стоит уважать свойства. Это возможность сохранить
+      через них объект и восстановить его (т.е., создать некоторое подобие
+      persistent object). В принципе, добавить такую функциональность можно и
+      в шаблон выше. Как? Это уже другой вопрос ;)
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Свойства как расширение языка ничего принципиально нового в него не добавляют.
+      В принципе, возможна их реализация средствами самого языка, но использовать
+      такую реализацию бессмысленно. Догадываться же, что такой подход возможен --- полезно.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/cpp/print_23_08_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Бъерн Страуструп</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Язык программирования C++, 3 издание. 
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/30_08_00.shtml">Комментарии </a> (30.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Плохое комментирование исходных текстов является одним из самых тяжелых заболеваний программ. Причем программисты зачастую путают "хорошее" комментирование и "многословное". Согласитесь, комментарии...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/30_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/15_08_00.shtml">Функция gets() </a> (15.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Функция gets(), входящая в состав стандартной библиотеки C, имеет следующий прототип: char* gets(char* s); Это определение содержится в . Функция предназначена...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/15_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/24_08_00.shtml">По прозвищу "Пуля" / Bullet, 1994 </a> (24.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Фильмы с Микки Рурком практически не бывают "совсем" плохими --- мне кажется, что это один из лучших американских актеров... в этом...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/24_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_08_00.shtml">Java 2: руководство разработчика </a> (22.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я решил, что мне нужна книга по Java тогда, когда появилось требование что-то написать на этом языке более серьезное, чем рисование...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_02_03.shtml">Простой, но полезный аллокатор памяти </a> (18.02.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Эта заметка --- продолжение "Postfix изнутри" в том смысле, что в качестве примера опять берется postfix. Но если в прошлый раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_02_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/09_07_01.shtml">C или C++? </a> (09.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Существуют два диаметрально противоположенных, но одинаково распространенных мнения, которые можно выразить как "C++ это C с классами" и "C++ и C...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/09_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/14_04_01.shtml">Религия и goto </a> (14.04.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Начнем несколько издалека. В программировании существует тенденция к алгоритмизации самого процесса программирования. То есть, выведение некоторых универсальных правил, использование которых в...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/14_04_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/16_10_00.shtml">ploticus </a> (16.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такая программа, предназначенная для создания графиков различных видов из командной строки, называется ploticus. Программа сама по себе достаточно удобная ---...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/16_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/25_09_00.shtml">Шаманство, или ошибки работы с памятью </a> (25.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Когда программа становится внушительной по своему содержанию (то есть, не по количеству строчек, а по непонятности внутренних связей), то ее поведение...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/25_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/20_09_00.shtml">Библиотека консорциума W3, libwww </a> (20.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Популярный нынче термин "веб-программирование" обычно подразумевает под собой программирование, в лучшем случае, на perl, в худшем --- на PHP, в совсем...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/20_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/18_09_00.shtml">Инварианты внутри программы </a> (18.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы когда-нибудь задумывались, над тем, как вы пишите программы? Если нет, то, я думаю, сегодняшняя заметка будет вам полезна. Итак, как...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/18_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/films/24_08_00.shtml">По прозвищу "Пуля" / Bullet, 1994 </a> (24.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Фильмы с Микки Рурком практически не бывают "совсем" плохими --- мне кажется, что это один из лучших американских актеров... в этом...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/films/24_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/22_08_00.shtml">Java 2: руководство разработчика </a> (22.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я решил, что мне нужна книга по Java тогда, когда появилось требование что-то написать на этом языке более серьезное, чем рисование...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/22_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<html><head><title>ALK :: Web-ресурсы :: cpp3.virtualave.net.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/urls/">web-ресурсы</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/etc/23_11_00.shtml">&lt;&lt;</a>&nbsp;26.11.00&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>cpp3.virtualave.net, C++ 3rd: комментарии
+</h1> 
+<table align="right" border="0" cellspacing="0" cellpadding="5" width="200">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Иллюстрация</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><img src="/images/26_11_00_1.jpg" width="200" height="156" border="0" alt="Внешний вид." /></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Внешний вид.
+</font>
+</td></tr>
+</table>
+    <p align="justify">
+      Ресурсы на русском языке, посвященные C++, отличаются
+      своим количеством... существует множество сайтов, домашних
+      страничек объединенных общей тематикой программирования
+      на C++. Но большая часть из них похожа друг на друга
+      как две капли воды: одни и те же тексты (первое издание
+      &quot;Язык программирования C++&quot; от Страуструпа,
+      комплект документации на Turbo C++ первой версии и т.д.),
+      одни и те же программы (используемые в качестве примеров,
+      в большинстве своем не отличающиеся корректностью или 
+      наглядностью)... в общем, грустно. В то же время 
+      в англоязычной части интернета существует достаточно много
+      интересных мест, где относительно регулярно помещаются
+      статьи профессиональных программистов на C++; в основном
+      это разделы &quot;про C++&quot; в крупных журналах, которые,
+      кстати, точно так же отличаются от русскоязычных аналогов своим качеством
+      (не в смысле печати или бумаги, а в смысле содержания).
+    </p>
+    <p align="justify">
+      Тем более мне приятно рассказать вам о &quot;C++ 3rd: комментарии&quot;,
+      потому что этот ресурс, несомненно, будет интересен большинству программистов
+      на C++. Для начала процитирую автора, Сергея Деревяго:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Вашему вниманию предлагается "еще одна" книга по С++. Что в ней есть? 
+      В ней есть все, что нужно для глубокого понимания С++. Дело в том, что 
+      практически весь материал стоит на блестящей книге Б.Страуструпа 
+      "Язык программирования С++", 3е издание. Я абсолютно уверен, что 
+      интересующийся С++ программист обязан прочитать "Язык программирования С++", а 
+      после прочтения он вряд ли захочет перечитывать описание С++ у других 
+      авторов --- маловероятно, что кто-то напишет собственно о С++ 
+      лучше д-ра Страуструпа. Моя книга содержит исправления, комментарии и дополнения, но 
+      нигде нет повторения уже изложенного материала.
+    </p>
+    <p align="justify">
+      В процессе чтения (и многократного) перечитывания С++ 3rd у меня 
+      возникало множество вопросов, большая часть которых отпадала после изучения 
+      собственно стандарта и продолжительных раздумий, а за некоторыми 
+      приходилось обращаться непосредственно к автору. Хочется выразить 
+      безусловную благодарность д-ру Страуструпу за его ответы на все мои, 
+      заслуживающие внимания, вопросы и разрешение привести данные ответы здесь.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Честно говоря, третье издание &quot;Языка программирование C++&quot; это,
+      действительно, лучшая книга по программированию на C++. В ней, в принципе,
+      содержится значительно больше материала, чем просто для того, чтобы
+      изучить синтаксис C++ (как это делается в достаточно большом количестве
+      различного рода &quot;самоучителей&quot;), просто потому что
+      Б. Страуструп описывает, в сущности, идеологию C++, а не его синтаксис. Именно
+      поэтому, каждое новое перечитывание этой книги регулярно дает новую
+      пищу для размышлений, что-то такое, что во время предыдущего чтения
+      просто было пропущено. 
+    </p>
+    <p align="justify">
+      У многих во время чтения книги возникают различные вопросы... но, как показывает практика, у 
+      многих их не возникает, что не совсем хорошо --- в большинстве случаев
+      это означает, что пока что до сих пор не хватает опыта или способности
+      к критике для того, что бы задать нужные вопросы. В этом смысле, 
+      &quot;C++ 3rd: комментарии&quot; еще более полезен, потому что
+      по этим текстам можно посмотреть, какие именно вопросы могут возникнуть
+      и в каких ситуациях. С другой стороны, конечно же, комментировать Страуструпа
+      можно всю жизнь, разжевывая предложение за предложением, но это вряд ли кому-то
+      будет интересно.
+    </p>
+    <p align="justify">
+      Еще хочется отметить то, что, во-первых, комментарии к тексту никогда не могут быть
+      хуже исходного текста (точнее, могут-то они могут, но не должны); т.е., уровень
+      изложения материала должен остаться прежним. Во-вторых, комментарии
+      не должны быть ошибочными (не надо удивляться --- потому что даже задав
+      правильный и интересный вопрос и перерыв громадное количество книг, можно получить
+      абсолютно неправильный ответ), для этого надо чтобы ответ был проверен на практике и 
+      подтвержден опытом... в общем, комментирование такой сложной книги, как третье издание
+      &quot;Языка программирования&quot;, это очень сложное дело, которое не под силу
+      не только новичкам, но и многим достаточно опытным программистам. Сергею, как
+      мне кажется, удается сочетать в своих текстах необходимые качества для
+      обеспечения интересного и полезного чтения.
+    </p>
+    <p align="justify">
+      Вообще, мне хотелось бы привести некоторые отрывки из текстов, 
+      которые по своему стилю и содержанию мне понравились особенно (и для
+      понимания которых не требуется знаний C++):
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Относитесь скептически к учебным примерам!
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Отличный вывод. Даже не знаю, что тут добавить ;-)
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      В целом, я агитирую против потери здравого смысла при использовании
+      предоставленного нам пестрого набора свистулек и колокольчиков. 
+      Увы, следует признать, что для сколько-нибудь сложного 
+      применения они не предназначены, да и на простом примере 
+      польза практически не видна.
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Ой... сколько раз сам напарывался на это, даже и не описать.
+      Зачастую написание программы превращается из процесса
+      достижения поставленной цели в очередную попытку приближения к 
+      совершенству. В этом случае, не будет ни совершенства, ни результатов
+      работы. Здравый смысл... это, в общем-то, тоже результат большого
+      количества собственных ошибок.
+    </p>
+    <p align="justify">
+      Цитировать больше ничего не буду --- если вы заинтересовались, 
+      то читайте &quot;C++ 3rd: комментарии&quot;.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Замечательный ресурс, посвященный программированию на C++. Я так думаю,
+      что найдется очень мало программистов, которым будет скучно с ним познакомиться.
+    </p>
+    <p align="justify">
+      В заключение я хотел бы сказать пару слов об оформлении. Вот именно так и должен
+      быть оформлен сайт по программированию на C++: ничего лишнего, никаких мигающих
+      и сверкающих предметов...
+    </p>
+<h2>PS</h2>
+    <p align="justify">
+      Хочется заметить, что кроме описанной выше книги, вы сможете найти
+      там ссылки на стандарт языка программирования C++ и английскую
+      версию третьего издания &quot;Языка программрования C++&quot; в формате
+      pdf. 
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/comment/urls/print_26_11_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://cpp3.virtualave.net" target="_blank">http://cpp3.virtualave.net</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     &quot;C++ 3rd: комментарии&quot;.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.research.att.com/~bs/C++.html" target="_blank">http://www.research.att.com/~b</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Часть домашней странички Б. Страуструпа, посвященная C++.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/13_03_01.shtml">Programming Stone по-русски </a> (13.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Достаточно забавное название, как мне кажется. Собственно, "programming stone" это запись нескольких дней лекций Алана Картера, посвященных проблемам программирования "вообще". Я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/13_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_11_00.shtml">acm.gui.uva.es, задачник по программированию </a> (07.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Наконец-то я вспомнил о действительно полезном ресурсе, который стоит описать. Вообще, полезность или бесполезность чего-либо, конечно же, нельзя оценить &quot;огульно&quot;, надо...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_11_00.shtml">100 </a> (23.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Дожили... судя по счетчику количества заметок, эта будет обладать красивым номером 100. Вот уж не ожидал... Поэтому, логично, что сегодняшний опус...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/12_12_01.shtml">Черный квадрат </a> (12.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, это такой ресурс, о котором в той или иной форме рассказал практически любой веб-обозреватель (прошу заметить, что я себя к...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/12_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/08_06_01.shtml">pregrad.net, заказ товаров из интернет-магазинов Европы и США </a> (08.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Некоторое время назад передо мной встала достаточно серьезная проблема --- явная нехватка литературы по некоторым, живо интересующим меня вопросам. Оказалось, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_05_01.shtml">www.researchindex.com, The NECI Scientific Literature Digital Library </a> (07.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+К сожалению, приходится признать, что для русскоязычного специалиста ощущается достаточно большая нехватка информации. Причем, если по достаточно общеизвестным, популярным или попросту...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/13_03_01.shtml">Programming Stone по-русски </a> (13.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Достаточно забавное название, как мне кажется. Собственно, "programming stone" это запись нескольких дней лекций Алана Картера, посвященных проблемам программирования "вообще". Я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/13_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_11_00.shtml">cpp3.virtualave.net, C++ 3rd: комментарии </a> (26.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Ресурсы на русском языке, посвященные C++, отличаются своим количеством... существует множество сайтов, домашних страничек объединенных общей тематикой программирования на C++. Но...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_11_00.shtml">acm.gui.uva.es, задачник по программированию </a> (07.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Наконец-то я вспомнил о действительно полезном ресурсе, который стоит описать. Вообще, полезность или бесполезность чего-либо, конечно же, нельзя оценить &quot;огульно&quot;, надо...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/01_12_00.shtml">Неблокирующий connect() </a> (01.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В продолжение темы о замене блокирующего вызова , хочется рассказать о другой функции интерфейса сокетов, . Она имеет следующий прототип: int...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/01_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_11_00.shtml">100 </a> (23.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Дожили... судя по счетчику количества заметок, эта будет обладать красивым номером 100. Вот уж не ожидал... Поэтому, логично, что сегодняшний опус...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 54<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/54.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"UML"</font></b><br>
+Posted by Ekim  on 03-Aug-01 at 09:12&nbsp;PM<br>
+<blockquote>Скажите, пожалуйста, UML завязана на каком-то конкретном языке программирования или его можно использовать в совокупности с любым языком.</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: UML</b>,<b>Andrey L. Kalinin</b>, 11:19&nbsp;AM, 06-Aug-01
+<ul>
+<li><b>RE: UML</b>,<b>Ekim</b>, 08:17&nbsp;PM, 06-Aug-01
+<ul>
+<li><b>RE: UML</b>,<b>Andrey L. Kalinin</b>, 10:23&nbsp;AM, 08-Aug-01
+<li><b>RE: UML</b>,<b>zar</b>, 02:13&nbsp;PM, 23-Dec-02
+<ul>
+<li><b>RE: UML</b>,<b>Andrey L. Kalinin</b>, 03:20&nbsp;PM, 02-Jan-03
+</ul>
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: UML"</b><br>
+Posted by Andrey L. Kalinin  on 06-Aug-01 at 11:19&nbsp;AM<br>
+<blockquote>
+&gt;Скажите, пожалуйста, UML завязана на каком-то <BR>&gt;конкретном языке программирования или его <BR>&gt;можно использовать в совокупности с <BR>&gt;любым языком. <P><BR>Это же ведь просто, скажем так, иллюстрация того, как будет работать программная система: какие будут объекты, как они будут друг с другом взаимодействовать и т.д. Конечно же, это не привязано ни к какому языку программирования (в теории). <P>На практике же могут использоваться автоматические генераторы программного текста по существующему проекту, например на C   или Java (не всего кода, конечно же, только некоторого "костяка"). И тут уже сказывается насколько хорошо реализован кодогенератор и как поддерживается связь в изменениях в проекте и программным кодом. 
+</blockquote>
+<hr>
+<b>"RE: UML"</b><br>
+Posted by Ekim  on 06-Aug-01 at 08:17&nbsp;PM<br>
+<blockquote>
+&gt;На практике же могут использоваться автоматические <BR>&gt;генераторы программного текста по существующему <BR>&gt;проекту, например на C  <BR>&gt; или Java (не всего <BR>&gt;кода, конечно же, только некоторого <BR>&gt;"костяка"). И тут уже сказывается <BR>&gt;насколько хорошо реализован кодогенератор и <BR>&gt;как поддерживается связь в изменениях <BR>&gt;в проекте и программным кодом. <BR>&gt;<P>А где можно достать эти кодогенераторы?<BR>Может поможешь?
+</blockquote>
+<hr>
+<b>"RE: UML"</b><br>
+Posted by Andrey L. Kalinin  on 08-Aug-01 at 10:23&nbsp;AM<br>
+<blockquote>
+&gt;&gt;"костяка"). И тут уже сказывается <BR>&gt;&gt;насколько хорошо реализован кодогенератор и <BR>&gt;&gt;как поддерживается связь в изменениях <BR>&gt;&gt;в проекте и программным кодом. <BR>&gt;А где можно достать эти кодогенераторы? <BR>&gt;Может поможешь? <P>Демонстрационную версию Rational Rose можно взять с <a href="http://www.rational.com" target="_blank">http://www.rational.com</a><P>Хороший каталог ссылок для изучения можно найти на <a href="http://www.cetus-links.org" target="_blank">http://www.cetus-links.org</a> (по UML --- <a href="http://www.cetus-links.org/oo_uml.html" target="_blank">http://www.cetus-links.org/oo_uml.html</a>)<BR>
+</blockquote>
+<hr>
+<b>"RE: UML"</b><br>
+Posted by zar  on 23-Dec-02 at 02:13&nbsp;PM<br>
+<blockquote>
+&gt;&gt;На практике же могут использоваться автоматические <BR>&gt;&gt;генераторы программного текста по существующему <BR>&gt;&gt;проекту, например на C  <BR>&gt;&gt; или Java (не всего <BR>&gt;&gt;кода, конечно же, только некоторого <BR>&gt;&gt;"костяка"). И тут уже сказывается <BR>&gt;&gt;насколько хорошо реализован кодогенератор и <BR>&gt;&gt;как поддерживается связь в изменениях <BR>&gt;&gt;в проекте и программным кодом. <BR>&gt;&gt;<BR>&gt;<BR>&gt;А где можно достать эти кодогенераторы? <BR>&gt;<BR>&gt;Может поможешь? <P>Очень интересует вопрос по подобным кодогенераторам... Если кто что-нибуть слышал скинте на мыло пожалуйста (zar@orkom.ru). Заренее очень благодарен!!!<BR>
+</blockquote>
+<hr>
+<b>"RE: UML"</b><br>
+Posted by Andrey L. Kalinin  on 02-Jan-03 at 03:20&nbsp;PM<br>
+<blockquote>
+&gt;&gt;&gt;"костяка"). И тут уже сказывается <BR>&gt;&gt;&gt;насколько хорошо реализован кодогенератор и <BR>&gt;&gt;&gt;как поддерживается связь в изменениях <BR>&gt;&gt;&gt;в проекте и программным кодом. <BR>&gt;&gt;А где можно достать эти кодогенераторы? <BR>&gt;&gt;Может поможешь? <BR>&gt;Очень интересует вопрос по подобным кодогенераторам... <BR>&gt;Если кто что-нибуть слышал скинте <BR>&gt;на мыло пожалуйста (zar@orkom.ru). Заренее <BR>&gt;очень благодарен!!! <P>Странный вопрос, честно говоря. Это Rational Rose, Together и еще с десяток подобных программ. В общем, надо идти на cetus-links и оттуда выбирать подходящее.<P>
+</blockquote>
+<hr>
+</font></body></html>

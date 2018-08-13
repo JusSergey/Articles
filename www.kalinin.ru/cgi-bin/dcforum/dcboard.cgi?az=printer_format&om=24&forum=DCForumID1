@@ -1,0 +1,42 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 24<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/24.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Systray"</font></b><br>
+Posted by Ruslan  on 26-Jan-01 at 12:11&nbsp;PM<br>
+<blockquote>Привет!<BR>Люди как сделать так чтобы программа помещалась при запуске к часам на системную панель?<BR>Вернее сказать, как это реализовать можно в VC++?<BR>Спасибо.</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Systray</b>,<b>Andrey L. Kalinin</b>, 03:37&nbsp;PM, 26-Jan-01
+<ul>
+<li><b>RE: Systray</b>,<b>Ruslan</b>, 06:27&nbsp;AM, 27-Jan-01
+<ul>
+<li><b>RE: Systray</b>,<b>Denis</b>, 11:40&nbsp;AM, 29-Jan-01
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Systray"</b><br>
+Posted by Andrey L. Kalinin  on 26-Jan-01 at 03:37&nbsp;PM<br>
+<blockquote>
+&gt;Привет! <BR>&gt;Люди как сделать так чтобы программа <BR>&gt;помещалась при запуске к часам <BR>&gt;на системную панель? <P>В свое время, я помню, был замечательный FAQ на эту тему в SU.WINDOWS.PROG... но его я найти не смог (сейчас; дома вроде бы где-то лежит), но пока что можно посмотреть кое-что здесь:<P><a href="http://faqs.org.ru/progr/windows/tray.htm" target="_blank">http://faqs.org.ru/progr/windows/tray.htm</a><P>&gt;Вернее сказать, как это реализовать можно <BR>&gt;в VC  ? <P>Примерно так, как написано выше. Вполне вероятно, что есть библиотеки для этого (такого добра всегда хватало). Единственное, надо помнить (и осознать), что не "программа помещается к часам", а всего-навсего туда можно положить картинку и боле функциональности у этого хозяйства нет.<P>&gt;Спасибо. <P>Честно говоря, я уже не программирую под Windows <img src="/dcforum//Images/wink.gif"><P>
+</blockquote>
+<hr>
+<b>"RE: Systray"</b><br>
+Posted by Ruslan  on 27-Jan-01 at 06:27&nbsp;AM<br>
+<blockquote>
+Спасибо за информацию.<BR>Только вот один вопрос еще, в эту функцию<BR>передается экземпляр структуры "PNOTIFYICONDATA",<BR>и при инициализации этого экземпляра нужно указать<BR>параметр hWnd который является - дескриптором<BR>окна, которое будет получать все события мыши над иконкой. Так вот как, в программе на базе диалогового окна, да или в любой другой, получить этот дескриптор? В этой структуре он описан как - <BR>HWND hWnd;<BR>Большое Спасибо.      
+</blockquote>
+<hr>
+<b>"RE: Systray"</b><br>
+Posted by Denis  on 29-Jan-01 at 11:40&nbsp;AM<br>
+<blockquote>
+Приветик Руслан!<BR>и диалог и почти любое другое окно(в MFC) ведут свои корни от CWnd а у него есть public член - m_hWnd, он тебе и нужен.<P>Денис.
+</blockquote>
+<hr>
+</font></body></html>

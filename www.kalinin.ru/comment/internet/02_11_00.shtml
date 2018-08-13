@@ -1,0 +1,443 @@
+<html><head><title>ALK :: Интернет :: Информационно- поисковые системы.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/internet/">интернет</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/books/31_10_00.shtml">&lt;&lt;</a>&nbsp;02.11.00&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Информационно-поисковые системы
+</h1> 
+    <p align="justify">
+      Поисковые системы в интернете на сегодняшний день
+      являются единственным способом доступа пользователя
+      к информации, расположенной в сети. Я имею в виду самый 
+      широкий смысл понятия "информация". При этом как
+      инструмент, поисковые системы не могут удовлетворить
+      запросы пользователей, но за отсутствием альтернатив...
+    </p>
+    <p align="justify">
+      Вообще говоря, информационно-поисковая система (сокращенно,
+      ИПС) это такая "штука", которая получает на входе набор документов
+      (база поиска) и еще один документ в качестве искомого, и выдает 
+      в результате оценки релевантности каждого из документов искомому. После
+      этого можно отсортировать документы из базы поиска в соответствии
+      с релевантностью. Вообще говоря, понятие релевантности
+      в ИПС --- ключевое: насколько точно она будет рассчитываться,
+      настолько качественной будет ИПС. Все остальные параметры (размер
+      используемых индексов, скорость работы и прочее) в принципе, 
+      не особенно важны.
+    </p>
+    <p align="justify">
+      Я об этом имею некоторое представление, потому что сам написал поисковую систему для
+      интернет-сайтов... только, как водится, на тот момент, когда
+      я ее начал писать, о важности понятия "релевантности" я и
+      не догадывался, поэтому ИПС получилась "как у всех", так как
+      я отталкивался от алгоритмов поиска, а не от оценки релевантности.
+      Собственно, это можно приводить в качестве примера подхода к задаче "от сохи".
+    </p>
+    <p align="justify">
+      Теоретически, релевантность можно оценивать многими способами; лучше
+      всего, если программа будет считать ее исходя из соответствия смысла
+      двух документов. Другое дело, что выделение смысла... хм... само
+      по себе задача не простая (мягко говоря) и в общем еще не решенная. Частности
+      же таковы, что все сводится к поиску слов в рубрикаторах, для
+      которых этот смысл известен, или построению графов с информацией 
+      о языковой структуре предложения. 
+    </p>
+    <p align="justify">
+      Современные ИПС, применяемые в интернете, для обеспечения приемлемой скорости поиска, 
+      накладывают ограничения на формат искомого документа и на оценку релевантности.
+      Документ обычно задается в виде логического выражения,
+      а релевантность строится исходя из контекста. То есть,
+      можно поискать документы, в которых находятся одновременно слова "Вася" и "Петя",
+      но нельзя искать документы, по смыслу соответствующие фразе "Вася дружит с сестрой Пети".
+    </p>
+    <p align="justify">
+      Под "документами, соответствующими по смыслу", я подразумеваю, например, следующие
+      тексты: 
+    </p>
+    <ul>
+      <li>
+	Вася дружит с девушкой. У мамы этой девушки есть сын по имени Петя.
+      </li>
+      <li>
+	У сестры Пети есть много поклонников. Один из них --- Вася.
+      </li>
+    </ul>
+    <p align="justify">
+      Если искать по ключевым словам "Вася", "Петя" и "сестра", то, например, первый
+      документ из вышеприведенных найден не будет, а вот что-то в духе
+      "У Пети нет сестры, поэтому Васе приходится дружить с сестрой Коли" --- найдется. 
+      Работы в направлении "поиска по смыслу", конечно же, ведутся, но
+      пока что чего-либо, приспособленного для интернета, нет.
+    </p>
+    <p align="justify">
+      Поисковыми системами пользуются множество людей. При этом
+      достаточно велика вероятность того, что приход
+      человека по ссылке из поисковой системы будет "в жилу"
+      сайту, т.е. целевой для него (сами понимаете, что "целевой
+      хит" много полезнее, чем простое посещение "на три клика"). 
+      Соответственно, в качестве поиска заинтересованы и владельцы
+      сайтов, и пользователи поисковых систем.
+    </p>
+    <p align="justify">
+      Свойством современных ИПС в интернете является то, что пользователь
+      должен уметь сформулировать свой запрос в виде набора ключевых
+      слов.
+      То есть, если он ищет какую-то информацию по интересующей
+      его тематике, то пользователь должен быть способен выделить 
+      ключевые слова, по которым надо будет производить контекстный
+      поиск. Если он этого сделать не сможет, то вряд ли кто-нибудь
+      сможет ему в чем-то помочь... из-за этого, кстати,
+      как мне кажется, новопоявившийся сервис InternetHelp.com,
+      который предоставляет услуги по поиску в интернете посредством
+      своих операторов (в смысле, людей), не особенно удачен: все равно
+      оператор может найти что-либо только в том случае, когда 
+      пользователь (или, быть может будет вернее,  клиент) сможет
+      внятно сформулировать, что же он хочет найти. А если человек
+      сможет это сделать, то ему прямая дорога к использованию
+      традиционных поисковых систем.
+    </p>
+    <p align="justify">
+      В качестве примера, могу привести несколько запросов
+      к поисковым системам, в результате которых люди попадали
+      ко мне на страницу. Есть, к примеру, строка запроса "фотографию
+      медведя"... Запрос "какой язык программирования использует Microsoft"
+      просто вывел меня из себя минут на 15. Был запрос "Курск инопланетяне"...
+      Особенно мне больно за тех, кто попадает ко мне на страничку
+      с запросом "как установить TeX" ;-) Они точно попадают туда,
+      где я сообщаю о том, что не буду рассказывать о процессе инсталяции TeX'а.
+      Заранее извиняюсь перед тем человеком, который попадет по аналогичному запросу
+      сюда, я не хотел :-) Это я все к тому, что запрос надо уметь формулировать.
+      Если этого не уметь, то никакая ИПС не поможет...
+    </p>
+    <p align="justify">
+      Кстати, как вы думаете, что чаще всего ищут? Ну да, правильно. Именно 
+      это и ищут. Опять же, к слову сказать, я видел страницу,
+      на которой был только один баннер, счетчик TOP100,
+      и 100КБ текста, состоящего из повторяющихся слов, которые люди употребляют
+      при поиске порнографии. Только не надо ничего выдумывать: у меня эту страничку 
+      выкачал робот, когда обходил URL'ы из некоторого списка, в котором эта
+      страничка уже была. А смешно то, что TOP100 показывал чуть-ли не миллион посещений...
+      куда уж тут мне с "фотографией медведя". Вы хоть представьте себе: миллион (!)
+      людей, которых ждало разочарование на этой странице! Прямо скажем, жестоко.
+    </p>
+    <p align="justify">
+      Недавно Дмитрий Завалишин (dz) написал о том, что Интернет --- это
+      несколько корневых DNS-серверов. Красивое выражение... как и не особенно правильное.
+      Все дело в том, что популярными ресурсами можно управлять и так при помощи
+      некоторого "рубильника" (при этом необязательно, что бы "рубильник" был, как в случае DNS, 
+      "виртуальным"; существует множество иных способов "реального" давления). А вот
+      управлять множеством "непопулярных" ресурсов, на которых находится просто дикое количество
+      самой разной информации, как "угодной", так и "неугодной" тем самым высшим силам, которые
+      могут убрать DNS-сервера, не представляется возможным. 
+    </p>
+    <p align="justify">
+      И что будет, если пропадут крупные поисковые системы? Или просто 
+      "очистятся" поисковые базы? Тогда "ой". Это я к тому,
+      что поисковые системы --- одна из самых важных компонент интернета. 
+      Так сказать, пользовательский интерфейс. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Поисковыми системами надо уметь пользоваться. Если этого
+      умения нет, то искать можно долго... очень долго. Или ждать
+      интеллектуальных систем поиска. Использование же людей для
+      улучшения качества поиска не сильно поможет общему горю, потому
+      что оператор вообще, скорее всего, не знает предметной области
+      поиска, что скажется на его результативности в худшую сторону. 
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/comment/internet/print_02_11_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.google.com" target="_blank">http://www.google.com</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Поисковая система Google. Рекомендую.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://cooler.irk.ru/cl140800.html" target="_blank">http://cooler.irk.ru/cl140800.</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Статья про поисковые системы у Cooler'а.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://cooler.irk.ru/cl190800.html" target="_blank">http://cooler.irk.ru/cl190800.</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Продолжение статьи "про поиск".
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.sai.msu.su:7000/seminars/cis99/vest2.shtml" target="_blank">http://www.sai.msu.su:7000/sem</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Краткое описание ИПС с семантическим поиском "Excalibur".
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.searchtools.com" target="_blank">http://www.searchtools.com</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Сайт, посвященный описанию различных поисковых систем.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/26_10_00.shtml">Глупости при создании сайтов </a> (26.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Нет, я не собираюсь в очередной раз рассказывать о том, как писать правильный HTML, или объяснять куда нужно "пихать" баннеры. Для...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/26_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/14_08_03.shtml">Спамеры и антиспамеры: путь к компромиссу </a> (14.08.03)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Статья написана для электронного журнала . На данный момент в околокомпьютерной прессе опубликовано достаточно большое количество статей на тему спама. Большая...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/14_08_03.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/09_10_01.shtml">Коммерция электронная </a> (09.10.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И все таки она существует! Этот факт настолько удивителен, что заслуживает пристального внимания. Когда я пытался получить свою заказанную книжку из...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/09_10_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/29_07_01.shtml">Новые технологии в рекламе </a> (29.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Как хорошо, что основной операционной системой, которой я пользуюсь, является малораспространенная среди российских интернетошатающихся FreeBSD. Как хорошо, что браузеры, которые я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/29_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/11_12_00.shtml">Заработок в интернете </a> (11.12.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Все-таки, Россия --- оригинальная страна. И интернет в ней --- тоже. Я уже несколько раз &quot;между делом&quot; писал о том, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/11_12_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/02_11_00.shtml">Информационно-поисковые системы </a> (02.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Поисковые системы в интернете на сегодняшний день являются единственным способом доступа пользователя к информации, расположенной в сети. Я имею в виду...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/02_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/26_10_00.shtml">Глупости при создании сайтов </a> (26.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Нет, я не собираюсь в очередной раз рассказывать о том, как писать правильный HTML, или объяснять куда нужно "пихать" баннеры. Для...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/26_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/network/05_11_00.shtml">Определение ip-адреса по имени хоста, adns </a> (05.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Есть такой, характерный для организации &quot;традиционного&quot; UNIX'а, системный вызов под названием : struct hostent * gethostbyname(const char *name); Традиционен он тем,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/network/05_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">Операционная система Unix </a> (31.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Unix получил очень широкое распространение в современном компьютерном мире. При этом, даже если большая часть домашних компьютеров работает под управлением операционной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/31_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

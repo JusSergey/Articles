@@ -1,0 +1,40 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 116<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/116.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Конвертация float в char *"</font></b><br>
+Posted by Alexei  on 18-Jun-03 at 03:16&nbsp;PM<br>
+<blockquote>Други, подскажите, пожалуйста, хотя-бы примерно, каким мокаром можно конвертануть число float, представленное 4 байтами, в строку.<BR>Естественно, есть ограничения:<BR>типа float нет. Т.е. библиотек с плавающей точой нету.<BR>printf не поддерживает %f формат. Все, что имеется - 4 байта ("пришедшие от другой проги") с числом float, которое надо напечатать на экране.<BR>Заранее очень признателен<BR>Алексей</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>goto www.rsdn.ru</b>,<b>Denis</b>, 06:28&nbsp;PM, 19-Jun-03
+<li><b>RE: Конвертация float в char *</b>,<b>Andrey L. Kalinin</b>, 06:50&nbsp;PM, 19-Jun-03
+<ul>
+<li><b>RE: Конвертация float в char *</b>,<b>Alexei</b>, 11:06&nbsp;AM, 20-Jun-03
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"goto www.rsdn.ru"</b><br>
+Posted by Denis  on 19-Jun-03 at 06:28&nbsp;PM<br>
+<blockquote>
+goto www.rsdn.ru
+</blockquote>
+<hr>
+<b>"RE: Конвертация float в char *"</b><br>
+Posted by Andrey L. Kalinin  on 19-Jun-03 at 06:50&nbsp;PM<br>
+<blockquote>
+Согласен с предыдущим оратором. <P>Для поиска --- существует google; к примеру, вот что-то похожее на правду, выуженное через три-четыре клика:<P><a href="http://groups.google.com.ru/groups?hl=ru&lr=&ie=UTF-8&oe=UTF-8&selm=cqiSyLCrAHA.173@www.massena.com&rnum=6" target="_blank">http://groups.google.com.ru/groups?hl=ru&lr=&ie=UTF-8&oe=UTF-8&selm=cqiSyLCrAHA.173@www.massena.com&rnum=6</a><P>Не знаю насколько это оно, но искать надо где-то там (в смысле, в гугле). Или писать самостоятельно исходя из IEEE-стандарта, хотя это и мучтиельно <img src="/dcforum//Images/wink.gif">
+</blockquote>
+<hr>
+<b>"RE: Конвертация float в char *"</b><br>
+Posted by Alexei  on 20-Jun-03 at 11:06&nbsp;AM<br>
+<blockquote>
+Спасибо большое.<BR>Функция по ссылке <BR><a href="http://groups.google.com.ru/groups?hl=ru&lr=&ie=UTF-8&oe=UTF-8&selm=cqiSyLCrAHA.173@www.massena.com&rnum=6" target="_blank">http://groups.google.com.ru/groups?hl=ru&lr=&ie=UTF-8&oe=UTF-8&selm=cqiSyLCrAHA.173@www.massena.com&rnum=6</a><BR>работает, но как-то странно, только до первых 4-х знаков до точки. Если больше, выдает что-то другое и вешается (на микроконтроллере, по крайней мере)<BR>Но направление понятно. Будем искать.<BR>
+</blockquote>
+<hr>
+</font></body></html>

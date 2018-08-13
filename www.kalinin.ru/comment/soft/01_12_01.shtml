@@ -1,0 +1,421 @@
+<html><head><title>ALK :: Программное обеспечение :: Игры.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/soft/">по</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/internet/09_10_01.shtml">&lt;&lt;</a>&nbsp;01.12.01&nbsp;<a href="/comment/urls/12_12_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>      Игры
+</h1> 
+    <p align="justify">
+      Я очень давно не играл в компьютерные игры (за редким исключением ---
+      например, дорвавшись до тетриса) и когда наконец-то собрал себе новый
+      компьютер, решил посмотреть, что же изменилось в игровом мире.
+    </p>
+    <p align="justify">
+      Впечатление первое: графика. Сейчас уже DOOM смотрится убого на фоне
+      современных движков, а я еще помню то время, когда его сравнивали с
+      предшествующими Wolf3D и Catacombs... Графические движки действительно
+      стали откровенно лучше --- настолько лучше, насколько это позволяют
+      ресурсы современных домашних компьютеров. При этом, правда, основная
+      нагрузка попадает не на центральный процессор, а на процессор
+      видеокарты. В общем-то, это логично, но все равно странно: получается, что
+      в игровом компьютере существует два, а то и три "могучих" процессора, при
+      этом быстродействие центрального процессора уже не так важно, как
+      раньше. Вообще, мне рассказывали, как удавалось приручить процессор
+      видеокарты под математические вычисления... 
+    </p>
+    <p align="justify">
+      Но это все не имеет отношения к самим играм. В графических движках не
+      произошло ничего особенного, это просто освоение доступных
+      вычислительных ресурсов. Я бы даже не сказал, что современные движки отличаются
+      производительностью, скорее, наоборот --- их отличает некоторая
+      расхлябанность в использовании доступных мощностей. То есть, они все заточены под
+      какую-то конфигурацию компьютера и практически никак не могут
+      подстраиваться под ее изменения. В особенности обидно, когда игры не
+      понимают лучшей конфигурации, чем "расчетная". Например, у меня столько
+      оперативной памяти, что любая игра может поместиться туда целиком, но ни
+      одна из них об этом не догадалась. Опять же, производительность
+      графических движков слишком сильно падает при незначительных "недоборах"
+      компьютера до того, на котором тестировались разработчики. Странно все
+      это. 
+    </p>
+    <p align="justify">
+      Впечатление же второе для меня было самым удивительным: за те лет пять,
+      что я провел в счастливом неведении новостей игрового мира... ничего
+      нового не появилось!
+    </p>
+    <p align="justify">
+      То есть совсем. Все игры дружно разделились по существующим жанрам и
+      редкий разработчик позволяет себе отойти от него. Развитие замедлилось,
+      хотя, казалось бы, именно в этой отрасли компьютерной индустрии оно должно
+      было ускориться.
+    </p>
+    <p align="justify">
+      На самом деле такой итог был бы логичным для обычного программного
+      обеспечения: когда новая версия Microsoft Word отличается от предыдущей
+      только положением "скрепки" и дизайном меню, это означает что продукт
+      достиг вершины своего развития. Причем, это вполне логичная ситуация: в
+      такой момент надо начинать кропотливую работу по исправлению ошибок. К
+      сожалению, именно в области программного обеспечения такой ситуации не
+      наблюдается: производители начинают искусственно подогревать интерес
+      публики за счет предыдущих успехов.
+    </p>
+    <p align="justify">
+      А вот производители игр, наоборот, в очередной раз ходят проторенной
+      дорожкой своих предшественников. Возьмем, ради примера, все тот же жанр
+      "шутеров", то есть когда игроку дают возможность поноситься с немереным
+      набором вооружения (традиционный набор: нож, пистолет, автомат, пулемет,
+      ракетница и еще пара-тройка чего-нибудь очень большого и разрушительного ---
+      сколько это все весит?) внутри старинного замка или по ущельям другой
+      планеты... но только, что же появилось нового со времен
+      Catacombs? Да ничего, кроме графики. Ну и количества --- сейчас даже
+      голова кружится от общего количества подобных игр, в каждой из которых
+      даже управление похоже друг на друга потому что тоже стало символом жанра. 
+    </p>
+    <p align="justify">
+      Другой жанр --- стратегии. Пошаговые и "в реальном времени". Тут, вроде
+      бы, вообще все как было, так и осталось: им не помогло даже развитие
+      графических движков. Правда, за исключением того, что появились
+      "тактические игры" --- Commandos, Desperados. Эти, простые
+      по сути и сложные в процессе игры, действительно как-то выделяются на фоне
+      игр "пятилетней давности", но, честно говоря, лично мне кажутся слишком
+      нудными. 
+    </p>
+    <p align="justify">
+      Что еще можно вспомнить? Симуляторы. Этому игровому жанру развитие
+      компьютерной техники пошло на пользу не только в смысле улучшения графики,
+      но и в своем основном предназначении --- реалистичности. Ведь задача
+      симулятора состоит в том, чтобы максимально приблизить поведение моделируемого
+      механизма к его реальному виду. Тут все достаточно просто: поведение этого
+      объекта описывается набором математических законов и качество симулятора
+      будет зависеть от точности реализации всех этих законов. Проблема напрямую
+      связана с точностью вычислений и производительностью математического
+      процессора, в общем это вполне достойная задача вычислительной
+      математики. Впрочем, и игроки у этого жанра вполне определенные, их даже
+      как-то странно называть игроками: люди пытаются как можно детальнее
+      понять, что же это такое, управление самолетом или подводной лодкой,
+      наверняка у них на полках имеется коллекция моделей тех же самых
+      самолетов и соответствующих энциклопедий. 
+    </p>
+    <p align="justify">
+      Конечно же, я не буду говорить про все жанры: еще можно выделить квесты,
+      "платформеры", головоломки и т.д. Просто еще раз хочется повториться:
+      оригинальных игр практически не стало. Вообще, самой удивительной игрой,
+      на мой взгляд, был именно Half Life со своими addon'ами --- за счет удачного смешения
+      громадного количества жанров, от шутера до квеста. Из этого следует
+      другой, более оптимистичный вывод: затишье, которое наблюдается за последние пять лет в игровом
+      мире, есть процесс накопления критической массы для стремительного броска
+      вперед, во всяком случае мне именно так хочется думать.
+    </p>
+    <p align="justify">
+      Вообще, после ознакомления с существующими на текущий момент
+      играми, мне кажется что разрекламированное "интерактивное кино" появится
+      не на телевидении, а именно в компьютерных играх. Во всяком случае, те же
+      Half Life, Deus Ex или Max Payne более похожи на "интерактивное кино", чем сомнительные
+      технологические "новинки", позволяющие делать сферические фотографии.
+    </p>
+    <p align="justify">
+      Тормозит этот процесс прежде всего ограниченность окружающего игрока мира (хотя тут сразу же на
+      ум приходят ролевые игры вроде Baldur's Gate II, но они слишком уж
+      запутаны в управлении и схематичны). Вообще, общая предопределенность игрового
+      процесса задумками сценаристов несколько раздражает. Именно этот фактор,
+      кстати, и делает игры одного жанра настолько похожими друг на друга: в
+      обзорах игр одного жанра сначала вкратце описывается сюжет, а затем
+      приводится список отличий рассматриваемой игры
+      от ключевых игр жанра (например, для "шутеров" --- Quake, Unreal, Half
+      Life), на чем обзор можно считать законченным.
+    </p>
+    <p align="justify">
+      Другой пример достаточно забавной (хотя и очень глупой по сюжету игры) ---
+      Red Faction. И ведь движок у нее, прямо скажем, хилый по сравнению с
+      другими образцами современности, сюжет попросту никакой, но играть в нее
+      почему-то интересно (хотя бы первое время). А все дело именно в
+      разнообразности игры и некоторой большей, чем обычно, реалистичности. То есть, если перед
+      героем появляется некоторая машина, то он в нее может залезть и поездить
+      (поплавать, полетать). Подобное разнообразие говорит именно о том, что те
+      же идеи назревают и у создателей игр.
+    </p>
+    <p align="justify">
+      А пока что же моделируемые в играх миры чрезвычайно элементарны, потому что
+      что разработчикам важно, чтобы их было просто описать. Наверное, частично
+      именно 
+      поэтому практически все трехмерные игры подпадают в жанр "шутеров" и
+      военных симуляторов: потому что изобразить агрессивный по отношению к
+      игроку мир проще, чем нейтральный. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Компьютерные развлечения проходят большой путь, который до них прошла
+      киноиндустрия в начале века, заставив потеснится академические театральные
+      постановки. И, наверное, не особенно далек тот миг, когда игры превратятся
+      в некий вид искусства. Хотя тут стоит уповать на оригинальность мышления и
+      амбициозность разработчиков компьютерных игр.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/soft/print_01_12_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.ag.ru" target="_blank">http://www.ag.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ 	Absolute games: наверное, самый интересный сайт с обзорами игр.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/22_09_00.shtml">Командный интерпретатор bash </a> (22.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Текст ниже предназначен для тех людей, которые по принципиальным соображениям не пользуются командной строкой, мотивируя это тем, что им там работать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/22_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/12_12_01.shtml">Черный квадрат </a> (12.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, это такой ресурс, о котором в той или иной форме рассказал практически любой веб-обозреватель (прошу заметить, что я себя к...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/12_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/09_10_01.shtml">Коммерция электронная </a> (09.10.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И все таки она существует! Этот факт настолько удивителен, что заслуживает пристального внимания. Когда я пытался получить свою заказанную книжку из...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/09_10_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/01_12_01.shtml">Игры </a> (01.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я очень давно не играл в компьютерные игры (за редким исключением --- например, дорвавшись до тетриса) и когда наконец-то собрал себе...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/01_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/07_01_01.shtml">Click here to begin </a> (07.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Волею судеб мне приходится работать с различными операционными системами и пользовательскими оболочками. И с некоторых пор мне кажется, что интерфейс Windows,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/07_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/22_09_00.shtml">Командный интерпретатор bash </a> (22.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Текст ниже предназначен для тех людей, которые по принципиальным соображениям не пользуются командной строкой, мотивируя это тем, что им там работать...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/22_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/06_09_00.shtml">Emacs </a> (06.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Emacs является культовой программой для редактирования текстов. Я думаю, что у людей, которые впервые о нем слышат, должно вызвать удивление номер...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/06_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/12_12_01.shtml">Черный квадрат </a> (12.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, это такой ресурс, о котором в той или иной форме рассказал практически любой веб-обозреватель (прошу заметить, что я себя к...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/12_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/internet/09_10_01.shtml">Коммерция электронная </a> (09.10.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И все таки она существует! Этот факт настолько удивителен, что заслуживает пристального внимания. Когда я пытался получить свою заказанную книжку из...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/internet/09_10_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<html><head><title>ALK :: Web-ресурсы :: Research index.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/comment/">комментарии</a>&nbsp;/&nbsp;<a href="/comment/urls/">web-ресурсы</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/tourism/story/04_05_01.shtml">&lt;&lt;</a>&nbsp;07.05.01&nbsp;<a href="/programming/unix/20_05_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>www.researchindex.com, The NECI Scientific Literature Digital Library
+</h1> 
+<table align="right" border="0" cellspacing="0" cellpadding="5" width="200">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Иллюстрация</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><img src="/images/07_05_01_1.jpg" width="200" height="156" border="0" alt="Внешний вид." /></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Внешний вид.
+</font>
+</td></tr>
+</table>
+    <p align="justify">
+      К сожалению, приходится признать, что для русскоязычного специалиста
+      ощущается достаточно большая нехватка информации. Причем, если по
+      достаточно общеизвестным, популярным или попросту разрекламированным
+      технологиям разного рода учебники, справочники, книги "для чайников" и
+      "для профессионалов" появляются в достаточно большом количестве (хотя,
+      далеко не всегда они приемлемы по качеству), то найти информацию о
+      чем-либо не таком популярном очень сложно. И это при том, что на английском
+      языке соответствующая литература обычно имеется.
+    </p>
+    <p align="justify">
+      Покупать иностранную литературу для русских людей достаточно
+      затруднительно: она относительно дорогая, и, что называется, "жаба душит"
+      купить какую-нибудь книжку среднего размера за полсотни условных единиц. Хотя, на
+      самом деле, мне кажется что хорошие книги того стоят --- очень сложно
+      переоценить их важность. Вот и начинаются среди достаточно
+      взрослых людей проявления болезни, которой обычно болеют школьники старших классов: "а где
+      найти в электронном виде ту или иную книжку". 
+    </p>
+    <p align="justify">
+      На самом деле, я все понимаю. Количество денег, которые вообще могут быть
+      потрачены, для каждого человека разные. Вполне вероятно, что это мне
+      сейчас так легко рассуждать, но вышеприведенный абзац не был упреком: лишь
+      констатация факта. Я же просто подвожу свою мысль к тому, что раз кому-то
+      что-то хочется получить в электронном виде, то у меня есть возможность сообщить где можно
+      попробовать это поискать.
+    </p>
+    <p align="justify">
+      Прежде всего хочется выдвинуть маленький тезис: хороших книг в электронном
+      виде очень мало, наверное из-за того, что их и так покупают в традиционном
+      издании. Поэтому говорить о том, что "я хочу получить известную книгу в
+      электронном варианте" пока что несколько наивно но, тем не менее, важна
+      именно информация, которую можно получить не только из книг.
+    </p>
+    <p align="justify">
+      Вообще-то, самым интересным для уже подготовленных специалистов, всегда
+      были не книги, а статьи в научных журналах данной тематики. Авторы
+      подобных статей обычно пытаются кратко изложить в них тезисы своих работ,
+      которые потом выльются в диссертации, но с которыми можно познакомить
+      общественность уже сейчас. Что делать со статьей после публикации,
+      в общем-то непонятно и обычно авторы выкладывают свои статьи в свободный
+      доступ на своих домашних страничках.
+    </p>
+    <p align="justify">
+      Идея собрать публикации лежит на поверхности. Известна, к примеру, ACM
+      Digital Library, в которой хранится множество публикаций из громадного
+      количества ACM'овских журналов, правда в странном виде: отсканированных
+      PDF'ах. Но для того, чтобы получить доступ к ACM Digital Library нужно
+      во-первых быть членом ACM (кстати сказать, пока что я еще состою в ACM) и
+      платить соответствующие взносы, а
+      во-вторых оплатить право доступа к библиотеке. В общем-то, цены не
+      особенно дорогие даже для России, но оплачивать не особенно удобно.
+    </p>
+    <p align="justify">
+      ResearchIndex является ресурсом, в котором собрано большое количество
+      статей, авторы которых разместили их в свободном доступе. Ресурс
+      замечателен не только тем, что хранит в себе много
+      разных материалов в различных видах (ps, pdf, даже в виде картинок), но и
+      прекрасным поиском по нему. Причем одна из самых интересных возможностей
+      поиска заключается в том, что искать можно не только по самим документам
+      (и находя их), но и по библиографическим ссылкам внутри документов, что
+      дает возможность находить популярную литературу по той или иной
+      тематеке. Эти ссылки можно сразу же скопировать в формате BIBTeX к себе в
+      "цитатник". 
+    </p>
+    <p align="justify">
+      Впрочем, сами статьи тоже достаточно интересны. Например, вот 
+      <a href="http://citeseer.nj.nec.com/brin98anatomy.html">здесь</a> лежит
+      хотя и старая, но все равно занятная статья о том как устроена (точнее, как
+      была устроена) поисковая система Google. Вообще, если что-то интересует,
+      то через ResearchIndex можно найти множество разной
+      информации. 
+    </p>
+    <p align="justify">
+      С другой стороны, обязан предупредить, что статьи в научных журналах не
+      являются учебной литературой, и в большинстве случаев сложны для
+      восприятия и требуют от читателя гораздо более высокой начальной
+      подготовки. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Замечательный ресурс. Я думаю, что он может быть полезен для любого
+      программиста, который чем-то пытается интересоваться: там можно найти
+      новые алгоритмы сортировок с использованием распараллеливания, техник
+      кеширования и измерения качества программного обеспечения... в общем,
+      ищите. 
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/comment/urls/print_07_05_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.researchindex.com" target="_blank">http://www.researchindex.com</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     Research Index.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.arxiv.org" target="_blank">http://www.arxiv.org</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Еще один сборник статей в электронном виде. Основная тематика статей --- физика и математика, но есть и кое-что по computer science.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.acm.org/dl" target="_blank">http://www.acm.org/dl</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+     ACM Digital Library. Бесплатно можно только посмотреть описание библиотеки и     попробовать поискать что-либо.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/08_06_01.shtml">pregrad.net, заказ товаров из интернет-магазинов Европы и США </a> (08.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Некоторое время назад передо мной встала достаточно серьезная проблема --- явная нехватка литературы по некоторым, живо интересующим меня вопросам. Оказалось, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/13_03_01.shtml">Programming Stone по-русски </a> (13.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Достаточно забавное название, как мне кажется. Собственно, "programming stone" это запись нескольких дней лекций Алана Картера, посвященных проблемам программирования "вообще". Я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/13_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/20_05_01.shtml">write() или writev()? </a> (20.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Меня давно интересовал вопрос, что и когда лучше использовать, вызов write() или writev()? Именно ответом на него я начну новую рубрику...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/20_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/story/04_05_01.shtml">Клещевой энцефалит </a> (04.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Собственно, сегодняшний опус я посвящяю тому, почему не было обновлений последние несколько дней на моей домашней страничке. Все дело в том,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/tourism/story/04_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/12_12_01.shtml">Черный квадрат </a> (12.12.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Пожалуй, это такой ресурс, о котором в той или иной форме рассказал практически любой веб-обозреватель (прошу заметить, что я себя к...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/12_12_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/08_06_01.shtml">pregrad.net, заказ товаров из интернет-магазинов Европы и США </a> (08.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Некоторое время назад передо мной встала достаточно серьезная проблема --- явная нехватка литературы по некоторым, живо интересующим меня вопросам. Оказалось, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_05_01.shtml">www.researchindex.com, The NECI Scientific Literature Digital Library </a> (07.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+К сожалению, приходится признать, что для русскоязычного специалиста ощущается достаточно большая нехватка информации. Причем, если по достаточно общеизвестным, популярным или попросту...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/13_03_01.shtml">Programming Stone по-русски </a> (13.03.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Достаточно забавное название, как мне кажется. Собственно, "programming stone" это запись нескольких дней лекций Алана Картера, посвященных проблемам программирования "вообще". Я...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/13_03_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/26_11_00.shtml">cpp3.virtualave.net, C++ 3rd: комментарии </a> (26.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Ресурсы на русском языке, посвященные C++, отличаются своим количеством... существует множество сайтов, домашних страничек объединенных общей тематикой программирования на C++. Но...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/26_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_11_00.shtml">acm.gui.uva.es, задачник по программированию </a> (07.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Наконец-то я вспомнил о действительно полезном ресурсе, который стоит описать. Вообще, полезность или бесполезность чего-либо, конечно же, нельзя оценить &quot;огульно&quot;, надо...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/20_05_01.shtml">write() или writev()? </a> (20.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Меня давно интересовал вопрос, что и когда лучше использовать, вызов write() или writev()? Именно ответом на него я начну новую рубрику...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/20_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/story/04_05_01.shtml">Клещевой энцефалит </a> (04.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Собственно, сегодняшний опус я посвящяю тому, почему не было обновлений последние несколько дней на моей домашней страничке. Все дело в том,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/tourism/story/04_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage  - "Case системы"
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+   <META HTTP-EQUIV="Expires" CONTENT="Tues, 04 Dec 1996 21:00:00 GMT">
+   <META HTTP-EQUIV="pragma" content="no cache">
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>"Case системы"</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+   <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" bgcolor="#EAE8E0">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=printer_format&om=150&forum=DCForumID1"><img
+   src="/dcforum//Images/printer_friendly.gif" align="bottom" border="0"><font 
+   SIZE="1" FACE="arial,sans-serif" 
+   color="black">Printer-friendly version of this topic</font></a></TD>
+   <TD ALIGN="RIGHT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <font color="black"><b></b></font>&nbsp;
+   <br><font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=150&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=150&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>&nbsp;</FONT></TD></TR>
+      <TR><TH COLSPAN="4" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+         face="arial,sans-serif" color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> 
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&archive="><font 
+         face="arial,sans-serif" color="black" size="-1">Основной форум</FONT></a> <font 
+         face="arial,sans-serif" color="black" size="-1">(Public)</font>
+         </TH></TR>
+      <TR BGCOLOR="#E3DAA5">
+      <TD ALIGN="LEFT" COLSPAN="4">
+      <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+      Original message</font></TD></TR></TABLE>
+      <br>
+      <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="0"></a> <b>"Case системы"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Dedal</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      28-Nov-04,&nbsp;11:11&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Всем доброго времени суток.<BR>Тут вот мне одно заданьице попалось:<BR>Разработать мини Case систему проектирования программ для реализации математических моделей. Система должна позволять моделировать функцию у=F1(x)*F2(x)*F3(x), <BR>где Fi - это функция из набора  у=sqrt(х); у=1/х; у=еxp(х).<BR>Разработанная программа должна позволять осуществлять визуальное комбинирование последовательности связи из экземпляров имеющихся в программе объектов: входом, выходом, и тремя видами вышеуказанных функций.<BR>Программа должна содержать кнопку и механизм генерации исходного текста на языке Паскаль. В результате выполнения данного механизма, должен быть сгенерирован работоспособный исходный  текст программы для вычисления заданного в разработанной программе выражения.<P>Для решения я использовал стандартный на мой взгляд метод - конечнй автомат.<BR>Вот его код:<BR>float	Analiz(const char *text, //Исодный текст функции<BR>double x, //Значение аргумента соответственно<BR>char *source) //Исодный екст на Pascal<BR>	{<BR>	BYTE state,it;<BR>	double y=1.0;<BR>	char tt<5>;<BR>	strcpy(source,"Program C_A_S_E;\r\nvar x:real;\r\nfunction y(x:real):real;\r\nvar ret:real;\r\nbegin\r\nret:=1;\r\n");<BR>	state = 1;<BR>	if(text<0>!='\0')		{<BR>	for(it=0;it&lt;strlen(text);it  )<BR>	if(text<it>==' ')it  ;else<BR>	switch(state)			{<BR>			case 1:<BR>				if(text<it>=='F')<BR>				state = 2;else<BR>				if(text<it>=='&')				<BR>				break;else<BR>					{<BR>				MessageBox(NULL,"Введите символ 'F' или '&'","Синтаксическая ошибка",MB_OK);<BR>				return 0.;<BR>					}<BR>				break;<P>			case 2:<BR>				switch(text<it>)<BR>					{<BR>					case '1':	state = 3;  break;<BR>					case '2':	state = 4;	break;<BR>					case '3':	state = 5;	break;<BR>					default:<BR>					MessageBox(NULL,"Ожидался номер функции","Синтаксическая ошибка",MB_OK); <BR>					return 0.;<BR>					}<BR>				/*if(text<it>=='1'){	state = 3;	break;}else<BR>				if(text<it>=='2'){	state = 4;	break;}else<BR>				if(text<it>=='3'){	state = 5;	break;}else<BR>					{<BR>			MessageBox(NULL,"Ожидался номер функции","Синтаксическая ошибка",MB_OK); <BR>			return 0.;<BR>					}			*/<BR>				break;<P>			case 3:<BR>				if(text<it>=='(')<BR>				state = 6;else<BR>					{<BR>				MessageBox(NULL,"Ожидалась скобка (","Синтаксическая ошибка",MB_OK); <BR>				return 0.;<BR>					}<BR>				break;<P>			case 4:<BR>				if(text<it>=='(')<BR>				state = 7;else<BR>					{<BR>				MessageBox(NULL,"Ожидалась скобка (","Синтаксическая ошибка",MB_OK); <BR>				return 0.;<BR>					}<BR>				break;<P>			case 5:<BR>				if(text<it>=='(')<BR>				state = 8;else<BR>					{<BR>				MessageBox(NULL,"Ожидалась скобка (","Синтаксическая ошибка",MB_OK); <BR>				return 0.;<BR>					}<BR>				break;<P>			case 6:<BR>				if(text<it>=='X'||text<it>=='x')<BR>					{<BR>				//if(x != 1.)<BR>				y*=sqrt(x);<BR>				strcat(source,<BR>					"ret:=ret*sqrt(x);\r\n");<BR>				state = 9;<BR>					}<BR>				else<BR>					{<BR>					MessageBox(NULL,"Ожидалась переменная",<BR>						"Синтаксическая ошибка",MB_OK);<BR>					return 0.;<BR>					}<BR>				break;<P>			case 7:<BR>				if(text<it>=='X'||text<it>=='x')<BR>					{<BR>				//if(x != 1.)<BR>				y*=1/x;<BR>				strcat(source,<BR>					"ret:=ret/x;\r\n");<BR>				state = 9;<BR>					}<BR>				else<BR>					{<BR>					MessageBox(NULL,"Ожидалась переменная",<BR>						"Синтаксическая ошибка",MB_OK);<BR>					return 0.;<BR>					}<BR>				break;<P>			case 8:<BR>				if(text<it>=='X'||text<it>=='x')<BR>					{<BR>				//if(x != 1.)<BR>				y*=exp(x);<BR>				strcat(source,<BR>					"ret:=ret*exp(x);\r\n");<BR>				state = 9;<BR>					}<BR>				else<BR>					{<BR>					MessageBox(NULL,"Ожидалась переменная",<BR>						"Синтаксическая ошибка",MB_OK);<BR>					return 0.;<BR>					}<BR>				break;<P>			case 9:<BR>				if(text<it>==')')<BR>					state = 10;<BR>				else<BR>					{<BR>				MessageBox(NULL,"Ожидалась скобка (","Синтаксическая ошибка",MB_OK);<BR>				return 0.;<BR>					}<BR>				break;<P>			case 10:<BR>				if(text<it>=='&')<BR>					{<BR>					strcat(source,"y:=ret;\r\nend;\r\nbegin\r\nreadln(x);\r\nwriteln(y(x));\r\nend.\0");<BR>					return y;<BR>					break;<BR>					}<BR>				else<BR>				if(text<it>=='*')<BR>					state = 1;<BR>				else				<BR>					{<BR>				sprintf(tt,"%d",it);<BR>				MessageBox(NULL,"Ожидался знак *(умножить)",tt,MB_OK);<BR>				return 0.;				<BR>					}				<BR>				break;<BR>			default: return y;<BR>			}<BR>		}<BR>		return y;<BR>}<BR>Писано на С (чистом) с использованием Windows API.<BR>Но Не это главное.<BR>Меня больше заинтересовал подобный метод создания ПО разного уровня. <BR>Как можно оптимизировать данный код?<BR>Где можно найти материалы по Case системам?(побольше хотелось бы;)<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+      </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=150&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=150&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=150&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE>
+      <br>
+
+   
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="3">
+   <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif"> 
+      <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_archive_threads&forum=DCForumID1&selected=150"><font 
+      size="-1" color="black" face="arial,sans-serif">Archive</font></a> |  
+   <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_threads&forum=DCForumID1&selected=150&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Remove</font></a> </font>
+   <br>
+   </TD><TD ALIGN="RIGHT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=150&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=150&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+   </TD></TR>
+   
+   </TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

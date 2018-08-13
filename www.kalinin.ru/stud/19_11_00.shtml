@@ -1,0 +1,426 @@
+<html><head><title>ALK :: Студенческое :: Преподаватели.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/stud/">студенческое</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/xml/18_11_00.shtml">&lt;&lt;</a>&nbsp;19.11.00&nbsp;<a href="/etc/23_11_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Преподаватели
+</h1> 
+    <p align="justify">
+      Сегодня я буду брюзжать. Почему? Хочется... настроение такое.
+      Кроме того, мне надоело рассказывать о молодых и неопытных
+      студентах, поэтому теперь немножко поговорим о преподавателях.
+    </p>
+    <p align="justify">
+      Преподаватели, как и студенты, бывают разные. Все они люди и
+      каждый занимается преподаванием по разным причинам: некоторым
+      это просто нравится; для других это необходимость, вызванная
+      спецификой научной работы в ВУЗе; третьим, откровенно говоря, некуда податься.
+    </p>
+    <p align="justify">
+      Все эти позывы сказываются на методике преподавания. Однажды
+      я обнаружил в нашем дисплейном классе текст лабораторных работ
+      по курсу численных методов, оставленных там до меня другим преподавателем.
+      Я был в таком восторге от прочитанного, что позволил себе оставить
+      один экземпляр задания &quot;на память&quot;. 
+      Вот, например, начало этого текста (я постарался сохранить и его форматирование):
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      Типовые задачи.<br>
+      Действия с векторами.<br>
+      Задача.<br>
+      Программа должна.<br>
+      <br>
+      Ввести вектор...
+    </p>
+</td></tr>
+</table>
+    <p align="justify">
+      Далее, вместо многоточия, следует текст задания. Но &quot;программа должна&quot; это,
+      конечно же, стильно. Очень стильно :-)
+    </p>
+    <p align="justify">
+      А текст программы-примера? Разве не прелесть:
+    </p>
+<pre>
+      real b(5)
+      write(6,*)'read bektor'
+      read(5,*)b
+      write(6,*)'vveden bector'
+</pre>
+    <p align="justify">
+      Все наименования авторские. В общем, bektor и bector --- тоже очень
+      хорошо звучит. 
+    </p>
+    <p align="justify">
+      Разговор даже не о конкретно этой лабораторной
+      работе, а об отношении. Я же знаю 
+      студента, он всегда живет по принципу
+      &quot;человек не муха, ко всему приспособится&quot;.
+      За свои десять сессий я насмотрелся
+      на много разного, после чего верю практически
+      всем рассказам про студентов и преподавателей:
+      они все реальные. Только, быть может, место,
+      время и фамилии участников изменены, а все остальное ---
+      правда.
+    </p>
+    <p align="justify">
+      У нас был лектор, который читал лекции таким образом,
+      что не засыпали только самые сознательные. Представьте
+      себе: паузы между фразами длились до трех минут! Причем
+      никогда нельзя было понять, он продолжает чтение нового
+      материала, или комментирует только что пройденный. Например:
+    </p>
+    <p align="justify">
+      Принцип...
+    </p>
+    <p align="justify">
+      Все пишут.
+    </p>
+    <p align="justify">
+      максимума... Понтрягина...
+    </p>
+    <p align="justify">
+      Все пишут.
+    </p>
+    <p align="justify">
+      доказан.
+    </p>
+    <p align="justify">
+      Все зачеркнули только что записанное. И ничего, прорвались. 
+      Многие даже экзамен сдали.
+    </p>
+    <p align="justify">
+      Что характерно, у нас в институте есть кафедры, у которых
+      уже отлажен прием денег от студентов. Взятки, взятки... какие,
+      собственно, взятки? Дополнительные занятия со студентами, естественно,
+      платные. То есть, пропустил лабораторную работу по неуважительной
+      причине? Сдаешь деньги и делаешь лабораторную работу в другое
+      время. Не сдал экзамен? Оплачиваешь десяток дополнительных
+      занятий и идешь сдавать снова. Многие студенты уже
+      вполне усвоили &quot;политику партии&quot; и заказывают
+      дополнительные занятия еще до сессии...
+    </p>
+    <p align="justify">
+      Например, на нашей кафедре технология приема денег со студентов
+      еще не освоена. Преподаватель, когда к нему подходит
+      студент и с невинным видом просит устроить дополнительные
+      занятия, обычно ненадолго ступорится, не понимая что от него
+      хотят... а вот [не будем показывать пальцами] даже
+      квитанции специальные в типографии заказали под 
+      расчеты со студентами.
+    </p>
+    <p align="justify">
+      Причем, если по уму подходить, то конечно же ничего плохого
+      в платных дополнительных занятиях нет... если бы, не одно
+      &quot;но&quot;, которое ставит под сомнение весь &quot;позитив&quot;
+      от этих занятий: в большинстве случаев и студенты, и преподаватели
+      прекрасно понимают, за что именно деньги переходят из одного
+      кармана в другой. Ваш покорный слуга был свидетелем диалога
+      одного заведующего кафедрой с преподавательницой, которая принимала
+      экзамен, и поставила всего-лишь пару двоек... он ей ясно объяснял,
+      соотношение между каждой двойкой и денежным довольствием кафедры и как нехорошо
+      с ее стороны лишать этого счастья всех своих коллег. 
+    </p>
+    <p align="justify">
+      Ситуация же такова, что для того, что бы учиться в институте,
+      совершенно не обязательно что-либо учить. Достаточно иметь 
+      определенное количество ресурсов и знать расценки на разных
+      кафедрах. 
+    </p>
+    <p align="justify">
+      Это плохо. Потому что, прежде всего,
+      нет ничего более обидного для студента, который пытается учиться, чем
+      видеть (иногда) человека, о существовании которого и не догадываешься в течение
+      семестра. У подобных людей исключительная тяга к знаниям: 
+      многие из них уже по несколько раз учились на одном и том же курсе...
+      а ведь стоило бы их выгнать, и жить было бы веселее, но 
+      этого делать нельзя, потому что тогда деканат и многие
+      кафедры лишатся своего заработка.
+    </p>
+    <p align="justify">
+      Возвращаясь к тому, с чего я начал. Все дело в отношении.
+      Но до сих пор я писал о том, что многие студенты сначала
+      совсем неправильно относятся к обучению в институте, то теперь ---
+      о преподавателях. И вот в этом случае видна  вполне
+      определенная позиция к процессу обучения как к своей
+      собственной вотчине: примерно то же самое наблюдается
+      у &quot;некоторых&quot; инспекторов ГИБДД.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      &quot;Начал за здравие, а кончил за упокой&quot;. 
+      Все-таки, сейчас при обучении в ВУЗах можно наблюдать
+      некоторый героизм... как с одной стороны, так и с другой.
+      Потому что вытягивание денег из студентов --- не от хорошей
+      жизни. И можно только поаплодировать тем, кто не пользуется
+      этой возможностью немного улучшить свое материальное состояние.
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/stud/print_19_11_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/22_01_01.shtml">Опыт, сын ошибок трудных... </a> (22.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Не умеют студенты программировать. Не все, конечно же, бывают и исключения, но "ан масс" --- не умеют. Можно обвинять в этом...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/22_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/20_10_00.shtml">Космические корабли бороздят большой театр </a> (20.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В бланке отчета по нашим лабораторным работам, которые заполняют студенты после их выполнения, кроме пунктов "задание" и невнятного "сценарий выполнения", существует...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_11_00.shtml">100 </a> (23.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Дожили... судя по счетчику количества заметок, эта будет обладать красивым номером 100. Вот уж не ожидал... Поэтому, логично, что сегодняшний опус...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/18_11_00.shtml">HTML must die </a> (18.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Язык гипертекстовой разметки документов (HTML) используется сейчас повсеместно. Задачи, которые ставились перед создателями этого языка заключались в необходимости создания универсального формата...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/18_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/01_02_01.shtml">Прорвались! </a> (01.02.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Свершилось. Теперь я краснодипломированный "математик минус инженер", рекомендованный к продолжению обучения в аспирантуре сразу же после окончания института и т.д. Точнее,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/01_02_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/22_01_01.shtml">Опыт, сын ошибок трудных... </a> (22.01.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Не умеют студенты программировать. Не все, конечно же, бывают и исключения, но "ан масс" --- не умеют. Можно обвинять в этом...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/22_01_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/19_11_00.shtml">Преподаватели </a> (19.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сегодня я буду брюзжать. Почему? Хочется... настроение такое. Кроме того, мне надоело рассказывать о молодых и неопытных студентах, поэтому теперь немножко...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/19_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/20_10_00.shtml">Космические корабли бороздят большой театр </a> (20.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В бланке отчета по нашим лабораторным работам, которые заполняют студенты после их выполнения, кроме пунктов "задание" и невнятного "сценарий выполнения", существует...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/21_09_00.shtml">Автоматизация заполнения базы данных "по студентам", немного статистики </a> (21.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я уже провел две лабораторных работы и один семинар с первым курсом в этом семестре и, так как на лабораторных мне...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/21_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/13_09_00.shtml">Еще один способ подготовки копии конспекта лекций </a> (13.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вопрос о том, где же добыть лекции, мучает каждого студента перед сессией. Вообще говоря, я не знаю, может быть в других...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/13_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/07_09_00.shtml">Формальные оценки </a> (07.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Оценка знаний у студента, на мой взгляд, является самым спорным вопросом всего "учебного процесса". Вообще, выставление отметок превращается в некоторое странное...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/07_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/23_11_00.shtml">100 </a> (23.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Дожили... судя по счетчику количества заметок, эта будет обладать красивым номером 100. Вот уж не ожидал... Поэтому, логично, что сегодняшний опус...<nobr>&nbsp;&nbsp;&nbsp;<a href="/etc/23_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/xml/18_11_00.shtml">HTML must die </a> (18.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Язык гипертекстовой разметки документов (HTML) используется сейчас повсеместно. Задачи, которые ставились перед создателями этого языка заключались в необходимости создания универсального формата...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/xml/18_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

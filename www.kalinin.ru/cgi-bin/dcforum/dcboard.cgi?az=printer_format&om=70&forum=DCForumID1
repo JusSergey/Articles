@@ -1,0 +1,60 @@
+<html><head></head><body color="#FFFFFF">
+
+   <font face="arial,sans-serif" size="2" color="#000099">
+   <b>
+   URL: /cgi-bin/dcforum/dcboard.cgi<br>
+   Forum: DCForumID1<br>
+   Thread Number: 70<br>
+   [ <a href="http://www.kalinin.ru/dcforum//DCForumID1/70.html">Go back to previous page</a> ]
+   </b><hr>
+   
+<b><font size=2>Original Message<hr>"Pomogite!!!"</font></b><br>
+Posted by Ivan  on 02-Feb-02 at 03:53&nbsp;PM<br>
+<blockquote>Pomogite pojalusta reshit problemu s udaleniem dinamicheski vidilenoy pamiatu. V VC++ 6.0 sp5, "delete" ne osvobojdaet pamait, hotia nikakih oshibak ne voznikaet pri progone programmi. Prosto posle raboti destruktara ukazatel prodaljaet ukazivat na videlinuu straku.<P><BR>String::~String()<BR>{<BR>	delete <> sPtr;	<BR>	cout &lt;&lt; sPtr &lt;&lt; endl; //sPtr vse eshe <BR>                                videlanaia stroka!<BR>}<P>V CodeWarrior IDE 4 Pro C++, vse normalno "delete" osvobojdaet pamiat.<BR>( Proverial kak v Debug tak i v Release )</blockquote><hr><b><font size=2>Table of contents</font></b><hr>
+<ul>
+<li><b>RE: Pomogite!!!</b>,<b>Andrey L. Kalinin</b>, 01:44&nbsp;PM, 03-Feb-02
+<ul>
+<li><b>RE: Pomogite!!!</b>,<b>Prophet</b>, 05:21&nbsp;PM, 05-Feb-02
+<ul>
+<li><b>RE: Pomogite!!!</b>,<b>Andrey L. Kalinin</b>, 05:30&nbsp;PM, 05-Feb-02
+<ul>
+<li><b>RE: Pomogite!!!</b>,<b>Prophet</b>, 07:07&nbsp;PM, 07-Feb-02
+<ul>
+<li><b>RE: Pomogite!!!</b>,<b>Andrey L. Kalinin</b>, 06:33&nbsp;PM, 13-Feb-02
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<hr><b><font size=2>Messages in this discussion</font></b><hr>
+<b>"RE: Pomogite!!!"</b><br>
+Posted by Andrey L. Kalinin  on 03-Feb-02 at 01:44&nbsp;PM<br>
+<blockquote>
+&gt;String::~String() <BR>&gt;{ <BR>&gt; delete <> sPtr; <BR>&gt; cout &lt;&lt; sPtr &lt;&lt; endl; <BR>&gt;//sPtr vse eshe videlanaia stroka! <BR>&gt;} <BR>&gt;<P>То что происходит при обращении по указтелю sPtr нельзя никак стандартизировать: это зависит от компилятора, реализации менеджера памяти и фазы луны. <P>Вообще, фразой "delete <> sPtr" Вы всего-навсего сообщаете менеджеру памяти о том, что эта память Вам больше не нужна: он не обязан затирать память или устанавливать какие-либо системные проверки на то, что этот указатель будет еще раз использован. Так что, тут ничего нельзя сказать, потому что поведение программы в этом случае непредсказуемо.<BR>
+</blockquote>
+<hr>
+<b>"RE: Pomogite!!!"</b><br>
+Posted by Prophet  on 05-Feb-02 at 05:21&nbsp;PM<br>
+<blockquote>
+Pochemu togda DELETE daet zboy pri udalenii masiva simvalov?<P>char *sPtr;<BR>sPtr = new char<5>;<BR>*sPtr = "Test\0";<BR>// - , -<P>// - , -<BR>delete <> sPtr; // DELETE daet sboy pri progone programmi, i daet vilet . Pri koopiliacii vse ok, <BR>net ne kakih ochibak.
+</blockquote>
+<hr>
+<b>"RE: Pomogite!!!"</b><br>
+Posted by Andrey L. Kalinin  on 05-Feb-02 at 05:30&nbsp;PM<br>
+<blockquote>
+&gt;Pochemu togda DELETE daet zboy pri <BR>&gt;udalenii masiva simvalov? <BR>&gt;<BR>&gt;char *sPtr; <BR>&gt;sPtr = new char<5>; <BR>&gt;*sPtr = "Test\0"; <P>Потому что это место неправильное. Вообще-то компилятор должен был сказать что-нибудь уже при выполнении присваивания символу (результат операции *sPtr) константного указателья на char (строка "Test\0", кстати последний ноль в ней лишний).<P>Я так подазреваю, что там было что-то в духе:<P>sPtr = "abcd";<P>это значит, что указтель sPtr теперь показывает на статическую область памяти, отведенную под строку. При этом ранее выделенная при помощи new область памяти просто потеряна.<P>&gt;delete <> sPtr; // DELETE daet <BR>&gt;sboy pri progone programmi, i <BR>&gt;daet vilet . <P>Все правильно он делает --- тут попытка удалить область памяти, которая не была выделена при помощи new.<P>Там выше надо было воспользоваться чем-нибудь вроде strcpy(): <P>strcpy(sPtr, "Test");<P><BR>
+</blockquote>
+<hr>
+<b>"RE: Pomogite!!!"</b><br>
+Posted by Prophet  on 07-Feb-02 at 07:07&nbsp;PM<br>
+<blockquote>
+Sposibo za pomash. Ia kak raz obnarujil etu oshibku vchera. Ti sovershenno prav, tam bilo chto-to tipa <BR>sPtr = s; //Gde s = "xxx"<BR>vobshem posle etogo "sPtr" perestal ukazivat na dinamicheskuu pamiat. Stal ukazivat na masiv "s".<BR>Vot "delete" i daval sboy pri udalenii nesushestvuushevo adresa.<BR>Sposiba.<P>Andrey, ti mojesh mne dat svoy E-mail. Ia bi hotel chtob ti glianul odin frogment, kotoriy daet ochen strannuu oshibku. Ia tebe poshlu cpp fail? Moy adres "Prophet_isr@rambler.ru"
+</blockquote>
+<hr>
+<b>"RE: Pomogite!!!"</b><br>
+Posted by Andrey L. Kalinin  on 13-Feb-02 at 06:33&nbsp;PM<br>
+<blockquote>
+&gt;Andrey, ti mojesh mne dat svoy <BR>&gt;E-mail. <P>Мой почтовый адрес тут по всему сайту раскидан просто в немеряных количествах (почти на каждой странице <img src="/dcforum//Images/wink.gif"> ): andrey@kalinin.ru<P>&gt; Ia bi hotel chtob <BR>&gt;ti glianul odin frogment, kotoriy <BR>&gt;daet ochen strannuu oshibku. Ia <BR>&gt;tebe poshlu cpp fail? Moy <BR>&gt;adres "Prophet_isr@rambler.ru" <P>Разве что если этот файл будет со-о-овсем маленьким. Можно в форум.<BR>
+</blockquote>
+<hr>
+</font></body></html>

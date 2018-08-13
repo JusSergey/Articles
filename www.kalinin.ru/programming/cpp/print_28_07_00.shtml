@@ -1,0 +1,245 @@
+<html><head><title>ALK :: C&amp;C++ :: Виртуальные деструкторы.</title>
+</head>
+<body bgcolor="white" text="black">
+<a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+Этот текст распечатан с домашней странички Андрея Калинина 
+(<a href="http://www.kalinin.ru">www.kalinin.ru</a>).<br>
+Оригинал статьи находится по этому адресу: <a href="http://www.kalinin.ru/programming/cpp/28_07_00.shtml">http://www.kalinin.ru/programming/cpp/28_07_00.shtml</a><br>
+<hr>
+<br>
+
+<h1>Виртуальные деструкторы
+</h1>
+<p align="right">28.07.00</p>
+ 
+    <p align="justify">
+      В принципе, в практически любой мало-мальски толковой
+      книге по C++ рассказывается, зачем нужны виртуальные
+      деструкторы и почему их надо использовать. Тем не менее,
+      как показывает практика,
+      ошибка, связанная с отсутствием виртуальных деструкторов,
+      настолько распространена, что
+	      я решил еще раз рассказать о ней.
+    </p>
+    <p align="justify">
+      Итак, рассмотрим маленький пример:
+<pre>
+class A
+{
+public:
+  virtual void f() = 0;
+  ~A();
+};
+
+class B : public A
+{
+public:
+  virtual void f();
+  ~B();
+};
+</pre>
+  </p>
+    <p align="justify">
+      Вызов компилятора gcc строкой 
+<pre>
+g++ -c -Wall test.cpp
+</pre>
+    Даст следующий результат:<br><br>
+<code>test.cpp:6: warning: `class A' has virtual functions but non-virtual destructor</code><br>
+<code>test.cpp:13: warning: `class B' has virtual functions but non-virtual destructor</code><br>
+    <p class="table">
+      Это только предупреждения, компиляция прошла вполне успешно. Тем не менее,
+      почему же gcc выдает подобные предупреждения?
+    </p>
+    <p align="justify">
+      Все дело в том, что виртуальные функции используются в C++
+      для обеспчения полиморфизма --- т.е., клиентская функция вида:
+    </p>
+<pre>
+void call_f(A* a)
+{
+  a->f();
+}
+</pre>
+    <p class="table">
+      никогда не "знает" о том, что конкретно сделает вызов метода <code>f()</code> ---
+      это зависит от того, какой в действительности объект представлен
+      указателем <code>a</code>. Точно так же сохраняются указатели
+      на объекты:
+    </p>
+<pre>
+std::vector&lt;A*&gt; a_collection;
+a_collection.push_back(new B());
+</pre>
+    <p align="justify">
+      В результате такого кода теряется информация о том, чем конкретно является
+      каждый из элементов <code>a_collection</code> (я имею в виду,
+      без использования RTTI). В данном случае это грозит тем, что
+      при удалении объектов:
+    </p>
+<pre>
+for(std::vector&lt;A*&gt;::iterator i = ... )
+  delete *i;
+</pre>
+    <p class="table">
+      все объекты, содержащиеся в <code>a_collection</code>, будут
+      удалены так, как будто это --- объекты класса <code>A</code>.
+    </p>
+    <p align="justify">
+      В этом можно убедиться, если соответствующим
+      образом определить деструкторы классов <code>A</code>
+      и <code>B</code>:
+    </p>
+<pre>
+inline A::~A()
+{
+  puts("A::~A()");
+}
+
+inline B::~B()
+{
+  puts("B::~B()");
+}
+</pre>
+    <p class="table">
+      Тогда выполнение следующего кода:
+    </p>
+<pre>
+A* ptr = new B();
+delete ptr;
+</pre>
+    <p class="table">
+      Приведет к следующему результату:
+    </p>
+<pre>
+A::~A()
+</pre>
+    <p class="table">
+      Если же в определении класса <code>A</code>
+      деструктор был бы сделан виртуальным (<code>virtual ~A();</code>),
+      то результат был бы иным:
+    </p>
+<pre>
+B::~B()
+A::~A()
+</pre>
+    <p align="justify">
+      В принципе, все сказано. Но, несмотря на это, очень многие
+      программисты все равно не создают виртуальных
+      деструкторов. Одно из распространенных заблуждений ---
+      виртуальный деструктор нужен лишь в том случае, когда
+      на деструктор порожденных классов
+      возлагаются какие-то нестандартные функции; если же
+      функционально деструктор порожденного класса 
+      ничем не отличается от деструктора предка, то делать
+      его виртуальным совершенно необязательно. Это неправда,
+      потому что даже если деструктор никаких специальных
+      действий не выполняет, он все равно должен быть
+      виртуальным, иначе 
+      не будут вызваны деструкторы для объектов-членов класса,
+      которые появились по отношению к предку. То есть:
+    </p>
+<pre>
+#include &lt;stdio.h&gt;
+
+class A
+{
+public:
+  A(const char* n);
+  ~A();
+protected:
+  const char* name;
+};
+
+inline A::A(const char* n) : name(n)
+{ }
+inline A::~A()
+{
+  printf("A::~A() for %s.\n", name);
+}
+
+class B
+{
+public:
+  virtual void f();
+  B();
+  ~B();
+protected:
+  A a1;
+};
+
+inline B::~B()
+{ }
+
+inline B::B() : a1("a1")
+{ }
+
+void B::f() { }
+
+class C : public B
+{
+public:
+  C();
+protected:
+  A a2;
+};
+
+inline C::C() : a2("a2")
+{ }
+
+int main()
+{
+ B* ptr = new C();
+ delete ptr;
+ return 0;
+}
+</pre>
+    <p class="table">
+      Компиляция этого примера проходит без ошибок (но с предупреждениями),
+      вывод программы следующий:
+    </p>
+<pre>
+A::~A() for a1.
+</pre>
+    <p class="table">
+      Немного не то, что ожидалось? Тогда поставим перед названием деструктора
+      класса <code>B</code> слово <code>virtual</code>. Результат изменится:
+    </p>
+<pre>
+A::~A() for a2.
+A::~A() for a1.
+</pre>
+    <p align="justify">
+      Теперь вывод программы несколько более соответствует действительности.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Строго говоря, очень сложно придумать пример, когда существует
+      иерархия классов и в ней отсутствует виртуальный деструктор (и при
+      этом не совершена ошибка).
+      Во всяком случае, это очень странно и подобное
+      решение требует основательных комментариев к
+      исходному тексту.	      
+    </p>
+
+
+
+<h2>Ссылки по теме</h2>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td>Бъерн Страуструп</td>
+<td width="100%">
+     Язык программирования C++, 3 издание. 
+</td></tr>
+</table>
+
+
+<hr>
+&copy;2000-2001 by Andrey L. Kalinin, 
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://images.rambler.ru/top100/banner-88x31-rambler-black2.gif" border=0 width=88 height=31></a>
+<br>
+andrey@kalinin.ru
+</body>
+</html>

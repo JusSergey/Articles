@@ -1,0 +1,367 @@
+<html><head><title>ALK :: Алгоритмы :: Рекурсия, часть II.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/alg/">алгоритмы</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/soft/10_09_00.shtml">&lt;&lt;</a>&nbsp;11.09.00&nbsp;<a href="/programming/cpp/12_09_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Рекурсия, часть II
+</h1> 
+    <p align="justify">
+      Собственно, в своей <a href="04_09_00.shtml">прошлой заметке</a> я рассказал немного не о
+      том, о чем хотел. Поэтому сегодня придется дополнять ;)
+    </p>
+    <p align="justify">
+      Кроме того, что рекурсия является способом построения решений некоторых
+      задач, ее отличительной чертой является то, что при помощи
+      рекурсивных функций можно дать строгое определение алгоритма.
+    </p>
+    <p align="justify">
+      И в этом нет ничего смешного. Дать определение алгоритма очень сложно.
+      Потому что то, например, что традиционно проговаривают детям в школе на
+      уроках информатики, определением не является. Там обычно говорят
+      примерно следующее: алгоритм это последовательность
+      элементарных действий и т.д. В то же самое время, если придираться,
+      остается вопрос: а какое действие считать элементарным? И насколько верно то,
+      что ЛЮБАЯ последовательность будет алгоритмом?
+    </p>
+    <p align="justify">
+      В принципе, конечно же человек и так как-то себе представляет
+      что такое алгоритм. Тем не менее, формальное определение
+      дает возможность выдвигать различные теоремы,
+      касающиеся алгоритмов и их доказывать.
+    </p>
+    <p align="justify">
+      Давать эти формальные определения я не буду (желающие
+      могут обратиться к специальной литературе). Кстати, 
+      мое нежелание конкретизировать вызвано прежде
+      всего тем, что я, со своим "неформальным" объяснением
+      на пальцах формальных вопросов, могу скорее запутать
+      читателя, чем что-то ему объяснить. Так что для меня
+      главным является упомянуть, а если кого-то это заинтересовало,
+      то он запросто сможет посмотреть это и без меня в более академическом
+      изложении.
+    </p>
+    <p align="justify">
+      Надо отметить, что кроме рекурсивных функций, для определения
+      алгоритмов могут быть использованы и другие подходы, например,
+      машина Тьюринга и нормальные алгоритмы Маркова.
+    </p>
+    <p align="justify">
+      Машина Тьюринга, наверно, является самым популярным формальным
+      определением алгоритма (но, вполне возможно что и не самым удачным), на
+      основании которой построена модель машины Фон-Неймана. А на ней 
+      основаны практически все современные императивные языки программирования
+      и компьютерные архитектуры. Так что практическая ценность у формальных определений
+      алгоритмов имеется --- программируя на Delphi вы работаете с многоленточной машиной
+      Тьюринга ;)
+    </p>
+    <p align="justify">
+      Определение же понятия алгоритма рекурсивными функциями дает основу
+      для функциональных языков программирования. Они характерны тем,
+      что вместо привычных для программистов на языках типа Паскаля или СИ
+      последовательностей операторов, программа сводится к вызову функций от
+      некоторого набора аргументов (каждый из которых так же может получаться
+      в результате работы другой или той же самой функции). Характерной особенностью
+      функциональных языков программирования является, например, поддержка
+      списков да и вообще любых рекурсивных типов данных (т.е. таких
+      типов данных, которые выражаются сами через себя; в случае со списком
+      можно сказать, что списком является либо пустота, либо элемент и список за ним). 
+    </p>
+    <p align="justify">
+      Очень часто утверждается, что функциональные языки программирования
+      значительно лучше усваиваются школьниками, чем императивные (потому что 
+      рекурсия логичнее цикла и лучше, если она вводится сначала, а потом
+      циклы как частный случай рекурсии). На мой взгляд
+      это немного неверно: лучше усваивается не какая-то конкретная тема, а то, что
+      лучше объясняют. Практика показывает, что среди школьных учителей информатики
+      крайне редко встречаются люди, которые действительно знают свой предмет
+      хотя бы на "студенческом" (я имею в виду студента нормального технического ВУЗа)
+      уровне. Поэтому и рассказать ничего не могут, так что тут дело не в 
+      языке программирования.
+    </p>
+    <p align="justify">
+      Точно так же, практика показывает, что когда информатику (да и любой другой предмет)
+      начинают рассказывать люди, увлеченные своим предметом, это всегда лучше
+      воспринимается, чем изложение наспех прочитанной двадцать лет назад книги.
+      Поэтому и императивные языки программирования можно успешно
+      рассказывать (что доказывает, например, успешная практика преподавания А.Шеня).
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Термин рекурсия очень важен не только потому, что использование
+      рекурсивных функций в своих программах должно сопровождаться глубокими
+      размышлениями на тему "а что будет, если". На рекурсии может
+      быть построена вообще вся теория алгоритмов...
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/alg/print_11_09_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/11_07_00.shtml">/comment/books/11_07_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Программирование: теоремы и задачи.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/08_09_00.shtml">/comment/books/08_09_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Искусство программирования.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2">Р. Грэхем, Д. Кнут, О.Паташник</td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Конкретная математика (основание информатики).
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_11_00.shtml">Полный перебор </a> (11.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Зачастую, когда говорят о качестве решения некоторой задачи, для того что бы определить наихудший вариант, приводят пример "полного перебора". Сколько раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/04_09_00.shtml">Рекурсия </a> (04.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Возможно для кого-то это будет удивительным, но наиболее известным алгоритмом является сортировка пузырьком (не то, что бы ее все знали, просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/04_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/12_09_00.shtml">volatile </a> (12.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять я публикую здесь текст из конференции SU.C_CPP. Впору заводить для этого отдельный раздел ;) Автор этого письма, Александр Кротов,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/12_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_11_00.shtml">Полный перебор </a> (11.11.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Зачастую, когда говорят о качестве решения некоторой задачи, для того что бы определить наихудший вариант, приводят пример "полного перебора". Сколько раз...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_11_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/11_09_00.shtml">Рекурсия, часть II </a> (11.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Собственно, в своей я рассказал немного не о том, о чем хотел. Поэтому сегодня придется дополнять ;) Кроме того, что рекурсия...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/11_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/04_09_00.shtml">Рекурсия </a> (04.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Возможно для кого-то это будет удивительным, но наиболее известным алгоритмом является сортировка пузырьком (не то, что бы ее все знали, просто...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/04_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/21_08_00.shtml">Использование конечных автоматов </a> (21.08.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Я не хочу давать формальных определений, цель этой заметки --- показать "на пальцах" использование конечных автоматов (КА) для решения различных задач...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/alg/21_08_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/alg/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/cpp/12_09_00.shtml">volatile </a> (12.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+И опять я публикую здесь текст из конференции SU.C_CPP. Впору заводить для этого отдельный раздел ;) Автор этого письма, Александр Кротов,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/cpp/12_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/soft/10_09_00.shtml">Пакет шрифтов Cyr-RFX </a> (10.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Руссификация X11 стала в последнее время достаточно простой. Для этого достаточно указать X-серверу то, что он находится в России и попросить...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/soft/10_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

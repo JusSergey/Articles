@@ -1,0 +1,634 @@
+<HTML>
+<HEAD>
+<TITLE>
+ALK Homepage  - "О студентах. И о программировании."
+</TITLE>
+<style type="text/css"><!-- 
+      A:hover {COLOR: #F78743; text-decoration : underline;}
+      body { font-family: times new roman, serif; }
+//-->
+</style>
+
+<!-- Required Marker-->
+
+   <META HTTP-EQUIV="Expires" CONTENT="Tues, 04 Dec 1996 21:00:00 GMT">
+   <META HTTP-EQUIV="pragma" content="no cache">
+
+<script  language="javascript">
+function jumpPage(form) {
+i = form.forum.selectedIndex;
+if (i == 0) return;
+    window.location.href = url[i+1];
+}
+
+function openWindow(url) {
+   opinion = window.open(url,"Handheld",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=150,height=400');
+}
+
+function makeRemote(url){
+	remote = window.open(url,"remotewin","width=500,height=250,scrollbars=1");
+	remote.location.href = url;
+	if (remote.opener == null) remote.opener = window;
+}
+</script>
+
+</HEAD>
+
+<BODY bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<a href="http://counter.rambler.ru/top100/"><img src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+<CENTER>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>ALK Homepage </b>
+</font>
+<p>
+<!-- Required Marker-->
+
+<p>
+<!-- Required Marker-->
+<font size="3" face="verdana" color="black">
+<b>"О студентах. И о программировании."</b>
+</font>
+<p>
+
+<!-- Required Marker-->
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+   <TR><TD ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" bgcolor="#EAE8E0">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=printer_format&om=30&forum=DCForumID1"><img
+   src="/dcforum//Images/printer_friendly.gif" align="bottom" border="0"><font 
+   SIZE="1" FACE="arial,sans-serif" 
+   color="black">Printer-friendly version of this topic</font></a></TD>
+   <TD ALIGN="RIGHT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#EAE8E0">
+   <font face="arial,sans-serif" color="black" size="-1">
+   <font color="black"><b></b></font>&nbsp;
+   <br><font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=30&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=30&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>&nbsp;</FONT></TD></TR>
+      <TR><TH COLSPAN="4" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#EAE8E0">
+      <a href="/"><font 
+            size="-1" face="arial,sans-serif" color="black">Home</font></a>
+            <img src="/dcforum//Images/dir.gif"> <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+         face="arial,sans-serif" color="black" size="-1">Conferences</font></a>
+         <img src="/dcforum//Images/dir.gif"> 
+      <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1&archive="><font 
+         face="arial,sans-serif" color="black" size="-1">Основной форум</FONT></a> <font 
+         face="arial,sans-serif" color="black" size="-1">(Public)</font>
+         </TH></TR>
+      <TR BGCOLOR="#E3DAA5">
+      <TD ALIGN="LEFT" COLSPAN="4">
+      <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+      Original message</font></TD></TR></TABLE>
+      <br>
+      <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="0"></a> <b>"О студентах. И о программировании."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Sergey V. Mikhanov</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      19-Mar-01,&nbsp;07:57&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Добрый день...<BR>Вообще-то я здесь не случайно -- сам студент 8 факультета МАИ, привязан (плоховатое слово...) опять же к 6 кафедре, а посему статьи из раздела "Студенческое" затронули, что называется, самые глубокие фибры моей души и не прокомментировать прочитанное просто не могу. В основном, касается это "Опыта, сына ошибок трудных..." (<a href="http://www.kalinin.ru/stud/22_01_01.shtml" target="_blank">http://www.kalinin.ru/stud/22_01_01.shtml</a>) -- сам не так давно сортировал массивы пузырьком, вставкой и ещё чем угодно. Конечно, можно ругать студентов за их криворукость, патологическую привязанность к BC   Builder (или чему-нибудь ещё подобному), но насколько подобные обвинения близки к истине? Чем чаще всего руководствуется школьник при поступлении на 8 факультет или, говоря иначе, каков ход его мыслей? Думаю, что буду недалёк от истины, если предположу следующее: "Я люблю программировать, уже написал на Турбо Паскале программку, которая изображает скачущий по полу мячик да игру 'Морской бой', так что мне туда и дорога". Так что же можно ожидать от "фрукта", который через полгода после того, как ему впервые в голову закрались подобные крамольные мысли, вдруг видит VT-340? "Я на таких тачках не работаю!" -- услышанная лично мной фраза от бывшего одногруппника, счастливого обладателя P166, думаю является скорее, немного обобщённым правилом, чем исключением. Уважаемый Андрей, много ли студентов до поступления в МАИ видели (или хотя бы слышали о) Unix? Сколько нужно приложить усилий, чтобы отучить его от "технологии" "click & run", научить требовать от себя понимания того, как устроены, как живут и дышат его программы, насколько они логичны и не представляют ли из себя просто кривой скелет, работающий только потому, что его нестройности "подпёрты" в нужных местах? На третьем курсе, опять же от одногруппников, лично мне приходилось слышать нелестные отзывы о том курсе, что читается у нас первые два года. Мол, зачем нам эти машины Тьюринга, мы и сами всё писать умеем, а тут какая-то головка, извините. Конечно, вдолбить в головы студентов такие, на первый взгляд, нелогичные вещи трудно. Но сделать это можно, и именно такое "отучение" я вижу целью всего преподавательского состава нашего и подобных вузов (хотя, конечно, не мне об этом судить).<BR>Впрочем, это уже последствия, а в чём же причина таких "настроений" в рядах студентов? Приведу пример из собственного опыта. Недавно мне на глаза попалась книжка "Программирование ASP" (Скотт Хилайер, Дениел Мизик, Microsoft Press, 2000). Детальное (!) описание революционной (!!) технологии занимает 298 страниц формата А5, 20% площади которых занимают скриншоты из IIS 4.0, а первые страниц 25 -- краткое описание языка HTML. Думаю, вы догадываетесь к чему я клоню. Слишком выгодно для компаний вроде Microsoft наличие специалистов, "выучившихся" по подобным книгам. Тогда будут ей прощены и все Visual Basic'и и всё остальное. Так что вина за подобное отношение к лабам не целиком и полностью лежит на студентах, а зависит от сложившейся ситуации на компьютерном пространстве. Впрочем, чего уж тут кривить душой -- преподаватели тоже вносят свою лепту в такую халатность. В этом месте стоит высказать хорошие слова в адрес В. Е. Зайцева, с такой аккуратностью относящемуся к учебному процессу в классе DEC Alpha. Как противовес -- обстановка в аудитории 620 (может быть, я ошибусь номером, в общем, та, что напротив нашего деканата). Студенты там не имют положеного, я считаю, им по праву ПЕРСОНАЛЬНОГО РАБОЧЕГО МЕСТА НА ВРЕМЯ ЛАБОРАТОРНОЙ РАБОТЫ. Файлы безбожно стираются, никакого разграничения прав доступа нет, Quake процветает, а лабы мы как-нибудь (вот оно -- как-нибудь! -- не обращая внимания на алгоритмы, программы кривые, полуработающие, лишь бы как-нибудь подсунуть преподу) дома сделаем. В общем, виноваты все понемногу -- а результат... Опять приведу перлы своих одногруппников: "В резюме лучше всего писать, что знаешь Delphi и SQL -- такие специалисты нужны." А насчёт решений сложившейся проблемы я с вами совершенно согласен -- только приближение обстановки к "боевой" и увеличение рабочих часов сможет принести хоть какой-то результат. Плюс ко всему, отказ от "дури" вроде BС   Builder (лабы 5 семестра) или FoxPro 2.6 (он же, но уже курс БД), я считаю совершенно необходимым.<P>          С уважением, Миханов Сергей.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+      </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=0"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE>
+      <br>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         <a name="TOP">&nbsp;</a>Table of contents</font></TD></TR></TABLE>
+         <br><TABLE 
+         BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="LEFT" COLSPAN="2">
+         <font SIZE="-1" FACE="arial,sans-serif" color="black">
+         
+               <img src="/dcforum//Images/message.gif">
+               <a href="#1">RE: О студентах. И о программирован...</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">20-Mar-01, (1)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#2">RE: О студентах. И о программирован...</a>,
+               <b>Бородин Олег</b>, <font size="1">25-Mar-01, (2)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#3">RE: О студентах. И о программирован...</a>,
+               <b>om</b>, <font size="1">25-Mar-01, (3)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#4">Теперь уже об учебном процессе.</a>,
+               <b>Sergey V. Mikhanov</b>, <font size="1">27-Mar-01, (4)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="37" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#5">RE: Теперь уже об учебном процессе.</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">27-Mar-01, (5)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="19" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#11">RE: О студентах. И о программирован...</a>,
+               <b>Иван</b>, <font size="1">11-May-04, (11)</font><br>
+               
+               <img src="/dcforum//Images/message.gif">
+               <a href="#6">RE: О студентах. И о программирован...</a>,
+               <b>DoctorNo</b>, <font size="1">02-Dec-01, (6)</font><br>
+               
+               <img src="/dcforum//Images/message.gif">
+               <a href="#7">нужна программа на паскале "Морской...</a>,
+               <b>Сергей</b>, <font size="1">01-May-02, (7)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/last_file.gif"> <a 
+               href="#10">RE: нужна программа на паскале </a>,
+               <b>Clane</b>, <font size="1">17-Mar-03, (10)</font><br>
+               
+               <img src="/dcforum//Images/message.gif">
+               <a href="#8">О некоторых книгах</a>,
+               <b>Михаил Эзау</b>, <font size="1">11-May-02, (8)</font><br>
+               
+               <img src="/dcforum//Images/blank.gif" width="1" height="14"><img 
+               src="/dcforum//Images/reply_message.gif"> <a 
+               href="#9">RE: О некоторых книгах</a>,
+               <b>Andrey L. Kalinin</b>, <font size="1">13-May-02, (9)</font><br>
+               
+         </font></TD></TR></TABLE><p>
+         <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="4">
+         <TR><TD ALIGN="right" COLSPAN="2">
+         <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=30&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=30&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+         </TD></TR></TABLE><TABLE BORDER="0" WIDTH="70%" 
+         cellspacing="0" cellpadding="4">
+         <TR BGCOLOR="#E3DAA5">
+         <TD ALIGN="LEFT">
+         <font SIZE="-1" FACE="arial,sans-serif" color="#83350F">
+         Messages in this topic
+         </font></TD></TR></TABLE>
+         <br>
+         
+
+   <TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="1"></a>1.  <b>"RE: О студентах. И о программировании."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      20-Mar-01,&nbsp;01:53&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Вообще-то я здесь не случайно -- <BR>&gt;сам студент 8 факультета МАИ,<P>Очень приятно, собственно <img src="/dcforum//Images/wink.gif"> Да я Вас, конечно же, помню <img src="/dcforum//Images/wink.gif"><BR> <P>&gt;Конечно, можно ругать студентов <BR>&gt;за их криворукость, патологическую привязанность <BR>&gt;к BC   Builder <BR>&gt;(или чему-нибудь ещё подобному), но <BR>&gt;насколько подобные обвинения близки к <BR>&gt;истине? <P>Я не ругал студентов. Я констатировал факт...<P>&gt;Чем чаще всего руководствуется <BR>&gt;школьник при поступлении на 8 <BR>&gt;факультет или, говоря иначе, каков <BR>&gt;ход его мыслей? Думаю, что <BR>&gt;буду недалёк от истины, если <BR>&gt;предположу следующее: "Я люблю программировать, <BR>&gt;уже написал на Турбо Паскале <BR>&gt;программку, которая изображает скачущий по <BR>&gt;полу мячик да игру 'Морской <BR>&gt;бой', так что мне туда <BR>&gt;и дорога".<P>То что школьник не умеет программировать, это нормально. Хуже то, что выпускник точно так же обычно не умеет этого делать. И это плохо. <P>При этом я не обвиняю студентов --- им, скорее всего, просто было неинтересно. <P>&gt; Так что же <BR>&gt;можно ожидать от "фрукта", который <BR>&gt;через полгода после того, как <BR>&gt;ему впервые в голову закрались <BR>&gt;подобные крамольные мысли, вдруг видит <BR>&gt;VT-340? "Я на таких тачках <BR>&gt;не работаю!" -- услышанная лично <BR>&gt;мной фраза от бывшего одногруппника, <BR>&gt;счастливого обладателя P166, думаю является <BR>&gt;скорее, немного обобщённым правилом, чем <BR>&gt;исключением. <P>Так это же хорошо. Я же сам удивляюсь тому, первокурсники начинают через некоторое время относительно успешно работать с emacs и прочим...<P>&gt;Уважаемый Андрей, много ли <BR>&gt;студентов до поступления в МАИ <BR>&gt;видели (или хотя бы слышали <BR>&gt;о) Unix? Сколько нужно приложить <BR>&gt;усилий, чтобы отучить его от <BR>&gt;"технологии" "click & run", научить <BR>&gt;требовать от себя понимания того, <BR>&gt;как устроены, как живут и <BR>&gt;дышат его программы, насколько они <BR>&gt;логичны и не представляют ли <BR>&gt;из себя просто кривой скелет, <BR>&gt;работающий только потому, что его <BR>&gt;нестройности "подпёрты" в нужных местах? <BR>&gt;На третьем курсе, опять же <BR>&gt;от одногруппников, лично мне приходилось <BR>&gt;слышать нелестные отзывы о том <BR>&gt;курсе, что читается у нас <BR>&gt;первые два года. Мол, зачем <BR>&gt;нам эти машины Тьюринга, мы <BR>&gt;и сами всё писать умеем, <BR>&gt;а тут какая-то головка, извините. <P>А я на пятом курсе слышал сожаления о том, что курс читался на первом, а не на пятом... <P>Действительно, курс слишком сложен для первокурсников. Было бы хорошо, чтобы он читался после дискретной математике, где-то на 3 или 4 курсах, где людям это уже будет интересно. Но, к сожалению (а может быть и к счастью) учебный план составляем не мы.<P>&gt;Конечно, вдолбить в головы студентов <BR>&gt;такие, на первый взгляд, нелогичные <BR>&gt;вещи трудно. Но сделать это <BR>&gt;можно, и именно такое "отучение" <BR>&gt;я вижу целью всего преподавательского <BR>&gt;состава нашего и подобных вузов <BR>&gt;(хотя, конечно, не мне об <BR>&gt;этом судить). <BR>&gt;Впрочем, это уже последствия, а в <BR>&gt;чём же причина таких "настроений" <BR>&gt;в рядах студентов? Приведу пример <BR>&gt;из собственного опыта. Недавно мне <BR>&gt;на глаза попалась книжка "Программирование <BR>&gt;ASP" (Скотт Хилайер, Дениел Мизик, <BR>&gt;Microsoft Press, 2000). Детальное (!) <BR>&gt;описание революционной (!!) технологии занимает <BR>&gt;298 страниц формата А5, 20% <BR>&gt;площади которых занимают скриншоты из <BR>&gt;IIS 4.0, а первые страниц <BR>&gt;25 -- краткое описание языка <BR>&gt;HTML. Думаю, вы догадываетесь к <BR>&gt;чему я клоню. Слишком выгодно <BR>&gt;для компаний вроде Microsoft наличие <BR>&gt;специалистов, "выучившихся" по подобным книгам. <BR>&gt;Тогда будут ей прощены и <BR>&gt;все Visual Basic'и и всё <BR>&gt;остальное. Так что вина за <BR>&gt;подобное отношение к лабам не <BR>&gt;целиком и полностью лежит на <BR>&gt;студентах, а зависит от сложившейся <BR>&gt;ситуации на компьютерном пространстве. <P>Я так не думаю... но обычно кому-то просто интересно узнать, почему все работает именно так, а не иначе, а кому-то --- нет. Исправить этого обысно не получается, да и зачем... вопрос в том, что интерес погубить как раз очень просто.<P>&gt; Впрочем, <BR>&gt;чего уж тут кривить душой <BR>&gt;-- преподаватели тоже вносят свою <BR>&gt;лепту в такую халатность. В <BR>&gt;этом месте стоит высказать хорошие <BR>&gt;слова в адрес В. Е. <BR>&gt;Зайцева, с такой аккуратностью относящемуся <BR>&gt;к учебному процессу в классе <BR>&gt;DEC Alpha. Как противовес -- <BR>&gt;обстановка в аудитории 620 (может <BR>&gt;быть, я ошибусь номером, в <BR>&gt;общем, та, что напротив нашего <BR>&gt;деканата). Студенты там не имют <BR>&gt;положеного, я считаю, им по <BR>&gt;праву ПЕРСОНАЛЬНОГО РАБОЧЕГО МЕСТА НА <BR>&gt;ВРЕМЯ ЛАБОРАТОРНОЙ РАБОТЫ. Файлы безбожно <BR>&gt;стираются, никакого разграничения прав доступа <BR>&gt;нет, Quake процветает, а лабы <P>620 была перегружена в последнее время: там были кроме студентов еще и школьники, а нормального системного администратора там нет (в смысле того человека, который бы только этим и занимался), что в подобных условиях приводит к анархии. Нам это сделать проще, потому что операционная система проще и компьютеров один-два, а не двадцать.<P>Теперь появился новый класс, посмотрим как изменится ситуация...<P>&gt;&gt;мы как-нибудь (вот оно -- <BR>&gt;как-нибудь! -- не обращая внимания <BR>&gt;на алгоритмы, программы кривые, полуработающие, <BR>&gt;лишь бы как-нибудь подсунуть преподу) <BR>&gt;дома сделаем. В общем, виноваты <BR>&gt;все понемногу -- а результат... <BR>&gt;Опять приведу перлы своих одногруппников: <BR>&gt;"В резюме лучше всего писать, <BR>&gt;что знаешь Delphi и SQL <BR>&gt;-- такие специалисты нужны." А <BR>&gt;насчёт решений сложившейся проблемы я <BR>&gt;с вами совершенно согласен -- <BR>&gt;только приближение обстановки к "боевой" <BR>&gt;и увеличение рабочих часов сможет <BR>&gt;принести хоть какой-то результат. Плюс <BR>&gt;ко всему, отказ от "дури" <BR>&gt;вроде BС   Builder <BR>&gt;(лабы 5 семестра) или FoxPro <BR>&gt;2.6 (он же, но уже <BR>&gt;курс БД), я считаю совершенно <BR>&gt;необходимым. <P>Да я, в общем-то, со большей частью согласен...<P>Очень рад отзыву.<P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=1"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=1"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="2"></a>2.  <b>"RE: О студентах. И о программировании."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Бородин Олег</b> <a 
+            href="mailto:obor@rambler.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      25-Mar-01,&nbsp;11:39&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Ничего не изменится. <BR>В новом классе также, как и в 612, нет администратора и занимаются школьники.<BR>Поэтому через полгода будет такой же бардак.<P>А по поводу учебных курсов сказать можно много. <BR>Возьмем, например, курсы БД, как наиболее интересующие меня.<P>И проблема тут не в FoxPro, а в построении курсов по БД.<BR>Базы данных - это отдельное крупное направление, а не узкая область информатики.<BR>Как поставлена программа по БД у нас. Один семестр изучаются основы БД.<BR>Один семестр - курсовая по БД. Два семестра - распределенные БД (хорошо, что стало два семестра,<BR>раньше был один).<P>Так вот, принципиально невозможно за один семестр изучить<BR>1. различные модели данных<BR>2. реляционную теорию (алгебру и исчисление)<BR>3. SQL<BR>4. проектирование БД (ER-модель, нормализация, какой-нибудь case и т.д.)<BR>5. какую-либо СУБД, в том числе и Fox (ведь в следующем семестре надо делать курсовую !?)<P>Недавно я купил книгу Д.Д. Ульман, Д.Уидом "Введение в системы баз данных "<BR>(кстати, рекомендую, очень хорошая книга), так вот, у буржуев<BR>преподается 5 ! курсов по БД.<BR>1. введение в БД<BR>2. принципы системы БД<BR>3. курс по реализации систем БД<BR>4. транзакции и распределенные БД<BR>5. теория БД<P>Поэтому приходят студенты на курс по распределенным БД <BR>и не знают, что такое транзакция, уровни изолированности и т.д.<BR>А возьмем, например, курс распределенных БД. По программе в первом семестре нет<BR>семинаров ?! А лабораторные всего раз в две недели (хорошо, что по две пары).<BR>Спрашивается, как проводить лабы, когда студенты видят Oracle в первый раз,<BR>объем курса большой, а лабораторных мало ?<BR>А ведь только для удовлетворительного освоения Oracle необходимо минимум два <BR>семестра полнофункционального курса.<P>Так вот, если говорить про БД, то основная проблема не в том, на основе какой БД<BR>читают курсы, а в отношении к этим курсам, как к дополнительным, а не базовым.<P><BR>С уважением, Бородин Олег<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=2"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=2"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="3"></a>3.  <b>"RE: О студентах. И о программировании."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>om</b>   on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      25-Mar-01,&nbsp;10:13&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Ну если говорить про буржуев;), то у них Прикладная математика и Computer Sience вообще-то разные вещи:) 
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=3"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=3"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="4"></a>4.  <b>"Теперь уже об учебном процессе."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Sergey V. Mikhanov</b> <a 
+            href="mailto:i_am_neuron@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Mar-01,&nbsp;01:05&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Сейчас, глядя, опять же, из студенческой среды, я вижу, что для многих моих одногруппников понятия "Oracle" и "Базы данных" вообще практически слились. Прошлый семестр прошёл практически впустую -- посещаемость лекций Лукина было чудовищно низкой, а семинары (конкретно в нашей группе) сводились к освоению команд FoxPro, тем же самым всё продолжалось и на лабах, и FoxPro все (я уверен на 99.5% что все!) сдали иключительно для галочки (т.е. не оставив в голове ни самого Фокса, ни мало-мальской теории, связанной с БД). Теперь же книга Дейта воспринимается многими как заумнейший талмуд, пригодный для тех, кто собирается двигать науку (причём что из себя представляет эта наука, студенты слабо понимают), а руководства по эксплуатации Oracle стали практически Библиями...<BR>Как мне кажется, в данной ситуации с курсом БД (хотя это относится и в какой-то мере к курсу СППО) выходом было бы более радикальное разделение теории и практики, раннее прививание студентам правил платформенной и какой угодно другой независимости. Скажем, первый семестр курс БД читается вообще без лаб, связанных с какой-то СУБД и затрагивает исключительно теоретические аспекты, а в следующем семестре, параллельно с введением понятий о проектировании, CASE-средствах, языке SQL, начинаются работы с какой-нибудь СУБД, делая, опять же, упор на том, что этот программный продукт -- лишь частный случай и вся теория, изученная в прошлом семестре, аккуратно и логично вписывается в методику работы с ним. То же самое применимо и к СППО -- не нужно изучать Builder, если студенты слабо понимают зачем нужны, например, виртуальные функции или множественное наследование. Как пример: лекция о CORBA, прочитанная Л. Н. Чернышовым в прошлом семестре, закончилась примером, в котором фигурировало слово TCorbaConnection -- догадываетесь, откуда это? Для многих CORBA так и не выйдет за пределы этого TCorbaConnection, а ведь это архитектура, изначально нацеленная на межплатформенную совместимость. Лично мне очень импонирует универсальность, которую даёт такой подход.<BR>Может быть, кому-то мои рассуждения покажутся бредом энтузиаста, а может быть они действительно глупы и я сам пойму это через годик-другой, но пока, как мне кажется, в учебном процессе недостаёт именно такого внедрения такой межплатформенной мобильности, что ли. Иногда становится обидно, когда видишь, что неглупые студенты (как и некоторые преподаватели), при необходимости написать что-то, оторванное от RAD-систем проявляют полную беспомощность.<P>С уважением, Миханов Сергей.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=4"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=4"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="5"></a>5.  <b>"RE: Теперь уже об учебном процессе."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      27-Mar-01,&nbsp;10:50&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Да нет, все правильно. Всегда приятно, когда курс, который читается преподавателем, им в достаточной степени выстрадан... ведь степеней знания, в принципе, несколько и только в последних из них человек может чему-то учить других. Но проблема так же еще и в том, что институт, как это ни прискорбно, все-таки бюрократическая система, бороться с которой нет никаких сил. Лично мне импонирует идея свободного посещения курсов: то есть, преподаватели, которые есть в ВУЗе, организуют по собственному желанию и знаниям, а так же договоренности с другими, какие-то курсы по тем предметам, которые могут преподавать. Студенты потом выбирают себе курсы, по которым они хотят обучаться в течение семестра, для того чтобы получить необходимую им специализацию... наверняка тут не все так просто, то есть надо предупреждать какие курсы для каких специализаций нужны и какой их минимальный набор, но, по любому, это будет лучше, чем насильное "впаривание" различных экономических предметов будущим программистам. <P>И ведь "индивидуальные планы" в свое время были чем-то подобным, но они, фактически, опять же погибли, потому что теперь в институте есть понятие "курс с лицевой стороны плана", который снимать никак нельзя. Самое смешное, что на лицевой стороне учебного плана находится большинство предметов, включая и те, которые как раз хочется не слушать.<P>Возвращаясь к свободному выбору студентов курсов по душе. Это же саморегуляция --- не хотят студенты слушать курс, значит они на него не ходят, значит преподавателю приходится что-то в нем менять и делать его более интересным. Это не в угоду упрощения курсов, потому что сложный, но интересный курс, всегда будет иметь своих увлеченных слушателей. <P>Что же касается кроссплатформенности... тут еще проще. У меня такое ощущение, что если и после первого курса в качестве основной ОС использовать не Windows, а что-нибудь из свободных Unix'ов, то это будет много полезней. Ведь с Windows'ом студенты много общаются и за пределами ВУЗа.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=5"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=5"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="11"></a>11.  <b>"RE: О студентах. И о программировании."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Иван</b> <a 
+            href="mailto:imoyseev@rambler.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      11-May-04,&nbsp;03:34&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         ..Так это ещё вон как хорошо, Oracle, Fox Pro ...у нас вобще Acces и VBA и ничего больше...при чём мало того что ничего не рассказывают сами особо не разбираются..купили одну книгу Вендров разработка экономических ИС и читают два года подряд по предметам с разными названиями..)...так что вот...всему надо учиться самому а жаль..ведь на учёбе и время и деньги, а в и тоге и посоветоватьяс не с кем..присоединяюсь мнению о том что надо 5 лет преподавать БД...
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=11"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=11"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=11"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=11"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="6"></a>6.  <b>"RE: О студентах. И о программировании."</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>DoctorNo</b> <a 
+            href="mailto:system7@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      02-Dec-01,&nbsp;04:15&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+          Случайно увидел эту тему на форуме и не могу не высказать своего мнения по этому поводу. Сам я студент 2-го курса ворнежского Политеха, так что меня эта тема касается напрямую.<P> До того как я имел счастье (или несчастье? ;)) поступить в политех, я три года занимался программированием. Причем последний из них - в ОС Linux. С первого момента моего знакомства с компом я терпеть не мог GUI. Text mode & command line. Не знаю, хорошо это или плохо, но это лично мое мнение. По-моему, по-настоящему качественные программы (почти на любом языке) можно писать только полностью понимая все детали работы ОС и оборудования. Для этого лучше всего подходят такие системы, как Линукс, которые распространяются в сорцах. Нет, я не агитирую всех переходить с винды на Линукс. Просто смешно смотреть, как почти все ругают продукты мелкософта, в тоже время продолжая ими пользоваться. А в моей группе большинство студентов даже не предполагает, что кроме форточек есть еще какие-то операционки, и другие компы, кроме PC. Они заявляют буквально следующее: "Если есть Delphi и VB, то зачем учить C и asm?". (Недавно даже услышал мнение, что Win98 написан на Delphi, поэтому так хорошо смотрится. :))) Но здесь, мне кажется, вина лежит не только на студентах. Складывается впечатление, что во многих технических вузах компьютерное образование считается чем-то не очень важным. <BR>   По поводу ПЕРСОНАЛЬНОГО РАБОЧЕГО МЕСТА ЗА КОМПЬЮТЕРОМ. Лично в нашей основной лаборатории большинству студенто приходится делать лабы на 486/16/Win95 (в лучшем случае, P166/16/win98). Кроме Delphi и TP7.0 в этой лаборатории ничего нет. Unix в учебных лабораториях вообще не используют. Чему можно научиться (и наутить) в этих условиях? Причем институт имеет в своем распоряжении современные компы (и даже довольно много), но для чего они используются, я понятия не имею. Из учебной программы я не узнал ничего нового для себя.<P>     Так что, имхо, виноваты и студенты и преподы.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=6"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=6"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="7"></a>7.  <b>"нужна программа на паскале "Морской бой""</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Сергей</b> <a 
+            href="mailto:VirHacker@mail.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      01-May-02,&nbsp;09:59&nbsp;AM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         Добрый день... <BR>если у вас есть дистрибутив программы на паскале "Морской бой" пожалуйста вышлите мне на почту VirHacker@mail.ru <BR>Буду очень благодарен.<BR>P.S. или скажите где можно ее найти, скачать ...<P>С уважением Сергей
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=7"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=7"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="10"></a>10.  <b>"RE: нужна программа на паскале "</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Clane</b> <a 
+            href="mailto:clane@km.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      17-Mar-03,&nbsp;04:40&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Добрый день... <BR>&gt;если у вас есть дистрибутив программы <BR>&gt;на паскале "Морской бой" пожалуйста <BR>&gt;вышлите мне на почту VirHacker@mail.ru <BR>&gt;<BR>&gt;Буду очень благодарен. <BR>&gt;P.S. или скажите где можно ее <BR>&gt;найти, скачать ... <BR>&gt;<BR>&gt;С уважением Сергей <BR>На pascal.dax.ru<P>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=10"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=10"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=10"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=10"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="8"></a>8.  <b>"О некоторых книгах"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Михаил Эзау</b> <a 
+            href="mailto:t72@tlm.pp.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      11-May-02,&nbsp;02:04&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;Недавно мне <BR>&gt;на глаза попалась книжка "Программирование <BR>&gt;ASP" (Скотт Хилайер, Дениел Мизик, <BR>&gt;Microsoft Press, 2000). Детальное (!) <BR>&gt;описание революционной (!!) технологии занимает <BR>&gt;298 страниц формата А5, 20% <BR>&gt;площади которых занимают скриншоты из <BR>&gt;IIS 4.0, а первые страниц <BR>&gt;25 -- краткое описание языка <BR>&gt;HTML.<P>На самом деле, у этой литературы есть два предназначения:<P>1) "Классическое студенческое" - быстро сляпать, быстро впарить, быстро-быстро убежать <img src="/dcforum//Images/happy.gif">))<P>2) Просто узнать, ЗАЧЕМ оно нужно, когда подробных знаний ЕЩЕ нет. Берется вот такая книжонка, читается по диагонали - и у тебя быстро и более-менее достоверно есть ответы "в первом приближении" на несколько важных вопросов: Зачем этот продукт, на какие другие технологии он опирается, и главное - каков портрет конечного потребителя. Этого уже достаточно, чтобы решать - может ли он подойти для замышляемого проекта, или искать дальше.
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=8"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=8"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+<TABLE BORDER="0" WIDTH="70%" 
+   CELLPADDING="4" Cellspacing="0">
+      <TR BGCOLOR="#EAE8E0"><TD colspan="2" width="100%" ALIGN="LEFT">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <a name="9"></a>9.  <b>"RE: О некоторых книгах"</b></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD align="Left" colspan="2">
+      <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+      Posted by <b>Andrey L. Kalinin</b> <a 
+            href="mailto:andrey@kalinin.ru"><IMG SRC="/dcforum//Images/email.gif" 
+             border="0" alt="Click to email "></a>  on </font> <FONT SIZE="1" 
+		FACE="arial,sans-serif" COLOR="black">
+      13-May-02,&nbsp;09:16&nbsp;PM&nbsp;(MSD)
+         </font></td></tr>
+      <TR BGCOLOR="#FBF9F1"><td colspan="2" width="100%">
+         <FONT SIZE="-1" FACE="arial,sans-serif" COLOR="black">
+         <blockquote>
+         &gt;2) Просто узнать, ЗАЧЕМ оно нужно, <BR>&gt;когда подробных знаний ЕЩЕ нет. <BR>&gt;Берется вот такая книжонка, читается <BR>&gt;по диагонали - и у <BR>&gt;тебя быстро и более-менее достоверно <BR>&gt;есть ответы "в первом приближении" <BR>&gt;на несколько важных вопросов: Зачем <BR>&gt;этот продукт, на какие другие <BR>&gt;технологии он опирается, и главное <BR>&gt;- каков портрет конечного потребителя. <BR>&gt;Этого уже достаточно, чтобы решать <BR>&gt;- может ли он подойти <BR>&gt;для замышляемого проекта, или искать <BR>&gt;дальше. <P>А если просто по интернету немного полазить? <img src="/dcforum//Images/happy.gif"> По официальному сайту производителя, по его FAQ, по usenet, поискать отзывы на сайтах тем же googl'ом... не лучше ли будет для первого приближения?<BR>
+         </blockquote></FONT></TD></TR>
+      <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT" valign="top" width="30%">
+         <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">&nbsp;
+    
+       <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_messages&forum=DCForumID1&thread_select=30&selected=9"><FONT 
+            SIZE="1" FACE="arial,sans-serif" COLOR="black">Remove</font></a> </FONT></TD>
+      <TD ALIGN="RIGHT" valign="top">
+      <FONT SIZE="1" FACE="arial,sans-serif" COLOR="black">
+    <a href="/cgi-bin/dcforum/dcboard.cgi?az=edit&forum=DCForumID1&om=30&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Edit</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?az=post&forum=DCForumID1&om=30&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply</FONT></a> |
+         <a href="/cgi-bin/dcforum/dcboard.cgi?quote=not_empty&az=post&forum=DCForumID1&om=30&omm=9"><FONT 
+         SIZE="1" FACE="arial,sans-serif" COLOR="black">Reply With Quote</FONT></a> | <a href="#TOP"><FONT 
+      SIZE="1" FACE="arial,sans-serif" COLOR="black">Top</FONT></a> </FONT></TD></TR>
+	</TABLE><br>
+
+
+   <TABLE BORDER="0" WIDTH="70%" cellspacing="0" cellpadding="3">
+   <TR BGCOLOR="#EAE8E0"><TD ALIGN="LEFT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif"> 
+      <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_archive_threads&forum=DCForumID1&selected=30"><font 
+      size="-1" color="black" face="arial,sans-serif">Archive</font></a> |  
+   <a href="/cgi-bin/dcforum/dcadmin.cgi?az=admin_board_manager&command=admin_remove_threads&forum=DCForumID1&selected=30&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Remove</font></a> </font>
+   <br>
+   </TD><TD ALIGN="RIGHT">
+   <br>
+   <font size="-1" color="black" face="arial,sans-serif">
+   <a href="/cgi-bin/dcforum/dcboard.cgi"><font 
+   size="-1" color="black" face="arial,sans-serif">Lobby</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"><font 
+   size="-1" color="black" face="arial,sans-serif">Topics</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=30&az=previous_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Previous Topic</font></a> |
+   <a href="/cgi-bin/dcforum/dcboard.cgi?forum=DCForumID1&mark=30&az=next_topic&archive="><font 
+   size="-1" color="black" face="arial,sans-serif">Next Topic</font></a></font>
+   </TD></TR>
+   
+   </TABLE>
+
+<!-- Required Marker-->
+
+<script language="javascript">
+function MakeArray() {
+   this.length = MakeArray.arguments.length
+   for (var i = 0; i < this.length; i++)
+   this[i+1] = MakeArray.arguments[i]
+}
+
+var url = new MakeArray("","/cgi-bin/dcforum/dcboard.cgi",
+"/cgi-bin/dcforum/dcboard.cgi?conf=conference",
+"/cgi-bin/dcforum/dcboard.cgi?az=list&forum=DCForumID1"
+   )
+</script>
+
+
+<TABLE BORDER="0" WIDTH="70%" CELLPADDING="3" cellspacing="1">
+    <TR BGCOLOR="#EAE8E0">
+      <TD ALIGN="RIGHT" VALIGN="TOP">
+         <FORM ACTION="/cgi-bin/dcforum/dcboard.cgi" METHOD="POST">
+         <input type="hidden" name="az" value="list">
+         <FONT SIZE="1" COLOR="black" FACE="arial,sans-serif">
+         <select name="forum" onChange="jumpPage(this.form)">
+         <option value="">Select another forum
+         <option value="LOBBY">Lobby
+         <option value="/cgi-bin/dcforum/dcboard.cgi">Main (Conference)
+            <option value="DCForumID1">&nbsp;&nbsp;|--Основной форум (Public)
+            
+      </select></form>
+      </TD>
+    </TR>
+  </TABLE>
+    
+
+
+<!-- You must leave this copyright statement. Thank you in advance. -->
+<TABLE BORDER="0" WIDTH="100%">
+	<TR><td align="right">
+		<font size="1" face="verdana" color="black">
+		Powered by DCForumLite Version 3.0 &copy;1997-2000 by <a href="http://www.dcscripts.com">DCScripts</a>.
+		All rights reserved.</font></TD></TR>	
+</TABLE>
+
+</CENTER>
+
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+
+</BODY>
+</HTML>

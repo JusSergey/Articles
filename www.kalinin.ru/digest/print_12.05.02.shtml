@@ -1,0 +1,59 @@
+<html><head><title>ALK :: Digest :: 12.05.02</title>
+</head>
+<body bgcolor="white" text="black">
+<a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0></a>
+Этот текст распечатан с домашней странички Андрея Калинина 
+(<a href="http://www.kalinin.ru">www.kalinin.ru</a>).<br>
+Оригинал статьи находится по этому адресу: <a href="http://www.kalinin.ru/digest/12.05.02.shtml">http://www.kalinin.ru/digest/12.05.02.shtml</a><br>
+<hr>
+<br>
+
+<h1>Дайджест (12.05.02)</h1>
+<p><a href="http://groups.google.com/groups?dq=&hl=ru&threadm=12595%40star.cs.vu.nl&rnum=1&prev=/groups%3Fq%3Dg:thl697941860d%26dq%3D%26hl%3Dru%26selm%3D12595%2540star.cs.vu.nl">LINUX is obsolete.</a> (20:22)</b><br>
+<table width="100%" cellspacing="0" cellpading="0"><tr>
+<td width="15"><img src="/images/1x1.gif" border="0" alt="" width="15" heigth="1"></td>
+<td valign="top" align="justify"><p align="justify">Флейм, начатый Таненбаумом про Linux в 1992 (sic!) году.
+Очень забавно прочитать. Честно говоря, я никогда не мог
+подумать, что его Minix действительно кем-то использовалась
+в иных целях, кроме более подробного изучения книги
+"Operating systems: Design and implementation." А, оказывается,
+он очень нервничал по поводу того, что Linux, в ту пору еще очень 
+простой, вытеснял Minix с компьютеров "фанатов." Очень странно
+видеть ревность у такого именитого автора. С другой стороны,
+Торвальдс в этом споре тоже со-о-овсем не вежлив... 
+Вообще, этот тред я начал искать после того, как в книжке
+"Just for fun: рассказ нечаяного революционера" (написанной
+Дэвидом Даймондом со слов Торвальдса) увидел упоминание
+об этой переписке. Что можно сказать... в книжке
+ответ Торвальдса приглажен. Интересно, это наши
+переводчики так перевели, или редакторы 
+оригинального издания подкорректировали? Вообще,
+очень интересная дискуссия. По ответам Таненбаума можно
+запросто отследить какое развитие операционных систем
+предполагалось и насколько это расходится с сегодняшней
+ситуацией. Конечно же, справедливости ради надо 
+сказать, что Таненбаум в большинстве случаев был формально прав, но 
+вот только для широкого распространения Linux'а, которое
+мы сейчас имеем, этого недостаточно. Linux занял нишу 
+свободных BSD-клонов на домашних компьютерах людей, 
+увлекающихся программированием (BSD этого сделать не могла,
+потому что ее авторы в тот момент судились
+с AT&T и не могли распространять операционную систему), а в момент развития
+такая система не могла иметь сложного проекта: монолитное
+ядро ему только помогло. Стоит заметить, что в этой
+дискуссии уже упоминается Hurd! В общем, очень забавно. Вообще, хотелось
+бы найти более поздние отзывы Таненбаума о Linux, для сравнения,
+потому что в моем издании "Operating systems" он говорит о Linux
+и Minix несколько иные вещи.<nobr>&nbsp;&nbsp;&nbsp;<a href="http://groups.google.com/groups?dq=&hl=ru&threadm=12595%40star.cs.vu.nl&rnum=1&prev=/groups%3Fq%3Dg:thl697941860d%26dq%3D%26hl%3Dru%26selm%3D12595%2540star.cs.vu.nl">&gt;&gt;&gt;&gt;</a></nobr>
+</p></td></tr></table>
+
+
+
+
+<hr>
+&copy;2000-2001 by Andrey L. Kalinin, 
+<a href="http://counter.rambler.ru/top100/" alt="Rambler's Top100" target="_blank"><img align=right src="http://images.rambler.ru/top100/banner-88x31-rambler-black2.gif" border=0 width=88 height=31></a>
+<br>
+andrey@kalinin.ru
+</body>
+</html>

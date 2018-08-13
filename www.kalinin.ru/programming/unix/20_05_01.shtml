@@ -1,0 +1,507 @@
+<html><head><title>ALK :: Unix :: write() или writev()?</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/unix/">unix</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/comment/urls/07_05_01.shtml">&lt;&lt;</a>&nbsp;20.05.01&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>write() или writev()?
+</h1> 
+  <p align="justify">
+    Меня давно интересовал вопрос, что и когда лучше использовать,
+    вызов write() или writev()? Именно ответом на него я начну новую
+    рубрику на моем хоумпейджере.
+  </p>
+  <p align="justify">
+    Для людей, не знакомых с системными вызовами в Unix'е, постараюсь
+    вкратце объяснить что это такое. Прототип <code>write()</code>
+    выглядит следующим образом:
+  </p>
+<pre>
+ssize_t write(int d, const void *buf, size_t nbytes);
+</pre>
+  <p align="justify">
+    Эта функция позволяет записать <code>nbytes</code> байт из буфера
+    <code>buf</code> в файл или сокет, определяемый дескриптором
+    <code>d</code>. Когда вы в своей программе используете этот вызов, 
+    то это на самом деле функция-заглушка, обращающаяся потом к
+    реальному вызову ядра. При этом, для каждого типа дескриптора
+    (файл на диске с файловой системой ufs, файл в сетевой файловой
+    системе nfs, сокет) используется своя версия вызова,
+    предоставляемая интерфейсом этого типа идентификаторов. 
+    Заметьте -- ядро Unix'а написано на C, но при этом является вполне
+    объектно-ориентированным. 
+  </p>
+  <p align="justify">
+    При этом, когда пользовательская программа передает указатель на
+    буфер, то он на самом деле внутренний для процесса, и для того,
+    чтобы ядро могло бы получить доступ к данным процесса, приходится
+    делать преобразование адреса. После того, как преобразование
+    сделано, данные из буфера копируются во внутренние буфера ядра
+    и происходит вызов внутренних подпрограмм для соответствующего
+    типа дескриптора. 
+  </p>
+  <p align="justify">
+    Абзац выше --- попытка на пальцах объяснить достаточно сложные
+    вещи и верен лишь в первом приближении (в том смысле, что можно еще
+      много чего уточнить), но его хватит. То есть,
+    надо понять, что, во-первых, при вызове <code>write()</code>
+    выполняется переход из контекста процесса в контекст ядра и,
+    во-вторых, происходит копирование данных внутрь памяти ядра.
+  </p>
+  <p align="justify">
+    Вызов <code>writev()</code> несколько отличается по своему
+    прототипу: 
+  </p>
+<pre>
+ssize_t writev(int d, const struct iovec *iov, int iovcnt);
+</pre>
+  <p align="justify">
+    Где структура <code>iovec</code> определяется следуюшим образом:
+  </p>
+<pre>
+struct iovec {
+   char   *iov_base;
+   size_t iov_len;
+};
+</pre>
+  <p align="justify">
+    Через массив <code>iov</code> передаются адреса и размеры буферов, 
+    которые должны быть записаны в дескриптор <code>d</code>. Этот
+    вызов существует потому, что очень часто приходится сбрасывать
+    несколько структур одновременно в файл, и если использовать
+    <code>write()</code> и стремиться к атомарности операций (что
+    вполне естественно: запись большого количества данных на диск
+    гораздо быстрее, чем многократная запись маленьких кусочков, это
+    связано с тем, что в этом случае время поиска места на диске будет 
+    значительно более существенным, чем время непосредственной
+    записи), тогда придется делать большой буфер, куда копировать
+    (например, через <code>memcpy()</code>) содержимое маленьких записей...
+  </p>
+  <p align="justify">
+    Это означает, что при вызове <code>write()</code> и предыдущим
+    сбором данных в один буфер, сначала будет выполнено много
+    копирований внутри процесса (<code>memcpy()</code> не производит
+    переключения контекста процесса, понятно что это не надо при
+    копировании данных внутри адресного пространства процесса), а
+    потом будет выполнено одно копирование из адресного пространства
+    процесса в адресное пространство ядра. 
+  </p>
+  <p align="justify">
+    Вызов <code>writev()</code> позволяет сразу же передать ядру много 
+    указателей и позволяет убрать лишнее копирование данных внутри
+    процесса, собрав их сразу же в буфер внутри ядра. 
+  </p>
+  <p align="justify">
+    Вроде бы, так как количество копирований данных становится меньше, 
+    вызов <code>writev()</code> должен работать быстрее, чем
+    <code>write</code> в случае нескольких буферов.
+  </p>
+  <p align="justify">
+    На самом деле, это не так. Все дело в том, что при использовании
+    <code>write()</code> выполняется только одно копирование из
+    пространства процесса в пространство ядра, а при использовании
+    <code>writev()</code> --- несколько. При этом, во-первых, на
+    каждое такое копирование уходит время на вычисление адреса,
+    понятного ядру, по адресу процесса, и, во-вторых, на sdram-памяти
+    операция одного последовательного копирования большого объема
+    данных быстрее, чем много операций копирования маленьких кусочков
+    (при равной сумме объемов).
+  </p>
+  <p align="justify">
+    Соответственно, вопрос заключается в том, когда лучше использовать 
+    <code>write()</code>, а когда -- <code>writev()</code> и вообще,
+    справедливы ли рассуждения выше.
+  </p>
+  <p align="justify">
+    Для этого была написана очень простая программа, которая
+    записывает несколько раз на диск "что-то" через
+    <code>writev()</code> и <code>write()</code>:
+  </p>
+<pre>
+#include &lt;sys/types.h&gt;
+#include &lt;sys/uio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;time.h&gt;
+#include &lt;assert.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;syslog.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define NUM_ELEMS 1000
+#define ELEM_SIZE 1000
+#define WRITES_COUNT 100
+
+iovec iov[NUM_ELEMS];
+
+char* data[NUM_ELEMS];
+char buf[NUM_ELEMS*ELEM_SIZE];
+
+void iov_write(int fd)
+{
+    for(int i = 0; i &lt; NUM_ELEMS; i++)
+	{
+	    iov[i].iov_len = ELEM_SIZE;
+	    iov[i].iov_base = data[i];
+	}
+
+    writev(fd, iov, NUM_ELEMS);
+}
+
+void buf_write(int fd)
+{
+    for(int i = 0; i &lt; NUM_ELEMS; i++)
+	memcpy(buf + i*ELEM_SIZE, data[i], ELEM_SIZE);
+
+    write(fd, buf, NUM_ELEMS*ELEM_SIZE);
+}
+
+int main()
+{
+    for(int i = 0; i &lt; NUM_ELEMS; i++)
+	data[i] = (char*)malloc(ELEM_SIZE);
+
+    int fd = open("test_write", O_RDWR | O_TRUNC | O_CREAT, 0644);
+
+    for(int i = 0; i &lt; WRITES_COUNT; i++)
+	{
+	    iov_write(fd);
+	    buf_write(fd);
+	}
+
+    close(fd);
+
+    return 0;
+}
+</pre>
+  <p align="justify">
+    На самом деле, я еще инициализировал <code>data[i]</code>, чтобы
+    он был заведомо ненулевым.
+  </p>
+  <p align="justify">
+    Эта программа компилировалась командой вида:
+  </p>
+<pre>
+g++ -pg t_write.cpp
+</pre>
+  <p align="justify">
+    И получившийся профайл изучался на предмет количества времени,
+    затраченного в функциях <code>buf_write()</code> и
+    <code>iov_write()</code>. При этом суммировалось системное и
+    пользовательское время. Надо сказать, что параметры оптимизации,
+    конечно же, никак не влияют на количество затраченного времени
+    внутри этих функций (по понятным причинам --- большая часть
+    времени тратится на то, до чего оптимизатору не дотянуться).
+  </p>
+  <p align="justify">
+    Программа компилировалась с различными параметрами (которые
+    выделены вверху в define), некоторые результаты я приведу (для
+    NUM_ELEMS и WRITES_COUNT тех же, что и в программе, но разным
+    ELEM_SIZE). 
+  </p>
+<pre>
+ELEM_SIZE  iov_write  buf_write
+     1000     1.59ms     2.34ms
+      500     0.96       1.27
+      300     0.55       0.76
+      200     0.38       0.50
+      100     0.23       0.21
+       50     0.10       0.09
+       10     0.03       0.02
+        5     0.04       0.02
+        3     0.03       0.02
+        1     0.03       0.02
+</pre>
+  <p align="justify">
+    В общем-то, к единицам измерения надо относится так, что это время 
+    на машине средней паршивости, с RAID-массивом и памятью годовалой
+    давности. Для более быстрых или более медленных машин результаты
+    будут иными, в частности для моей домашнего, уже очень старого
+    компьютера, <code>iov_write()</code> был заметно лучше уже при
+    размере ELEM_SIZE 100.
+  </p>
+  <p align="justify">
+    Это говорит о том, что использование <code>writev()</code>
+    оправданно тогда, когда есть большие массивы данных, и хотя
+    граница "большие-маленькие" размыта по скорости компьютра, можно утверждать
+    что, к примеру, для записи целых чисел использование
+    <code>writev()</code> совершенно неразумно, лучше собирать все в
+    один массив и его передавать к <code>write()</code>.
+  </p>
+  <p align="justify">
+    Еще хочется отметить, что при размере элемента 1,3 и 5 байтов
+    померять точно, сколько будет выполняться функция, нельзя, потому
+    что при этом сказывается выполнение других процессов (для более
+    точных измерений 
+    надо увеличить количество записываемых элементов) и цифры в
+    таблице приведены усредненные для нескольких запусков. Для больших 
+    размеров, время выполнения практически не изменялось от запуска к
+    запуску. 
+  </p>
+
+<h2>Резюме</h2>
+  <p align="justify">
+    Как видно из представленных чисел, вызов <code>writev()</code>
+    хорош тогда, когда в списке буферов есть такие, которые по размеру 
+    больше хотя бы 200 байт, до того лучше использовать
+    <code>write()</code>. И хотя число-граница может колебаться в
+    зависимости от компьютера и операционной системы (для опытов
+    использовалась FreeBSD 4.3), точно надо использовать
+    <code>write()</code> для маленьких размеров буферов.
+  </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/unix/print_20_05_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://lib.ru/BACH/" target="_blank">http://lib.ru/BACH/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Морис Дж. Бах, "Операционная система Unix". Уже старая книга, содержащая информацию о том,  "как это было", но все равно интересная для тех, кто не знаком с устройством  Unix'а.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/03_12_00.shtml">/comment/books/03_12_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Uresh Vahalia, Unix Internals (книга на английском языке).
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">/comment/books/31_10_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ А. Робачевский, Операционная система Unix. 
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/03_07_01.shtml">Потоки </a> (03.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется наконец-то выполнить данное мною еще полгода назад обещание и рассказать о том, что такое потоки в Unix и каких типов...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/03_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/08_06_01.shtml">pregrad.net, заказ товаров из интернет-магазинов Европы и США </a> (08.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Некоторое время назад передо мной встала достаточно серьезная проблема --- явная нехватка литературы по некоторым, живо интересующим меня вопросам. Оказалось, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_05_01.shtml">www.researchindex.com, The NECI Scientific Literature Digital Library </a> (07.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+К сожалению, приходится признать, что для русскоязычного специалиста ощущается достаточно большая нехватка информации. Причем, если по достаточно общеизвестным, популярным или попросту...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/03_07_01.shtml">Потоки </a> (03.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется наконец-то выполнить данное мною еще полгода назад обещание и рассказать о том, что такое потоки в Unix и каких типов...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/03_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/20_05_01.shtml">write() или writev()? </a> (20.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Меня давно интересовал вопрос, что и когда лучше использовать, вызов write() или writev()? Именно ответом на него я начну новую рубрику...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/20_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/08_06_01.shtml">pregrad.net, заказ товаров из интернет-магазинов Европы и США </a> (08.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Некоторое время назад передо мной встала достаточно серьезная проблема --- явная нехватка литературы по некоторым, живо интересующим меня вопросам. Оказалось, что...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/08_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/07_05_01.shtml">www.researchindex.com, The NECI Scientific Literature Digital Library </a> (07.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+К сожалению, приходится признать, что для русскоязычного специалиста ощущается достаточно большая нехватка информации. Причем, если по достаточно общеизвестным, популярным или попросту...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/07_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

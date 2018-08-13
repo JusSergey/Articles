@@ -1,0 +1,481 @@
+<html><head><title>ALK :: Соревнования :: III Московская олимпиада.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/contest/">соревнования</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/stud/20_10_00.shtml">&lt;&lt;</a>&nbsp;22.10.00&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>III Московская командная олимпиада по программированию
+</h1> 
+    <p align="justify">
+      Вот уже в третий раз МГУ проводит Московскую 
+      командную олимпиаду по программированию по правилам,
+      аналогичным правилам ACM. Можно <a href="28_09_00.shtml">спорить</a>
+      о корректности этих правил, но сам факт проведения
+      Московской олимпиады несомненно позитивен хотя бы потому,
+      что участие в олимпиаде это всегда интересно. А так как
+      в Москве находится достаточное количество ВУЗов, которые
+      готовят специалистов, связанных с программированием,
+      то о присутствии участников на этой олимпиаде можно не беспокоиться.
+    </p>
+    <p align="justify">
+      МАИ участвует в Московских олимпиадах с самого начала,
+      с переменным успехом. Первая олимпиада принесла двум командам
+      МАИ дипломы второй степени; в тоже самое время вторая олимпиада
+      была командами МАИ провалена: из четырех заявленных
+      команд в финальный тур прошли только две, да и из
+      тех только одна смогла сдать хотя бы одну задачу. Ничего
+      приятного в этом не было, хотя выводы лично я из этого сделал:
+      это была моя последняя олимпиада. Именно тогда я окончательно
+      осознал, что участие в олимпиадах по программированию больше
+      меня не так увлекает, как ранее. Хотя, если честно, иногда мне кажется
+      что я был немного неправ и мне стоило бы поучаствовать еще и в этом
+      году в олимпиадах...
+    </p>
+    <p align="justify">
+      В этот раз МАИ выступило... нормально. Т.е., не то, что бы уж очень хорошо,
+      но и не особенно плохо. Одна из команд (МАИ-2) получила диплом третьей степени
+      (кстати, она же будет участвовать в полуфинале чемпионата мира по программированию
+      в Петербурге), другая команда (МАИ-1) не смогла сдать ни одной задачи, к сожалению.
+      Вызвано это, я думаю, различными психологическими качествами этих команд, хотя
+      по своим "профессиональным" навыкам они примерно одной силы.
+    </p>
+    <p align="justify">
+      Первая олимпиада в Москве отличалась качеством предложенных задач --- даже
+      самая сильная команда Wizards смогла решить тогда только три задачи из шести. 
+      Вторая олимпиада в этом смысле проигрывала первой, потому что задачи вдруг стали
+      проще, из-за чего сама олимпиада многое потеряла. С удовлетворением хочу
+      заметить, что на этот раз организаторами был опять предложен
+      набор задач, которые по своей сложности и интересности не уступают
+      полуфинальным. Очень хочется отдельно отметить, что на этот раз
+      задачи ориентированны именно на программирование, а не, например, на
+      математику --- это несомненный плюс.
+    </p>
+    <p align="justify">
+      Вообще, у меня нет больших претензий к организаторам --- они постарались
+      на славу. Единственная проблема, с которой столкнулись
+      участники, так это "дикое" отопление в корпусе ВМК, в результате чего 
+      самым приемлемым вариантом одежды были бы шорты и майка. К сожалению,
+      участники этого заранее предусмотреть не смогли, поэтому
+      многим пришлось находиться внутри в свитерах... кроме того, очень
+      мало свободного места. Но это все не так страшно.
+    </p>
+    <p align="justify">
+      Интересно нововведение, согласно которому в олимпиаде смогли
+      принять участие команды из различных ВУЗов страны через интернет.
+      Для них проводился отдельный тур (т.е., их результаты не влияли
+      на игру команд в основном туре), но все равно в олимпиаде
+      приняли участие сильнейшие команды страны (например, команды
+      ИТМО и УрГУ). 
+    </p>
+    <p align="justify">
+      Хочется обратить внимание на одну интересную особенность: команды,
+      которые участвовали в "заочном" туре показали примерно те же результаты,
+      что и команды, участвовавшие в основном. Например, лидеры, т.е. команды Wizards
+      и ИТМО-1, решили по 4 задачи. Это очень забавный факт, потому
+      что, как мне казалось, команды, участвующие в олимпиаде "через интернет",
+      должны были бы показывать более высокие результаты.
+    </p>
+    <p align="justify">
+      Таким образом, я хочу выразить признательность
+      организаторам олимпиады за проведение олимпиады. 
+    </p>
+    <p align="justify">
+      А теперь перейду к критике. Нет, не организаторов (они действительно
+      все сделали очень хорошо). Спонсоров.
+    </p>
+    <p align="justify">
+      У олимпиады было два спонсора: "генеральный" интернет-служба Port.Ru и
+      "обычный" лаборатория Касперского. И если от Касперского никого
+      не было видно, то Port.Ru прислал своих представителей для
+      того, что бы те смогли что-то сказать студентам. Сказали... лучше
+      бы они молчали.
+    </p>
+    <p align="justify">
+      Перед предварительным туром выступал некий "молодой человек", речь
+      которого сводилась к превосходству Port.Ru над всеми остальными и
+      приглашениям "поучаствовать в успехе". Спору нет, Port.Ru действительно
+      владеет очень посещаемым ресурсом, Mail.Ru, который на текущий момент по 
+      своей популярности уступает только Рамблеру. Но, как вскоре выяснилось,
+      под "поучаствовать в успехе" подразумевалось заполнить некоторую "анкету 
+      кандидата": лист формата А4, с обоих сторон которого предлагается
+      вписать в нужные графы свои ответы. В смысле, указать свои параметры (ТТХ, то есть).
+      Я вообще плохо переношу любые анкеты, так как считаю что при ее заполнении
+      теряется личность человека, которая, собственно, и представляет некоторый
+      интерес. А уж тем более мне не понравилось появление этой анкеты
+      на олимпиаде. Тем более, что название "анкета кандидата" выдает то,
+      что она заполняется при приеме на работу --- при чем тут олимпиада?
+    </p>
+    <p align="justify">
+      Анкета, кстати говоря, очень глупа. Ну зачем нужны поля "гражданство", "адрес
+      прописки", "состав семьи" и прочее? Возможно, это представляет интерес
+      при приеме на работу, хотя я очень сильно сомневась,
+      что это может понадобиться до перехода дела в отдел кадров. 
+    </p>
+    <p align="justify">
+      Естественно, что эту анкету почти никто из участников не заполнил. Зачем она
+      нужна-то? Но на утро следующего дня (основной тур), выяснилась
+      правота фразы "если не будут брать, отключим воду". Пришли
+      представители оргкомитета и сказали буквально следующее: "не обижайте
+      нашего спонсора, заполните анкету", после чего добавили, что это "обязательно" и
+      что не заполнившие анкету просто не получат паролей на вход в систему. 
+    </p>
+    <p align="justify">
+      Возможно, что это была шутка, но участники этого не поняли и ринулись 
+      заполнять анкеты. Я практически уверен, что если это был собственный "почин"
+      организаторов, то они оказали Port.Ru медвежью услугу. Если же это 
+      требование Port.Ru... то тут мне говорить особенно нечего. И так все понятно --- нашли
+      время и место. А главное --- способ.
+    </p>
+<table align="right" columns="3" border="0" cellspacing="0" cellpadding="5" width="150">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Лирическое отступление:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2"><font face="arial,sans-serif" size="-2">
+    <p align="justify">
+      Давно убедился в том, что "приятным" сотрудником
+      является тот, кто просто хорошо выполняет свои обязанности
+      и никуда больше не лезет, без просьб. Все
+      отходы от этого правила превращаются в "дураков - начальников",
+      "сволочей - охранников" и "кретинов - системных администраторов".
+    </p>
+    <p align="justify">
+      Собственно говоря, так и тут. Взялся человек
+      за то, что делать не умеет, и получился такой
+      нелицеприятный результат.
+    </p>
+</font></td></tr></table>
+    <p align="justify">
+      Следующая встреча с представителями Port.Ru произошла примерно в пять часов,
+      когда олимпиада была завершена и организовалась маленькая пауза, которую
+      заполнили речью представителя от генерального спонсора. Я не помню
+      точно, как представился этот "молодой человек" (новый), то ли "вицепрезидент",
+      то ли "директор", не суть важно. Все дело в том, что начал
+      свою речь он примерно так:
+    </p>
+<table align="center" columns="3" border="0" cellspacing="0" cellpadding="5" width="60%">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Цитата</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%">
+    <p align="justify">
+      --- Продолжите фразу: все фигня, кроме...
+    </p>
+    <p align="justify"> 
+      --- Пчел!
+    </p>
+    <p align="justify">
+      --- Правильно, возьми с полки пирожок. Но и пчелы тоже фигня.  Кроме того,
+      еще фигня и вот это, и это, и это... только одно не фигня. Вы --- не фигня.
+    </p>
+    <p align="justify">
+</td></tr>
+</table>
+      Ну и дальше в том же духе, перемежая рассказ демонстрированием сотового телефона. 
+    </p>
+    <p align="justify">
+      В общем --- клоун. И вел себя как клоун. Я даже могу сказать --- если
+      раньше у меня не было никаких впечатлений от Port.Ru, то теперь
+      они сугубо отрицательные. И вызвано это именно дурацким поведением
+      представителей этой фирмы --- просто потому, что не может
+      официальный представитель фирмы вести свою речь в подобном духе. 
+      Потому что по его поведению делается выводы о всей фирме в целом,
+      а он такую чушь несет.
+    </p>
+    <p align="justify">
+      Я не знаю, может быть представители Port.Ru, которые выступали перед
+      нами, хорошие специалисты в своих областях, но зачем же им поручать
+      выполнять несвойственные задачи? Неужели в Port.Ru нет людей,
+      которые умеют разговаривать? Если нет, то это плохо. Если есть,
+      то это еще хуже, потому что их не прислали. 
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Олимпиада удалась, за что большое спасибо организаторам. Единственное --- не
+      надо было выпускать представителей Port.Ru "на сцену"...
+    </p>
+<h2>PS</h2>
+    <p align="justify">
+      Меня очень позабавила одна ситуация сегодня... представьте: приходит
+      представитель оргкомитета в аудторию, где собрались участники,
+      и говорит:
+    </p>
+    <p align="justify">
+      --- Извините пожалуйста, но гардероб работает до 19:30 и поэтому
+      они просят забрать свои вещи из него сейчас.
+    </p>
+    <p align="justify">
+      Раздается шум, из которого слышны выкрики: "сейчас только 18:00, успеем",
+      на что представитель оргкомитета, несколько смутившись и посмотрев
+      на часы в аудитории, ответил следующее:
+    </p>
+    <p align="justify">
+      --- Они сказали, что закроют его через пять минут...
+    </p>
+    <p align="justify">
+      Смех. Шум. Аплодисменты. 
+    </p>
+
+<br>
+<p align="right"><a target="_blank" href="/programming/contest/print_22_10_00.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://contest.cmc.msu.ru" target="_blank">http://contest.cmc.msu.ru</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Официальная страница Московских олимпиад по программированию.
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.acm.org/contest" target="_blank">http://www.acm.org/contest</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Домашняя страница олимпиад ACM.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://www.ifmo.ru/neerc" target="_blank">http://www.ifmo.ru/neerc</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Официальная страница полуфинала чемпионата мира по программированию на сервере Института Точной Механики и Оптики в Санкт-Петербурге.
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/28_09_00.shtml">Критика правил олимпиад ACM </a> (28.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы знаете, самое смешное заключается в том, что я уверен в полной практической бесполезности навыков, которые были мной получены на олимпиадах....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/28_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/20_10_00.shtml">Космические корабли бороздят большой театр </a> (20.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В бланке отчета по нашим лабораторным работам, которые заполняют студенты после их выполнения, кроме пунктов "задание" и невнятного "сценарий выполнения", существует...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/22_10_00.shtml">III Московская командная олимпиада по программированию </a> (22.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вот уже в третий раз МГУ проводит Московскую командную олимпиаду по программированию по правилам, аналогичным правилам ACM. Можно о корректности этих...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/22_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/28_09_00.shtml">Критика правил олимпиад ACM </a> (28.09.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Вы знаете, самое смешное заключается в том, что я уверен в полной практической бесполезности навыков, которые были мной получены на олимпиадах....<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/contest/28_09_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/contest/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/urls/25_10_00.shtml">www.brainbench.com, раздача сертификатов </a> (25.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Сертифицировать можно все что угодно и кому угодно, но обычно подразумевается, что тот, кто сертифицирует, имеет право это делать. То есть,...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/urls/25_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/20_10_00.shtml">Космические корабли бороздят большой театр </a> (20.10.00)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+В бланке отчета по нашим лабораторным работам, которые заполняют студенты после их выполнения, кроме пунктов "задание" и невнятного "сценарий выполнения", существует...<nobr>&nbsp;&nbsp;&nbsp;<a href="/stud/20_10_00.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,521 @@
+<html><head><title>ALK :: Unix :: Потоки.</title>
+<style type="text/css"><!-- 
+A:hover {COLOR: #F78743; text-decoration : underline;}
+A { text-decoration : none;}
+body { font-family: times new roman, serif; }
+p {font-family: times new roman, serif; text-align: justify; }
+//-->
+</style></head>
+<body bgcolor="#FBF9F1" vlink="#93481B" link="#DE6F2C" text="black" alink="#F78743">
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+<tr><td width="70%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F"><a href="http://counter.rambler.ru/top100/"><img align="left" src="http://counter.rambler.ru/top100.cnt?160852" alt="Rambler's Top100 Service" width=1 height=1 border=0>
+<a href="/">калинин.ru</a>&nbsp;/&nbsp;<a href="/programming/">программирование</a>&nbsp;/&nbsp;<a href="/programming/unix/">unix</a>&nbsp;/&nbsp;
+
+</font></td>
+<td bgcolor="#E3DAA5" align="right"><font face="arial,sans-serif" size="-1" color="#83350F"><a href="/programming/opt/22_06_01.shtml">&lt;&lt;</a>&nbsp;03.07.01&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;</a></font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+<h1>Потоки
+</h1> 
+    <p align="justify">
+      Хочется наконец-то выполнить данное мною еще полгода назад
+      обещание и рассказать о том, что такое потоки в Unix и каких
+      типов они бывают. Предполагается, что читатель хотя бы в общих
+      чертах представляет себе что такое процесс и поток.
+    </p>
+    <p align="justify">
+      В Unix изначально существовала только одна модель одновременного 
+      выполнения нескольких задач --- разделение их на несколько
+      процессов, каждому из которых выделялось бы некоторое количество 
+      процессорного времени. Изначально эта схема была чрезвычайно
+      проста и эффективна, в частности из-за того, что Unix в своем
+      первоначальном варианте был рассчитан на работу только с одним
+      процессором. Это значительно упрощало всю схему обеспечения
+      многозадачности, потому что при ориентированности на один
+      процессор синхронизация в пределах ядра не требовалась (учитывая то, что вызовы 
+      ядра всегда минимизировались по времени и не могли вытесняться
+      другими вызовами ядра). 
+    </p>
+<table align="right" columns="3" border="0" cellspacing="0" cellpadding="5" width="150">
+<tr><td></td></tr>
+<tr><td>&nbsp;</td>
+<td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Лирическое отступление:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="4"></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2"><font face="arial,sans-serif" size="-2">
+    <p align="justify">
+      Распространено заблуждение, что "свободные" варианты Unix ни в
+      чем не уступают  коммерческим и что единственный плюс, который
+      можно получить приобретая коммерческий вариант Unix, это
+      техническая поддержка со стороны фирмы-производителя. Так вот
+      это не так: коммерческие операционные системы отличаются во
+      многом, в частности, в алгоритмах, поддерживающих
+      многозадачность, методах распределения оперативной памяти или
+      сетевых средствах. Другое дело, что  в большинстве ситуаций
+      возможностей той же FreeBSD хватает с избытком.
+    </p>
+</font></td></tr></table>
+    <p align="justify">
+      С другой стороны, именно развитие этого подхода в разных
+      направлениях определило множество сложных коммерческих и
+      свободно-распространяемых операционных систем, которые имеются
+      на сегодняшний момент. 
+    </p>
+    <p align="justify">
+      Фактически, с процессом связывается его адресное пространство
+      (данные), код выполняемой программы, стек, содержимое регистров
+      и еще некоторое количество структур данных ядра (таких как
+      идентификаторы группы и пользователя, присоединенный терминал,
+      приоритет выполнения и прочее). В тот момент, когда происходит переключение 
+      процессора с одного процесса на другой, ядро должно каким-то
+      образом сохранить состояние одного процесса и потом восстановить 
+      состояние другого. Мало того, когда один процесс вызывает
+      какой-то вызов ядра, выполняются примерно такие же действия:
+      сохраняется состояние процесса, затем происходит переключение
+      регистров таким образом, чтобы было возможно выполнить код,
+      находящийся внутри ядра, после чего состояние процесса (обращавшегося 
+      к ядру или иного, если время выделенное процессу уже
+      истекло), восстанавливается. 
+    </p>
+    <p align="justify">
+      Эта схема очень проста, но у нее есть много
+      недостатков. Например, значительно усложняется межпроцессное взаимодействие.
+      Конечно же, в современных вариантах Unix существуют такие
+      способы, как разделяемые пространства оперативной памяти, но
+      было время, когда единственным способом оперативно передать
+      большое количество данных от одного процесса к другому было
+      использование программного канала. В то же время, очень часто
+      является удобным разделить одну и ту же задачу на несколько
+      маленьких подзадач так, чтобы они разделяли все свои данные.
+    </p>
+    <p align="justify">
+      Кроме того, описанный выше порядок смены контекста процесса
+      слишком дорогостоящий и не позволяет эффективно разбить
+      один поток управления на несколько, потому что при этом
+      возникают накладные расходы на сохранение и восстановление
+      состояний процесса.
+    </p>
+    <p align="justify">
+      Потоки появились как логическое продолжение понятия
+      процесса. Во-первых, появились некоторые задачи внутри ядра,
+      которые точно так же требовалось выполнять параллельно с
+      остальными работающими процессами. Эти задачи не имеют своего
+      собственного адресного пространства и работают внутри
+      пространства ядра. Фактически, они представлены лишь стеком
+      данных и набором регистров, что позволяет ядру очень быстро
+      переключаться между ними. Понятно, что ядро современной операционной системы
+      посредством разделения некоторых частей внутри себя на такие
+      потоки управления, может работать одновременно на нескольких
+      процессорах, в случае необходимости.
+    </p>
+    <p align="justify">
+      Подобные потоки (своеобразные внутренние процессы ядра)
+      называются потоками ядра. В современных операционных системах
+      традиционные процессы реализуются именно на них.
+    </p>
+    <p align="justify">
+      Потоки внутри пользовательской программы обычно служат для того,
+      чтобы дать возможность программисту разделить задачу
+      на несколько подзадач для более удобного и логичного внутреннего 
+      представления программы. Обычно программист не особенно
+      заботится о том, сколько процессоров есть на 
+      компьютере, где будет запущена его программа, и действительно ли 
+      затребованные им десять потоков будут работать одновременно на
+      десяти процессорах. Поэтому потоки, предоставляемые в
+      распоряжение клиентских программ, на самом деле, могут вообще не 
+      иметь никакого отношения к потокам ядра и быть ограничены только 
+      одним процессором! 
+    </p>
+    <p align="justify">
+      Мало того, переключение потоков может быть реализовано и без
+      поддержки потоков ядром исключительно на пользовательском
+      уровне. То есть, если знать о том, как на конкретной архитектуре 
+      микропроцессора устроен стек, то, опять же, имея доступ к
+      регистрам процессора, можно переключать выполнение команд из
+      одного потока в другой, сохраняя при этом всю "историю" вызова
+      подпрограмм в каждом потоке. Тем самым получается многопоточная
+      программа, не требующая поддержки потоков со стороны
+      ядра. Вообще, ядро
+      в этом случае может быть честно уверенно, что выполняется
+      обычный процесс --- с точки зрения операционной системы подобный 
+      многопоточный процесс ничем не отличается от однопоточного.
+    </p>
+    <p align="justify">
+      Такой подход обеспечения многопоточности получил название
+      "пользовательских потоков" и он имеет некоторые преимущества по
+      сравнению с использованием нескольких процессов: например,
+      совершенно не требует сохранения всего состояния процесса при
+      переключении от одного потока к другому, только модификацию
+      нескольких регистров (командного и стека). К недостаткам можно отнести 
+      то, что даже на нескольких процессорах такие потоки не могут
+      выйти за пределы одного, то есть они могут вместе с процессом
+      переходить с одного процессора на другой, но не могут
+      выполняться одновременно на двух.
+    </p>
+    <p align="justify">
+      В некоторых операционных системах ядро все-таки предоставляет
+      доступ пользовательским процессам к потокам ядра. При этом,
+      понятно, что такие потоки требуют значительно меньше затрат на
+      переключение, чем процессы и позволяют при этом использовать
+      столько процессоров, сколько имеется на данном компьютере, но
+      все операции с потоками требуют переключения контекста
+      процесса в контекст ядра, включая такие часто используемые
+      процедуры в многопоточных приложениях, как синхронизацию.
+      Это значит, что эффективно их можно использовать
+      только в случаях практически независимых потоков, которые 
+      очень редко используют общие переменные. 
+    </p>
+    <p align="justify">
+      Существуют комбинированные подходы. При этом ядро операционной
+      системы все-таки знает о том, сколько потоков имеется у процесса 
+      и может выделить несколько потоков ядра на один процесс так,
+      чтобы пользовательские потоки можно было распределить между
+      потоками ядра. При этом, понятно, потоков ядра может быть
+      выделено много меньше, чем пользовательских потоков.
+    </p>
+    <p align="justify">
+      Практически все известные коммерческие Unix-подобные
+      операционные системы поддерживают такие "комбинированные"
+      потоки. Мало того, почти выработан общий стандарт на программный 
+      интерфейс к пользовательским потокам под названием pthreads,
+      используя который программисты могут писать многопоточные
+      приложения почти не задумываясь о том, под какой операционной
+      системой будут выполняться их программы.
+    </p>
+    <p align="justify">
+      "Почти", это потому, что существует много тонкостей. Например,
+      в известной операционной системе FreeBSD библиотека потоков pthreads является целиком
+      пользовательской (то есть, несколько потоков будут всегда
+      выполняться в пределах одного процессора). Связано это с
+      несколькими ограничениями внутри ядра, которые не позволяют
+      сделать целиком совместимую со стандартом библиотеку pthreads,
+      использующую процессы ядра. Если об этих ограничениях знать, то
+      под FreeBSD можно воспользоваться "портом" linuxthreads.
+    </p>
+    <p align="justify">
+      Использование процессов ядра зачастую очень полезно. Например,
+      если существует цикл вида:
+    </p>
+<pre>
+for(int i = 0; i &lt; 1000000; i++) 
+   A[i] = B[i]*C[i];
+</pre>
+    <p align="justify">
+      где A[i], B[i] и C[i] --- квадратные матрицы достаточно большого размера, 
+      то разделив этот цикл на, допустим, имеющиеся в наличии четыре
+      процессора функциями вида: 
+    </p>
+<pre>
+void* foo(void* start)
+{
+  for(int i = *(int*)arg; i &lt; 1000000; i += 4)
+    A[i] = B[i]*C[i];
+
+  return NULL;
+}
+</pre>
+    <p align="justify">
+      где через <code>arg</code> передается число от 0 до 3, то можно
+      получить ускорение данного куска программного кода в четыре раза 
+      (если, конечно же, операция умножения матриц может выполняться
+      параллельно). 
+    </p>
+    <p align="justify">
+      С другой стороны, если просто взять такой код и перенести его на 
+      компьютер с, допустим, двумя процессорами, то он будет
+      выполняться медленнее, чем если бы использовалось только два
+      потока ядра, потому что много времени уйдет на переключение из
+      одного потока в другой.
+    </p>
+    <p align="justify">
+      Кстати сказать, некоторые современные коммерческие компиляторы
+      фортрана умеют выделять подобные циклы и самостоятельно
+      распараллеливать на заказанное при выполнении программы
+      количество процессов ядра.
+    </p>
+    <p align="justify">
+      В то же самое время, использование в подобной ситуации
+      пользовательских потоков будет совершенно
+      неоправданно. Зато пользовательские потоки позволяют
+      программисту достаточно простым способом организовывать ожидание 
+      некоторых редких событий, к примеру, нажатие пользователем
+      клавиши на клавиатуре или получения данных из сетевого
+      устройства. Использование потоков в этих случаях позволяет
+      зачастую значительно упростить программу внутри. 
+    </p>
+    <p align="justify">
+      Тем не менее, я не рекомендую использовать пользовательские
+      потоки для программ, работающих под большими нагрузками. Опыт
+      показывает, что библиотеки пользовательских потоков очень часто
+      содержат в себе ошибки, а "реентерабельные" версии
+      используемых подпрограмм значительно меньше оттестированы, чем
+      обычные. Кроме того, становятся существенными затраты на
+      переключение пользовательских потоков и, в общем не нужную
+      синхронизацию. В то же время, обычно программу, использующую пользовательские 
+      потоки можно не менее эффективно переписать при помощи
+      использования неблокирующих, асинхронных или событийных
+      средств ввода-вывода, предоставляемых операционной системой.
+    </p>
+    <p align="justify">
+      Не стоит забывать и о традиционном для Unix'а разделения задач:
+      процессах. Во многих ситуациях последовательной обработки данных 
+      их использование позволяет эффективно загрузить все используемые ресурсы
+      ЭВМ не сталкиваясь при этом с потенциально опасными
+      "реентерабельными" версиями программных библиотек.
+    </p>
+
+<h2>Резюме</h2>
+    <p align="justify">
+      Необходимо понимать различие между потоками ядра и
+      пользовательскими потоками. Они отличаются друг от друга и
+      применяются в совершенно разных ситуациях. Одно из основных
+      отличий: потоки ядра могут работать одновременно на нескольких
+      процессорах, а пользовательские --- нет. 
+    </p>
+<br>
+<p align="right"><a target="_blank" href="/programming/unix/print_03_07_01.shtml">Версия для печати</a></p>
+<br>
+
+
+
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Ссылки по теме:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://lib.ru/BACH/" target="_blank">http://lib.ru/BACH/</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Морис Дж. Бах, "Операционная система Unix". Уже старая книга, содержащая информацию о том,  "как это было", но все равно интересная для тех, кто не знаком с устройством  Unix'а.
+</td></tr>
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/03_12_00.shtml">/comment/books/03_12_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ Uresh Vahalia, Unix Internals (книга на английском языке).
+</td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/books/31_10_00.shtml">/comment/books/31_10_00.shtml</a></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+ А. Робачевский, Операционная система Unix. 
+</td></tr>
+</table>
+</tr>
+</table>
+
+
+<table cellspacing="0" cellpadding="0">
+<tr><td width="50%" valign="top"><table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом в разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/20_05_01.shtml">write() или writev()? </a> (20.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Меня давно интересовал вопрос, что и когда лучше использовать, вызов write() или writev()? Именно ответом на него я начну новую рубрику...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/20_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+</table></td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Рядом по дате:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_07_01.shtml">High Perfomance Computing, second edition. </a> (05.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Название книги можно перевести как "Высокопроизводительные вычисления" и эта тематика в русскоязычной литературе не освещена совсем. Традиционно считается, что самой важной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/22_06_01.shtml">Ассемблер x86 против C </a> (22.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Весь текст ниже взят из переписки с . Моего тут только несколько строчек, выделенных курсивом и резюме. Текст основан на трех...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/opt/22_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+</table></td></tr></table>
+
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr></table>
+
+<table width="100%" columns="2" border="0" cellspacing="10" cellpadding="0">
+<tr><td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru">Мой блог</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+</table>
+</td>
+<td width="30"><img src="/images/1x1.gif" border="0" alt="" width="30" height="1"></td>
+<td width="50%" valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="2"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="30%" valign="top">
+<table width="100%" columns="3" border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td><td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">В этом разделе:</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/03_07_01.shtml">Потоки </a> (03.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Хочется наконец-то выполнить данное мною еще полгода назад обещание и рассказать о том, что такое потоки в Unix и каких типов...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/03_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/20_05_01.shtml">write() или writev()? </a> (20.05.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Меня давно интересовал вопрос, что и когда лучше использовать, вызов write() или writev()? Именно ответом на него я начну новую рубрику...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/unix/20_05_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/unix/">Содержание раздела полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Примерно в тоже время</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/books/05_07_01.shtml">High Perfomance Computing, second edition. </a> (05.07.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Название книги можно перевести как "Высокопроизводительные вычисления" и эта тематика в русскоязычной литературе не освещена совсем. Традиционно считается, что самой важной...<nobr>&nbsp;&nbsp;&nbsp;<a href="/comment/books/05_07_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/opt/22_06_01.shtml">Ассемблер x86 против C </a> (22.06.01)</font></td></tr>
+<tr><td background="/images/line.gif">&nbsp;&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+Весь текст ниже взят из переписки с . Моего тут только несколько строчек, выделенных курсивом и резюме. Текст основан на трех...<nobr>&nbsp;&nbsp;&nbsp;<a href="/programming/opt/22_06_01.shtml">&gt;&gt;&gt;&gt;</a></nobr>
+</font></td></tr>
+
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist">Хронология полностью...</a></td></tr>
+<tr><td bgcolor="#E3DAA5">&nbsp;&nbsp;</td>
+<td bgcolor="#E3DAA5" width="100%" nowrap><font face="arial,sans-serif" size="-1" color="#83350F">Содержание</font></td>
+<td width="40" bgcolor="white" background="/images/edge.gif"><img src="/images/1x1.gif" border="0" alt="" width="40" height="1"></td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/">Заглавная страница</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="http://blog.kalinin.ru/">Мой блог</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/about/">Мое резюме</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/digest/">Дайджест</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/programming/">Программирование</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/programming/cpp/">C&amp;C++</a><br>
+<a href="/programming/network/">Сети</a><br>
+<a href="/programming/unix/">Unix</a><br>
+<a href="/programming/alg/">Алгоритмы</a><br>
+<a href="/programming/opt/">Оптимизация</a><br>
+<a href="/programming/contest/">Соревнования</a><br>
+<a href="/programming/abstract/">Отвлеченно</a><br>
+<a href="/programming/xml/">XML</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tex/">TeX</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/tourism/">Туризм</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/tourism/story/">Байки<br>
+<a href="/tourism/photo/">Фотографии</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/comment/">Комментарии</a></td></tr>
+<tr>
+<td background="/images/line.gif">&nbsp;</td>
+<td colspan="2" width="100%"><font face="arial,sans-serif" size="-2">
+<a href="/comment/books/">Книги</a><br>
+<a href="/comment/urls/">Web-ресурсы</a><br>
+<a href="/comment/films/">Фильмы</a><br>
+<a href="/comment/internet/">Интернет</a><br>
+<a href="/comment/soft/">Программное обеспечение</a><br>
+<a href="/comment/life/">Жизнь</a>
+</td>
+</tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/stud/">Студенческое</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/etc/">Просто так</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/links/">Благодарности</a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/cgi-bin/dcforum/dcboard.cgi"><b>Форум</b></a></td></tr>
+<tr><td colspan="3"><font face="arial,sans-serif" size="-2"><a href="/hist/">Хронология</a></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr><td align="left" bgcolor="#E3DAA5" nowrap>
+<font face="arial,sans-serif" size="-2" color="#83350F">&copy;&nbsp;2000-2008, Andrey L. Kalinin<br>
+ mailto:<a href="mailto:andrey@kalinin.ru">andrey@kalinin.ru</a></font>
+</td>
+<td bgcolor="#E3DAA5" align="right">
+<table border="0" cellspacing="0" cellpadding="0" align="right"><tr>
+<td align="right" nowrap>
+<a href="http://counter.rambler.ru/top100/" target="_blank"><img alt="Rambler's Top100" src="http://top100-images.rambler.ru/top100/w9.gif" border=0 width=88 height=31></a>
+</td></tr></table>
+</td></tr>
+</table>
+
+</body>
+</html>
