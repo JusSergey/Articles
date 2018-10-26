@@ -1,0 +1,2858 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+    
+        
+    
+       
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+                                                                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+   
+
+
+
+
+    
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                          																				
+
+
+
+                                                        
+
+
+
+                                                                                            
+
+
+
+                                                                                                                    
+
+
+
+
+                            
+
+
+
+
+          
+
+
+
+                                               
+
+
+
+                                                                                     
+
+
+
+                                   
+    
+
+    
+        
+    
+       <!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xml:lang="en-US" lang="en"  >
+<head>
+       <title>WHY DOES SEND() RETURN EAGAIN / EWOULDBLOCK? (Thoughts from Support)</title>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+
+
+
+					<!-- Copyright IBM Corp. 2017  All Rights Reserved.                    -->
+
+<!--[if IE 6]><script>document.getElementsByTagName("html")[0].className+=" lotusui_ie lotusui_ie6";</script><![endif]-->
+<!--[if IE 7]><script>document.getElementsByTagName("html")[0].className+=" lotusui_ie lotusui_ie7";</script><![endif]-->
+<!--[if IE 8]><script>document.getElementsByTagName("html")[0].className+=" lotusui_ie8";</script><![endif]-->
+<!--[if IE 9]><script>document.getElementsByTagName("html")[0].className+=" lotusui_ie9";</script><![endif]-->
+<link rel="stylesheet" type="text/css" id="lotusBaseStylesheet" href="https://www.ibm.com/developerworks/community/connections/resources/web/_style?include=com.ibm.lconn.core.styles.oneui3/base/package3.css&etag=20171105.220517" appName="blogs" base="https://www.ibm.com/developerworks/community/connections/resources/web/" query="?version=oneui3&rtl=false&etag=20171105.220517" theme="gen4" defaultTheme="gen4" oneui="3"></link>
+<link rel="stylesheet" type="text/css" id="lotusSpritesStylesheet" href="https://www.ibm.com/developerworks/community/connections/resources/web/_style?include=com.ibm.lconn.core.styles.oneui3/sprites.css&etag=20171105.220517"></link>
+<link rel="stylesheet" type="text/css" id="lotusThemeStylesheet" href="https://www.ibm.com/developerworks/community/connections/resources/web/_lconntheme/gen4.css?version=oneui3&rtl=false&etag=20171105.220517"></link>
+
+<link rel="stylesheet" type="text/css" id="lotusAppStylesheet" href="https://www.ibm.com/developerworks/community/connections/resources/web/_lconnappstyles/gen4/blogs.css?version=oneui3&rtl=false&etag=20171105.220517"></link>
+<!-- Copyright IBM Corp. 2017  All Rights Reserved.                    -->
+<!-- Copyright IBM Corp. 2017  All Rights Reserved.                    -->
+
+<!-- IBM Connections Mobile App for iOS -->
+<meta content="app-id=450533489" name="apple-itunes-app" />
+<!-- IBM Connections Mobile App for Android -->
+<meta content="app-id=com.ibm.lotus.connections.mobile" name="google-play-app" />
+
+	  	
+  		  		      	<link rel="stylesheet" type="text/css" href="/developerworks/community/blogs/roller-ui/styles/minimal.css?version=20171105.220517" />
+	    	  		  	<script type="text/javascript">
+		window.currentLogin={};
+		window.__security_nonce='';
+		
+		var http;
+		if(typeof XMLHttpRequest == 'undefined') http=new ActiveXObject("Microsoft.XMLHTTP");
+		else http=new XMLHttpRequest();
+		http.open('GET', '/developerworks/community/blogs/roller-services/json/authcheck?entry=1f11de46-ac84-4068-8490-4c969e66d130', false);
+		http.send(null);
+		var t=http.responseText;
+		if(http.status == 200 && t && t.length>4 && t.substring(0,5)=='nonce'){
+			eval('window.currentLogin={'+t+'}');
+			window.__security_nonce=window.currentLogin.nonce;
+		}
+	</script>
+<script type="text/javascript">
+  var winW = 800, winH = 600;
+  if (document.body && document.body.offsetWidth) {
+              }
+  if (document.compatMode=='CSS1Compat' &&
+      document.documentElement &&
+      document.documentElement.offsetWidth ) {
+           }
+  if (window.innerWidth && window.innerHeight) {
+   winW = window.innerWidth;
+   winH = window.innerHeight;
+  }
+</script>
+
+
+
+    
+        
+    
+       
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+                                                                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+   
+
+
+
+
+    
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                          																				
+
+
+
+                                                        
+
+
+
+                                                                                            
+
+
+
+                                                                                                                    
+
+
+
+
+                            
+
+
+
+
+          
+
+
+
+                                               
+
+
+
+                                                                                     
+
+
+
+                                   
+    
+
+            <link rel="alternate" type="application/atom+xml" title="Atom Entries"  href="https://www.ibm.com/developerworks/community/blogs/IMSupport/feed/entries/atom?lang=en" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Comments" href="https://www.ibm.com/developerworks/community/blogs/IMSupport/feed/comments/atom?lang=en" />
+            <link rel="replies" type="application/atom+xml" title="Atom Entry Comments"  href="" />
+              <link rel="service" class="preferred" type="application/atomsvc+xml" title="Atom Publishing Protocol" href="https://www.ibm.com/developerworks/community/blogs/api" />
+          <style type="text/css">
+   
+    
+        
+    
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------
+   CSS
+---------------------------------------------------------------------- */
+/* Copyright IBM Corp. 2012  All Rights Reserved.              */
+#featured {
+      width:100%; 
+      height:auto;
+      margin:0px;
+      padding:0px;  
+      margin-top:30px;
+      margin-bottom:0px;
+      margin-left:5px;
+      line-height:1.2em;
+      border-bottom: solid 2px #555555;  
+}
+
+#featured th {
+     text-transform:uppercase;
+     font-weight:bold;
+     padding-left:0px;
+}
+
+#featured td {
+     width:33%;
+     font-family:  Arial, Helvetica Neue, Helvetica, sans-serif; 
+     font-size:95%; 
+     padding-top:20px;
+     padding-bottom:30px;
+     border-top: solid 1px #FFFFFF !important;  
+}
+
+#featured div {
+    max-width:100px; 
+    max-height:100px;
+    padding-left:5px;
+    padding-right:5px;
+    float:left;
+}
+
+#featured img {
+    max-width:85px; 
+    max-height:85px;
+    padding-right:15px;
+    padding-bottom:5px;
+}
+
+.post-preview {
+      width:140px;
+      height:140px;
+      float:left; 
+      padding-top:25px;
+      padding-right:25px;
+}
+
+.post-preview img {
+    max-width:135px; 
+    max-height:135px;
+    vertical-align:text-top;
+}
+
+.min-lotusInner{
+padding:10px 0 0 0px;
+}
+
+.min-h4-padding{
+border-top:1px solid #EEEEEE !important;
+}
+#hero-img img { max-width:1150px; max-height:200px; }
+#trends a {
+        padding: 7px;
+        margin-left:12px;
+        margin-bottom:1px;
+        font-family:  Georgia, Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 12pt; 
+        font-style:italic;  
+        color:#FFFFFF;
+        text-decoration:none; 
+        display:block;
+}
+
+a.trends     { border-style: none; }
+a.trends.s1  { background-color:#008abf !important; width:55% !important; }
+a.trends.s2  { background-color:#006ea7 !important; width:65% !important; }
+a.trends.s3  { background-color:#025287 !important; width:75% !important; }
+a.trends.s4  { background-color:#003f69 !important; width:85% !important; }
+a.trends.s5  { background-color:#002e51 !important; width:95% !important; }
+#section_bio {padding-top:0px !important;}
+#section_bio img{float:left; padding-right:5px;}
+#css-widget-banner-tags {
+       height: auto;
+       width:auto;
+       margin: 0px;
+       float:right;
+       font-size: 115%;
+       line-height: 24px; 
+       word-spacing: 8pt;
+       text-align: right; 
+}
+
+a.tag     { border-style: none; }
+a.tag.s1  { color: #008abf; font-size: 90%; letter-spacing: 1px; text-decoration:none;  }
+a.tag.s2  { color: #006ea7; font-size: 110%; text-decoration:none; }
+a.tag.s3  { color: #025287; font-size: 130%; text-decoration:none; }
+a.tag.s4  { color: #003f69; font-size: 150%; text-decoration:none; }
+a.tag.s5  { color: #002e51; font-size: 170%; letter-spacing: -1px; text-decoration:none; }
+
+#twitter_update_list {
+	font-family:  Arial, Helvetica Neue, Helvetica, sans-serif; 
+        font-size: 100%;
+        line-height: 18px;
+	list-style: none;
+        padding-top:8px;
+        margin-left:10px;
+        margin-right:6px;
+}
+
+#twitter_update_list li {
+        list-style-type:none; 
+	padding-bottom: 9px;
+        margin-bottom: 12px;
+}
+
+#twitter_update_list span {
+       color: #666666;
+}
+
+#twitter_update_list span a {
+	color: #486891;
+	text-decoration: none;
+}
+
+#twitter_update_list a {
+        white-space: nowrap;
+	color: #486891;
+        text-decoration : none;
+}
+.css-widget-related-resources {
+      position: relative; top:+5px; left: +5px; 
+      width:180px; 
+      height:auto; 
+      margin-top: 25px; 
+      padding: 5px; 
+      background-color:#E0E8F8; 
+      border: solid 1px #649DE0;       
+      font-family:  Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 95%; 
+      color:#666666;
+}
+.dw-blog-share ul li a.dw-blog-facebook-share-link:hover{background: url("//www.ibm.com/developerworks/lc/images/socialmedia_share_icons.png") no-repeat scroll 0 0 transparent !important;}
+.dw-blog-share ul li a {background:url("//www.ibm.com/developerworks/lc/images/socialmedia_share_icons.png") no-repeat scroll 0 -30px transparent ! important;}
+.dw-blog-share ul li a.dw-blog-twitter-share-link{background-position: 0 -390px ! important;}
+.dw-blog-share ul li a.dw-blog-twitter-share-link:hover{background-position: 0 -360px ! important;}
+.dw-blog-share ul li a.dw-blog-google-share-link{background-position: 0 -150px ! important;}
+.dw-blog-share ul li a.dw-blog-google-share-link:hover{background-position: 0 -120px ! important;}
+.dw-blog-share ul li a.dw-blog-linkedin-share-link{background-position: 0 -209px ! important;}
+.dw-blog-share ul li a.dw-blog-linkedin-share-link:hover{background-position: 0 -179px ! important;}
+.dw-blog-share ul li a.dw-blog-rss-share-link{background-position: 0 -329px ! important;}
+.dw-blog-share ul li a.dw-blog-rss-share-link:hover{background-position: 0 -299px ! important;}
+.dw-blog-share ul li a.dw-blog-youtube-share-link{background-position: 0 -450px ! important;}
+.dw-blog-share ul li a.dw-blog-youtube-share-link:hover{background-position: 0 -420px ! important;}
+
+#css-widget-related-other-resources {
+      width:98%; 
+      height:auto; 
+      padding:5px;
+      margin-top:15px; 
+      font-family:  Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 90% !important;   
+      color: #666666;
+      border: solid 1px #E5E5E5;
+      -moz-border-radius: .5em; 
+      -webkit-border-radius: .5em;
+      line-height:1.2em;
+      color:#848484 !important;  
+}
+
+#css-widget-related-other-resources img {
+      vertical-align:middle;
+      margin-right:5px;
+      width:16px;
+      height:16px;
+      padding:0px;
+}
+.syn-bar img{float:right;padding-right:5px;}
+.syn-bar {padding-top:20px;}
+
+.syn-box div{padding-bottom:3px !important;}
+.syn-box span{padding-bottom:3px !important;}
+
+#related_entry{
+	padding-top:10px;
+}
+#home div {padding-bottom:10px !important;}
+
+    
+  </style> 
+  
+
+  
+        
+                                                                            
+                                                                  
+    
+    <meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="SOFDCBLGZZ"/>
+	
+		<link rel="stylesheet" href="//www.ibm.com/developerworks/lc/html/dw-mf-lc.css" type="text/css" title="www" />
+	<link rel="stylesheet" href="//www.ibm.com/developerworks/lc/html/dw-ic-global.css" type="text/css" />
+		
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="title" content="WHY DOES SEND() RETURN EAGAIN / EWOULDBLOCK? (Thoughts from Support)" />
+     <meta name="abstract" content="This small article tries to answer the following question that came via support channel: &nbsp; &nbsp; &quot;What does it mean really when send() fails with EAGAIN/EWOULDBLOCK?&quot; &nbsp; So... without going to much into details let&#39;s try to answer this. First let&#39;s walk over a few definitions, once again trying to keep a simple vocabulary here. &nbsp; - socket - A socket is special file used in network transports. In a very simple way you could see a socket as a &#39;pipe&#39; that can be used to send data over the network. So it has 2 ends, usually a server and a client that reside on the same or two different machines. When you..." /> 
+     <meta name="description" content="This small article tries to answer the following question that came via support channel: &nbsp; &nbsp; &quot;What does it mean really when send() fails with EAGAIN/EWOULDBLOCK?&quot; &nbsp; So... without going to much into details let&#39;s try to answer this. First let&#39;s walk over a few definitions, once again trying to keep a simple vocabulary here. &nbsp; - socket - A socket is special file used in network transports. In a very simple way you could see a socket as a &#39;pipe&#39; that can be used to send data over the network. So it has 2 ends, usually a server and a client that reside on the same or two different machines. When you..." /> 
+     <meta name="keywords" content="ewouldblock socket eagain" /> 
+     <meta name="DC.Date" scheme="iso8601" content="2017-05-25" />
+     <meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT915"/>
+	 <meta name="DC.Publisher" content="dalla"/>
+     <link rel="canonical" href="https://www.ibm.com/developerworks/community/blogs/IMSupport/entry/WHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK" /> 
+    
+
+
+<meta name="Owner" content="dW Information/Raleigh/IBM"/>
+<meta name="DC.Language" scheme="rfc1766" content="en"/>
+<meta name="IBM.Country" content="ZZ"/>
+<meta name="Security" content="Public"/>
+<meta name="IBM.SpecialPurpose" content="SP001"/>
+<meta name="Source" content="Blog Template v5.0"/> 
+<meta name="robots" content="index,follow,archive,snippet,noodp"/> 
+<meta name="Revisit-After" content="5 days"/>  
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="ZZ999"/>
+<meta name="DC.Rights" content="Copyright IBM Corporation 2012"/>
+<meta scheme="IBM_WTMSite" name="IBM.WTMSite" content="devwrkscon" />
+
+
+	
+			<script src="//www.ibm.com/common/stats/ida_production.js" type="text/javascript">//</script>
+	
+<meta name="author" content="IMSupport"/> 
+<meta name="IBM.Effective" scheme="W3CDTF" content="2012-01-31"/>
+<meta name="gwt:property" content="locale=en">
+	
+
+	<link rel="stylesheet" href="/developerworks/lc/html/dw-ic-minBlog.css" type="text/css" />
+
+  
+ <script type="text/javascript">
+	var appName = "blogs";	// valid values: profile, communities, blogs, bookmarks, activities
+	var microfmtTagScope = "span,h5";
+	
+		   var bidir = "ltr";
+		
+	function getLoginRedirectURL(url) {
+      if(!url) url = window.location.href;
+      if(url[0] != '/') {
+          var t = url;
+          
+          var protocol = 'http://';
+          var idx = t.indexOf(protocol);
+          if(idx == -1) {
+              protocol = 'https://';
+              idx = t.indexOf(protocol);
+          }
+          if(idx != -1) {
+              t = t.substring(protocol.length);
+              idx = t.indexOf('/');
+              t = idx == -1 ? '/' : t.substring(idx);
+              if(t.indexOf('/developerworks/community/blogs') == 0)  url = t;
+          }
+      }
+      return '/developerworks/community/blogs/roller-ui/login-redirect.jsp?redirect=' + encodeURIComponent(url);
+    }
+</script>
+  
+  <script type="text/javascript" src="https://www.ibm.com/developerworks/community/connections/bookmarklet/static/script/20171105.220517/feedMarklet.js?lang=en"></script>	
+  
+<script type="text/javascript">
+    var BlogsBaseUrl = "/developerworks/community/blogs";
+    var langParaValue = "en";
+    var ratings = {};
+</script>
+   		
+</head>
+<body class="blog  minimal   lotusui 
+ lotusui30dojo lotusui30_body lotusui30_fonts lotusui30 lotusSpritesOn">
+
+<label id="TemplateVersion" style="display:none">2.5</label>
+<a id="REFRESH_URL" href="#" style="display:none"></a>
+<div id="lotusFrame" class="lotusFrame lotusui30_layout">
+<div role="banner">
+<div id="lotusBanner" class="lotusBanner">
+<script type="text/javascript">
+if (self != top) {
+   try {
+      // Reset location if in different host.
+      // per Same Origin Policy, try to get top location attributes,
+      // will get permission denied if in different origin.
+      if (self.location.hostname != top.location.hostname)
+         top.location=self.location;
+   }catch(e){
+      // reset location if in different origin
+      top.location=self.location;
+   }
+}
+</script>
+
+
+<div id="ibm-masthead"></div>
+			<!-- SITE MON : START (DO NOT DELETE) -->
+			<!-- developerWorks monitoring token -->
+			<!-- SITE MON : END (DO NOT DELETE) -->	
+									
+<div class="lotusRightCorner" style="display: inline;">
+   <div class="lotusInner"><ul class="lotusInlinelist lotusUtility lotusNowrap" id="headerMenuContainer"><li class="shareboxLi" id="headerSharebox" class="lotusFirst lotusHidden" style="display:none"><a class="lotusBannerBtn" href="javascript:;" onclick="dojo.stopEvent(event);dojo.require('net.jazz.ajax.xdloader');net.jazz.ajax.xdloader.load_async('com.ibm.social.sharebox.dialog', dojo.hitch(this, function() {com.ibm.social.sharebox.show();}));" role="button">Share</a></li><li id="languageSelectorText" style="display: none;"></li><li id="headerHelpLi" ><a role="button" aria-label="Open help window" href="javascript:lconn.blogs.utils.openHelpWindow();" id="headerHelpLink"><img role="presentation" alt="" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="iconsOther16 iconsOther16-bannerHelpNormal16" /><span class="lotusAltText">?</span></a></li></ul><ul class="lotusInlinelist lotusLinks" role="navigation" aria-label="Connections"><li id="lotusBannerProfiles" class="lotusFirst "><a onmouseover="dojo.require('lconn.core.header');lconn.core.header.menuMouseover(this);" 
+                      onclick="dojo.require('lconn.core.header');lconn.core.header.menuClick(this);" 
+                      onfocus="dojo.require('lconn.core.header');lconn.core.header.menuFocus(this);" 
+                      role="button" 
+                      _lconn_menuid="lconnheadermenu-people"
+                      aria-label="Profiles" 
+                      src="/developerworks/community/blogs/static/20171105.220517!en/nav/templates/menu/people.jsp"
+                      href="https://www.ibm.com/developerworks/community/profiles/"
+                      errormessage="Profiles is not available"><img alt="" role="presentation" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lconnBannerIcon lconnSprite lconnSprite-iconProfilesBlue16">Profiles <img role="presentation" alt="" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusArrow lotusDropDownSprite"><span class="lotusAltText">&#9660;</span></a></li><li id="lotusBannerCommunities" class=" "><a id="lotusBannerCommunitiesLink" 
+                      onmouseover="dojo.require('lconn.core.header');lconn.core.header.menuMouseover(this);" 
+                      onclick="dojo.require('lconn.core.header');lconn.core.header.menuClick(this);" 
+                      onfocus="dojo.require('lconn.core.header');lconn.core.header.menuFocus(this);" 
+                      role="button" 
+                      _lconn_menuid="lconnheadermenu-communities"
+                      aria-label="Communities" 
+                      src="/developerworks/community/blogs/static/20171105.220517!en/nav/templates/menu/communities.jsp"
+                      href="https://www.ibm.com/developerworks/community/groups/"
+                      errormessage="Communities is not available"><img alt="" role="presentation" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lconnBannerIcon lconnSprite lconnSprite-iconCommunitiesBlue16">Communities <img role="presentation" alt="" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusArrow lotusDropDownSprite"><span class="lotusAltText">&#9660;</span></a></li><li id="lotusBannerApps" class=" lotusSelected"><a onmouseover="dojo.require('lconn.core.header');lconn.core.header.menuMouseover(this);" 
+                   onclick="dojo.require('lconn.core.header');lconn.core.header.menuClick(this);" 
+                   onfocus="dojo.require('lconn.core.header');lconn.core.header.menuFocus(this);" 
+                   role="button" 
+                   _lconn_menuid="lconnheadermenu-apps"
+                   aria-label="Apps" 
+                   src="/developerworks/community/blogs/static/20171105.220517!en/nav/templates/menu/apps.jsp"
+                   href="javascript:;"
+                   errormessage="Blogs is not available">Apps <img role="presentation" alt="" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusArrow lotusDropDownSprite"><span class="lotusAltText">&#9660;</span></a></li><!--<li>
+            <a href="/developerworks/community/podcasts/?lang=en">Podcasts</a>
+         </li>-->
+         <!--<li>
+            <a href="/developerworks/champion/">IBM Champion program</a>
+         </li>--></ul><div class="lotusClear"><!-- IE --></div></div></div>
+
+
+ 
+</div><!--end pageHeader-->
+<script type="text/javascript" language="Javascript">
+var refresh_url = document.getElementById('REFRESH_URL');
+var this_url = window.location.toString();
+var this_url_anchor_idx = this_url.lastIndexOf('#');
+if(this_url_anchor_idx == -1) {
+    refresh_url.href = this_url;
+}
+else {
+	refresh_url.href = this_url.substring(0, this_url_anchor_idx);
+}
+
+var blogsUser = currentLogin.name ? currentLogin.name : null;
+</script>
+
+
+
+    
+
+
+
+
+
+        <script>
+	function showFeedTip(focusId) {
+   		showDialog("Right-click and select Copy Shortcut to get the URL to this feed.", focusId);//alert
+	}
+	function jumpToPage(to, max) {
+		if(to > max) {
+			to = max;
+		}
+		if(to < 1) {
+			to = 1;
+		}
+		var base = "https://www.ibm.com/developerworks/community/blogs/IMSupport?sortby=0&maxresults=15&lang=en";
+		window.location = base + "&page=" +  to;
+	}
+	function jumpToPageForComment(to, max) {
+		if(to > max) {
+			to = max;
+		}
+		if(to < 1) {
+			to = 1;
+		}
+		var base = "https://www.ibm.com/developerworks/community/blogs/IMSupport/entry/WHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK?maxresults=15&lang=en";
+		window.location = base + "&page=" +  to;
+	}
+</script>
+<div id="lotusTitleBar" class="lotusTitleBar2 lotusTitleBar2Tabs"><div class="lotusWrapper"><div class="lotusInner min-lotusInner">
+		    <span style="position: absolute;">
+	<a id="tabNavigation" name="tabNavigation"> </a>
+</span>
+<div class="lotusTitleBarContent">
+	<h2 class="lotusHeading">
+		<img alt="" class="lotusIcon iconsComponentsBlue24 iconsComponentsBlue24-BlogsBlue24" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517"><span class="lotusText">Blogs</span>
+	</h2>
+	<div role="navigation" aria-label="Blogs Views">
+		<ul class="lotusNavTabs aria_toolbar" id="pageTabs" role="toolbar" aria-label="Blogs Views"  aria-controls="lotusMain">
+		    <li  role="presentation">
+		          <div class="lotusTabWrapper"><a class="lotusTab" role="button"  aria-pressed="false"  href="/developerworks/community/blogs/roller-ui/myblogs/edit?lang=en"><span class="lotusTabInner">My Blogs</span></a></div>
+		    </li>
+		    <li  role="presentation">
+		          <div class="lotusTabWrapper"><a class="lotusTab" role="button"  aria-pressed="false"  href="/developerworks/community/blogs/roller-ui/homepage?lang=en"><span class="lotusTabInner">Public Blogs</span></a></div>
+		    </li>
+		    <li  role="presentation">
+		          <div class="lotusTabWrapper"><a class="lotusTab" role="button"  aria-pressed="false"  href="/developerworks/community/blogs/roller-ui/myupdates?lang=en"><span class="lotusTabInner">My Updates</span></a></div>
+		    </li>
+			<script language="javascript">
+			 if(currentLogin.globalAdmin) {
+			     document.write('<li role="presentation"><div class="lotusTabWrapper"><a class="lotusTab" role="button" aria-pressed="false" href="/developerworks/community/blogs/roller-ui/admin/rollerConfig.do?method=edit&lang=en"><span class="lotusTabInner">Administration</span></a></div></li>');
+			 }
+			</script>
+		</ul>
+		<div class="lotusClear"></div>
+	</div>
+</div>
+	
+					
+	<div id="global_search_container"></div>
+<script type="text/javascript">
+<!--
+function isExistInArray(array, value) {
+	for (var i=0; i < array.length; i++) {
+		if (array[i] == value) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+function initialSearchBar() {
+                                                    
+    var _localOptions = [];
+	                _localOptions.push({label: 'Public Blogs', iconClass: 'lconnSprite lconnSprite-iconBlogs16', scope: 'public_blogs'  });
+        _localOptions.push({label: 'Public Blog Entries', iconClass: 'lconnSprite lconnSprite-iconBlogs16', scope: 'public_entries'  });
+        	    		    		_localOptions.push({label: 'My Blog Entries', iconClass: 'lconnSprite lconnSprite-iconBlogs16', scope: 'my_blogs'  });
+    			_localOptions.push({label: 'This Blog', iconClass: 'lconnSprite lconnSprite-iconBlogs16', scope: 'this_blog' , defaultOption: true  });
+    	_localOptions.push({label: 'This Blog\'s Comments', iconClass: 'lconnSprite lconnSprite-iconBlogs16', scope: 'this_blog_comments'  });
+        //ideationblog
+    	    	
+    		        		        
+    var _globalOptions = [];
+	         _globalOptions.push({label: 'Activities', feature: 'activities'});     	    	 _globalOptions.push({label: 'Communities', feature: 'communities'});          _globalOptions.push({label: 'Files', feature: 'files'});     	 _globalOptions.push({label: 'Forums', feature: 'forums'});     	 _globalOptions.push({label: 'Profiles', feature: 'profiles'});     	 _globalOptions.push({label: 'Wikis', feature: 'wikis'}); 	
+    var searchBar = new lconn.core.SearchBar({
+        localOptions: _localOptions,
+        globalOptions: [{}],
+        searchContextPath: 'https://www.ibm.com/developerworks/community/search',
+        lblSearch:         'Search',
+        lblSelectScope:    'Select Search Scope',
+        lblAllConnections: 'developerWorks community',
+        lblAdvanced:       'Advanced',
+        thirdPartySearchEngines: lconn_core_thirdPartySearchEngines,
+                onSubmit: function() {
+        	var str = this.getValue();
+    		str = dojo.string.trim(str); // trim it
+    		if (!str) {
+        		return false;
+    		}
+
+        	var selectedOption = this.selectedOption;
+        	if (selectedOption.feature || selectedOption.action) {
+        		return true;
+    		}
+        	else {
+        	    var t = ['public_blogs', 'public_entries', 'my_blogs', 'public_blog_comments', 'this_blog', 'this_blog_comments','public_ideationblogs', 'public_ideas', 'my_ideationblogs', 'public_ideationblog_comments', 'this_ideationblog', 'this_ideationblog_comments'];
+        	    if(!selectedOption.scope || isExistInArray(t, selectedOption.scope) == -1) {
+        	        selectedOption.scope = 'this_blog';
+        	    }
+        		switch( selectedOption.scope ){
+		            case "public_blogs":
+		                var loc = '/developerworks/community/blogs/newhome/search?lang=' + langParaValue + '&t=blog&f=all&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            case "public_entries":
+		            	var loc = '/developerworks/community/blogs/newhome/search?lang=' + langParaValue + '&t=entry&f=all&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            case "my_blogs":
+		            	var loc = '/developerworks/community/blogs/roller-ui/myblogs/edit?lang=' + langParaValue + '&q=' + encodeURIComponent(str) + '&search=true&t=entry';
+		            	window.location=loc;
+		                break;
+		            case "public_blog_comments":
+		            	var loc = '/developerworks/community/blogs/newhome/search?lang=' + langParaValue + '&t=entry&f=comment&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		            	break;
+		            case "this_blog":
+		            	var loc = '/developerworks/community/blogs/IMSupport/search?lang=' + langParaValue + '&t=entry&f=all&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            case "this_blog_comments":
+		            	var loc = '/developerworks/community/blogs/IMSupport/search?lang=' + langParaValue + '&t=entry&f=comment&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            //ideationblog support
+		            case "public_ideationblogs":
+		                var loc = '/developerworks/community/blogs/newhome/search?lang=' + langParaValue + '&t=ideationblog&f=all&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            case "public_ideas":
+		            	var loc = '/developerworks/community/blogs/newhome/search?lang=' + langParaValue + '&t=idea&f=all&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            case "my_ideationblogs":
+		            	var loc = '/developerworks/community/blogs/roller-ui/myblogs/edit?lang=' + langParaValue + '&q=' + encodeURIComponent(str) + '&search=true&t=idea';
+		            	window.location=loc;
+		                break;
+		            case "public_ideationblog_comments":
+		            	var loc = '/developerworks/community/blogs/newhome/search?lang=' + langParaValue + '&t=idea&f=comment&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		            	break;
+		            case "this_ideationblog":
+		            	var loc = '/developerworks/community/blogs/IMSupport/search?lang=' + langParaValue + '&t=idea&f=all&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            case "this_ideationblog_comments":
+		            	var loc = '/developerworks/community/blogs/IMSupport/search?lang=' + langParaValue + '&t=idea&f=comment&q=' + encodeURIComponent(str);
+		                window.location=loc;
+		                break;
+		            default:
+		                break;
+		        }
+		        return false;
+        	}
+        }
+    }, dojo.byId('global_search_container'));
+}
+//-->
+</script>
+</div></div></div><!--end titleBar-->
+
+
+
+
+<!-- DW Style dojoSetupRemote -->
+
+
+    		<link rel="stylesheet" href="//www.ibm.com/developerworks/lc/html/dw-mf-lc.css" type="text/css" title="www" />
+		<link rel="stylesheet" href="//www.ibm.com/developerworks/lc/html/dw-ic-global.css" type="text/css" />
+	<script type="text/javascript">
+var ibmConfig = {
+   serviceName: "blogs",
+   proxyURL: "/developerworks/community/blogs/ajaxProxy/",
+   contextRootEnabler: "/developerworks/community/blogs",
+   versionStamp: "20171105.220517"
+};
+var baseProtocol = "https";
+var baseHost = "www.ibm.com";
+var basePath = "/developerworks/community/connections/resources";
+var needProxy = (baseHost != window.location.host || baseProtocol+":" != window.location.protocol);
+var dojoConfig = djConfig = {
+   async: true,
+   isDebug: false,
+   baseUrl: (needProxy ? (ibmConfig.proxyURL + encodeURIComponent(baseProtocol) + "/" + encodeURIComponent(baseHost)) : (baseProtocol + "://" + baseHost)) + basePath + "/web/dojo/",
+   locale: "en",
+   dojoBlankHtmlUrl: "/developerworks/community/blogs/static/20171105.220517/nav/blankIE.html",
+   blankGif: "https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517",
+   useCommentedJson: true,  
+   proxy: "/developerworks/community/blogs/ajaxProxy",
+   localizationComplete: true
+};
+</script>
+<script type="text/javascript">
+var netJazzAjaxConfig = {
+    base: "https://www.ibm.com/developerworks/community/connections/resources",
+    skipStyles: true,
+    params: "etag=20171105.220517&lang=en"
+};
+CKEDITOR_BASEPATH = window.CKEDITOR_BASEPATH || "https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.oneui.ckeditor/editor/"; 
+</script>
+<script type="text/javascript">djConfig.parseOnLoad=false;</script>
+<script type="text/javascript" src="https://www.ibm.com/developerworks/community/connections/resources/web/_js/?include=dojo.main~&etag=20171105.220517&_proxyURL=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcommunity%2Fconnections%2Fresources&ss=20171105.220517&lang=en&country=&variant="></script>
+<script type="text/javascript" src="https://www.ibm.com/developerworks/community/connections/resources/web/_js/?include=lconn.core.bundle_common~&etag=20171105.220517&exclude=dojo.main~&_proxyURL=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcommunity%2Fconnections%2Fresources&ss=20171105.220517&lang=en&country=&variant="></script>
+<script type="text/javascript" src="https://www.ibm.com/developerworks/community/connections/resources/web/_js/?include=lconn.blogs.blogsApp~&etag=20171105.220517&exclude=dojo.main~lconn.core.bundle_common~&_proxyURL=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcommunity%2Fconnections%2Fresources&ss=20171105.220517&lang=en&country=&variant="></script>
+
+<script type="text/javascript">
+	dojo.addOnLoad(function(){
+                /*// run the parser.
+                	                var p=dojo.parser; var d=document;
+	                	                if(d.getElementById('tagnavform')) {
+	                	p.parse(d.getElementById('tagnavform'));
+	                }
+	                	                if(d.getElementById('tagSliderGradient')) {
+	                	p.parse(d.getElementById('tagSliderGradient'));
+	                }
+	                	                if(d.getElementById('simpleSearchForm')) {
+	                	p.parse(d.getElementById('simpleSearchForm'));
+	                }
+	                	                if(d.getElementById('actionmenu_moreactions_container')) {
+	                	p.parse(d.getElementById('actionmenu_moreactions_container'));
+	                }
+	                	                if(d.getElementById('actionmenu_moreactions_container_anonymous')) {
+	                	p.parse(d.getElementById('actionmenu_moreactions_container_anonymous'));
+	                }
+	                	                if(d.getElementById('blogsActionBar')) {
+	                	p.parse(d.getElementById('blogsActionBar'));
+	                }
+	                                                */
+                lconn.core.globalization.bidiUtil.enforceTextDirectionOnPage(); // Enforce base text direction if Bidi is enabled
+                lconn.core.utilities.processUntilAvailable(function(){
+					try {
+				        if(!!lconn.communities.bizCard.core.community.externalAllowed) {
+				            dojo.addClass(dojo.byId("pagePlaceBar"), "lconnSharedExternalPlaceBar");
+				            dojo.byId("externalMemberAllowedIndicator").style.display = 'inline';
+				        }
+				    } catch(err){}
+				}, "dojo.getObject('lconn.communities.bizCard.core.community')", null, false);
+          });
+
+	document.onclick = function () {
+		if (dojo.isIE)
+			MenuPopup.returnFocusElement = false;
+		MenuPopup.hideMenu();
+	};
+	document.onkeyup = function ( event ) {
+		MenuPopup.hideOnKeypress( event );
+	};
+	
+	lconn.core.auth.setAuthCheck(function() {
+		if(!(typeof window.currentLogin.name == 'undefined' || window.currentLogin.name == null || window.currentLogin.name == '')) {
+			return true;
+		}
+		return false;
+	});
+</script>
+
+<div class="lotusPlaceBar lotusTitleBarExt"><div class="lotusRightCorner"><div class="lotusInner min-lotusInner">
+<br>
+			<h2 class="min-blogtitle-entry"><a href="https://www.ibm.com/developerworks/community/blogs/IMSupport?lang=en">Thoughts from Support</a></h2>
+		
+   
+    
+        
+    
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+		   
+	<ul class="lotusRight lotusInlinelist lotusActions" id="login_participate_link" style="display:none;"> 
+		<li class="lotusFirst" style="border-left:none;">
+			<span class="lotusBtn">
+				<a href="javascript:lconn.blogs.utils.loginAction();">Log in</a> to participate
+			</span>
+	    	</li>
+	</ul>
+	<ul aria-label="Action bar" role="toolbar" id="blogsActionBar" class="aria_toolbar lotusRight lotusInlinelist lotusActions">
+											<script language="javascript">
+									if(currentLogin.auth)
+						document.write('<li class="lotusFirst" style="border-left:none;"><span class="lotusBtn"><a role="button" aria-label="Follow this Blog" class="blogsFollowBtn" href="javascript:;" onclick="followAction(\'27b28f0d-636c-4dfc-a639-2591591aafe4\', \'follow\'); ">Follow this Blog</a></span></li>');
+							</script>
+				<script language="javascript">
+			if(!currentLogin.auth)
+				dojo.byId("login_participate_link").style.display="block";
+				function followAction(id, action) {
+					dojo.xhrPost({
+					url: '/developerworks/community/blogs/roller-services/json/following',
+					handleAs: 'json',
+					postData: 'version=300&uuid='+id+'&action='+action+'&dangerousurlnonce='+window.__security_nonce,
+					load: function (ret) {
+						if(!ret.success) {
+							lconn.blogs.utils.clearMessage();
+							if('session timeout' == ret.error) {
+								lconn.blogs.utils.refreshSecurityNonce(ret.nonce);
+								var errMsg = "We were unable to process your request due to a session timeout.  Please try again.";
+								lconn.blogs.utils.showMessage('messageContainer', errMsg, 'error',true);
+							} else {
+								var errMsg = "Following action failed.";
+								lconn.blogs.utils.showMessage('messageContainer', errMsg, 'error',true);
+							}
+						}
+						if(ret.success) {
+							var blogsFollowBtn = dojo.query("[class='blogsFollowBtn']", dojo.byId("blogsActionBar"))[0];
+							if(typeof (blogsFollowBtn) != "undefined"){
+								if(action == "follow"){
+									blogsFollowBtn.innerHTML = 'Stop Following this Blog';
+							    		dojo.attr(blogsFollowBtn, {"aria-label": 'Stop Following this Blog'});
+									blogsFollowBtn.onclick= function(){followAction(id, 'unfollow');};
+								}
+							else{
+								blogsFollowBtn.innerHTML = 'Follow this Blog';
+							    	dojo.attr(blogsFollowBtn, {"aria-label": 'Follow this Blog'});
+								blogsFollowBtn.onclick= function(){followAction(id, 'follow');};
+							}
+						}
+						if(typeof (blogsFollowItem) != "undefined"){
+							var blogsFollowItem = blogsFollowDropDownMenu.getChildren()[0];
+							var itemLabel;
+							var itemAction;
+							if(action == "follow"){
+								itemLabel = 'Stop Following this Blog';
+								itemAction = function() {followAction(id, 'unfollow');};
+							}
+							else{
+								itemLabel = 'Follow this Blog';
+								itemAction = function() {followAction(id, 'follow');};
+							}
+							dojo.attr(blogsFollowItem, {"label": itemLabel});
+							dojo.attr(blogsFollowItem, {"onClick": itemAction});
+						}
+						lconn.blogs.utils.clearMessage();
+						if(action == "follow")
+							lconn.blogs.utils.showMessage('messageContainer', 'You are following this blog and will receive updates about it.',  'success', true);
+						else
+							lconn.blogs.utils.showMessage('messageContainer', 'You stopped following this blog and will no longer receive updates about it.',  'success', true);
+					}
+				},
+				error: function () {
+					lconn.blogs.utils.clearMessage();
+					lconn.blogs.utils.showMessage('messageContainer', 'Following action failed.', 'error' ,true);
+				}
+				});
+			}
+		</script>
+															</ul><!--end bntContainer-->
+</div></div></div><!--end placebar-->
+<script>
+	var flagInappropriateCommentForm = {
+	className: "lotusForm",
+       action: "/developerworks/community/blogs/roller-services/json/flag_as_inappropriate",
+       name: "flagCommentForm",
+       formContent: '<form class="lotusForm2" action="" name="flagCommentForm" role="application" style="background-color: transparent;">'+
+       '<div name="error_messages" class="lotusMessage" role="alert" style="display:none">'+
+	'	<img class="lconnSprite lconnSprite-iconError16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="Error icon" /><span class="lotusAltText">Error icon</span><span name="message"></span>'+
+	'</div>'+
+	'<div name="warning_messages" class="lotusMessage lotusWarning" role="alert" style="display:none">'+
+	'	<img class="lconnSprite lconnSprite-iconWarning16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="Warning icon" /><span class="lotusAltText">Warning icon</span><span name="message"></span>'+
+	'</div>'+
+	'<div name="info_messages" class="lotusMessage lotusInfo" role="alert" style="display:none">'+
+	'	<img class="lconnSprite lconnSprite-iconAttention16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="Information icon" /><span class="lotusAltText">Information icon</span><span name="message"></span>'+
+	'</div>'+
+       '<input type="hidden" name="dangerousurlnonce" value=""/>'+
+	'<input type="hidden" name="lang" value="en" />'+
+	'<input type="hidden" name="version" value="250" />'+
+	'<input type="hidden" name="objectType" value="comment" />'+
+	'<input type="hidden" name="objectId" value=""/>'+
+	'<div class="lotusFormBody">'+
+		'<div class="lotusFormField">'+
+	'	<label for="flag_comment">Provide a reason for flagging this comment (optional):</label>'+
+	'	<div><textarea id="flag_comment" title="Provide a reason for flagging this comment (optional):" name="comment" rows="10" style="width:300px;"></textarea></div>'+
+	'</div>'+
+	'</div><!-- end form body -->'+
+	'</form>',
+	_form: null,
+        success: false,
+        isSuccess: function(){
+        	return this.success;
+        },
+		init: function(commentId) {
+		if(this._form != null){
+			this._form = null;
+	        }
+		var div = document.createElement('div');
+		div.innerHTML = this.formContent; 
+		this._form = dojo.query("form[name='flagCommentForm']", div)[0];
+	       this.reset();
+	       this._form.action = this.action;
+        	this._form.objectId.value = commentId;
+        	this.success = false;
+	    },
+	    getForm: function(){
+	    	return this._form;
+	    },
+	    clearMessage: function(){
+	    	var mt = ['error', 'warning', 'info'];
+	    	for(var i=0; i<mt.length; i++) {
+	    	    var x=dojo.query('[name="' + mt[i] + '_messages"]', this._form);
+		    	if(x.length > 0) {
+		    	    x[0].style.display='none';
+		    	    x=dojo.query('[name="message"]', x[0]);
+		    	    if(x.length > 0) x[0].innerHTML='';
+		    	}
+	    	}
+	    },
+		message: function(data, type) {
+		this.clearMessage();
+		var x=dojo.query('[name="' + type + '_messages"]', this._form);
+	       if(x.length>0) {
+	           x[0].style.display='';
+	            x=dojo.query('[name="message"]', x[0]);
+	            if(x.length>0) {
+			  x[0].innerHTML=data;
+	                x[0].setAttribute('role', 'alert');
+	            }
+	        }
+    	},
+	    submit: function() {
+    		this._form.dangerousurlnonce.value=window.__security_nonce;
+    		this.message('Submitting...' + '<div class="lotusLoading lotusLeft"></div>', 'info');
+    		var _this = this;
+    		dojo.xhrPost({
+	        	url: this._form.action,
+	        	form: this._form,
+	        	handleAs: 'json-comment-optional',
+	        	sync: true,
+	        	load: function (data, ioArgs) {
+					if(data.success) {
+						_this.success = true;
+						lconn.blogs.utils.clearMessage();
+						lconn.blogs.utils.showMessage('messageContainer', 'The comment has been flagged and submitted for review.', 'confirm' , true);
+					}
+	            	else {
+	                	if(data.error) {
+		                	if('session timeout' == data.error) {
+		                        window.__security_nonce = data.nonce;
+		                        _this.message('We were unable to process your request due to a session timeout.  Please try again.', 'error');
+		                    } else {
+	            				_this.message(data.error, 'error');
+	            			}
+	            		}
+	            		else {
+	            			_this.message('This function is only available to authenticated users. Please log in first.', 'error');
+	            		}
+	            	}
+	        	},
+	        	error: function (error, ioArgs) {
+	            	_this.message('Fail to submit the request. Server error.', 'error');
+	        	}
+	    	});
+    	},
+	    reset: function(){
+	    	this._form.reset();
+	    	this.clearMessage();
+	    }
+
+	};
+
+</script>
+</div>
+<div id="lotusMain" class="lotusMain">
+	    <!-- Community link -->
+	    	<!-- colRight -->
+	<!-- colRight would go below content when using overall table layout -->
+	<div id="lotusColRight" class="lotusColRight">
+				<div class="lotusSection  lotusFirst " role="complementary" aria-label="Blog Authors" aria-labelledby="section_authors_label">
+			<h2  class="min-blog-right">
+				<span id="section_authors_label" class="lotusLeft">About this blog</span>
+			</h2>
+			<div id="section_bio"> Part of the IBM Analytics family, focused on support for IBM Analytics products. This blog is administered by Kate Nichols and follows the IBM Social Computing Guidelines.</div> 			
+		</div>
+			  	
+				
+								     <div class="lotusSection lotusFirst" role="complementary" aria-label="Related posts" aria-labelledby="section_relatedentries_label">
+	            <h2 class="min-blog-right">
+				<span id="section_relatedentries_label" class="lotusLeft">Related posts</span>
+	            </h2>
+		        <div id="section_relatedentries" class="lotusSectionBody">
+			  	    						
+			                							<div id="related_entry">
+			                <tr class="first lotusFirst" >
+
+        <h4 class="blogsWrapText">
+            <a href="https://www.ibm.com/developerworks/community/blogs/0587adbc-8477-431f-8c68-9226adea11ed/entry/ITM_6_ITM_firewall_gateway_redundancy_configurations?lang=en" title="ITM Nuggets: ITM KDE firewall gateway redundancy configurations">
+	          ITM Nuggets: ITM KDE...
+	       </a>
+        </h4>
+        
+       
+	    <span role="listitem"><span class="blogsPaddingRight">Updated</span><script type='text/javascript'> document.write(blogsDate.date.localize (1480947238000));</script></span>
+	       
+			<span class="blogsPaddingRight" role="listitem">
+															<div class="lotusLike">
+			<img alt="2 people like this" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusIconLike"><span class="lotusAltText">Likes</span> 2
+		</div>
+											</span>
+			<span class="blogsPaddingLeft" role="listitem">
+							<img class="lconnSprite lconnSprite-iconNoComments16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="No Comments" /><span class="lotusAltText">Comments</span> 0
+						</span>
+              
+</tr>
+							</div>
+			                			                							<div id="related_entry">
+			                <tr >
+
+        <h4 class="blogsWrapText">
+            <a href="https://www.ibm.com/developerworks/community/blogs/binhn/entry/creating_a_tls_tunnel_with_node_js_and_promise?lang=en" title="Creating a TLS tunnel with Node.js and Promise">
+	          Creating a TLS tunne...
+	       </a>
+        </h4>
+        
+       
+	    <span role="listitem"><span class="blogsPaddingRight">Updated</span><script type='text/javascript'> document.write(blogsDate.date.localize (1420651198000));</script></span>
+	       
+			<span class="blogsPaddingRight" role="listitem">
+															<div class="lotusLike">
+			<img alt="0 people like this" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusIconLike"><span class="lotusAltText">Likes</span> 0
+		</div>
+											</span>
+			<span class="blogsPaddingLeft" role="listitem">
+							<img class="lconnSprite lconnSprite-iconNoComments16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="No Comments" /><span class="lotusAltText">Comments</span> 0
+						</span>
+              
+</tr>
+							</div>
+			                			                							<div id="related_entry">
+			                <tr >
+
+        <h4 class="blogsWrapText">
+            <a href="https://www.ibm.com/developerworks/community/blogs/738b7897-cd38-4f24-9f05-48dd69116837/entry/understanding_some_common_socketexceptions_in_java3?lang=en" title="Understanding some common SocketExceptions in JAVA">
+	          Understanding some c...
+	       </a>
+        </h4>
+        
+       
+	    <span role="listitem"><span class="blogsPaddingRight">Updated</span><script type='text/javascript'> document.write(blogsDate.date.localize (1354708628000));</script></span>
+	       
+			<span class="blogsPaddingRight" role="listitem">
+															<div class="lotusLike">
+			<img alt="4 people like this" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusIconLike"><span class="lotusAltText">Likes</span> 4
+		</div>
+											</span>
+			<span class="blogsPaddingLeft" role="listitem">
+							<img class="lconnSprite lconnSprite-iconComment16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="Comments" /><span class="lotusAltText">Comments</span> 3
+						</span>
+              
+</tr>
+							</div>
+			                			                							<div id="related_entry">
+			                <tr >
+
+        <h4 class="blogsWrapText">
+            <a href="https://www.ibm.com/developerworks/community/blogs/WCML2Thoughts/entry/java_net_sockettimeoutexception_socket_operation_timed_out_before_it_could_be_completed_module_name_ptl_tchan_t13?lang=en" title="java.net.SocketTimeoutException: Socket operation timed out before it could be completed Module Name: PTL_TCHAN_T">
+	          java.net.SocketTimeo...
+	       </a>
+        </h4>
+        
+       
+	    <span role="listitem"><span class="blogsPaddingRight">Updated</span><script type='text/javascript'> document.write(blogsDate.date.localize (1332473018000));</script></span>
+	       
+			<span class="blogsPaddingRight" role="listitem">
+															<div class="lotusLike">
+			<img alt="0 people like this" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusIconLike"><span class="lotusAltText">Likes</span> 0
+		</div>
+											</span>
+			<span class="blogsPaddingLeft" role="listitem">
+							<img class="lconnSprite lconnSprite-iconNoComments16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="No Comments" /><span class="lotusAltText">Comments</span> 0
+						</span>
+              
+</tr>
+							</div>
+			                			                							<div id="related_entry">
+			                <tr >
+
+        <h4 class="blogsWrapText">
+            <a href="https://www.ibm.com/developerworks/community/blogs/0587adbc-8477-431f-8c68-9226adea11ed/entry/itcam_for_transactions_monitoring_socket_protocol_with_rational_performance_tester3?lang=en" title="ITCAM for Transactions : Monitoring Socket protocol with Rational Performance Tester">
+	          ITCAM for Transactio...
+	       </a>
+        </h4>
+        
+       
+	    <span role="listitem"><span class="blogsPaddingRight">Updated</span><script type='text/javascript'> document.write(blogsDate.date.localize (1320865808000));</script></span>
+	       
+			<span class="blogsPaddingRight" role="listitem">
+															<div class="lotusLike">
+			<img alt="1 people likes this" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lotusIconLike"><span class="lotusAltText">Likes</span> 1
+		</div>
+											</span>
+			<span class="blogsPaddingLeft" role="listitem">
+							<img class="lconnSprite lconnSprite-iconNoComments16" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" alt="No Comments" /><span class="lotusAltText">Comments</span> 0
+						</span>
+              
+</tr>
+							</div>
+			                			                						
+				</div>
+
+	      			  </div><!-- end section -->
+			  			  			  <!-- End Related Posts -->
+		
+							
+		
+	   					    
+		    		
+
+		
+<!-- Tags -->
+   <!-- display tags widget unless tags are already in hero area -->
+    	<div id="lconnTagCloudFilter" class="lotusSection" role="complementary" aria-label="Tags" aria-labelledby="section_tag_label">
+			<h2 class="min-blog-right">
+				<span id="section_tag_label" class="lotusLeft">Tags</span>
+				
+			</h2>
+		 	<div id="lconnTagCloudContent" name="section_tags" class="lotusSectionBody">
+				<div id="lconnTagWidget"></div>
+				
+				
+				
+				<script language="javascript">
+dojo.addOnLoad(function(){
+		var selectedTags = "";
+		
+		var urlParameters = {};
+					urlParameters['website'] = '27b28f0d-636c-4dfc-a639-2591591aafe4';
+				
+		var redirectUrlParameters = {};
+							
+		var blogsTagsArgs = {
+			contextPath: "/developerworks/community/blogs",
+			selectedTags: selectedTags,
+
+			tagUrl: '/developerworks/community/blogs/roller-services/json/tagcloud',
+			urlParameters:urlParameters,
+
+						typeAheadFeedUrl: '/developerworks/community/blogs/roller-services/json/typeahead?requestType=entry&limit=10&handle=IMSupport',
+			
+    					
+							isAllBlogs: false,
+				redirectUrl: "/developerworks/community/blogs/IMSupport",
+						redirectUrlParameters:redirectUrlParameters,
+
+			multiSelected:true,
+			typeAheadTemplate:'tag',
+			tagTemplate:'tags',
+
+			disableRelated:false,
+			handleAs:'json',
+			redirectWhenClickTag:true,
+			tagDialogEnabled: false,
+			
+			ownedContentRegion: 'list_prompt'
+		};
+
+		new lconn.blogs.CommonTags.BlogsTagWidget(blogsTagsArgs, dojo.byId('lconnTagWidget'));
+	}
+);
+</script>
+			</div>
+		</div><!--end section-->
+
+	   </div> <!-- end colRight -->
+
+		<!-- content -->
+		<!-- <td valign="top"> -->
+				    <div id="lotusContent" class="lotusContent min-Content" role="main">
+		         <a id="mainContent" name="mainContent"></a>
+           <script type="text/javascript">
+var renderMessagesOnLoad = function() {
+			}
+</script>
+		             
+		    					
+ 		    <div id="entries">
+	              		        				<!-- Dont show paging when there are no entries -->
+									                                                                       
+             <div style="clear:both"></div>
+
+                                            
+			  
+	           			                              
+				<!-- Dont show sort control when there are no entries -->
+				 		        			   
+		       
+    
+        <div role="region" aria-label="Entry list">
+	    <table class="lotusTable blogsFixedTable" border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+		<tbody>
+	
+	
+	
+	        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		    <tr  class="lotusFirst" >
+	    <!-- Entry title and info -->
+		<td  class="min-h4-padding min-entry entryContentContainerTD blogsWrapText" ><a name="WHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK" id="WHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK"></a>
+							<h4 class="min-h4">
+					WHY DOES SEND() RETURN EAGAIN / EWOULDBLOCK?
+				</h4>
+						<!-- User name, date, meta info -->
+			<div class="lotusMeta min-blogdetail" role="list">
+							<span class="vcard" role="listitem">
+					<a class="lotusPerson fn bidiAware" aria-describedby="semtagmenu" href="https://www.ibm.com/developerworks/community/profiles/html/profileView.do?userid=270000SVT2" title="dalla">dalla</a>
+					<span class="x-lconn-userid" style="display: none;">270000SVT2</span>
+									</span>
+			 								<span class="lotusDivider" role="img" aria-hidden="true">|</span>
+				<span role="listitem">
+					<time datetime="2017-05-25 20:36:18.0">
+						<script type='text/javascript'> document.write(blogsDate.date.localize (1495758978000));</script> 
+                    </time>
+				</span>
+														<span class="lotusDivider" role="img" aria-hidden="true">|</span>
+					<span role="listitem">
+																					Comment (1)
+																		</span>
+													                	<span class="lotusDivider" role="img" aria-hidden="true">|</span>
+                	<span role="listitem">
+													Visits (11084)
+						                	</span>
+                                <span role="listitem">
+					<!-- Rating -->
+										<span class="rating lotusRating min-rating" id="entry_rating_1f11de46-ac84-4068-8490-4c969e66d130" >
+<div id="entry_rating_1f11de46-ac84-4068-8490-4c969e66d130_widget"></div>
+<script language="javascript">
+	dojo.addOnLoad(function(){
+	var store_data = {
+	id: currentLogin.extid,
+	identifier: "userId",
+	items: [
+						{userId: "27000725GN",name: 'Jun Su Lee' ,
+					userState:  "active" ,
+					mail: ""}
+				]
+	};
+	var store = new lconn.blogs.recommend.RecommendDataStore({
+		data:store_data, 
+		type:'entry', 
+		itemId:'1f11de46-ac84-4068-8490-4c969e66d130', 
+		currentLogin: currentLogin,
+		recommendationsCount: 1
+	});
+	objRecommend = new lconn.blogs.recommend.Inline(
+			{
+				debug: false,
+				editable: true,
+				loadIndividualStyles: false,
+									currentUserId: currentLogin.extid,
+								dataStore: store			
+			},
+			dojo.byId('entry_rating_1f11de46-ac84-4068-8490-4c969e66d130_widget')
+	);
+	});
+</script>
+
+
+</span>
+				</span>          
+	        </div>
+	        <!-- Entry content -->
+	                 <div class="css-entry"> 
+ 
+
+                   
+
+            
+				                                                                                                             	      	        			                             <p dir="ltr"><span style="font-family:courier new,courier,monospace;">This small article tries to answer the following question that came via support channel:</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; &quot;What does it mean really when send() fails with EAGA<wbr>IN/E<wbr>WOUL<wbr>DBLO<wbr>CK?<wbr>&quot;</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">So... without going to much into details let&#39;s try to answer this. First let&#39;s walk over a few definitions, once again trying to keep a simple vocabulary here.</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">- socket -</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">A socket is special file used in network transports. In a very simple way you could see a socket as a &#39;pipe&#39; that can be used to send data over the network. So it has 2 ends, usually a server and a client that reside on the same or two different machines. When you write data to a regular file you can write as long as the container (file system - or - quotas) allows you to do so. For a socket data goes into a buffer and then that buffer is transported over the network. This leads us to the &#39;blocking / non blocking&#39; concept.</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">- blocking / non blocking -</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">The &#39;sender&#39; can send data using the &#39;send()&#39; call. As said above, that data goes into a buffer that will then be transmitted to the &#39;receiver&#39; via the socket. Of course the buffer has a fixed size (configurable) and you want to make sure that the &#39;receiver&#39; read all the data you sent before starting to &#39;overwrite&#39; the buffer with new data. So what happens if you decide to &#39;send()&#39; data but the buffer is full? Well... if your socket is in &#39;blocking&#39; mode then the &#39;send()&#39; will &#39;hang&#39; until there is room in the buffer, that is until the &#39;receiver&#39; has read data from the current buffer and therefore made some space available in the buffer. This is because once data is read the space it was using in the buffer is made available for new data. If your socket is in &#39;non blocking&#39; mode then the &#39;send()&#39; will fail with &#39;EAGAIN&#39; or &#39;EWOULDBLOCK&#39; (often the same error number)<br>
+meaning &#39;try again later / it would block&#39;. Both &#39;blocking&#39; and &#39;non blocking&#39; have their plus and minus. For example you might not want to &#39;hang&#39; if the receiver did not read all the data yet so that you can go on and do something else, that<br>
+would be the &#39;non blocking&#39; mode. Or you can decide that there is no point to do anything else as long as the data is not sent and &#39;hang&#39; waiting for the send to complete, that would be the &#39;blocking&#39; mode.</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">To illustrate this you have 2 small programs below. One server and one client. Those are simple programs just to demonstrate &#39;blocking&#39; versus &#39;non blocking&#39;. Real life client/server programs should most likely be a bit more elaborate but those will do for what we have here. And to make it even simpler both have to be run on the same box. You can alter them if you want, of course, to work on different machines.</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">Both client and server programs need to be started with a &#39;port number&#39; for the socket and an extra argument, 0 or 1, indicating respectively &#39;blocking&#39; or &#39;non blocking&#39; mode. The server keeps sending data in a loop to the client over the socket and the buffer size for the socket is set to 16K.</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">To compile the programs:</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; AIX:</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; cc -q64 server3.c -o server3<br>
+&nbsp; cc -q64 client3.c -o client3</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; Solaris:</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; cc -m64 -lnsl -lsocket server3.c -o server3<br>
+&nbsp; cc -m64 -lnsl -lsocket client3.c -o client3</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; Linux (X86):</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; cc -m64 server3.c -o server3<br>
+&nbsp; cc -m64 client3.c -o client3</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">You then need to run &#39;server3&#39; in one window and &#39;client3&#39; in another window.</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">Let&#39;s start with &#39;blocking mode&#39;:</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; WINDOW 1&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp; WINDOW 2</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; [/ho<wbr>me/d<wbr>alla<wbr>/tmp<wbr>]-&gt;s<wbr>erve<wbr>r3 61433 0</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; [/ho<wbr>me/d<wbr>alla<wbr>/tmp<wbr>]-&gt;c<wbr>lien<wbr>t3 61433 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; [info] press return to receive data from server:</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; [info] send(aaaa...) size 8192 [sent so far 0]: sent<br>
+&nbsp; [info] send(bbbb...) size 8192 [sent so far 8192]: sent<br>
+&nbsp; [info] send(cccc...) size 8192 [sent so far 16384]: sent<br>
+&nbsp; [info] send(dddd...) size 8192 [sent so far 24576]: sent</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="color:#FF0000;"><span style="font-family: courier new,courier,monospace;">&nbsp; As soon as the client is connected the server starts sending data.<br>
+&nbsp; Our buffer is 16K but as you can see, under the covers the size seem<br>
+&nbsp; to be doubled and we can accommodate a bit more.</span></span></p>
+
+<p dir="ltr"><span style="color:#FF0000;"><span style="font-family: courier new,courier,monospace;">&nbsp; At this time the server is &#39;hanging&#39; because our socket is &#39;blocking&#39;<br>
+&nbsp; and server has no other choice but wait until some space is made<br>
+&nbsp; available in the buffer. And this will happen if we press &#39;return&#39;<br>
+&nbsp; in WINDOW 2 where the client is running.</span></span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp; [info] received 8192 bytes [so far 8192] [aaaa]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp; [info] press return to receive data from server:</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="color:#FF0000;"><span style="font-family: courier new,courier,monospace;">&nbsp; And sure enough, as soon as we hit &#39;return&#39; on the client<br>
+&nbsp; side we see that the server is able to send more data and then<br>
+&nbsp; &#39;hang&#39; again waiting for some more room in the buffer.</span></span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; [info] send(eeee...) size 8192 [sent so far 32768]: sent</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; <span style="color:#FF0000;">And this will go on and on...</span></span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">Now let&#39;s see what happens when we are using &#39;non blocking&#39; mode for the socket. We use the same 2 windows but the last argument to both &#39;server3&#39; and &#39;client3&#39; will be &#39;1&#39; to indicate &#39;non blocking&#39;:</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; WINDOW 1&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp; WINDOW 2</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; [/ho<wbr>me/d<wbr>alla<wbr>/tmp<wbr>]-&gt;s<wbr>erve<wbr>r3 61433 1</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; [/ho<wbr>me/d<wbr>alla<wbr>/tmp<wbr>]-&gt;c<wbr>lien<wbr>t3 61433 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; [info] press return to receive data from server:</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; [info] send(aaaa...) size 8192 [sent so far 0]: sent<br>
+&nbsp; [info] send(bbbb...) size 8192 [sent so far 8192]: sent<br>
+&nbsp; [info] send(cccc...) size 8192 [sent so far 16384]: EAGAIN<br>
+&nbsp; [info] send(cccc...) size 8192 [sent so far 16384]: sent<br>
+&nbsp; [info] send(dddd...) size 8192 [sent so far 24576]: sent<br>
+&nbsp; [info] send(eeee...) size 8192 [sent so far 32768]: EAGAIN<br>
+&nbsp; [info] send(eeee...) size 8192 [sent so far 32768]: EAGAIN<br>
+&nbsp; [info] send(eeee...) size 8192 [sent so far 32768]: EAGAIN<br>
+&nbsp; [info] send(eeee...) size 8192 [sent so far 32768]: EAGAIN</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="color:#FF0000;"><span style="font-family: courier new,courier,monospace;">&nbsp; Similar to the previous case, as soon as the client establishes<br>
+&nbsp; the connection we see the server sending data. However, when there<br>
+&nbsp; is no room left in the buffer the server doesn&#39;t hang anymore but<br>
+&nbsp; instead the &#39;send()&#39; fails with EAGAIN. In the server code you<br>
+&nbsp; will see that it does a &#39;sleep()&#39; before trying again. This goes<br>
+&nbsp; on until the client reads the first batch of data which is done<br>
+&nbsp; by pressing &#39;return&#39; in WINDOW 2.</span></span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; [info] received 8192 bytes [so far 8192] [aaaa]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; [info] press return to receive data from server:</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="color:#FF0000;"><span style="font-family: courier new,courier,monospace;">&nbsp; Client read some data and the space is made available<br>
+&nbsp; in the buffer. So server is able to send some more. Then it<br>
+&nbsp; fails again with EAGAIN and this goes on and on...</span></span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp; [info] send(eeee...) size 8192 [sent so far 32768]: sent<br>
+&nbsp; [info] send(ffff...) size 8192 [sent so far 40960]: EAGAIN<br>
+&nbsp; [info] send(ffff...) size 8192 [sent so far 40960]: EAGAIN<br>
+&nbsp; [info] send(ffff...) size 8192 [sent so far 40960]: EAGAIN</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">Now on to the source code for &#39;server3.c&#39; and &#39;client3.c&#39;. Those are simple programs you can play with. Once again in real life client/server code would probably be a bit more sophisticated but I tried to keep them simple just for the purpose of this small article.</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">== server3.c ==</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">#include &lt;stdio.h&gt;<br>
+#include &lt;stdlib.h&gt;<br>
+#include &lt;strings.h&gt;<br>
+#include &lt;unistd.h&gt;<br>
+#include &lt;time.h&gt;<br>
+#include &lt;fcntl.h&gt;<br>
+#include &lt;string.h&gt;<br>
+#include &lt;errno.h&gt;<br>
+#include &lt;sys/types.h&gt;<br>
+#include &lt;sys/socket.h&gt;<br>
+#include &lt;netinet/in.h&gt;<br>
+#include &lt;poll.h&gt;<br>
+#include &lt;signal.h&gt;</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">#define BUFSIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8192<br>
+#define MAXSEND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 512</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">int<br>
+main(int ac, char **av)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; char<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp; *bf;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; max;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; status;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; port;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; serverfd;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; clientfd;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; optval;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; nonblock;<br>
+&nbsp;&nbsp;&nbsp; unsigned int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addrsize;<br>
+&nbsp;&nbsp;&nbsp; ssiz<wbr>e_t&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; size;<br>
+&nbsp;&nbsp;&nbsp; size<wbr>_t&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; totalsent;<br>
+&nbsp;&nbsp;&nbsp; struct sockaddr_in&nbsp;&nbsp;&nbsp; server_addr;<br>
+&nbsp;&nbsp;&nbsp; struct sockaddr_in&nbsp;&nbsp;&nbsp; client_addr;</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Check arguments. Collect the user supplied port number to use.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if (ac &lt; 3) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] Usage: %s &lt;portnumber&gt; &lt;block/nonblock (0/1)&gt;\n&quot;, av[0]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; port = atoi(av[1]);<br>
+&nbsp;&nbsp;&nbsp; nonblock = atoi(av[2]);</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Allocate a working buffer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if ((bf = (char *) malloc(BUFSIZE)) == 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] malloc(bf), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * For this example we will only work on the local server.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if (gethostname(bf, BUFSIZE)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] gethostname(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Open a socket for receiving connections. We are the server.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if ((serverfd = socket(AF_INET, SOCK_STREAM, 0)) &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] socket(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; status = 1;</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; (void) memset((void *) &amp;server_addr, 0, sizeof(struct sockaddr_in));<br>
+&nbsp;&nbsp;&nbsp; serv<wbr>er_a<wbr>ddr.<wbr>sin_<wbr>fami<wbr>ly = AF_INET;<br>
+&nbsp;&nbsp;&nbsp; serv<wbr>er_a<wbr>ddr.<wbr>sin_<wbr>addr<wbr>.s_a<wbr>ddr = INADDR_ANY;<br>
+&nbsp;&nbsp;&nbsp; serv<wbr>er_a<wbr>ddr.<wbr>sin_<wbr>port = htons(port);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; addrsize = sizeof(struct sockaddr_in);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; if (bind(serverfd, (struct sockaddr *) &amp;server_addr, addrsize) &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] bind(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * For this small example we only accept 1 connection. So we use a backlog<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * queue to fit only 1 entry...<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if (listen(serverfd, 1) &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] listen(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Check incoming connection. We are only expecting 1 here.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * By default the socket is blocking so we can step into the &#39;accept()&#39;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * call and it will wait until a connection request comes in. In real<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * life a better approach would be to &#39;poll&#39; the socket to check if<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * if we have any pending request.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; addrsize = sizeof(struct sockaddr_in);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; clientfd = accept(serverfd, (struct sockaddr *) &amp;client_addr, &amp;addrsize);<br>
+&nbsp;&nbsp;&nbsp; if (clientfd &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] accept(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; optval = BUFSIZE * 2;<br>
+&nbsp;&nbsp;&nbsp; if (set<wbr>sock<wbr>opt(<wbr>clie<wbr>ntfd<wbr>, SOL_SOCKET, SO_SNDBUF,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (void *) &amp;optval, sizeof(int))) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] sets<wbr>ocko<wbr>pt(S<wbr>O_SN<wbr>DBUF<wbr>), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Check if we should go for non blocking mode...)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if (nonblock) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (fcntl(clientfd, F_SETFL, O_NONBLOCK) &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] fcntl(O_NONBLOCK), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * We now have a connection. In real life we would either fork() or create<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * a new thread to handle the connection. Here, since we won&#39;t receive<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * any other connection we simply handle it in the main program.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * The idea is to show what would generate a &#39;EWO<wbr>ULDB<wbr>LOCK<wbr>/EAG<wbr>AIN&#39; error<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * on a send() call. So what we do is write data to the client until we<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * hit the error.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; totalsent = 0;<br>
+&nbsp;&nbsp;&nbsp; max = 0;</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; (void) memset((void *) bf, (int) ((max % 26) + (int) &#39;a&#39;), BUFSIZE);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; while (max &lt; MAXSEND) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[info] send(%c%c%c%c...) size %ld [sent so far %ld]: &quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bf[0], bf[1], bf[2], bf[3], BUFSIZE, totalsent);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ((size = send(clientfd, (void *) bf, BUFSIZE, 0)) != BUFSIZE) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (errno == EWOULDBLOCK || errno == EAGAIN) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%s\n&quot;, errno == EAGAIN ? &quot;EAGAIN&quot; : &quot;EWOULDBLOCK&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sleep(5);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;errno %d\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;sent\n&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; totalsent += BUFSIZE;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (void) memset((void *) bf, (int) ((max % 26) + (int) &#39;a&#39;), BUFSIZE);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Close our connection.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; close(clientfd);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; status = 0;</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">cleanup:<br>
+&nbsp;&nbsp;&nbsp; close(serverfd);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; exit(status);<br>
+}</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">== client3.c ==</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">#include &lt;stdio.h&gt;<br>
+#include &lt;stdlib.h&gt;<br>
+#include &lt;strings.h&gt;<br>
+#include &lt;unistd.h&gt;<br>
+#include &lt;time.h&gt;<br>
+#include &lt;fcntl.h&gt;<br>
+#include &lt;string.h&gt;<br>
+#include &lt;errno.h&gt;<br>
+#include &lt;sys/types.h&gt;<br>
+#include &lt;sys/socket.h&gt;<br>
+#include &lt;netdb.h&gt;<br>
+#include &lt;netinet/in.h&gt;<br>
+#include &lt;poll.h&gt;<br>
+#include &lt;signal.h&gt;</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">#define BUFSIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8192<br>
+#define MAXRECV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 512</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">int<br>
+main(int ac, char **av)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; char<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp; *bf;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; max;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; status;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; cc;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; port;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; connfd;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; clientfd;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; optval;<br>
+&nbsp;&nbsp;&nbsp; int&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; nonblock;<br>
+&nbsp;&nbsp;&nbsp; unsigned int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addrsize;<br>
+&nbsp;&nbsp;&nbsp; ssiz<wbr>e_t&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; size;<br>
+&nbsp;&nbsp;&nbsp; size<wbr>_t&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp; totalrecv;<br>
+&nbsp;&nbsp;&nbsp; struct hostent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *server;<br>
+&nbsp;&nbsp;&nbsp; struct sockaddr_in&nbsp;&nbsp;&nbsp; server_addr;</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Check arguments. Collect the user supplied port number to use.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if (ac &lt; 3) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] Usage: %s &lt;portnumber&gt; &lt;block/nonblock (0/1)&gt;\n&quot;, av[0]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; port = atoi(av[1]);<br>
+&nbsp;&nbsp;&nbsp; nonblock = atoi(av[2]);</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Allocate a working buffer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if ((bf = (char *) malloc(BUFSIZE)) == 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] malloc(bf), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * For this example we will only work on the local server.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if (gethostname(bf, BUFSIZE)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] gethostname(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Open a socket for connecting to the server. We restrict the size<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * of buffers so that we can easily demonstrate our test.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if ((connfd = socket(AF_INET, SOCK_STREAM, 0)) &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] socket(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; status = 1;</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; optval = BUFSIZE * 2;<br>
+&nbsp;&nbsp;&nbsp; if (setsockopt(connfd, SOL_SOCKET, SO_RCVBUF,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (void *) &amp;optval, sizeof(int))) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] sets<wbr>ocko<wbr>pt(S<wbr>O_RC<wbr>VBUF<wbr>), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Check if we should go for non blocking mode...)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if (nonblock) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (fcntl(connfd, F_SETFL, O_NONBLOCK) &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] fcntl(O_NONBLOCK), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr">&nbsp;</p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Collect our server address for the &#39;connect()&#39; call.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; if ((server = gethostbyname(bf)) == 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] gethostbyname(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Connect to the server.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; size = server-&gt;h_length;<br>
+&nbsp;&nbsp;&nbsp; (void) memset((void *) &amp;server_addr, 0, sizeof(struct sockaddr_in));<br>
+&nbsp;&nbsp;&nbsp; memcpy((void *) &amp;ser<wbr>ver_<wbr>addr<wbr>.sin<wbr>_add<wbr>r.s_<wbr>addr<wbr>, (void *) server-&gt;h_addr, size);<br>
+&nbsp;&nbsp;&nbsp; serv<wbr>er_a<wbr>ddr.<wbr>sin_<wbr>fami<wbr>ly = AF_INET;<br>
+&nbsp;&nbsp;&nbsp; serv<wbr>er_a<wbr>ddr.<wbr>sin_<wbr>port = htons(port);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; addrsize = sizeof(struct sockaddr_in);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * The while loop is only for Linux where sometimes the connect<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * would fail with EINPROGRESS. We just wait and retry.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; while (connect(connfd, (struct sockaddr *) &amp;server_addr, addrsize) &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (errno == EINPROGRESS) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sleep(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] connect(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto cleanup;<br>
+&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * We now have a connection. For this small example what we need to<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * do is &#39;recv()&#39; only when the user does request it by pressing return.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; totalrecv = 0;<br>
+&nbsp;&nbsp;&nbsp; max = 0;<br>
+&nbsp;&nbsp;&nbsp; do {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; size = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (void) memset((void *) bf, 0, BUFSIZE);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[info] press return to receive data from server: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cc = getc(stdin);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ((size = recv(connfd, (void *) bf, BUFSIZE, 0)) &lt; BUFSIZE) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (errno == EWOULDBLOCK || errno == EAGAIN) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[warning] recv(), [errno %s]\n&quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp; errno == EAGAIN ? &quot;EAGAIN&quot; : &quot;EWOULDBLOCK&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sleep(5);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[error] recv(), [errno %d]\n&quot;, errno);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; totalrecv += BUFSIZE;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;[info] received %ld bytes [so far %ld] [%c%c%c%c]\n&quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BUFSIZE, totalrecv, bf[0], bf[1], bf[2], bf[3]);<br>
+&nbsp;&nbsp;&nbsp; } while (max &lt; MAXRECV);</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; /*<br>
+&nbsp;&nbsp;&nbsp;&nbsp; * Close our connection.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&nbsp;&nbsp;&nbsp; close(connfd);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; status = 0;</span></p>
+
+<p dir="ltr"><br>
+<span style="font-family:courier new,courier,monospace;">cleanup:<br>
+&nbsp;&nbsp;&nbsp; close(connfd);</span></p>
+
+<p dir="ltr"><span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; exit(status);<br>
+}</span></p>
+
+<p dir="ltr">&nbsp;</p>           
+                                	              		            			<br/><br/>
+			   <span class="min-tags" role="list">
+				Tags:&nbsp
+			       			        <span role="listitem">
+					<a href="https://www.ibm.com/developerworks/community/blogs/IMSupport?tags=ewouldblock&lang=en" title="ewouldblock">ewouldblock</a>
+				</span>
+							        <span role="listitem">
+					<a href="https://www.ibm.com/developerworks/community/blogs/IMSupport?tags=socket&lang=en" title="socket">socket</a>
+				</span>
+							        <span role="listitem">
+					<a href="https://www.ibm.com/developerworks/community/blogs/IMSupport?tags=eagain&lang=en" title="eagain">eagain</a>
+				</span>
+							  </span>
+			                     <div style="clear:both"></div>
+
+                                           
+  
+                                                   
+           <div style="clear:both;"></div>
+           
+	        </div>
+ 		</td>
+    </tr>
+	
+	
+	
+	    </tbody>
+	
+	    </table>
+    </div>
+
+
+			  <script language="javascript">
+				function flagInappropriateComment(commentId) {
+					if(currentLogin.auth){
+						flagInappropriateCommentForm.init(commentId);
+						lconn.blogs.utils.showPopupForm("Flag as inappropriate",flagInappropriateCommentForm.getForm(), dojo.hitch(flagInappropriateCommentForm, "submit"), dojo.hitch(flagInappropriateCommentForm, "isSuccess"), "flagCommentLink_"+commentId);
+					}else{
+						window.location.replace('https://www.ibm.com/developerworks/community/blogs/roller-ui/login-redirect.jsp?redirect=%2Fdeveloperworks%2Fcommunity%2Fblogs%2FIMSupport%2Fentry%2FWHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK%3Flang%3Den%23action%3DflagComment%26id%3D'+commentId);
+					}
+				}
+			   </script>
+
+		       		        <script language="javascript">if(currentLogin.auth) document.write('<div style="display:none">');</script>
+		        <span id="a11y_loginHint" style="display:none">Login to access this feature</span>
+		        <ul class="lotusInlinelist">
+			        <li class="lotusFirst">
+			        	<nobr><a class="lotusAction" role="button" aria-describedby="a11y_loginHint" title="Login to access this feature" href="https://www.ibm.com/developerworks/community/blogs/roller-ui/login-redirect.jsp?redirect=%2Fdeveloperworks%2Fcommunity%2Fblogs%2FIMSupport%2Fentry%2FWHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK%3Flang%3Den%23action%3Daddcomment">Add a Comment</a></nobr>
+			        </li>
+			        <li><nobr><a class="lotusAction" role="button" aria-describedby="a11y_loginHint" aria-haspopup="true" title="Login to access this feature" href="#" onclick="if(!event){event=window.event;}menuUtility.openMenu(event, 'actionmenu_moreactions_anonymous', this);return false;">More Actions
+								<img alt="" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lconnSprite lconnSprite-iconDropDown5x3" role="presentation">
+								<span class="lotusAltText">v</span>
+					</a></nobr></li>
+		        </ul>
+		        <div id="actionmenu_moreactions_container_anonymous">
+			        <div dojoType="dijit.Menu" id="actionmenu_moreactions_anonymous" style="display: none;">
+					    <div dojoType="dijit.MenuItem" onClick="window.location.replace('https://www.ibm.com/developerworks/community/blogs/roller-ui/login-redirect.jsp?redirect=%2Fdeveloperworks%2Fcommunity%2Fblogs%2FIMSupport%2Fentry%2FWHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK%3Flang%3Den%23action%3Dsend_notification'); return false;">Notify Other People</div>
+					    					</div>
+				</div>
+		        <script language="javascript">if(currentLogin.auth) document.write('</div>'); else document.write('<div style="display:none">');</script>
+		       
+			   <script language="javascript">
+                   function submitDeleteForm() {
+				   		lconn.blogs.utils.confirm("Are you sure you want to delete this entry?", function(){
+							postDelete();
+						}, {title:'Delete Entry'}, "deleteEntryLink");
+				   }
+               </script>
+		        <div id="actionmenu_moreactions_container">
+			        <div dojoType="dijit.Menu" id="actionmenu_moreactions" style="display: none;">
+					    <div dojoType="dijit.MenuItem" id="focusAddNotificationLink" onClick="WeblogEntryActionForms.toggle('notificationForm', 'notificationForm_typeahead,Type_in_a_Name_LINK,Pick_from_Community_LINK');return false;">Notify Other People</div>
+					    					</div>
+				</div>
+		        <script language="javascript">if(!currentLogin.auth) document.write('</div>');</script>
+				<script language="javascript">
+				dojo.addOnLoad(function() {
+				if(currentLogin.edit){
+					var more_menu = dijit.byId("actionmenu_moreactions");
+					var delete_item = new dijit.MenuItem({"id":"deleteEntryLink","label":'Delete Entry', "onClick":function(){submitDeleteForm();return false;}});
+					more_menu.addChild(delete_item);
+				}
+				});
+				</script>
+				
+
+				<p></p>
+				<a name="commentsTarget"></a>
+
+				<div  id="sort-heading" class="css-widget-title min-widget-title">
+					<div class="lotusSort">
+						<span class="min-allposts">Comments (1)</span>
+						<span class="min-sortlinks">
+							<ul class="lotusInlinelist" style="float:right;">
+								<li class="lotusFirst">
+									<nobr>
+																				<a id="AddWeblogEntryCommentLink" class="lotusAction" href="#" role="button" title="" onclick="dijit.byId('blogCommentPanel').replyToEntry();return false;">Add a Comment</a>
+																			</nobr>
+								</li>
+
+								<script language="javascript">if(!currentLogin.edit) document.write('<li style="display:none">'); else document.write('<li>');</script>
+									<nobr>
+										<a class="lotusAction" href="/developerworks/community/blogs/roller-ui/authoring/weblog.do?method=edit&amp;weblog=IMSupport&amp;entry=WHY_DOES_SEND_RETURN_EAGAIN_EWOULDBLOCK&lang=en">Edit</a>
+									</nobr>
+								</li>
+								<li>
+									<nobr>
+										<a id="focusMoreActionsLink" class="lotusAction" role="button" aria-haspopup="true" href="#" title="" onclick="if(!event){event=window.event;}menuUtility.openMenu(event, 'actionmenu_moreactions', this);return false;">More Actions 
+											<img alt="" src="https://www.ibm.com/developerworks/community/connections/resources/web/com.ibm.lconn.core.styles.oneui3/images/blank.gif?etag=20171105.220517" class="lconnSprite lconnSprite-iconDropDown5x3" role="presentation">
+											<span class="lotusAltText">v</span>
+										</a>
+									</nobr>
+								</li>
+								<script language="javascript">if(!currentLogin.postModerationReviewer) document.write('<li style="display:none">'); else document.write('<li>');</script>
+									<nobr>
+										<a id="quarantineThisEntryLink" role="button" href="#" onclick="WeblogEntryActionForms.toggle('quarantineForm', 'comment');return false;" class="lotusAction" style="color: #f00;">Quarantine this Entry</a>
+									</nobr>
+								</li>
+							</ul>
+						</span>
+					</div>
+					</br>
+					<div style="margin-top:10px">
+<div id="actionforms_globalmsgs" style="display:none" aria-live="assertive">
+</div>
+<div id="actionforms_forms" aria-live="assertive">
+<form id="NotificationForm" name="notificationForm" style="display:none" action="/developerworks/community/blogs/roller-services/json/notify" class="lotusForm" dojoInit="false" role="application" aria-labelledby="notificationFormLabel" onsubmit="return false;">
+	<span name="_type" style="display:none">notification</span>
+	<div id="notificationForm_messages">
+	</div>
+	<input type="hidden" name="entry" value="1f11de46-ac84-4068-8490-4c969e66d130"/>
+	<input type="hidden" name="dangerousurlnonce" value=""/>
+	<input type="hidden" name="lang" value="en" />
+	<input type="hidden" name="version" value="250" />
+	<table width="100%" class="lotusFormTable" role="presentation">
+	<tbody>
+		<tr><td class="lotusFormTitle"><h2 id="notificationFormLabel">Send Email Notification</h2></td></tr>
+		<tr class="lotusFormFieldRow">
+			<td class="lotusFormField" style="padding-bottom:0px;">
+				<label for="notificationForm_typeahead">Type in a Name:</label>
+			</td>
+		</tr>
+		<tr class="lotusFormFieldRow">
+			<td class="lotusFormField">
+				<span dojoType="lconn.core.PeopleDataStore" queryParam="name" url="/developerworks/community/blogs/roller-services/json/typeaheadpeople?website=27b28f0d-636c-4dfc-a639-2591591aafe4" jsId="peopleStore"></span>
+				<div dojoType="lconn.core.PeopleTypeAhead" class="typeAheadPeople" title="Type in a Name:" id="notificationForm_typeahead" style="width:78%" minChars="2" searchDelay="400" multipleValues="false" token="," store="peopleStore" ></div>
+				<button name="addMemberBtn" onclick="return false;" class="fieldAdd" style="vertical-align: top;" title="Add" ></button>
+				<a name="addMemberBtn" role="button" aria-label="Add" onclick="return false;" href="#" class="lotusAltText" title="Add">+</a>
+			</td>
+		</tr>
+		<tr class="lotusFormFieldRow" name="notifyLabelTR" style="display:none">
+    		<td nowrap style="padding-bottom:0px;"><div><label class="" for="notify">Notify:</label></div></td>
+    	</tr>
+    	<tr class="lotusFormFieldRow" name="notifyFieldTR" style="display:none">
+    		<td class="lotusFormField">
+    		 	<div dojoType="lconn.blogs.notification.receivers">
+    		 		 <script type='dojo/method' event='onChange' args="person,op">
+    		 		  if(this.receivers.length == 0){
+    		 		 		this.form().sendBtn.disabled = true;
+    		 		 		this.form().sendBtn.className = "lotusFormButton lotusBtnDisabled";
+
+    		 		 		dojo.query('[name="notifyLabelTR"]', this.form())[0].style.display = "none";
+    		 		 		dojo.query('[name="notifyFieldTR"]', this.form())[0].style.display = "none";
+    		 		  }else{
+    		 		 		this.form().sendBtn.disabled = false;
+    		 		 		this.form().sendBtn.className = "lotusFormButton lotusBtnSpecial";
+
+							dojo.query('[name="notifyLabelTR"]', this.form())[0].style.display = "";
+							dojo.query('[name="notifyFieldTR"]', this.form())[0].style.display = "";
+    		 		  }
+    		 		 </script>
+    		 		 <script type='dojo/connect' event='startup'>
+    		 		 	dojo.connect(dijit.byId(this.form().name+'_typeahead'),
+    		 		 		'onChange',
+    		 		 		this,
+    		 		 		function(){
+    		 		 		    var x = dijit.byId(this.form().name+'_typeahead');
+    		 		 			var obj = x.getItem();
+    		 		 			if(obj) {
+    		 		 				if(obj.type != "-1"){
+	    		 		 				this.add(obj.name, obj.userid);
+	    		 		 				x.reset();
+    		 		 				}
+    		 		 			}
+    		 		 		}
+    		 		 	);
+    		 		 	var _This = this;
+    		 		 	dojo.forEach(dojo.query('[name="addMemberBtn"]', this.form()), function(o){
+    		 		 	    dojo.connect(o, 'onclick', _This, function() {
+    		 		 	        var x = dijit.byId(this.form().name+'_typeahead');
+    		 		 	        var s = lconn.blogs.utils.purifyEmail(x.getTextBoxValue());
+    		 		 	        if(lconn.blogs.utils.isEmail(s)) {
+    		 		 	            this.add(s, undefined, s);
+    		 		 	            x.reset();
+    		 		 	        }
+    		 		 	    });
+    		 		 	});
+    		 		 	this.receiversContainer.setAttribute('aria-label', 'Notify:');
+						this.inputBox = dijit.byId(this.form().name+'_typeahead');
+    		 		 </script>
+    		 	</div>
+    		 </td>
+    	</tr>
+		<tr class="lotusFormFieldRow">
+			<td class="lotusFormField" style="padding-bottom:0px;">
+				<label for="notification_message">Message:</label>
+			</td>
+		</tr>
+		<tr class="lotusFormFieldRow">
+			<td class="lotusFormField">
+				<textarea id="notification_message" name="description" class="bidiAware" rows="10" style="width:80%" title="Message:"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="lotusFormFooter">
+				<div class="submitArea">
+				<input class="lotusFormButton lotusBtnDisabled blogsPaddingRight" disabled="true" name="sendBtn" type="button" onclick="return postNotificaton();" value='Send'></input>
+				<input class="lotusFormButton blogsPaddingRight" name="cancelBtn" onclick="return WeblogEntryActionForms.cancel('notificationForm', 'focusMoreActionsLink');" type="button" value='Cancel' />
+				</div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</form>
+<form name="quarantineForm" style="display:none" action="/developerworks/community/blogs/roller-services/json/quarantine_entry" class="lotusForm" role="application" aria-labelledby="quarantineFormLabel" onsubmit="return false;">
+	<div id="quarantineForm_messages">
+	</div>
+	<input type="hidden" name="entry" value="1f11de46-ac84-4068-8490-4c969e66d130"/>
+	<input type="hidden" name="dangerousurlnonce" value=""/>
+	<input type="hidden" name="lang" value="en" />
+	<input type="hidden" name="version" value="250" />
+	<table width="100%" class="lotusFormTable" role="presentation"><tbody>
+		<tr><td colspan="2" class="lotusFormTitle"><h2 id="quarantineFormLabel">Quarantine this entry</h2></td></tr>
+		<tr>
+			<td width="5%"> </td>
+			<td><label for="quarantine_comment">Provide a reason for quarantining this blog entry (optional):</label></td>
+		</tr>
+		<tr>
+			<td width="5%"> </td>
+			<td><textarea id="quarantine_comment" name="comment" rows="10" style="width:80%" title='Provide a reason for quarantining this blog entry (optional):'></textarea></td>
+		</tr>
+		<tr><td colspan="2" class="lotusFormFooter">
+			<div class="submitArea">
+				<input class="lotusFormButton" name="submitBtn" type="button" onclick="return postQuarantine();" value='Submit'/>
+				<input class="lotusFormButton" name="cancelBtn" type="button" onclick="return WeblogEntryActionForms.cancel('quarantineForm', 'quarantineThisEntryLink');" value='Cancel'/>
+			</div>
+		</td></tr>
+	</tbody></table>
+</form>
+<form name="deleteForm" style="display:none" action="/developerworks/community/blogs/roller-services/json/delete_entry" class="lotusForm">
+	<span name="_type" style="display:none">deleteEntry</span>
+	<input type="hidden" name="entry" value="1f11de46-ac84-4068-8490-4c969e66d130"/>
+	<input type="hidden" name="dangerousurlnonce" value=""/>
+	<input type="hidden" name="lang" value="en" />
+</form>
+<form aria-live="assertive" name="duplicateForm" class="lotusForm2" style="display:none"  method="post" action="/developerworks/community/blogs/roller-ui/rendering/idea/duplicate" class="lotusForm" role="application" aria-labelledby="duplicateFormTitle" aria-label="Mark as Duplicate">
+	<span name="_type" style="display:none">duplicateEntry</span>
+	<div id="duplicateForm_messages">
+	</div>
+	<input type="hidden" name="entryId" value="1f11de46-ac84-4068-8490-4c969e66d130"/>
+	<input type="hidden" name="oldEntryTitle" value="WHY DOES SEND() RETURN EAGAIN / EWOULDBLOCK?"/>
+	<input type="hidden" name="dangerousurlnonce" value=""/>
+	<div id="findDuplicate">
+		<div style="border-top: 2px solid black;"></div>
+		<div class="lotusFormTitle">
+			<h1 id="duplicateFormTitle" class="lotusHeading">Mark as Duplicate</h1>
+        </div>
+		<div class="lotusFormBody" id="findDupInput">
+    		<div class="lotusFormField" >
+                <label for="ideasAsString" id="formDesc">Find the duplicate idea:</label>
+                <div class="lotusFieldWrapper">
+					<span dojoType="lconn.blogs.duplicateIdea.IdeasDataStore" jsId="ideasTypeAheadStore" queryParam="ideas" url="/developerworks/community/blogs/roller-services/json/typeaheadIdeas?handle=IMSupport&exclude=1f11de46-ac84-4068-8490-4c969e66d130"></span>
+            		<div dojoType="lconn.blogs.duplicateIdea.IdeasTypeAhead" id="ideasAsString" name="ideasAsString" style="width: 30em;" size="40" maxlength="255" autoComplete="false" store="ideasTypeAheadStore" searchDelay="400" minChars="2" searchAttr="idea" nameAttr="idea" token=" " multipleValues="false">
+            		</div>
+                </div>
+            </div>
+		</div>
+		<div id="remainEntryContent" >
+		</div>
+		<div class="lotusFormFooter" style="border: 0 none;">
+			<input class="lotusBtn lotusBtnDisabled" aria-disabled="true" id="dupIdeaSaveBtn" onclick="javascript:;" type="button" value="Save" name="saveDuplicate">
+			<input class="lotusBtn" type="button" onclick="return WeblogEntryActionForms.cancel('duplicateForm', 'focusMoreActionsLink');" value="Cancel" name="calcelDulicate">
+        </div>
+	</div>
+</form>
+</div>
+
+<script language="javascript">
+function keepSessionAlive(){dojo.xhrGet({url: '/developerworks/community/blogs/roller-services/json/authcheck'});}
+WeblogEntryActionForms = {
+    opened: {count:0},
+	type: function(form) {
+		t=dojo.query('[name="_type"]', form);
+		if(t.length>0){
+			return t[0].innerHTML;
+		}
+		else {
+			return '';
+		}
+	},
+	close: function(form) {
+		form.style.display='none';
+		this.reset(form);
+
+		if(this.opened[form.name]) {
+	    	this.opened[form.name] = false;
+	    	this.opened.count--;
+	    	if(this.opened.count == 0) {
+	    		if(this.keepAliveTimer.isRunning) {
+					this.keepAliveTimer.stop();
+				}
+	    	}
+	    }
+	},
+    reset: function(form) {
+    	form.reset();
+    	
+    	// clear action forms global msgs
+    	var t = dojo.byId('actionforms_globalmsgs');
+    	if(t) {
+    	    t.style.display = 'none';
+    	}
+
+    	// clear messages
+    	var mt = ['error', 'warning', 'info'];
+    	for(var i=0; i<mt.length; i++) {
+    	    var x=dojo.query('[name="' + mt[i] + '_messages"]', form);
+	    	if(x.length > 0) {
+	    	    x[0].style.display='none';
+	    	    x=dojo.query('[name="message"]', x[0]);
+	    	    if(x.length > 0) x[0].innerHTML='';
+	    	}
+    	}
+
+        var t=this.type(form);
+        if(t=='comment') {
+        	form.content.innerHTML='';
+        	var x = dojo.byId("commentspanel_preview");
+        	if(x) dojo.byId("commentspanel_preview").style.display = "none";
+        }
+        else if(t=='notification') {
+            form.receivers.clear();
+        }
+        else if(t=='notification_ex') {
+        	form.receivers.clear();
+
+        	var fcb = dijit.byId(form.name+'_filteringcheckbox');
+        	fcb.peopleSelected = new Object();
+        	if (fcb.currPage > 1) {
+        	    fcb.currPage = 1;
+        	    fcb.gotList = false;
+        	}
+        	fcb.clearSearch();
+        }
+    },
+    init: function(form) {
+        var t=this.type(form);
+        if(t=='notification') {
+            var dojoInit = form.getAttribute('dojoInit');
+            if(dojoInit == 'false') {
+                dojo.parser.parse(form);
+								form.setAttribute('dojoInit', 'true');
+            }
+            if(form.description.value == '') {
+                form.description.value = 'Hi-  I thought you might be interested in this blog entry.';
+            }
+    	}
+    	else if(t=='notification_ex') {
+    	    var dojoInit = form.getAttribute('dojoInit');
+            if(dojoInit == 'false') {
+            	dojo.parser.parse(form);
+            	            	form.setAttribute('dojoInit', 'true');
+            }
+
+        	var fcb = dijit.byId(form.name+'_filteringcheckbox');
+        	if(!fcb.gotList) fcb.getList();
+        	fcb.setDisabled(false);
+
+        	if(form.description.value == '') {
+                form.description.value = 'Hi-  I thought you might be interested in this blog entry.';
+            }
+        }else if(t='duplicateEntry') {
+			if(lconn.blogs.duplicateIdea.entrywidget)lconn.blogs.duplicateIdea.entrywidget.findAnother();
+		}
+    },
+    hideAll: function() {
+    	document.forms['notificationForm'].style.display='none';
+    	    	document.forms['quarantineForm'].style.display='none';
+		document.forms['duplicateForm'].style.display='none';
+
+    	var t = dojo.byId('actionforms_globalmsgs');
+    	if(t) {
+    	    t.style.display = 'none';
+    	}
+    },
+    toggle: function(name, fc) {
+    	var f = document.forms[name];
+    	if(f.style.display != 'none'){
+    	    return;
+    	}
+
+    	this.init(f);
+
+    	this.hideAll();
+	    f.style.display='';
+	    if(typeof fc != 'undefined') {
+		    var fcs = fc.split(",");
+			var bFocused = false;
+			for(var i = 0; i < fcs.length; i++) {
+			    var tfc = fcs[i];
+				var x = dojo.query('[name="'+tfc+'"]', f);
+	            if(x.length>0) {
+				    x[0].focus();
+					bFocused = true;
+					break;
+				}
+			}
+			for(var i = 0; i < fcs.length; i++) {
+			    var tfc = fcs[i];
+				var x = dojo.query('[id="'+tfc+'"]', f);
+	            if(x.length>0) {
+				    x[0].focus();
+					bFocused = true;
+					break;
+				}
+			}
+	    }
+
+	    if(!this.opened[name]) {
+	    	this.opened[name] = true;
+	    	this.opened.count++;
+	    }
+
+	    if(typeof this.keepAliveTimer == 'undefined') {
+			this.keepAliveTimer = new dojox.timing.Timer(180000);
+			this.keepAliveTimer.onTick = function() {keepSessionAlive();};
+		}
+		if(!this.keepAliveTimer.isRunning) {
+			this.keepAliveTimer.start();
+		}
+    },
+    cancel: function(name, fc) {
+    	WeblogEntryActionForms.close(document.forms[name]);
+    	if(typeof fc != 'undefined') dojo.byId(fc).focus();
+
+    	return false;
+    },
+    clearMessage: function(messageContainerId){
+    	lconn.blogs.utils.clearMessage(messageContainerId);
+    },
+    message: function(form, data, type) {
+		var messageContainer;
+		if(form && form.name){
+			messageContainer = dojo.byId(form.name+ '_messages');
+		}
+		if(!messageContainer) {
+			messageContainer = dojo.byId('actionforms_globalmsgs');
+		}
+		this.clearMessage(messageContainer.id);
+    	
+		lconn.blogs.utils.showMessage(messageContainer.id, data, type, true);
+		
+		messageContainer.style.display='';
+    },
+    showCommentMessage: function(data) {
+        var messageContainer = dojo.byId('actionforms_globalmsgs');
+		this.clearMessage(messageContainer.id);
+    	
+		lconn.blogs.utils.showMessage(messageContainer.id, data, type, true);
+		
+		messageContainer.style.display='';
+    },
+    disable: function(form, b) {
+        var t=dojo.query('[name$="Btn"]');
+        for(var i=0; i<t.length; i++) t[i].disabled=b;
+    },
+    ajaxPost: function(form, postExec, msgs) {
+    	form.dangerousurlnonce.value=window.__security_nonce;
+    	this.message(form, msgs.running + '<div class="lotusLoading lotusLeft"></div>', 'info');
+    	this.disable(form, true);
+    	dojo.xhrPost({
+	        url: form.action,
+	        form: form,
+	        handleAs: 'json-comment-optional',
+	        load: function (data, ioArgs) {
+	        	WeblogEntryActionForms.clearMessage(form.name+ '_messages');
+	            if(data.success) {
+	            	WeblogEntryActionForms.close(form);
+
+	            	var gm = dojo.byId('actionforms_globalmsgs');
+	            	gm.style.display='none';
+	            	lconn.blogs.utils.clearMessage(gm.id);
+
+	            	var t=WeblogEntryActionForms.type(form);
+	            	var msgText;
+	            	if(t=='notification' || t=='notification_ex') {
+	            		msgText = 'The notification has been sent.';
+	            	}
+	            	if(t=='flagInappropriateEntry') {
+					    msgText= 'The blog entry has been flagged and submitted for review.';
+
+	            	}
+					if(t=='deleteEntry') {
+					    msgText= 'The blog entry has been deleted.';
+	            	}
+	            	lconn.blogs.utils.showMessage(gm.id, msgText, 'confirm', true);
+				    gm.style.display='';
+	            }
+	            else {
+	                if(data.error) {
+	                    if('session timeout' == data.error) {
+	                        window.__security_nonce = data.nonce;
+	                        WeblogEntryActionForms.message(form, 'We were unable to process your request due to a session timeout.  Please try again.', 'error');
+	                    } else {
+	            			WeblogEntryActionForms.message(form, data.error, 'error');
+	            		}
+	            	}
+	            	else {
+	            		WeblogEntryActionForms.message(form, 'This function is only available to authenticated users. Please log in first.', 'error');
+	            	}
+	            }
+	            WeblogEntryActionForms.disable(form, false);
+	            if(data.success && typeof postExec != 'undefined') postExec(data);
+	        },
+	        error: function (error, ioArgs) {
+	            WeblogEntryActionForms.message(form, msgs.fail, 'error');
+	            WeblogEntryActionForms.disable(form, false);
+	        }
+	    });
+    }
+};
+function postNotificaton(){
+	WeblogEntryActionForms.ajaxPost(document.forms['notificationForm'], function(){dojo.byId('focusMoreActionsLink').focus();},
+		{fail: 'Failed to send the notification.',
+		 running: 'Sending Notification...:'});
+	return false;
+};
+function postQuarantine(){
+	 	WeblogEntryActionForms.ajaxPost(document.forms['quarantineForm'], function(){window.location = 'https://www.ibm.com/developerworks/community/blogs/IMSupport/entry/How_can_I_check_if_TSA_is_working_with_no_problem?lang=en';},
+		{fail: 'Fail to submit the request. Server error.',
+		 running: 'Submitting...'});
+	return false;
+};
+
+function postDelete(){
+	 	WeblogEntryActionForms.ajaxPost(document.forms['deleteForm'], function(){window.location = 'https://www.ibm.com/developerworks/community/blogs/IMSupport/entry/How_can_I_check_if_TSA_is_working_with_no_problem?lang=en';},
+		{fail: 'Fail to submit the request. Server error.',
+		 running: 'Submitting...'});
+	return false;
+};
+
+if(window.location.hash == '#action=send_notification') {
+    dojo.addOnLoad(function(){WeblogEntryActionForms.toggle('notificationForm', 'description');});
+}
+</script>
+					</div>
+				</div>
+				
+				<!-- Romeo -->
+				<!-- CommentPanel -->
+								
+					<div dojoType="lconn.blogs.comment.CommentPanel" id="blogCommentPanel" entryId="1f11de46-ac84-4068-8490-4c969e66d130" blogId="27b28f0d-636c-4dfc-a639-2591591aafe4" isPublicBlog="true" isCommunity="false" 
+				 allowComment="true" 				commentCount="1"
+		isIdeaBlog="false"
+	>
+	</div>
+	<div id="addCommentFormContainer">
+	<div dojoType="lconn.blogs.comment.AddCommentForm" id="blogAddCommentForm" entryId="1f11de46-ac84-4068-8490-4c969e66d130" mentionsEnabled="true" autoMention="false" blogId="27b28f0d-636c-4dfc-a639-2591591aafe4"
+		 trackbackEnabled = "false" 		isIdeaBlog="false"
+				isPublicBlog="true"
+		organization="a"
+	></div>
+	</div>
+
+		     
+ 
+		    </div>    <!-- end entries -->
+						
+
+		<!-- Dont show paging when there are no entries -->
+								<div class="" role="navigation" style="font-size: 0.9em;" aria-label="Page navigation">
+			                        <ul class="inlinelist lotusInlinelist">
+    	<li class="lotusFirst">
+	    	        <a href="https://www.ibm.com/developerworks/community/blogs/IMSupport/entry/DB2_Finding_the_LSN_or_LRI_value_for_replication_start?lang=en" title="Previous Entry">Previous Entry</a>
+	 	    	</li>
+    	<li>
+        <a href="/developerworks/community/blogs/IMSupport?maxresults=15&lang=en">Main</a>
+        </li>
+        <li>
+	    	        <a href="https://www.ibm.com/developerworks/community/blogs/IMSupport/entry/How_can_I_check_if_TSA_is_working_with_no_problem?lang=en" title="Next Entry">Next Entry</a>
+		        </li>
+    </ul>
+		    </div>
+						
+
+       </div> <!-- end content -->
+</div><!-- end main -->
+
+ 	<script language="javascript">  
+		 var isEntry = true;
+		 
+		 dojo.addOnLoad(function(){
+			var t = document.getElementById('TOGGLE_comment_rating_${item.id}_widget');
+			if(t) {
+				var p = t.parentNode;
+				p.removeAttribute('aria-live');
+				var h = t.innerHTML;
+				p.innerHTML = '<a class="lotusLikeAction" aria-disabled="true" href="javascript:;" onclick="return false" title="Like is disabled in comment preview.">' + h + '</a>';
+			}
+		});
+ 	</script> 
+
+	<script language="javascript">  
+		 var isComm = false;
+ 	</script>
+<script language="javascript">  
+if(isEntry){
+	readTrackerMetrics = {};
+	readTrackerMetrics.contentId = "1f11de46-ac84-4068-8490-4c969e66d130";
+	readTrackerMetrics.contentTitle = "WHY DOES SEND() RETURN EAGAIN / EWOULDBLOCK?";
+	readTrackerMetrics.contentContainerId = "27b28f0d-636c-4dfc-a639-2591591aafe4";
+	readTrackerMetrics.contentContainerTitle = "Thoughts from Support";
+	readTrackerMetrics.itemType="ENTRY";
+
+}else{
+	// metrics variables, it will be used in footer
+	readTrackerMetrics = {};  
+	readTrackerMetrics.contentId="27b28f0d-636c-4dfc-a639-2591591aafe4";
+	readTrackerMetrics.contentTitle = "Thoughts from Support";
+	readTrackerMetrics.itemType="BLOG";
+	}
+		
+if(isComm){
+	readTrackerMetrics.communityId = "$comm.assocId";
+}
+</script>
+	
+
+    
+        
+    
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="lotusFooter" class="lotusFooter" role="contentinfo">
+	
+
+						
+			<script type="text/javascript">
+(function() {
+   function handleHeaderInit(info) {
+      lconn.core.header.decorateUser( /*user*/ {
+         displayName: info.user,
+         id: info.userId
+      }, /*urls*/ {
+         logout: 'https:\/\/www.ibm.com\/developerworks\/community\/blogs\/roller-ui\/logout-redirect.jsp',
+         user_jsp: '/developerworks/community/blogs/static/20171105.220517!en/nav/templates/menu/user.jsp?appName=blogs&username=&userid=',
+         communities_jsp: '\/developerworks\/community\/blogs\/static\/20171105.220517!en\/nav\/templates\/menu\/communities.jsp?authenticated=true'
+      }, /*strings*/ {
+         logout: 'Log Out'
+      });
+   }
+   //dojo.subscribe("lconn/core/header/init", handleHeaderInit);
+})();
+</script><script type="text/javascript">
+(function(){
+   function loadConnectionsLanguageSelector() {
+      try {
+         dojo.require("lconn.core.header");
+         lconn.core.header.enableLanguageSelector("languageSelectorText", {"en":"English","zh":"\u4e2d\u6587 (\u200f\u7b80\u4f53)","ja":"\u65e5\u672c\u8a9e","es":"Espa\u00f1ol","pt_br":"Portugu\u00eas (\u200fBrasil)","ru":"\u0420\u0443\u0441\u0441\u043a\u0438\u0439","BD":"BD"},
+            "conxnsCookie", "", -1);
+      } catch (e) {
+         console.error(e);
+      }
+   }
+   if (dojo.exists("lconn.core.header") && !dojo.exists("_skipConnectionsLanguageSelector"))
+      dojo.addOnLoad(loadConnectionsLanguageSelector);
+})();
+</script><script type="text/javascript">
+      dojo.require("lconn.core.header.apps");
+      dojo.require("lconn.core.auth");
+
+    </script><script type="text/javascript">
+(function() {
+   function checkShareDisplay(info) {if (dojo.cookie("blogsUser")) {var node = dojo.byId("headerSharebox");
+		   dojo.removeClass(node,"lotusFirst");
+		   dojo.removeClass(node,"lotusHidden");
+		   dojo.style(node, "display", "block");
+	   }
+   }
+   dojo.addOnLoad(checkShareDisplay);
+})();
+</script>
+
+<div id="ibm-footer1"></div>
+<div id="footer_div"></div>
+<div id="footer_scripts_div"></div>
+		
+<!--script type="text/javascript" src="//dw1.s81c.com/common/stats/stats.js"></script>
+<script id="stats" type="text/javascript"></script>
+<script>if (window.location.href.search(/\/(mydeveloperworks|community)\/(wikis)/i) == -1){ document.getElementById("stats").src="//dw1.s81c.com/common/stats/stats.js";}</script-->
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript>
+<!--<script type="text/javascript" src="/developerworks/community/connections/resources/web/_js/?include=dojo.io.script.js~&etag=W8wd1eA_en_US&lang=en&country=us">//</script> -->
+<!--<script type="text/javascript" src="/developerworks/js/dw-mf/viper-www.js">//</script>-->
+<script type="text/javascript" src="/developerworks/js/dw-mf/viper-www-v2.js">//</script>
+<script type="text/javascript" src="/developerworks/js/dw-lc/xmlc.js">//</script>
+	
+</div><!--end footer-->
+
+<script language="javascript">
+	if(!(typeof currentLogin.name == 'undefined' || currentLogin.name == null || currentLogin.name == '')) {
+		dojo.publish("lconn/core/header/init", [{
+			user: currentLogin.name, 
+			userId: currentLogin.extid, 
+			isModerator: currentLogin.globalModerator
+		}]);
+	}
+</script>
+
+<!-- build 20160330034703 -->
+	
+<div id="datetagdiv" 
+   style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;">
+</div>
+
+<script language="javascript">
+	if(currentLogin.globalAdmin) activateFooterLinks();
+	var metricsLinks = dojo.query('.lotusMetricsReaderLink');
+	for(var i = 0; i < metricsLinks.length; i++) {
+		metricsLinks[i].style.display = currentLogin.metricsReader ? '' : 'none';
+	}
+	if(typeof openHelpWindow == 'undefined') {
+		var helpWindow;
+		window.openHelpWindow = function (url, width, height) {
+			if (!width) {
+				width = window.screen.width / 4;
+				if (width < 950) width = 950;
+			}
+			if (!height) {
+				height = window.screen.height / 4;
+				if (height < 550) height = 550;
+			}
+			if (typeof(helpWindow) != "undefined") helpWindow.close();
+			var options = 'height=' + height + ',width=' + width + ',status=yes,toolbar=yes,menubar=no,location=yes,scrollbars=yes,resizable=yes';
+			helpWindow = window.open(BlogsBaseUrl + url, 'help', options);
+			if (window.focus) helpWindow.focus();
+	};
+}
+// metrics read tracker
+if (!dojo.exists("com.ibm.lconn.layout.track"))
+{
+dojo.require("com.ibm.lconn.layout.track"); // load track js api, each application should already load the common js jar that include this api
+}
+
+	// metrics read tracker
+	var metrics = {};
+	var extra = {};
+	metrics.source=appName; // retrieve from the common header
+	extra.contentLink = window.location.href; 
+	
+	if(!(typeof readTrackerMetrics == "undefined")){
+		metrics.itemType = readTrackerMetrics.itemType;
+		metrics.communityId = readTrackerMetrics.communityId;
+		metrics.contentId = readTrackerMetrics.contentId;
+		extra.contentTitle = readTrackerMetrics.contentTitle;
+		extra.contentContainerId = readTrackerMetrics.contentContainerId;
+		extra.contentContainerTitle = readTrackerMetrics.contentContainerTitle;
+	}
+	
+	if(typeof metrics.itemType == "undefined"){
+		metrics.itemType="BLOGS"; // define for each web page
+	} 
+	
+	if(typeof metrics.contentId == "undefined"){
+		metrics.contentId="BLOGS"; // define for each web page
+	}
+	
+	if(typeof currentLogin.extid != "undefined"){
+		metrics.userId = currentLogin.extid;
+	}
+	
+	metrics.extra = extra;
+	
+	var track = com.ibm.lconn.layout.track;
+	track.read(metrics.contentId, metrics.itemType, metrics); // call tracker js to send read event
+</script>
+
+<script type="text/javascript">
+if(typeof dojo.getObject('com.ibm.ajax.auth.interceptDojoXhr') == 'function') {
+	dojo.addOnLoad(function() {
+    var ciaa = com.ibm.ajax.auth;
+    ciaa.interceptDojoXhr(function(){return true;});
+    ciaa.setAuthenticationHandler(function(response, ioArgs, onauthenticated){
+        var racp = window.location.href.replace(/,/g,"%2C");
+        window.location.replace(getLoginRedirectURL(racp));
+    });
+	});
+}
+</script>
+
+<script type="text/javascript">
+	var lconn_core_thirdPartySearchEngines = []
+</script>
+<script type="text/javascript">
+	/* 4.5 to 5.0 changes */
+	var dwBlogsUpdateTitleBarClassNameInterval = window.setInterval(function() {
+		if (!dojo) return;
+		var lotusTitleBar = dojo.byId("lotusTitleBar");
+		if (lotusTitleBar!=null) { 
+			dojo.addClass("lotusTitleBar", "lotusTitleBar2");
+			dojo.addClass("lotusTitleBar", "lotusTitleBar2Tabs");
+			window.clearInterval(dwBlogsUpdateTitleBarClassNameInterval);
+		}
+	},500);
+</script>
+
+    
+</div><!-- frame -->
+</body>
+<script language="javascript">
+if(dojo.isIE && lconn.blogs.utils.applyDojoOnLoads) {lconn.blogs.utils.applyDojoOnLoads();}
+</script>
+
+
+
+
+
+</html>
